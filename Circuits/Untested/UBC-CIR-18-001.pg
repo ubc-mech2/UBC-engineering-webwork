@@ -1,0 +1,106 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('Phasor', 'Alternating Current')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+
+DOCUMENT();
+
+#image scale
+$imgScale = .18;
+
+#image aspect ratio
+$width = $imgScale*3939;
+$height = $imgScale*1959;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$frequency = random(500, 2000, 100);
+$resistance_1 = random(30, 100, 10);
+$resistance_2 = 50;
+$resistance_3 = 10;
+$capacitance_1 = random(0.1, 0.5, 0.05);
+$capacitance_2 = 0.3;
+$source_amplitude = 10;
+$source_phase = -30;
+
+#computation 
+$output_amplitude = 0.0002*$capacitance_1*($resistance_1**2)*$frequency/sqrt((0.000002*$resistance_1)**2+(0.0000003*$frequency)**2);
+$output_phase = arctan((3.46410161514*$resistance_1+0.3*$frequency)/(2*$resistance_1-0.519615242271*$frequency))*180/pi;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.02,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-CIR-18-001.png", width=>[$width], height=>[$height]) @]*
+
+Find the output amplitude and frequency given if [`v_s=10cos([$frequency]t - 30^{\circ})`] [`V`], [`R_1 = [$resistance_1]`] [`k\Omega`], [`R_2 = 50`] [`k\Omega`], [`R_3 = 10`] [`k\Omega`], [`C_1 = [$capacitance_1]`] [`\mu F`], and [`C_2 = 0.3`] [`\mu F`].
+
+[`A=`] [_____]{"$output_amplitude"} [`V`]  
+[`\phi=`] [_____]{"$output_phase"}[`^{\circ}`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
