@@ -1,0 +1,120 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinematics of rigid bodies)
+## DBsection(General plane motion)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('equations of motion' , 'General plane motion', 'wheel', 'force', 'vehicle')
+## RESOURCES('')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Advanced
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*2037;
+$height = $imgScale*1750;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$v = random(10,20,0.1); #m/s
+$r = 15; #m
+$h = 1.5; #m
+$b = 1.3; #m
+$theta = random(10,30,1); #degree
+$theta_r = $theta*pi/180;
+$mu = random(0.4, 0.5,.1);
+$g = 9.81;
+$mcSlips = PopUp(["?","Slips","Tips"], "Slips");
+$mcTips = PopUp(["?","Slips","Tips"], "Tips");
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-DYN-18-047.png", width=>[$width], height=>[$height]) @]*
+
+Assume that you are driving a van on a road with the conditions shown in the figure ([`b= [$b]`] [`m`], [`h = [$h]`] [`m`], and [`r = [$r]`] [`m`]) and that the coefficient of friction between the van's tires and the road is [`\mu=[$mu]`]. Answer the following questions accordingly: 
+
+*a)* For a given velocity of [`v = [$v]`] [`m/s`], calculate [`\theta`] for which there is no risk of slipping or tipping with the van.  
+	[`\theta_{max}=`][_____] [`^{\circ}`]
+
+*b)* For a given angle of [`\theta = [$theta]^{\circ}`], identify whether the van slips or tips first. [@ $mcSlips->menu() @]*
+
+
+*c)* For a given angle of [`\theta = [$theta]^{\circ}`], calculate the maximum velocity before the van starts to slip (_if you chose *slips*_) or tip (_if you chose *tips*_).  
+	[`V_{max}=`][____] [`m/s`]
+
+END_PGML
+
+#computation
+$thetamax = arctan($v**2/$g/$r)*180/pi; #rad
+ANS(num_cmp($thetamax, tol=>.1));
+
+if($mu <= $b/(2*$h)) {
+	ANS($mcSlips->cmp);
+	$vmaxSlip = sqrt($g*$r*($mu + tan($theta_r))/(1-$mu * tan($theta_r)));
+	ANS(num_cmp($vmaxSlip, reltol=>.1))
+}
+else{
+	ANS($mcTips->cmp);
+	$vmaxTip = sqrt($g*$r*($b/2/$h + tan($theta_r))/(1-$b/2/$h * tan($theta_r)));
+	ANS(num_cmp($vmaxTip, reltol=>.1))
+}
+
+
+##############################################################
+
+ENDDOCUMENT()};
