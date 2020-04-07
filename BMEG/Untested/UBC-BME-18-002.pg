@@ -1,0 +1,88 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Mechanics of materials)
+## DBchapter(Strain)
+## DBsection(Axial strain)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$F = random(4000,10000,100);
+$l0 = random(2,4,.1);
+$dl = random(.0001,.001,.0001);
+
+#computation 
+$eps = $dl/$l0*100;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+A sample of biological material is loaded into a material-testing machine. The material is [`[$l0]`] [`cm`] long in its unloaded state. A [`[$F]`] [`N`] tensile force is applied to the material and it stretches to a length of [`[$l0+$dl]`] as a result of this force. What is the strain in the specimen when it is stretched this much?
+
+[`\epsilon=`] [_____]{"$eps"} [`%`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
