@@ -1,0 +1,101 @@
+  
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .13;
+
+#image aspect ratio
+$width = $imgScale*3544;
+$height = $imgScale*2265;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+Context()->variables->add(s=>"Real");
+Context()->variables->remove("x");
+
+#given
+$R1 = random(80, 120, 10);
+$R2 = random(80, 120, 10);
+$C1 = random(5, 25, 5);
+$C2 = random(5, 25, 5);
+
+#computation 
+$trans = Formula("($R2($R1*$C1 s + 1))/($R1($R2*$C2 s + 1))");
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+Determine the transfer function [`\frac{V_0(s)}{V(s)}`] of the circuit shown in the figure below. Assume that the Op-Amp is ideal, and that [`R_1=[$R1]`] [`k\Omega`], [`R_2=[$R2]`] [`k\Omega`], [`C_1=[$C1]`] [`mF`], and [`C_2=[$C2]`] [`mF`].
+
+[@ image("UBC-SIG-18-019.png", width=>[$width], height=>[$height], tex_size=>500) @]*
+
+[``\frac{V_0(s)}{V(s)}=``] [____________________]
+
+END_PGML
+
+ANS($trans->cmp);
+
+##############################################################
+
+ENDDOCUMENT();
