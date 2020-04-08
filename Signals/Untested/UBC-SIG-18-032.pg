@@ -1,0 +1,155 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*2759;
+$height = $imgScale*1133;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Complex");
+Context()->variables->add(t=>"Real");
+
+#given
+$a = random(2, 9, 1);
+$b = 1.5/$a;
+$c = random(2, 9, 1);
+$e = random(2, 5, 1);
+$T = 2*$a;
+
+#computation 
+$ans0 = Formula("pi/$a");
+$ans1 = Formula("0");
+$ans2 = Formula("0");
+$ans3 = Formula("4*$a**2/pi**2");
+$ans4 = Formula("$a/2");
+$ans5 = Formula("4*$a**2/pi**2");
+$ans6 = Formula("0");
+$ans7 = Formula("0");
+$ans8 = Formula("$e*$a / 2 + 8*$e*$a**2/pi**2 * (cos(pi*t - pi/$c)) ");
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+
+A signal is defined by [` \displaystyle x(t) = \begin{cases} 
+[$a]+t & if & -[$a]\leq t \leq 0\\
+[$a]-t & if & 0 \le  t \le [$a] \\
+x(t - [$T]) &  & otherwise
+\end{cases} 
+`]
+
+The signal [`x(t)`] is the input of an ideal low-pass filter which has a fundamental frequency response [`H(\omega)`] that is shown in the figure below. Assume [`b = \frac{1.5}{[$a]}`], [`c = [$c]`], and [`e = [$e]`].
+
+>>[@ image("UBC-SIG-18-032.png", width=>[$width], height=>[$height], tex_size=>500) @]*<<
+
+*a)* What is the fundamental frequecny, [`\omega_0`], of this signal?
+
+[`\omega_0=`] [______] 
+
+*b)* Find the Fourier series coefficients, [`X_k`], which are needed to determine the output of the filter. Enter the value of those coefficients in the table below. Enter 0 for all the other coefficients.
+
+END_PGML
+
+BEGIN_TEXT
+$PAR
+\{
+	DataTable(
+		[
+			['\(X_{-3}\)',ans_rule(10)],
+			['\(X_{-2}\)',ans_rule(10)],
+			['\(X_{-1}\)',ans_rule(10)],
+			['\(X_{0}\)',ans_rule(10)],
+			['\(X_{1}\)',ans_rule(10)],
+			['\(X_{2}\)',ans_rule(10)],
+			['\(X_{3}\)',ans_rule(10)],
+		],
+		center => 1,
+		allcellcss=>'padding-left:20px; padding-right:20px; border: solid thin #CCCCCC;',
+		);
+
+\}
+$PAR
+END_TEXT
+
+BEGIN_PGML
+
+*c)* Find the steady-state output of the filter, [`y_{ss}(t)`]. Enter your answer in the form of [`y_{ss}(t)=A+Bcos(\pi t + C)`].  
+
+[`y_{ss}(t)=`][______] 
+
+END_PGML
+
+ANS($ans0->cmp);
+ANS($ans1->cmp);
+ANS($ans2->cmp);
+ANS($ans3->cmp);
+ANS($ans4->cmp);
+ANS($ans5->cmp);
+ANS($ans6->cmp);
+ANS($ans7->cmp);
+ANS($ans8->cmp);
+
+##############################################################
+
+ENDDOCUMENT();
