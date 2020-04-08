@@ -1,0 +1,99 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$R = random(2,20,.5);
+$er = random(2,4,.01);
+$pv = random(1,9,.1);
+
+$eps0 = 8.854187817/(10**12);
+
+#computation 
+$A = $pv*$R*$R/(6*$eps0*$er)*(2*$er+1)/10**13;
+$B = $pv*$R*$R/3/$eps0/10**13;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+In free space, a solid insulating sphere of radius [`R = [$R]`] [`cm`] and dielectric constant [`\epsilon_r=[$er]`], has a uniform volume charge density [`\rho_v = [$pv]`] [`nC/m^3`]. Assume that the potential is [`0`] at infinity.
+
+*a)* Find the potential at the center of the sphere.
+
+[`V=`] [_____]{"$A"} [`V`]  
+
+*b)* Find the potential at the surface of the sphere.
+
+[`V=`] [_____]{"$B"} [`V`]  
+
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
