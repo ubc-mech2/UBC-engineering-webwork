@@ -1,0 +1,104 @@
+  
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .5;
+
+#image aspect ratio
+$width = $imgScale*426;
+$height = $imgScale*493;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+
+#given
+$l = random(5,25,5);
+$d = random(2,8,1);
+$m = 0.001;# kg
+$eo = 8.854*(10**(-12)); #f/m
+$g = 9.81; #m/s2
+
+#computation 
+$c = 4*pi * $eo;
+$q = sqrt($c * ($d/100)**3 * $m * $g/(3*sqrt(($l/100)**2 - ($d/100)**2/3)))*10**9;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-EM-18-003.png", width=>[$width], height=>[$height]) @]*
+
+Three identical small spheres are suspended from a common point by three threads with equal length [`[$l]`] [`cm`]. Each small sphere has the mass [`[$m]`] [`kg`] and charge [`q`]. At equilibrium, the three sphere are at the corners of a horizontal equilateral triangle whose sides are [`[$d]`] [`cm`]. Find the value of [`q`].
+
+[`q=`] [______]{"$q"} [`nC`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
