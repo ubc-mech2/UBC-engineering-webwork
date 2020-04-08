@@ -1,0 +1,103 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .5;
+
+#image aspect ratio
+$width = $imgScale*651;
+$height = $imgScale*625;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$R = random(2,6,.5);
+$rhos = random(10,50,10);
+$omega = random(300,800,100);
+$B = random(.1,.5,.1);
+
+$mu0 = 4*pi;
+
+#computation 
+$ax = -1/4*pi*$omega*$rhos*$R**4*$B/1000000;
+$ay = 0; 
+$az = 0;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-EM-18-046.png", width=>[$width], height=>[$height]) @]*
+
+A disk of radius [`[$R]`] [`m`] lies in the [`xy`] plane, with the [`z`] axis through its center. Surface charge of uniform density [`\rho_S = [$rhos]`] [`\mu C/m^2`] lies on the disk, which rotates about the [`z`]-axis at angular velocity of [`\omega = [$omega]`] [`rads/s`]. If the disk rotates counterclockwise in a uniform magnetic field with [`B = [$B]a_y`] [`T`], find the torque on the disk.
+
+[`T=`] [`(`][_____]{"$ax"}[`a_x`] [`+`] [_____]{"$ay"}[`a_y`] [`+`] [_____]{"$az"}[`a_z)`] [`Nm`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
