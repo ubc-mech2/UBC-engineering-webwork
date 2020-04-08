@@ -1,0 +1,137 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScaleA = .34;
+$imgScaleB = .34;
+
+#image aspect ratio
+$widthA = $imgScaleA*726;
+$heightA = $imgScaleA*913;
+$widthB = $imgScaleB*1388;
+$heightB = $imgScaleB*999;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$N = random(800, 1400, 100);#
+
+$I = random(0.3, 0.6, 0.01);# A
+
+$n = random(1,3,1);
+
+
+
+$mu0 = 4*pi;
+
+#computation 
+
+if($n==1){
+	$b = .6;
+	$h = 100;
+	$psi = 2.88;
+}
+
+elsif($n==2){
+	$b = 1;
+	$h = 200;
+	$psi = 4.8;
+}
+
+else{
+	$b = 1.2;
+	$h = 400;
+	$psi = 5.76;
+}
+
+$l = 4*pi*($N*$I - $h*196/1000)*4.8/$psi/10000;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-EM-18-052a.png", width=>[$widthA], height=>[$heightA]) @]*
+
+The dimensions of a silicon steel core having a cross-section of rectangular shape and an air gap is defined in the figure above (all units are in [`mm`]). The magnetization curve of the silicon steel is shown in in the figure below. When a [`[$N]`]-turn coil wound on the core carries current [`I = [$I]`] [`A`], the magnetic flux that passes through the cross-section of the core is [`\Psi = [$psi]\times 10^{-4}`] [`Wb`].
+
+[@ image("UBC-EM-18-052b.png", width=>[$widthB], height=>[$heightB]) @]*
+
+_From "Engineering Electromagnetcs" 8th ed. Figure 8.11._ 
+
+*a)* Find [`B`] and [`H`] in the silicon steel core.
+
+[`B=`] [_____]{"$b"} [`T`]  
+[`H=`] [_____]{"$h"} [`A/m`]  
+
+*b)* What is the length of the air gap?
+
+[`l_{gap}=`] [_____]{"$l"} [`mm`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
