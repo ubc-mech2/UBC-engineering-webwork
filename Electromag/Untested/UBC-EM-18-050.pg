@@ -1,0 +1,112 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$R = random(2, 8, 1);# cm
+$A = random(2, 6, 0.5);# cm2
+$N = random(300, 1000, 100);# Turns
+$I = random(10, 40, 2);# mA
+$phi = random(5, 9, 1);#  10ô6 Wb
+
+$mu0 = 4*pi;
+
+#computation 
+$b = $phi/$A*10;
+$h = $N*$I/2/pi/$R/10;
+$chim = $b/$mu0/$h*10**4 - 1;
+$m = $chim*$h;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+A ferromagnetic ring has a mean radius [`R = [$R]`] [`cm`] and a cross-section area of [`[$A]`] [`cm^2`]. When a [`[$N]`]-turn coil wound on the ring carries current [`I = [$I]`] [`mA`], the magnetic  flux that passes through the cross-section of the ring is [`[$phi]\times 10^{-6}`] [`Wb`].
+
+*a)* Calculate [`B`] in the ring.
+
+[`B=`] [_____]{"$b"} [`mT`]  
+
+*b)* Calculate [`H`] in the ring.
+
+[`H=`] [_____]{"$h"} [`A/m`]  
+
+*c)* Calculate the magnetic susceptibility, [`\chi_m`], of the ring.
+
+[`\chi_m=`] [_____]{"$chim"} 
+
+*d)* Calculate the magnetization [`M`].
+
+[`M=`] [_____]{"$m"} [`A/m`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
