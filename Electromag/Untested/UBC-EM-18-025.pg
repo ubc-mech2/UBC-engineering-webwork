@@ -1,0 +1,115 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .5;
+
+#image aspect ratio
+$width = $imgScale*511;
+$height = $imgScale*518;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#image scale
+$imgScale = .4;
+
+#image aspect ratio
+$width = $imgScale*1013;
+$height = $imgScale*591;
+
+#given
+$a_disp = random(1,4,.1);
+$b_disp = random(6,15,.1);
+$a = $a_disp/1000;
+$b = $b_disp/1000;
+$c_disp = ($a_disp + $b_disp)/2;
+$c = $c_disp/1000;
+$e1 = random(2.2,2.6,.01);
+$e2 = random(2.7,3.2,.01);
+$s1 = random(3,4,.1);
+$s2 = random(1,2,.1);
+$Vo = random(10,20,1);
+
+$eps0 = 8.854187817/(10**12);
+
+#computation 
+$Ans = $Vo*$eps0*($e2/$s2-$e1/$s1)/(1/$s1*log($c/$a) + 1/$s2*log($b/$c))*(10**9)/$c;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-EM-18-025.png", width=>[$width], height=>[$height]) @]*
+
+A coaxial cable has its inner and outer conductor radii of [`[$a_disp]\times 10^{-3}`] [`m`] and [`[$b_disp]\times 10^{-3}`] [`m`], rspectively. Two dielectric layers having dielectric constant of [`\epsilon_1=[$e1]`] and [`\epsilon_2=[$e2]`] and conductivity of [`\sigma_1=[$s1_disp]\times 10^{-16}`] [`S/m`] and [`\sigma_2=[$s2_disp]\times 10^{-16}`] [`S/m`], respectively, are filled between the inner and outer conductors. As shown in the figure, the boundary between the two layers is at radius of [`[$c_disp]\times 10^{-3}`] [`m`]. The inner conductor is charged to [`[$Vo]`] [`V`], and the outer conductor is grounded. Find the surface charge density at the boundary between the two dielectric layers.
+
+[`\rho_S=`] [_____]{"$Ans"} [`nC/m^2`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
