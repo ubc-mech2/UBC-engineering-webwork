@@ -1,0 +1,120 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-EM-18-035.png')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .35;
+
+#image aspect ratio
+$width = $imgScale*586;
+$height = $imgScale*879;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Vector");
+Context()->constants->add(eps0 => 8.854187817E-12);
+Context()->constants->set(eps0 => {TeX=>'\epsilon_0'});
+Context()->constants->add(mu0 => 4*pi*1.E-7);
+Context()->constants->set(mu0 => {TeX=>'\mu_0'});
+
+# Randomized problem data
+$J = random(2,6,.1);
+$R = random(2,8,.4);
+$a = $R/4;
+$x = random(-$R+$a+.1,$R-$a-.1,.1);
+$y = random(-$R+$a+.1,$R-$a-.1,.1);
+$x2 = random(-$a+.1,$a-.1,.1)+$x;
+$y2 = random(-$a+.1,$a-.1,.1)+$y;
+$z2 = random(-10,10,1);
+
+$mu0 = 4*pi/10**7;
+
+#computation 
+$Bx = $mu0*$J/2*(-$y)*10**6;
+$By = $mu0*$J/2*$x*10**6;
+$Bz = 0;
+$BatP = Vector($Bx,$By,$Bz);
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-EM-18-035.png", width=>[$width], height=>[$height]) @]*
+
+As shown in the figure, an infinitely long solid cylindrical conductor of radius [`R=[$R]\,`]m is centered on the z-axis. 
+In the conductor, a cylindrical hole of radius [`a = [$a]`] [`m`] is centered on the line defined by [`x = [$x]`] and [`y = [$y]`]. 
+Given that the current density in the conductor is the constant
+[`{\bf J}=[$J]\,{\bf a}_z\,`]A/m[`^2`], 
+find [`{\bf B}`] at the point [`P([$x2],[$y2],[$z2])`].
+Enter your answer as a Cartesian vector in the form of [`<B_x,B_y,B_z>`].
+
+ANSWER: [`{\bf B}(P) = `][________________________________________________]{"$BatP"}[`\,\mu`]T  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
