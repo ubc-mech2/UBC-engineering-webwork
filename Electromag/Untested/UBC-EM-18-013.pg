@@ -1,0 +1,99 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .5;
+
+#image aspect ratio
+$width = $imgScale*738;
+$height = $imgScale*670;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+
+#given
+$R = random(1, 5, 0.5); #m
+$a = $R + 1;
+$rhoL = random(1, 10, 0.5);
+
+#computation 
+$Q = -1*pi*$rhoL*$R*($a**2 + $a**2)**(1.5)/($R**2+$a**2)**1.5;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+A circular filament having radius [`R = [$R]`] [`m`] is placed in the [`yz`] plane and is centered at point [`O (0,0,0)`]. The filament carries a uniform charge of [`\rho_L =[$rhoL]`] [`\mu C/m`]. Two identical charges [`Q`] are placed at point [`(0, -[$a], 0)`] and point [`(0, [$a], 0)`] so that the flux density [`D`] at point [`([$a], 0, 0)`] is zero. Find the value of [`Q`].
+
+[@ image("UBC-EM-18-013.png", width=>[$width], height=>[$height]) @]*
+
+[`Q=`] [_____]{"$Q"} [`\mu C`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
