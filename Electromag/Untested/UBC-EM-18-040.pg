@@ -1,0 +1,112 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .35;
+
+#image aspect ratio
+$width = $imgScale*939;
+$height = $imgScale*1027;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+
+#given
+$K = random(1,9,.5);
+$a = random(1,2,.1);
+$b = random(.5,2,.1)+$a;
+$c = random(.5,2,.1)+$a;
+
+$mu0 = 4*pi/10**7;
+
+#computation 
+$zero = 0;
+$A = -$mu0*$K/pi*arctan($a/$b)*10**6;
+$B = $mu0*$K/2/pi*log(($c+$a)/($c-$a))*10**6;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-EM-18-040.png", width=>[$width], height=>[$height]) @]*
+
+A current sheet, [`K=[$K]\cdot a_z`] [`A/m`] flows in the region [`-[$a]<x<[$a]`] in the plane [`y=0`]. Calculate [`B`] at the following points in free space.
+
+*a)* [`(0,[$b],0)`]
+
+[`B=`] [_____]{"$A"}[`a_x`] [`+`] [_____]{"$zero"}[`a_y`] [`+`] [_____]{"$zero"}[`a_z`] [`\mu T`]  
+
+
+*b)* [`([$c],0,0)`]
+
+[`B=`] [_____]{"$zero"}[`a_x`] [`+`] [_____]{"$B"}[`a_y`] [`+`] [_____]{"$zero"}[`a_z`] [`\mu T`]  
+ 
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
