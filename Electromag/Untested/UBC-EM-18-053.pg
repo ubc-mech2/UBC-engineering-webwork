@@ -1,0 +1,99 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$chim = random(10, 20, 1);#
+$x1 = random(1, 3, 0.5);#
+$y1 = random(1, 3, 0.5);#
+$z1 = random(2, 4, 0.5);#
+
+$mu0 = 4*pi;
+
+#computation 
+$a = $x1**5*$y1**3*($z1**3+1)/5/3/3;
+$b = $x1**3*$y1**5*($z1**3+1)/5/3/3*4;
+$c = $x1**3*$y1**3*($z1**5+1)/5/3/3*9;
+$w = 25*(1+$chim)*$mu0/2*($a+$b+$c)/10000;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+In a certain region for which [`\chi_m = [$chim]`],
+
+>>[``H = 5x^2yz\hat{a_x} + 10xy^2z\hat{a_y}  - 15xyz^2\hat{a_z}\ A/m``]<<
+
+How much energy is stored in [`0 < x < [$x1]`], [`0 < y < [$y1]`], [`-1 < z < [$z1]`]?
+
+[`W=`] [_____]{"$w"} [`mJ`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
