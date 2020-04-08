@@ -1,0 +1,123 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .3;
+
+#image aspect ratio
+$width = $imgScale*1666;
+$height = $imgScale*986;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+
+#given
+$Q1 = random(0.1, 1, 0.1); #C
+$Q2 = random(0.2, 2, 0.2); #C
+$Q3 = random(0.3, 3, 0.3); #C
+$d = random(5, 10, 1); #cm
+$QP = random(5, 25, 1); #C
+
+$eps0 = 8.854187817/(10**12);
+
+#computation 
+$q1 = 1/2*($Q1 + $Q2 + $Q3);
+$q2 = 1/2*($Q1 - $Q2 - $Q3);
+$q3 = 1/2*(-$Q1 + $Q2 + $Q3);
+$q4 = 1/2*($Q1 + $Q2 - $Q3);
+$q5 = 1/2*(-$Q1 - $Q2 + $Q3);
+$q6 = 1/2*($Q1 + $Q2 + $Q3);
+
+$qp1 = 1/2*$QP;
+$qp2 = 1/2*$QP;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+Three large conducting metal plates having the same length, width, and thickness are placed in parallel with a distance of [`d = [$d]`] [`cm`] between them. As shown in the Fig. (a), the three plates have total charges of [`Q1 = [$Q1]`] [`C`], [`Q2 = [$Q2]`] [`C`], and [`Q3 = [$Q3]`] [`C`], respectively. Assume that the charges on each side of the plate are uniformly distributed.
+
+[@ image("UBC-EM-18-006.png", width=>[$width], height=>[$height]) @]*
+
+*a)* Find the amount of charge on each side of the three metal plates.
+
+[`q_1=`] [_____]{"$q1"} [`C`]  
+[`q_2=`] [_____]{"$q2"} [`C`]  
+[`q_3=`] [_____]{"$q3"} [`C`]  
+[`q_4=`] [_____]{"$q4"} [`C`]  
+[`q_5=`] [_____]{"$q5"} [`C`]  
+[`q_6=`] [_____]{"$q6"} [`C`]  
+
+*b)* Now, as shown in Fig. (b), place [`N`] pieces of such metal plates in parallel and given that the plates have a total charge [`Q' = [$QP]`] [`C`], find the amount of charge, [`q_1'`], of the left side of the first plate and the amount of charge, [`q_{2N}'`], of the right side of the Nth plate.
+
+[`q_1'=`] [_____]{"$qp1"} [`C`]  
+[`q_{2N}'=`] [_____]{"$qp2"} [`C`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
