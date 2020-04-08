@@ -1,0 +1,104 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+Context()->variables->add(t=>"Real");
+Context()->variables->add(z=>"Real");
+Context()->variables->add(y=>"Real");
+
+#given
+$Vo = random(60, 90, 5);
+$Ao = random(20, 30, 0.1);
+$omega = random(2, 5, 1);
+
+$mu0 = 4*pi*10**(-7);
+
+#computation 
+$axE = Formula("(1000*$Vo- .001*$omega*$Ao*10**8)*z*sin(x)*cos($omega*10**8*t)");
+$ayE = 0;
+$azE = Formula("-1000*$Vo*cos(x)*cos($omega*10**8*t)");
+$axH = 0;
+$ayH = Formula(".001*$Ao/$mu0*sin(x)*sin($omega*10**8*t)");
+$azH = 0;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+In free space, the fields are given as [`V = [$Vo]z\ cos (x)\ cos([$omega]\times 10^{8} t)`] [`kV`] and [`A = [$Ao] z \sin (x)\ sin([$omega]\times 10^{8} t)\hat{a_x}`] [`mWb/m^2`]. Find
+[`\vec{E}`] and [`\vec{H}`].
+
+[`\vec{E}=`] [`(`][_____]{"$axE"}[`\hat{a_x}`] [`+`] [_____]{"$ayE"}[`\hat{a_y}`] [`+`] [_____]{"$azE"}[`\hat{a_z})`] [`A/m`]  
+
+[`\vec{H}=`] [`(`][_____]{"$axH"}[`\hat{a_x}`] [`+`] [_____]{"$ayH"}[`\hat{a_y}`] [`+`] [_____]{"$azH"}[`\hat{a_z})`] [`A/m`] 
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
