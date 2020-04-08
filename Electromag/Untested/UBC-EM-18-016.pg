@@ -1,0 +1,113 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .5;
+
+#image aspect ratio
+$width = $imgScale*622;
+$height = $imgScale*421;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+
+#given
+$a_disp = random(3,5,.01);
+$a = $a_disp/(10**10);
+$n = random(1,10,1);
+
+$eps0 = 8.854187817/(10**12);
+$e = 1.6/10**19;
+
+#computation 
+$v = -$n*$e/(2*pi*$eps0*$a)*log(2);
+$w = -$n*$n*$e*$e/(4*pi*$eps0*$a)*log(2)*10**15;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-EM-18-016.png", width=>[$width], height=>[$height]) @]*
+
+An infinite line of charges consists of positive and negative ions that are arranged alternatively along the x-axis in free space. Each ion carries the charge with equal magnitude [`[$n]e`] [`C`]. The distance between adjacent ions is [`a = [$a_disp]\times 10^{-10}`] [`m`].
+
+*a)* As shown in the figure, find the electric potential at where each positive ion is located.  
+(_Hint: [`ln(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}-...`]_)
+
+[`V_+=`] [_____] [`V`]  
+
+*b)* Find the electric potential energy of the ion located at the origin.
+
+[`W=`] [_____] [`fJ`]  
+
+END_PGML
+
+ANS(num_cmp($v,tol=>.01));
+ANS(num_cmp($w,tol=>.01/(10**3)));
+
+##############################################################
+
+ENDDOCUMENT();
