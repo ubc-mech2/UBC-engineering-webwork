@@ -1,0 +1,127 @@
+  
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+
+## DBsubject(Fluid mechanics)
+## DBchapter(Definitions)
+## DBsection(Thermodynamic properties of a fluid)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('Density')
+## RESOURCES('UBC-FLU-18-006.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*1802;
+$height = $imgScale*999;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$r = random(0,20,1);
+$SafetyFactor = 10 + $r * .25; #(10,15,0.25) [-]
+$BendingStrengthTmp = 50 + $r * 2; #(50,90,2) [MPa]
+
+#computation
+$BendingStrength = $BendingStrengthTmp*(10**6);
+$Volume1 = 5*(3.7854e-3)*4*4;
+$Volume2 = 4/1000*25*12;
+$Volume3 = 1/1000*81*12;
+$Weight1 = $Volume1*998*9.81;
+$Weight2 = $Volume2*998*9.81;
+$Weight3 = $Volume3*998*9.81;
+$Thickness1 = sqrt(3*$SafetyFactor*$Weight1/(2*$BendingStrength));
+$Thickness2 = sqrt(3*$SafetyFactor*$Weight2/(2*$BendingStrength));
+$Thickness3 = sqrt(3*$SafetyFactor*$Weight3/(2*$BendingStrength));
+$Ans = max($Thickness1,$Thickness2,$Thickness3)*100; #[cm]
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.1,
+tolType=>'absolute');
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-FLU-18-006.png", width=>[$width], height=>[$height]) @]*
+
+You work for a company that designs wooden pallets for shipping and have been tasked with designing a low-cost pallet for transporting bottled water. In order to reduce costs, you decide to eliminate the middle support column; the resulting design is shown in the figure. Assuming that the density of the softwood used is significantly lower than that of water, and that the two support columns located at the sides of the pallet provide no resistive moment (which is unrealistic, but should render a more conservative and robust design), the resulting bending moment at the center cross-section of the top wooden board is:
+
+>>[``M=\frac{WL}{4}``]<<
+
+[`M`] is the bending moment, [`W`] is the total weight resting on the pallet, and [`L`] is the square length of the pallet. The maximum bending stress at this cross-section is then defined by:
+
+>>[``\sigma_B=\frac{6M}{Lt^2}``]<<
+
+[`\sigma_B`] is the maximum bending stress, and [`t`] is the thickness of the top wooden board.
+
+Each pallet can carry either: (i) four [`5`] US gallon bottles, (ii) twenty-five [`4`] L bottles, or (ii) eighty-one [`1`] [`L`] bottles. When carrying the [`5`] US gallon bottles, at most four loaded pallets may be stacked vertically due to dimensional constraints within a shipping container. When carrying the [`4`] [`L`] and [`1`] [`L`] bottles, [`12`] loaded pallets may be stacked vertically. Only pallets carrying the same type of bottle are stacked vertically.
+
+The bottles were packaged at a facility which is maintained at [`20^{\circ}C`]. Ambient temperatures along global shipping routes may vary from [`-20`] to [`50^{\circ}C`]. In order to account for impact and vibration, a safety factor of [`[$SafetyFactor]`] is applied. The masses of the bottles and stacked pallets may be ignored.
+
+If the bending strength of the softwood used is [`[$BendingStrengthTmp]`] [`MPa`], determine the appropriate thickness for the top wooden board of the pallet.
+
+[`t=`] [____]{"$Ans"} [`cm`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
