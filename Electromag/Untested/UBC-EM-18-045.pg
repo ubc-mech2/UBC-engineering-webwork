@@ -1,0 +1,101 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .5;
+
+#image aspect ratio
+$width = $imgScale*764;
+$height = $imgScale*546;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$m = random(10,30,5);
+$l = random(10,30,5);
+$B = random(.1,.5,.1);
+$h = random(1,5,.5);
+$g = 9.81;
+
+#computation 
+$Q = $m*sqrt(2*$g*$h)/$B/$l/10;
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-EM-18-045.png", width=>[$width], height=>[$height]) @]*
+
+A conducting wire with finite length is bent into a shape as shown in the figure and has mass of [`[$m]`] [`g`]. The upper horizontal part of the wire has length of [`[$l]`] [`cm`] and is placed in a uniform magnetic field with [`B = [$B]`] [`T`] pointing into the page. The two lower ends of the wires are respectively inserted into two shallow mercury tanks, and the mercury in the two slots is connected to a power source with a switch. When the switch is turned on, the wire will jump out and disconnect with the mercury. If the jump height is [`[$h]`] [`cm`], find the amount of charge [`Q`] that passes through the wire.
+
+[`Q=`] [_____]{"$Q"} [`C`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
