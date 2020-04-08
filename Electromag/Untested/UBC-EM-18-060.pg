@@ -1,0 +1,97 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+Context()->variables->add(t=>"Real");
+Context()->variables->add(z=>"Real");
+Context()->variables->add(y=>"Real");
+#given
+$a = random(2, 20, 1);
+$b = random(2, 20, 1);
+$c = random(2, 10, 1);
+
+#computation 
+$rhov = Formula(".3*$c*z^2cos(10^4*t)");
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+In a region, the current density is defined as:
+
+>>[``\vec{J} = ([$a]y \hat{a_x} + [$b]xz \hat{ay} + [$c]z^3\hat{a_z})sin(10^{4}t)\ A/m^2``]<<
+
+Find [`\rho_v`] if [`\rho_v(x,y,0,t) = 0`].
+
+[`\rho_v=`] [_____]{"$rhov"} [`mC/m^3`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
