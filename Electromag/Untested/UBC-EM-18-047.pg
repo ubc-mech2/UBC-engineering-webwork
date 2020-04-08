@@ -1,0 +1,104 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .5;
+
+#image aspect ratio
+$width = $imgScale*642;
+$height = $imgScale*626;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$I1 = random(1, 8, 0.1);# A
+$I2 = random(1, 8, 0.1);# A
+$a = random(0.3, 1.5, 0.1);# m
+$b = $a + 0.1;# m
+$theta = random(10, 80, 5);#
+$thetar = $theta*pi/180;
+
+$mu0 = 4*pi;
+
+#computation 
+$t = 2*$mu0*$I1*$I2*$a**2*$b*($a**2 + $b**2)*sin($thetar)/(pi*(($a**2+$b**2)**2 - 4*$a**2*$b**2*cos($thetar)**2))/10;
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-EM-18-047.png", width=>[$width], height=>[$height]) @]*
+
+In free space, a filament of square loop carrying current [`I_2 = [$I2]`] [`A`] is located near an infinite long, straight filament carrying current [`I_1 = [$I1]`] [`A`]. The loop has sides of [`2a`] where [`a = [$a]`] [`m`] and, as shown in the figure, can rotate around its central axis [`O_1O_2`] which is parallel to the infinite long filament with a distance of [`b = [$b]`] [`m`]. When the square loop rotates to an angle [`\theta = [$theta]^{\circ}`], find the magnitude of the net torque on the loop round [`O_1O_2`].
+
+[`T=`] [_____]{"$t"} [`\mu Nm`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
