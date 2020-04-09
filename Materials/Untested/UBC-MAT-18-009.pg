@@ -1,0 +1,124 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$exposure_time = 200;
+
+$temperature_t1 = random(675, 725, 1); # in degrees celsius # CHANGED FOR RANDOMIZATION was 700 
+$temperature_t1_k = $temperature_t1 + 273;
+$A_thickness_t1 = 32; # in micrometer 
+$B_thickness_t1 = 23; # in micrometer
+
+$temperature_t2 = random(775, 825, 1 ); # in degrees celsius # CHANGED FOR RANDOMIZATION was 800
+$temperature_t2_k = $temperature_t2 + 273;
+$A_thickness_t2 = 41; # in micrometer
+$B_thickness_t2 = 39; # in micrometer
+
+$operation_temperature = 1000; # in degrees celsius
+$operation_temperature_k = $operation_temperature + 273;
+
+
+#computation 
+$X_A_3 = ($A_thickness_t1)*(exp(ln($A_thickness_t2/$A_thickness_t1)*(((1/$operation_temperature_k)- (1/$temperature_t1_k))/((1/$temperature_t2_k)-(1/$temperature_t1_k))))) ;
+$X_B_3 = ($B_thickness_t1)*(exp(ln($B_thickness_t2/$B_thickness_t1)*(((1/$operation_temperature_k)- (1/$temperature_t1_k))/((1/$temperature_t2_k)-(1/$temperature_t1_k))))) ;
+$stage1_mc = PopUp(["?", "A", "B"], "A");
+
+
+$X_A_4 = ((($X_A_3**2)+($A_thickness_t1**2))/2)**(1/2);
+$X_B_4 = ((($X_B_3**2)+($B_thickness_t1**2))/2)**(1/2);
+$stage2_mc = PopUp(["?", "A", "B"], "A");
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+*Corrosion*  
+
+Choose the best material to resist corrosion for a component subject to high temperature to renovate an old power station. Two alloys are the candidates to analyze as they passed previous tests based on mechanical properties, Alloy [`A`], and Alloy [`B`]. Both alloys form a protective oxide layer at the exposed surface, and the corrosion is then limited by the diffusion of oxygen ions. Corrosion tests done under [`[$exposure_time]`] hours of exposure and at [`[$temperature_t1]^{\circ} C `] show the following layer thicknesses: [`x_{A,1} \: = \: [$A_thickness_t1] \mu m\:`], [`x_{B,1} \: = \: [$B_thickness_t1] \mu m\:`]; while for the same exposure, [`x_{A,2} \: = \: [$A_thickness_t2] \mu m`], [`x_{B,2} \: = \: [$B_thickness_t2] \mu m`] are measured at [`[$temperature_t2]^{\circ} C`]. The operation conditions will be at [`[$operation_temperature]^{\circ} C`]. Which material is the best for this application and why? 
+
+[`x_{A,3} \: = `] [_____]{$X_A_3} [`\mu m`]
+
+[`x_{B,3} \: = `] [_____]{$X_B_3} [`\mu m`]
+
+[@$stage1_mc->menu()@]*** is best for this application.
+END_PGML
+ANS( $stage1_mc->cmp());
+
+
+# part two of the question
+BEGIN_PGML
+What happens if the operation temperature lowers to [`[$temperature_t1]^{\circ} C `] for half of the operation time (remaining [`[$operation_temperature]^{\circ} C`] for the other half)? Motivate your answer.
+
+[`x_{A,4} \: = `] [_____]{$X_A_4} [`\mu m`]
+
+[`x_{B,4} \: = `] [_____]{$X_B_4} [`\mu m`]
+
+[@$stage2_mc->menu()@]*** is best for this application.
+
+END_PGML
+ANS( $stage2_mc->cmp());
+
+
+##############################################################
+
+ BEGIN_PGML_SOLUTION
+
+[`x^2 \: = \: k \,t`] with [`k \: = \: k_0e^{-Q/RT}`], so for both materials we have [`(x_1/x_2)^2 \: = \: e^{-Q/R(1/T_1 \:- \:1/T_2)}`] , 
+
+so, [`2log(x_1/x_2) \: =`] [`(1/T_2 \:- \: 1/T_1)Q/R  `], giving [`\frac{log(x_1/x_3)}{log(x_1/x_2)} \: = `] [`(1/T_3 \:- \:1/T_1)(1/T_2 \:- \:1/T_1)`]
+
+and, [`(x_3/x_1) \: = \: exp[log(x_2âx_1 )(1/T_3 -1/T_1 ))â((1/T_2 -1/T_1 ) )`]
+
+
+If T=[`[$temperature_t1]^{\circ} C `] for half the time, we can make a simple model considering a first stage of 10 h (half of the 20 h) having [`[$operation_temperature]^{\circ} C `] and a second stage with [`[$temperature_t1]^{\circ} C `] for the remaining 10 h. As you remember from the derivation of the parabolic law, we have [`x^2\: = \: k\,t`] under the condition of [`x_{t=0} = 0`]. In this case this hypothesis works only for the first stage. Let us do all the reasoning for material [`A`] and then extend this to material [`B`]. We have then [`x_{A,4-1}^2\: = \: k_{A,3}\frac{t}{2}`], where [`k_{A,3}`] is the coefficient associated with [`[$operation_temperature]^{\circ} C `], and t is the 20 h time. We can then write [`x_{A,4-1}^2\; =\: frac{x_{A,3}^2}{2}`], since [`x_{A,3}^2\:=\:k_{A,3}t`] . For the second stage we can restart our clock from 0 but we wonât have [`x_{t=0}\:=\:0 `]anymore, we will have instead [`x_{t=0}=x_{A,4-1}`]. At this point we have [`x_{A,4}^2\:=\:x_{A,4-1}^2\:+\:k_{A,1}t/2`], with [`k_{A,1}`] the coefficient associated with [`[$temperature_t1]^{\circ} C `]. From the previous formula, [`x_{A,4}^2\:=\:(k_1+k_3 )t/2`] which can also be rewritten as [`x_{A,4}^2\:=\:((x_{A,1}^2\:+\:x_{A,3}^2 ))/2`]. Finally [`x_{A,4}\:=\:(((x_{A,3}^2\:+\:x_{A,1}^2 ))/2)^{1/2}\:=`] [`[$X_A_4] \mu m`], and [`x_{B,4}\:=\:(((x_{B,3}^2\:+\:x_{B,1}^2 ))/2)^{1/2}\:=`] [`[$X_B_4] \mu m`]. In both cases [`A`] is the best as it shows the smallest oxide layer thickness after 20 hours of operation, meaning the oxidation is slowest in A
+
+ END_PGML_SOLUTION
+
+ENDDOCUMENT();
