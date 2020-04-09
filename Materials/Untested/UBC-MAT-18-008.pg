@@ -1,0 +1,92 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$upper_bound = random(140,160,0.1); # in KJ/mol
+$lower_bound = random(95, 110, 0.3); # in KJ/mol
+$time_1 = random(0.2, 0.4, 0.1); # in seconds
+$time_2 = random(0.9, 1.3, 0.1); # in seconds
+$temp_1 = 20; # in degree celsius 
+$temp_2 = 5; # in degree celsius
+$temp_1_k = $temp_1 + 273;
+$temp_2_k = $temp_2 + 273;
+
+#computation 
+$Q_R = (ln($time_1/$time_2))/((1/$temp_1_k)-(1/$temp_2_k));
+$R = 8.314; # in J/mol k 
+$Q = $R * ($Q_R); # in J/mol
+
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+*Viscoelasticity*
+
+A new type of composite elastomer is investigated for the sealing of a solid rocket booster. The viscoelastic behavior is crucial for the test. In particular, the activation energy for the viscous flow should be calculated for comparison with a theoretical model that predicts it to be [`[$lower_bound] \: \lt \: Q \: \lt \: [$upper_bound] \: KJ/mol`]. The experiments observe a relaxation time of [`[$time_1] \: s`] at [`[$temp_1] ^{\circ}C`] and [`[$time_2] \: s`] at [`[$temp_2] ^{\circ}C`]. Is the theoretical prediction accurate? 
+
+
+Calculated value of [`Q \: =`] [_____]{$Q}
+END_PGML
+
+##############################################################
+ BEGIN_PGML_SOLUTION
+
+The relaxation time was derived as a function of viscosity and stiffness during one tutorial, giving [`t_0\: = \: \frac{3 \eta}{E}`] ; from the formula sheet, we have [`\eta \: = \: \frac{e^{\frac{Q}{RT}}}{3C}`] , hence [`t_0 \: = \: \frac{e^{\frac{Q}{RT}}}{CE}`] .
+
+[`\frac{Q}{R} \: = `] [`\frac{log(\frac{[$time_1]}{[$time_2]})}{\frac{1}{[$temp_1_k]} - \frac{1}{[$temp_2_k]}} \: = `] [`[$Q_R]`]
+
+From the formula sheet, [`R \: = `] [`8.314 \: J/mol\,k`], hence, [`Q\: = \:[$Q]`]
+
+ END_PGML_SOLUTION
+
+
+ENDDOCUMENT();
