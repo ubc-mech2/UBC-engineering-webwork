@@ -1,0 +1,82 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$e = random(1.3,1.7,.01);
+$sigmaf = random(2.2,2.8,.01);
+$kic = random(7,11,.01);
+$nu = random(.15,.25,.01);
+
+#computation 
+$c = $kic**2/pi/$sigmaf**2;
+$es = $e/(1-$nu**2);
+$gic = $kic**2/$es;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+Let us analyze toughness and fracture toughness of diamond, the strongest and stiffest material known (it is so in the Ashby charts, although new materials are being invented in research labs with the claim of them being stronger). Diamond has Young's modulus of [`E=[$e]`] [`TPa`], strength of [`\sigma_f=[$sigmaf]`] [`GPa`], and fracture toughness of [`K_{Ic}=[$kic]`] [`MPa\ m^{1/2}`]. 
+
+
+*a)* Supposing we do a tensile test on a specimen of diamond, and we observe exactly the same value for [`E`] and [`\sigma_f`], what is the average statistical defect in the specimen? 
+
+[`c=`] [_____]{"$c"} [`\mu m`]  
+
+*b)* For the same specimen, what is the critical energy release rate (toughness), assuming Poisson ratio [`\nu=[$nu]`] and plane strain conditions (thick wall)? 
+
+[`G_{Ic}=`] [_____]{"$gic"} [`J/m^2`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
