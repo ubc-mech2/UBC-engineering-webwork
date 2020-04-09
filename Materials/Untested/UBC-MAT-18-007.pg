@@ -1,0 +1,150 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	"AnswerFormatHelp.pl",
+"parserFunction.pl",
+"answerHints.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$stress_blade_mega = random(48, 51, 0.5); # original: 50 
+$stress_blade = $stress_blade_mega * (10**6);
+$temperature_degrees = 900;
+
+
+$creep_rate_high_display = 2.4;
+$creep_rate_high = $creep_rate_high_display * (10**(-12)); # per second (s^-1)
+$stress_high_creep_display = 20 ;
+$stress_high_creep = $stress_high_creep_display * (10**6);
+
+$creep_rate_low_display = 3; 
+$creep_rate_low = $creep_rate_low_display * (10**(-13));
+$stress_low_creep_display = 10 ;
+$stress_low_creep = $stress_low_creep_display * (10**6);
+
+$test_temperature1 = 800;
+
+$test_temperature2 = 700;
+$creep_rate_test2_display = 1;
+$creep_rate_test2 = $creep_rate_test2_display*(10**(-14));
+$stress_test2_display = $stress_high_creep_display;
+$stress_test2 = $stress_high_creep;
+
+$working_hours = 200;
+
+#computation 
+$epsilon1 = $creep_rate_high;
+$epsilon2 = $creep_rate_low;
+$epsilon3 = $creep_rate_test2;
+
+$epsilon1_display = uc($epsilon1);
+$epsilon2_display = uc($epsilon2);
+$epsilon3_display = uc($epsilon3);
+
+$sigma1 = $stress_high_creep;
+$sigma2 = $stress_low_creep; 
+$sigma0 = $stress_blade;
+$T1 = $test_temperature1 + 273;
+$T2 = $test_temperature2 + 273; 
+$T0 = $temperature_degrees + 273;
+
+$n = (log($epsilon1/$epsilon2))/(log($sigma1/$sigma2));
+$Q_R = (ln(($epsilon1/$epsilon3)))/((1/$T2) - (1/$T1));
+
+$time = $working_hours*60*60; # time in seconds
+
+$epsilon4 = uc(($epsilon1)*(($sigma0/$sigma1)**3)*(exp($Q_R * ((1/$T1) - (1/$T0)))));
+# note to the future: this uc() function converts the exponential which webwork interpreted because of usign strings to a capital E, which is a power of ten, which is actually what we want
+# refer to this discussion if needed: http://webwork.maa.org/moodle/mod/forum/discuss.php?d=132
+
+$epsilon_f = $epsilon4 * $time;
+$percentage = $epsilon_f*100;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>0.1,
+);
+
+
+BEGIN_PGML
+
+A turbine balde made of [`Ni`] superalloy, when in operation, is subject to a stress, due to centrifugal forces, of [`[$stress_blade_mega] \: M\,Pa`] at a temperature of [`[$temperature_degrees] ^{\circ} C`]. Unfortunately it is impossible for you to reproduce the same environmental conditions in your lab. With the limitations mentioned you could obtain the creep rate of [`[$creep_rate_high_display] \cdot  10^{-12} \: s^{-1} `] for a stress of [`[$stress_high_creep_display] M \, Pa`] , and of [`[$creep_rate_low_display]\cdot 10^{-13}  \: s^{-1}`], for a stress of [`[$stress_low_creep_display] \: M \, Pa`], at a temperature of [`[$test_temperature1]^{\circ} C`], and of [`[$creep_rate_test2_display] \cdot  10^{-14} \: s^{-1} `] for a stress of [`[$stress_test2_display] M \, Pa`] and at a temperature of [`[$test_temperature2]^{\circ} C`]. What is the maximum strain experienced by the blade after [`[$working_hours]`] hours of working condition?
+
+
+[`\varepsilon_f=`] [_____]{$percentage} %
+
+
+END_PGML
+
+##############################################################
+
+BEGIN_PGML_SOLUTION
+[`\varepsilon ^\dot \: = \: A \sigma^n e^{\frac{-Q}{RT}}`],
+
+[`\varepsilon_1 ^\dot \: = \: A \sigma_1^n e^{\frac{-Q}{R T_1}}`], [`\varepsilon_2 ^\dot \: = \: A \sigma_2^n e^{\frac{-Q}{R T_1}}`], [`\varepsilon_3 ^\dot \: = \: A \sigma_1^n e^{\frac{-Q}{R T_2}}`], [`\varepsilon_4 ^\dot \: = \: A \sigma_0^n e^{\frac{-Q}{R T_0}}`] ;
+
+ 
+[`\varepsilon_1 ^\dot \: = \: [$epsilon1_display]`], [`\varepsilon_2 ^\dot \: = \: [$epsilon2_display]`], [`\varepsilon_3 ^\dot \: = \: [$epsilon3_display]`], [`\varepsilon_4 ^\dot \: = \: ?`]
+
+
+[`\sigma_1 \: = \: [$sigma1] `], [`\sigma_2 \: = \: [$sigma2] `], [`\sigma_0 \: = \: [$sigma0] `], [`T_1 \: = \: [$T1]`], [`T_2 \: = \: [$T2]`], [`T_0 \: = \: [$T0]`]
+
+
+
+
+[`\frac{\varepsilon_1}{\varepsilon_2} \: = `] [`\: (\frac{\sigma_1}{\sigma_2})^n `],  
+ [`n \: = \: log(\frac{\varepsilon_1}{\varepsilon_3}) `] [`/`] [`log(\frac{1}{T_3}\, - \, \frac{1}{T_1}) `]  
+[`n \: = \: log(\frac{[$epsilon_1]}{[$epsilon3]}) \,/\, log(\frac{1}{[$T3]}\, - \, \frac{1}{[$T1]}) \: =  `] [`[$n]`]  
+
+[`\frac{\varepsilon_1 }{\varepsilon_3 } \: = \: e^{\frac{-Q}{R}(\frac{1}{T_1} - \frac{1}{T_2})}`],  
+[`\frac{Q}{R} \: = \: \frac{log(\frac{\varepsilon_1}{\varepsilon_3 })}{\frac{1}{T_2} - \frac{1}{T_1}}`]
+
+[`\varepsilon_4 \: = \: \varepsilon_1(\frac{\sigma_0}{\sigma_1})^3 e^{-\frac{-Q}{RT} (\frac{1}{T_0}\, - \, \frac{1}{T_1})} \; =\: [$epsilon4]`]
+
+[`\varepsilon_f \: = \: \epsilon_4 \,t \: = \: [$epsilon_f] \: = \: [$percentage]% `], where t is the time in seconds.
+
+
+
+
+
+END_PGML_SOLUTION
+
+
+ENDDOCUMENT();
