@@ -1,0 +1,90 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$E = random(5, 15, .1); # in GPa
+$sigma_f = random(40, 55, 1); # in MPa
+$K_Ic = random(3, 9, .1); # in MPam^1/2
+
+
+#computation 
+
+$d_y = ($K_Ic**2)/(pi*($sigma_f**2));
+$G_Ic = ($K_Ic**2)/$E;
+
+$d_y_mm = $d_y*1000;
+$G_Ic_J_msquare = $G_Ic*1000;
+#$d_y = 6.24; # in mm 
+#$G_Ic = 4.9*10^(3); # in J/m^2
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+Calculate the size of the fracture process zone and the critical energy release rate in plane stress for a wood specimen having [`E \: = \:[$E]\:GPa`] ,  [`\sigma_f\: = \:[$sigma_f]\: MPa`] , and  [`K_{Ic}\: = \:[$K_Ic] \: MPa\,m^{1/2}`]. Also, which material would you prefer to design a spring, wood or diamond? Why?
+
+[`d_y=`] [_____]{"$d_y_mm"} [`mm`]  
+[`G_{Ic}=`] [_____]{"$G_Ic_J_msquare"} [`J/m^2`]  
+
+END_PGML
+
+##############################################################
+
+ BEGIN_PGML_SOLUTION
+
+
+
+Outside the process zone, at a distance [`r`] from the crack tip, we have [`\sigma \: = \: /frac{K_{Ic}}{\sqrt{2 \pi r}}`], at the boundary of the process zone we have [`r \: = \: \frac{d_y}{2} `], and [`\sigma \: = \: \sigma_y \: = \: \sigma_f `], hence [`\sigma_f \: = \: \frac{K_{Ic}}{\sqrt{\pi d_y}}`], giving [`d_y = \frac{K_{Ic}^2}{\pi \sigma_f^2} \: = `] [`\frac{[$K_Ic]^2}{\pi \cdot [$sigma_f]^2} = `] [`[$d_y] m \: = \: [$d_y_mm] \mu m`]; [`G_{Ic} \: = \: \frac{K_{Ic}^2}{E^*}`], not knowing [`v`] we assume, for simplicity, plane stress conditions, albeit this would still give a good âorder of magnitudeâ estimation for the case of plane strain, hence [`E^* \: = \: E`], so [`G_{Ic} \: = \: \frac{K_{Ic}^2}{E} \: = `] [`\frac{[$K_Ic]^2}{[$E]} \: J/m^3 \: = `] [`[$G_Ic] \: Jâm^3`] ; Diamond has higher fracture toughness then wood, but wood has higher toughness, meaning it can store more energy per unit volume before fracturing; One simple example is a bar pulled in tension, the energy stored at fracture is [`u_c \:= \: \frac{\sigma_c^2}{2E} \: = \: \frac{K_{Ic}^2 \pi c}{2E}\: = \: \frac{G_{Ic} \pi c}{2}`] hence the toughness, rather than the toughness is the key property for this application
+
+
+ END_PGML_SOLUTION
+
+ENDDOCUMENT();
