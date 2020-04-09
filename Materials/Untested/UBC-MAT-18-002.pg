@@ -1,0 +1,72 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$e = random(15,25,.1);
+$es = random(65,75,.1);
+$ee = random(2,6,.1);
+
+#computation 
+$f = ($e-$ee)/($es-$ee)*100;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+A sample of unidirectional (UD) GFRP has axial stiffness of [`E=[$e]`] [`GPa`], while that of its ingredients are [`E=[$es]`] [`GPa`] for silica glass and [`E=[$ee]`] [`GPa`] for epoxy. What is the volume fraction f of the reinforcement? 
+
+[`f=`] [_____]{"$f"} [`%`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
