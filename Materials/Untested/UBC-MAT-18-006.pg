@@ -1,0 +1,112 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$E = 81; # in GPa
+$E_Pa = $E * (10**(9));
+$G_Ic = 12; # in J/m^2
+$sigma_mega = random(8.8,14.3, 0.1); # in MPa
+$sigma = $sigma_mega * (10 ** 6);
+$frequency = 1.6; # in Hz
+$m = 4; # stress exponent
+$A_divided_display = 3;
+$A = $A_divided_display*(10**(-10)); # in (MNm^-2)^-4/m
+$c_0 = 30; # in Î¼m
+$diameter = 1; # in mm
+
+#computation
+$N_f = ((1/($c_0/1000000))-(1/($diameter/1000)))/($A* ($sigma_mega**4)*(pi**2));
+$lifetime_second = $N_f/$frequency;
+$lifetime_years = $lifetime_second/(3600*24*365);
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+A biomedical device made of a special titanium alloy will be located inside the body of a patient. The main structure of the device comprises bars of [`1\: mm`] diameter. These bars will experience a stress oscillating within [`\sigma \: = \: \pm \: [$sigma_mega] \: MPa `] on average with the oscillation given by heart-beat, which has an average frequency of [`1.6\: Hz`]. The toughness of the material is [`G_{Ic}\:=\:[$G_Ic] \: J/m^2 `]  and its modulus is [`E\: = \: [$E]\: GPa`] (assume plane stress if no Poisson ratio is given). Lab tests gave Paris law coefficients of [`m \: = \:[$stress_exponent_m]`](stress exponent) [`A\: =\: [$A_divided_display] \cdot 10^{-10}`] [`(MNm^{-2})^{-4}m^{-1}`], and the initial crack length is estimated as [`c_0\: = \:[$c_0] \mu m`]. Estimate the fatigue life of the device in years.
+
+[`Lifetime \: in \:years, \:t_f\: =`] [_____]{"$lifetime_years"} [`years`]
+
+END_PGML
+
+##############################################################
+
+ BEGIN_PGML_SOLUTION
+[`\sigma \: = `] [`\pm \: \sigma_0 `] , 
+
+[`K_{min} \: = \: 0`], 
+
+[`K_{max} \: = \: \sigma_0 \sqrt{(\pi c)}`] , 
+
+[`\Delta K \:=\:K_{max}\:=\: \sigma_0 \sqrt{(\pi c)}`] , 
+
+[`dc \:=\: A \sigma_0 ^4 \pi ^2 c^2 dN`] , 
+
+[`c_0^{-1} \: - \: c_f^{-1} \: = \: A \sigma^4 \pi^2 N_f`] , 
+
+[`N_f \: = \: \frac{c_0^{-1}\: - \:c_f^{-1}}{A \sigma^{4} \pi^2}`] , 
+
+[` c_f \: =`] [` \frac{K_{Ic}^{2}}{\pi \sigma_0^2} \: =`] [`\: \frac{E G_{Ic}}{\pi \sigma^2} \: = `] [`\: \frac{[$E_Pa] \cdot [$G_Ic] }{\pi ([$sigma])^2 } \: \gt \: 1mm`] , 
+
+hence, [`c_f \: \approx \: 1mm`] , but this is a crude approximation because the formulas for fracture mechanics as we learnt in class always consider the crack being much smaller than the diameter of the specimen.
+
+[`N_f \: = \: \frac{(([$c_0] \cdot 10^{-6})^{-1} \: - \: (1 \cdot 10^{-3})^{-1} )} {[$A_divided_display]\cdot 10 ^{-10} [$sigma_mega]^{4} \pi^2} \: = \: [$N_f]`] . 
+
+
+One cycle lasts [`\frac{1}{[$frequency]} \: = \: 0.625\:s`] so we have [`frac{0.625}{cycle}`] , hence the lifetime in seconds is [`t_f\: = \: [$N_f]\cdot 0.625 \: = \: [$lifetime_second]`] . 
+
+
+One year lasts [`365\cdot24\cdot3600 \: s`] , so the lifetime in years is [`t_f \: = \: [$lifetime_years]`]
+
+
+ END_PGML_SOLUTION
+
+ENDDOCUMENT();
