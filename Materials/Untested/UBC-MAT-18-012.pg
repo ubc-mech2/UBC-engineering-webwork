@@ -1,0 +1,82 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = 0.5;
+
+#image aspect ratio
+$width = $imgScale*342;
+$height = $imgScale*549;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+
+
+#computation 
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+*Heat treatments*
+
+Two cylindrical rods of steels of the same diameter [`"d"`] are quenched with the same severity. One is made of AISI 1040 steel and the other is made of AISI 4140 steel. Both steels contain the same amount of [`C`], but 4140 has other alloying elements ([`Cr`] and [`Mo`]) that increase its hardenability. Schematically sketch the hardness profile after quenching of both steels from the outer diameter to the core of the rod as a function of distance (Hardness vs distance from surface). 
+
+END_PGML
+
+##############################################################
+BEGIN_PGML_SOLUTION
+
+[@ image("UBC-MAT-18-012.png", width=>[$width], height=>[$height]) @]*
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();
