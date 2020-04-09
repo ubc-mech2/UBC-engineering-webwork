@@ -1,0 +1,102 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	"PGchoicemacros.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+Context()->variables->add(E=>"Real");
+Context()->variables->add(r=>"Real");
+Context()->variables->add(H=>"Real");
+
+#computation 
+$M = Formula("E^(1/2)/(r*H)");
+
+$mc = new_checkbox_multiple_choice();
+
+$mc -> qa (
+"Use the charts in chapter 15 to select a material.", 
+"Non-technical ceramics $BR",
+"Natural materials $BR",                
+);
+
+$mc -> extra(
+"no backgound to decide  $BR",
+);
+
+$mc -> makeLast("None of the above");
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+*Eco-Materials* 
+
+You need to design handrails for a net-zero energy building and as such, it is essential to minimize the energy required to make the handrails. The hand rail must not deflect more than a defined amount to perform its function as a railing (minimum required stiffness). Define a material index for the hand rail (you can approximate it as a square beam) and use the charts in chapter 15 to select a material. What are the top two material families? Enter r for [`\rho`] and H for [`H`].
+
+[`M \: = `] [______]{$M}
+
+END_PGML
+
+BEGIN_PGML
+[@ $mc -> print_q()@]***
+
+[@ $mc -> print_a()@]***
+
+END_PGML
+ANS( checkbox_cmp( $mc->correct_ans() ) );
+##############################################################
+
+ BEGIN_PGML_SOLUTION
+
+You wish to minimize energy so your objective function is mass [`X`] embodied energy. The mass of a square beam is: [`m\: = \:AL\rho \: = \: b^2 L \rho`] thus the energy required for the materials is: energy = [`H_m b^2 l \rho`] the bending stiffness must be at least [`S^*:`] [`S \: = \: \frac{C_2 EI}{L^3} \: \geq \: S^* `] where [`C_2`] is a constant. [`I`] of a square beam is: [`I \: = \: \frac{b^4}{12}`].  Assuming [`L`] and [`S^*`] are fixed eliminate [`b`] and obtain the objective function: energy = [`(\frac{12 S^* L^3}{C_2})^{1/2}(L)(\frac{\rho H_m}{E^(1/2)} `]. We want to minimize energy so we take the inverse and get a material index of [`M\: =\: \frac{E^{1/2}}{\rho H_m }`]. From Figure 15.9 Non-technical ceramics are the best option followed by some natural materials (Bamboo, wood parallel to grain) and some technical ceramics (soda glass). 
+
+ END_PGML_SOLUTION
+
+ENDDOCUMENT();
