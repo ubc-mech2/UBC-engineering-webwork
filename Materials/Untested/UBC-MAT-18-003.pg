@@ -1,0 +1,96 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$sigmaf = random(460,540,1);
+$e = random(190,210,1);
+$nu = .3;
+$b = .29;
+$p1 = random(.15,.3,.01);
+$p2 = random(.15,.3,.01);
+$p3 = random(.05,.2,.01);
+
+#computation 
+$mu = $e/2/(1+$nu);
+$tauy = $sigmaf/3;
+$l1 = $b*$mu/$tauy*1000;
+$l2 = $l1*1/(1-$p1);
+$p = ((1+$p2)**2 -1)*100;
+$gs = ((1/(1+$p3))**2 - 1)*100;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+A mild steel specimen exhibits a tensile strength of [`\sigma_f=[$sigmaf]`] [`MPa`].
+
+
+*a)* Assuming all the strength comes from precipitates of carbon, what is the average spacing of them? (Steel has [`E=[$e]`] [`GPa`], [`\nu=[$nu]`] and [`b=[$b]`] [`nm`]) 
+
+[`L=`] [_____]{"$l1"} [`nm`]  
+
+*b)* After some heat treatment the strength is reduced of [`[$p1*100]%`], assuming again the strength only comes from precipitates, what is the new spacing? 
+
+[`L=`] [_____]{"$l2"} [`nm`]  
+
+*c)* Assume now all the strength from part *a* comes from carbon being solute inside iron (solid solute hardening), to increment the strength of [`[$p2*100]%`], how much would you need to change the atomic fraction of carbon? 
+
+[_____]{"$p"} [`%`]  
+
+*d)* If instead all the strength comes from ground boundary strengthening (Hall-Petch effect), what is the change in grain size that can increment the strength of [`[$p3*100]%`]?
+
+[_____]{"$gs"} [`%`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
