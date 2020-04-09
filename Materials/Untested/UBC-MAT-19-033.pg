@@ -1,0 +1,133 @@
+# set of questions for Materials Engineering (Dr. Gabrielle Lam)
+
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Materials Engineering)
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## RESOURCES('')
+## Institution('UBC')
+## TitleText('')
+## EditionText('')
+## AuthorText('')
+## Section('')
+## Problem('')
+##############################################################
+
+DOCUMENT();
+
+# #image scale
+# $imgScale = .5;
+
+# #image aspect ratio
+# $width = $imgScale*586;
+# $height = $imgScale*649;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+    "PGchoicemacros.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+Context("Numeric");
+
+$dopant = random(3.2, 6.8, 0.2);
+$conductivity = Real(($dopant * (10**22)) * (1.602 * (10**(-19))) * (0.1));
+
+
+$mc1 = new_multiple_choice();
+$mc1->qa(
+"Is the extrinsic semiconductor n-type or p-type?", 
+"N-type"
+);
+$mc1->extra(
+"P-type",
+);
+
+$mc2 = new_multiple_choice();
+$mc2->qa(
+"What is the charge carrier in this material?", 
+"Electron"
+);
+$mc2->extra(
+"Hole",
+"Other",
+);
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05,
+tolType => "relative");
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+An extrinsic semiconductor is made by doping antimony (`Sb`) atoms into germanium at a density of [`[$dopant]`] [`\cdot`] [`10^{22}`] `Sb` [`atoms / m^3`] at room temperature. Assume that all `Sb` atoms are ionized and are associated with one charge carrier each, and that the electron and hole mobilities are `0.1` and `0.05` [`m^2/V-s`], respectively.   
+
+*Part (a)*  
+[@ $mc1 -> print_q() @]***  
+[@ $mc1 -> print_a() @]***  
+
+*Part (b)*  
+[@ $mc2 -> print_q() @]***  
+[@ $mc2 -> print_a() @]***  
+
+*Part (c)*  
+What is the electrical conductivity of the semiconductor?  
+Conductivity = [@ ans_rule(5) @]***[`( \Omega \cdot m )^{-1}`]    
+
+END_PGML
+
+
+Context("Numeric");
+ANS( radio_cmp( $mc1->correct_ans() ) );
+
+ANS( radio_cmp( $mc2->correct_ans() ) );
+
+ANS($conductivity->cmp());
+##############################################################
+
+ENDDOCUMENT();
