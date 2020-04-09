@@ -1,0 +1,79 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$r = random(2,4,.1);
+$l = random(20,25,.1);
+$dl = random(.5,3,.1);
+$e = random(190,210,1);
+
+#computation 
+$sigma = $e*$dl/$l;
+$eps = $dl/$l;
+$F = pi*$r*$r*$sigma/10;
+$u = $sigma*$eps/2*10;
+$U = $F*$dl/2;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+ Calculate the load that must be applied to a steel ([`E=[$e]`] [`GPa`]) cylinder of radius [`[$r]`] [`mm`], and length [`[$l]`] [`cm`] to change its length by [`[$dl]`] [`mm`]; Also, calculate the strain energy and the strain energy density accumulated.
+
+ [`F=`] [_____]{"$F"} [`kN`]  
+ [`U=`] [_____]{"$U"} [`J`]  
+ [`u=`] [_____]{"$u"} [`MJ/m^3`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
