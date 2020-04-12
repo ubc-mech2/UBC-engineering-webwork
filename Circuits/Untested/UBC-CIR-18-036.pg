@@ -1,0 +1,112 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('Frequency', 'Transmission Parameters')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .18;
+
+#image aspect ratio
+$width = $imgScale*2312;
+$height = $imgScale*1601;
+
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Complex");
+Context()->constants->add(j => i);
+
+#given
+$r = random(20, 200, 10);
+$f = random(30, 900, 30);
+$w = 2*pi*$f;
+
+#computation 
+$denom_1 = 3000*$r*$w**2+1000000*i*$w;
+$a = (-1*i*$r**2*$w**3+3000*$r*$w**2-4000*i*$r**2*$w+2000000*$r+1000000*i*$w)/$denom_1;
+$b = (2000*$r**2*$w**2+1000000*i*$r*$w)/$denom_1;
+$denom_2 = 500*$w**2*(3*$r*$w+1000*i);
+$c = (-$r**2*$w**3-4000*$r**2*$w-1*i*$r*$w**4-7000*i*$r*$w**2-2000000*i*$r+500*$w**3+2000000*$w)/$denom_2;
+$d = 4*(-$r**2*$w*i+$r*$w**2+500*$r+250*i*$w)/($w*(3*$r*$w+1000*i));
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.02,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-CIR-18-036.png", width=>[$width], height=>[$height]) @]*
+
+If [`C = 0.001`] [`F`], [`L = 0.5`] [`H`], and [`R = [$r]`] [`\Omega`], solve for the transmission parameters of the circuit at [`f = [$f]`] [`Hz`]. 
+
+[`A=`] [_____]{"$a"} [`V/V`]  
+[`B=`] [_____]{"$b"} [`\Omega`]  
+[`C=`] [_____]{"$c"} [`S`]  
+[`D=`] [_____]{"$d"} [`A/A`]  
+
+END_PGML
+
+
+
+##############################################################
+
+ENDDOCUMENT();
