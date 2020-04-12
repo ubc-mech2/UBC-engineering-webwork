@@ -1,0 +1,113 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('Thevenin equivalents', 'Norton equivalents')
+## RESOURCES('UBC-CIR-18-535.png')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+
+DOCUMENT();
+
+#image scale
+$imgScale = .18;
+
+#image aspect ratio
+$width = $imgScale*2738;
+$height = $imgScale*1900;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$a = random(200,400,100);
+$r = random(16,26, 2);
+
+#computation 
+$ropt1 = (5*$r*(3*$a - 5*$r))/(13*$r - 79);
+$ropt2 = (5*$r*(3*$a - 10*$r))/(13*$r - 79);
+$ro = $ropt1 - $ropt2;
+$rth = 25*$r**2/(13*$r-79);
+$vth = -15*$r*$a/(13*$r-79);
+$max_power = $vth**2/(4*$rth);
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.02,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[`V_1 = [$a*2]`] [`V`], [`V_2 = [$a]`], [`R_1 = [$r]`] [`\Omega`], [`R_2 = [$r*2]`] [`\Omega`], [`R_3 = [$r*3]`] [`\Omega`], [`R_4 = [$r*4]`] [`\Omega`], [`R_{10} = [$r*10]`] [`\Omega`], and [`R_o`] is adjusted for maximum power transfer to itself.
+
+[@ image("UBC-CIR-18-535.png", width=>[$width], height=>[$height]) @]*
+
+*a)* Find the value of [`R_o`].
+
+[`R_o=`] [_____]{"$ro"} [`\Omega`]  
+
+*b)* Find the maximum power that is delivered to [`R_o`].
+
+[`P_{max}=`] [_____]{"$max_power"} [`W`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
