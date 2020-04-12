@@ -1,0 +1,189 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('Magnitude Bode Plot', 'Phase Bode Plot', 'Magnitude Approximation', 'Phase Approximation', 'Transfer Function')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Complex");
+
+#given
+$k = random(100,1000,50);
+$frequency = random(50,500,25);
+$second_term = 1;
+$xi = $second_term/(2*$frequency);
+$third_term = $frequency**2;
+
+#computation 
+$slope = 90/$xi;
+$frequency_1 = 1;
+$frequency_2 = 10;
+$frequency_3 = 50;
+$frequency_4 = 100;
+$frequency_5 = 200;
+$frequency_6 = 500;
+$frequency_7 = 1000;
+$value_1 = 20*log10($k/$frequency**2);
+$value_2 = 20*log10($k/$frequency**2)-20*log10($frequency_2);
+$value_3 = 20*log10($k/$frequency**2)-20*log10($frequency_3) - 40*max(log10($frequency_3/$frequency),0);
+$value_4 = 20*log10($k/$frequency**2)-20*log10($frequency_4) - 40*max(log10($frequency_4/$frequency),0);
+$value_5 = 20*log10($k/$frequency**2)-20*log10($frequency_5) - 40*max(log10($frequency_5/$frequency),0);
+$value_6 = 20*log10($k/$frequency**2)-20*log10($frequency_6) - 40*max(log10($frequency_6/$frequency),0);
+$value_7 = 20*log10($k/$frequency**2)-20*log10($frequency_7) - 40*max(log10($frequency_7/$frequency),0);
+$value_8 = 20*log10($k/($frequency_1*sqrt(($frequency**2-$frequency_1**2)**2+($frequency_1)**2)));
+$value_9 = 20*log10($k/($frequency_2*sqrt(($frequency**2-$frequency_2**2)**2+($frequency_2)**2)));
+$value_10 = 20*log10($k/($frequency_3*sqrt(($frequency**2-$frequency_3**2)**2+($frequency_3)**2)));;
+$value_11 = 20*log10($k/($frequency_4*sqrt(($frequency**2-$frequency_4**2)**2+($frequency_4)**2)));
+$value_12 = 20*log10($k/($frequency_5*sqrt(($frequency**2-$frequency_5**2)**2+($frequency_5)**2)));
+$value_13 = 20*log10($k/($frequency_6*sqrt(($frequency**2-$frequency_6**2)**2+($frequency_6)**2)));
+$value_14 = 20*log10($k/($frequency_7*sqrt(($frequency**2-$frequency_7**2)**2+($frequency_7)**2)));
+$value_15 = -90 - $slope*max(log10($frequency_1/($frequency*10**(-$xi))),0) + $slope*max(log10($frequency_1/($frequency*10**($xi))),0);
+$value_16 = -90 - $slope*max(log10($frequency_2/($frequency*10**(-$xi))),0) + $slope*max(log10($frequency_2/($frequency*10**($xi))),0);
+$value_17 = -90 - $slope*max(log10($frequency_3/($frequency*10**(-$xi))),0) + $slope*max(log10($frequency_3/($frequency*10**($xi))),0);
+$value_18 = -90 - $slope*max(log10($frequency_4/($frequency*10**(-$xi))),0) + $slope*max(log10($frequency_4/($frequency*10**($xi))),0);
+$value_19 = -90 - $slope*max(log10($frequency_5/($frequency*10**(-$xi))),0) + $slope*max(log10($frequency_5/($frequency*10**($xi))),0);
+$value_20 = -90 - $slope*max(log10($frequency_6/($frequency*10**(-$xi))),0) + $slope*max(log10($frequency_6/($frequency*10**($xi))),0);
+$value_21 = -90 - $slope*max(log10($frequency_7/($frequency*10**(-$xi))),0) + $slope*max(log10($frequency_7/($frequency*10**($xi))),0);
+$value_22 = -90 - arg($frequency_1*i+$frequency**2-$frequency_1**2)*180/pi;
+$value_23 = -90 - arg($frequency_2*i+$frequency**2-$frequency_2**2)*180/pi;
+$value_24 = -90 - arg($frequency_3*i+$frequency**2-$frequency_3**2)*180/pi;
+$value_25 = -90 - arg($frequency_4*i+$frequency**2-$frequency_4**2)*180/pi;
+$value_26 = -90 - arg($frequency_5*i+$frequency**2-$frequency_5**2)*180/pi;
+$value_27 = -90 - arg($frequency_6*i+$frequency**2-$frequency_6**2)*180/pi;
+$value_28 = -90 - arg($frequency_7*i+$frequency**2-$frequency_7**2)*180/pi;
+
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.001,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+Report the values from the magnitude plot of the following transfer function.
+
+>>[``H(s) =	\frac{[$k]}{s(s^2 + s + [$third_term])}``]<<
+
+_Note: all zeros and poles are in units of rad/s__.
+
+END_PGML
+
+BEGIN_TEXT
+
+$PAR
+\{
+	DataTable(
+		[
+			['Frequency (\(rad/s\))','Magnitude approximation (\(dB\))','Exact Magnitude (\(dB\))','Phase approximation (\(^{\circ}\))','Exact Phase (\(^{\circ}\))'],
+			["\($frequency_1\)",ans_rule(15),ans_rule(15),ans_rule(15),ans_rule(15)],
+			["\($frequency_2\)",ans_rule(15),ans_rule(15),ans_rule(15),ans_rule(15)],
+			["\($frequency_3\)",ans_rule(15),ans_rule(15),ans_rule(15),ans_rule(15)],
+			["\($frequency_4\)",ans_rule(15),ans_rule(15),ans_rule(15),ans_rule(15)],
+			["\($frequency_5\)",ans_rule(15),ans_rule(15),ans_rule(15),ans_rule(15)],
+			["\($frequency_6\)",ans_rule(15),ans_rule(15),ans_rule(15),ans_rule(15)],
+			["\($frequency_7\)",ans_rule(15),ans_rule(15),ans_rule(15),ans_rule(15)],
+		],
+		center => 0,
+		allcellcss=>'padding-left:20px; padding-right:20px; border: solid thin #CCCCCC;',
+		);
+\}
+$PAR
+END_TEXT
+
+ANS(num_cmp($value_1, reltol => 2));
+ANS(num_cmp($value_8, reltol => 2));
+ANS(num_cmp($value_15, reltol => 2));
+ANS(num_cmp($value_22, reltol => 2));
+
+ANS(num_cmp($value_2, reltol => 2));
+ANS(num_cmp($value_9, reltol => 2));
+ANS(num_cmp($value_16, reltol => 2));
+ANS(num_cmp($value_23, reltol => 2));
+
+ANS(num_cmp($value_3, reltol => 2));
+ANS(num_cmp($value_10, reltol => 2));
+ANS(num_cmp($value_17, reltol => 2));
+ANS(num_cmp($value_24, reltol => 2));
+
+ANS(num_cmp($value_4, reltol => 2));
+ANS(num_cmp($value_11, reltol => 2));
+ANS(num_cmp($value_18, reltol => 2));
+ANS(num_cmp($value_25, reltol => 2));
+
+ANS(num_cmp($value_5, reltol => 2));
+ANS(num_cmp($value_12, reltol => 2));
+ANS(num_cmp($value_19, reltol => 2));
+ANS(num_cmp($value_26, reltol => 2));
+
+ANS(num_cmp($value_6, reltol => 2));
+ANS(num_cmp($value_13, reltol => 2));
+ANS(num_cmp($value_20, reltol => 2));
+ANS(num_cmp($value_27, reltol => 2));
+
+ANS(num_cmp($value_7, reltol => 2));
+ANS(num_cmp($value_14, reltol => 2));
+ANS(num_cmp($value_21, reltol => 2));
+ANS(num_cmp($value_28, reltol => 2));
+
+##############################################################
+
+ENDDOCUMENT();
