@@ -1,0 +1,105 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('NMOS Amplifier')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*3192;
+$height = $imgScale*2226;
+
+
+
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Complex");
+
+#given
+$rd = random(10000,20000,1000);
+$rs = random(1000,9000,1000);
+
+#computation 
+$id = (3*$rs-14.9071198499*sqrt(9*$rs+500)+333.33333333)/$rs**2;
+$ro = 50/$id;
+$vs = $id*$rs;
+$gm = 0.003*(5-$vs-2);
+$gain = -$gm*1000*$ro*$rd/($ro*$rd+1000*($ro+$rd))*3333.33333333/3383.333333;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.02,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-CIR-18-555.png", width=>[$width], height=>[$height]) @]*
+
+If [`R_i = 50`] [`\Omega`], [`R_L = 1000`] [`\Omega`], [`R_{G1} = 10000`] [`\Omega`], [`R_{G2} = 5000`] [`\Omega`], [`R_D = [$rd]`] [`\Omega`], [`R_S = [$rs]`] [`\Omega`], [`k_n'W/L = 3`] [`mA/V^2`], [`V_t = 2`] [`V`], and [`V_A = 50`] [`V`], what is the voltage gain of the circuit?
+
+[`\frac{V_o}{V_i}=`] [_____]{"$gain"} [`V/V`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
