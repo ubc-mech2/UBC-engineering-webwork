@@ -1,0 +1,93 @@
+# DESCRIPTION
+# Deceleration of Air in a Diffuser
+# WeBWorK problem written by Hashem Jayhooni (Nov. 20th,2017)
+# Email
+# University of British Columbia
+# OPES Project
+# ENDDESCRIPTION
+
+## DBsubject(Thermodynamic)
+## DBchapter(First Thermodynamic Law)
+## Institution(University of British Columbia)
+## Author(Hashem Jayhooni)
+## Level(3)
+## KEYWORDS('?','?','?', '?')
+## RESOURCES('???.png')
+
+# This work is licensed under a Creative Commons Attribution-NonCommercial-
+# ShareAlike 3.0 Unported License.
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "extraAnswerEvaluators.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
+
+#
+# Now we do the randomization of variables, and other computations
+# as needed for this problem.  Sometimes we compute the answers here.
+#
+
+
+$P_inlet = random(75,85,0.05); # Inlet pressure
+$V_inlet = random(195,205,0.1); # Inlet velocity
+$A_inlet = random(0.35,0.45,0.01); # Inlet area
+$R = 0.287;
+$T_inlet = 283;
+$Cp = 1.005,
+
+$h_inlet = $Cp*$T_inlet;
+$spe_volume_in = ($R*$T_inlet/$P_inlet);
+$Mass_rate = ($V_inlet*$A_inlet/$spe_volume_in);
+$h_outlet = ($h_inlet+$V_inlet*$V_inlet/2000);
+$T_outlet = $h_outlet/$Cp;
+
+
+BEGIN_TEXT
+Deceleration of Air in a Diffuser
+$PAR 
+Air at 10°C and $P_inlet kPa enters the diffuser of a jet engine steadily with a
+velocity of $V_inlet m/s. The inlet area of the diffuser is $A_inlet m^2. The air leaves
+the diffuser with a velocity that is very small compared with the inlet velocity.
+Determine (a) Specific volume of the air at diffuser inlet, the mass flow rate of the air, (b) the enthalpy and temperature of
+the air leaving the diffuser(Assumption: Cp = 1.005 and air is ideal gas).
+
+
+$PAR
+\{ image("UBC-TH-17-063.png", width=>345, height=>191, tex_size=>600) \}
+
+
+$PAR  
+Inlet specific volume = \{ ans_rule(10)\} (m^3/kg) $PAR
+Mass flow rate = \{ ans_rule(10)\} (kg/sec) $PAR
+outlet enthalpy = \{ ans_rule(10)\} (kJ/kg) $PAR
+outlet temperature = \{ ans_rule(10)\} (K) $PAR
+
+
+
+#$BITALIC Pay attention to the unit of each parameter $EITALIC
+
+END_TEXT
+
+
+#
+# Tell WeBWork how to test if answers are right.  These should come in the
+# same order as the answer blanks above.  You tell WeBWork both the type of
+# "answer evaluator" to use, and the correct answer.
+#
+
+ANS(num_cmp($spe_volume_in, reltol => 5)); # 5% tolerance
+ANS(num_cmp($Mass_rate, reltol => 5)); # 5% tolerance
+ANS(num_cmp($h_outlet, reltol => 5)); # 5% tolerance
+ANS(num_cmp($T_outlet, reltol => 5)); # 5% tolerance
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.
+
+
