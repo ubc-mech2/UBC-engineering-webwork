@@ -1,0 +1,105 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('Magnetically Coupled Circuits', 'Ideal Transformers', 3-Phase Circuits')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale =  .18;
+
+#image aspect ratio
+$width = $imgScale*3636;
+$height = $imgScale*3091;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$resistance = random(20, 100, 20);
+$ratio = random(0.2, 5, 0.2);
+$source_voltage = random(100, 1000, 100);
+
+#computation 
+$current_load_magnitude = $source_voltage*$ratio/sqrt(($resistance)**2+50**2);
+$current_phase = arctan(50/$resistance)*180/pi;
+$current_source_magnitude = $current_load_magnitude*$ratio;
+$average_power = ($current_load_magnitude**2)*$resistance;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.02,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-CIR-18-005.png", width=>[$width], height=>[$height]) @]*
+
+Find the magnitude of the currents [`I_1`] and [`I_a`] and the average power absorbed by the load if [`v_S = [$source_voltage]`] [`V_{rms}`], [`n = [$ratio]`], [`R = [$resistance]`] [`\Omega`], and [`X = -50`] [`\Omega`].
+
+NB: Junctions of 3 wires are indicated by dots.
+
+[`I_1=`] [_____]{"$current_source_magnitude"} [`A`], [`\angle`] [_____]{"$current_phase"}[`^{\circ}`]  
+[`I_a=`] [_____]{"$current_load_magnitude"} [`A`], [`\angle`] [_____]{"$current_phase"}[`^{\circ}`]  
+[`P=`] [_____]{"$average_power"} [`W`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
