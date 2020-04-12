@@ -1,0 +1,133 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('Nodal Analysis', 'Loop Analysis')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+
+DOCUMENT();
+
+#image scale
+$imgScale = .5;
+
+#image aspect ratio
+$width = $imgScale*800;
+$height = $imgScale*467;
+
+
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$I1 = non_zero_random(-5,5,0.5);
+$I2 = non_zero_random(-5,5,0.5);
+$V1 = non_zero_random(-60,60,5);
+
+#computation 
+$V4x = -4*(20*$I2+$V1) / 21;
+$I4x = (21*$I1 + $I2 - $V1) / 21;
+
+$A = random(0,1);
+if ($A > 0)
+ {
+  $String1 = "absorbed";
+  $P = -1* $V4x * $I4x;
+ }
+else
+ {
+  $String1 = "supplied";
+  $P = $V4x * $I4x;
+ }
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.02,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+
+BEGIN_TEXT
+
+$PAR
+In the circuit below, \(i_1 = $I1\) \(A\), \(i_2 = $I2\) \(A\), and \(v_1 = $V1\) \(V\). 
+$BR Use nodal analysis to find the power $String1 by \(4i_x\) dependent source.
+
+$PAR
+
+
+END_TEXT
+
+BEGIN_PGML
+
+[@ image("UBC-CIR-18-524.png", width=>[$width], height=>[$height]) @]*
+
+
+END_PGML
+
+BEGIN_TEXT
+
+$PAR  
+\(P_{4i_x}\) = \{ ans_rule(10)\} \(W\)
+
+END_TEXT
+
+ANS(num_cmp($P, reltol => 2));
+
+##############################################################
+
+ENDDOCUMENT();
