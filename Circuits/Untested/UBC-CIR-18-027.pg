@@ -1,0 +1,159 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('Phase Bode Plot')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Complex");
+
+#given
+$k = 200;
+$pole_1 =random(5,150,5);
+$pole_2 = 1.5*$pole_1;
+$pole_3 =random(300,500,20);
+
+#computation 
+$frequency_1 = 0.1;
+$frequency_2 = 10;
+$frequency_3 = 25;
+$frequency_4 = 50;
+$frequency_5 = 100;
+$frequency_6 = 200;
+$frequency_7 = 500;
+
+$value_1 = 90;
+$value_2 = 90 - 45*max(log10($frequency_2/(0.1*$pole_1)),0) + 45*max(log10($frequency_2/(10*$pole_1)),0) - 45*max(log10($frequency_2/(0.1*$pole_2)),0) + 45*max(log10($frequency_2/(10*$pole_2)),0) - 45*max(log10($frequency_2/(0.1*$pole_3)),0) + 45*max(log10($frequency_2/(10*$pole_3)),0); 
+$value_3 = 90 - 45*max(log10($frequency_3/(0.1*$pole_1)),0) + 45*max(log10($frequency_3/(10*$pole_1)),0) - 45*max(log10($frequency_3/(0.1*$pole_2)),0) + 45*max(log10($frequency_3/(10*$pole_2)),0) - 45*max(log10($frequency_3/(0.1*$pole_3)),0) + 45*max(log10($frequency_3/(10*$pole_3)),0);
+$value_4 = 90 - 45*max(log10($frequency_4/(0.1*$pole_1)),0) + 45*max(log10($frequency_4/(10*$pole_1)),0) - 45*max(log10($frequency_4/(0.1*$pole_2)),0) + 45*max(log10($frequency_4/(10*$pole_2)),0) - 45*max(log10($frequency_4/(0.1*$pole_3)),0) + 45*max(log10($frequency_4/(10*$pole_3)),0);
+$value_5 = 90 - 45*max(log10($frequency_5/(0.1*$pole_1)),0) + 45*max(log10($frequency_5/(10*$pole_1)),0) - 45*max(log10($frequency_5/(0.1*$pole_2)),0) + 45*max(log10($frequency_5/(10*$pole_2)),0) - 45*max(log10($frequency_5/(0.1*$pole_3)),0) + 45*max(log10($frequency_5/(10*$pole_3)),0);
+$value_6 = 90 - 45*max(log10($frequency_6/(0.1*$pole_1)),0) + 45*max(log10($frequency_6/(10*$pole_1)),0) - 45*max(log10($frequency_6/(0.1*$pole_2)),0) + 45*max(log10($frequency_6/(10*$pole_2)),0) - 45*max(log10($frequency_6/(0.1*$pole_3)),0) + 45*max(log10($frequency_6/(10*$pole_3)),0);
+$value_7 = 90 - 45*max(log10($frequency_7/(0.1*$pole_1)),0) + 45*max(log10($frequency_7/(10*$pole_1)),0) - 45*max(log10($frequency_7/(0.1*$pole_2)),0) + 45*max(log10($frequency_7/(10*$pole_2)),0) - 45*max(log10($frequency_7/(0.1*$pole_3)),0) + 45*max(log10($frequency_7/(10*$pole_3)),0);
+$value_8 =  90-((($frequency_1*i+$pole_1)*($frequency_1*i+$pole_2)* ($frequency_1*i+$pole_3))->arg)*180/pi;
+$value_9 = 90-((($frequency_2*i+$pole_1)*($frequency_2*i+$pole_2)* ($frequency_2*i+$pole_3))->arg)*180/pi;$value_11 = 90-((($frequency_4*i+$pole_1)*($frequency_4*i+$pole_2)* ($frequency_4*i+$pole_3))->arg)*180/pi;
+$value_10 = 90-((($frequency_3*i+$pole_1)*($frequency_3*i+$pole_2)* ($frequency_3*i+$pole_3))->arg)*180/pi;
+$value_12 = 90-((($frequency_5*i+$pole_1)*($frequency_5*i+$pole_2)* ($frequency_5*i+$pole_3))->arg)*180/pi;
+$value_13 = 90-((($frequency_6*i+$pole_1)*($frequency_6*i+$pole_2)* ($frequency_6*i+$pole_3))->arg)*180/pi;
+$value_14 = 90-((($frequency_7*i+$pole_1)*($frequency_7*i+$pole_2)* ($frequency_7*i+$pole_3))->arg)*180/pi-360;
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.02,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+
+BEGIN_PGML
+
+Report the values from the magnitude plot of the following transfer function.
+
+>>[``H(s) =	\frac{[$k]s}{(s + [$pole_1])(s + [$pole_2])(s + [$pole_3])}``]<<
+
+_Note: all zeros and poles are in units of rad/s__.
+
+END_PGML
+
+BEGIN_TEXT
+
+$PAR
+\{
+	DataTable(
+		[
+			['Frequency (\(rad/s\))','Phase approximation (\(^{\circ}\))','Exact Phase (\(^{\circ}\))'],
+			["\($frequency_1\)",ans_rule(15),ans_rule(15)],
+			["\($frequency_2\)",ans_rule(15),ans_rule(15)],
+			["\($frequency_3\)",ans_rule(15),ans_rule(15)],
+			["\($frequency_4\)",ans_rule(15),ans_rule(15)],
+			["\($frequency_5\)",ans_rule(15),ans_rule(15)],
+			["\($frequency_6\)",ans_rule(15),ans_rule(15)],
+			["\($frequency_7\)",ans_rule(15),ans_rule(15)],
+		],
+		center => 0,
+		allcellcss=>'padding-left:20px; padding-right:20px; border: solid thin #CCCCCC;',
+		);
+\}
+$PAR
+END_TEXT
+
+ANS(num_cmp($value_1, reltol => 2));
+ANS(num_cmp($value_8, reltol => 2));
+
+ANS(num_cmp($value_2, reltol => 2));
+ANS(num_cmp($value_9, reltol => 2));
+
+ANS(num_cmp($value_3, reltol => 2));
+ANS(num_cmp($value_10, reltol => 2));
+
+ANS(num_cmp($value_4, reltol => 2));
+ANS(num_cmp($value_11, reltol => 2));
+
+ANS(num_cmp($value_5, reltol => 2));
+ANS(num_cmp($value_12, reltol => 2));
+
+ANS(num_cmp($value_6, reltol => 2));
+ANS(num_cmp($value_13, reltol => 2));
+
+ANS(num_cmp($value_7, reltol => 2));
+ANS(num_cmp($value_14, reltol => 2));
+
+##############################################################
+
+ENDDOCUMENT();
