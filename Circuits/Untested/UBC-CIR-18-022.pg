@@ -1,0 +1,109 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('Ideal Transformers', 'Complex Power', 'y parameters')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*2493;
+$height = $imgScale*2213;
+
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+Context()->variables->add(s=>"Real");
+Context()->variables->remove("x");
+
+#given
+$resistance_kohm = random(10, 100, 5);
+$resistance = 1000*$resistance_kohm;
+$ratio = random(0.2, 3.9, 0.3);
+
+#computation 
+$y_11 = Formula("(9320675*s*$ratio^2+2912710937500)/(372827000*$ratio^2*s+233016875*(10**6))");
+$y_12 = Formula("(($ratio+1)*(-4660337.5)*$ratio*s-2912710937500)/(372827000*$ratio^2*s+233016875*(10**6))");
+$y_21 = Formula("(($ratio+1)*(-372.827)*$ratio*s-233016875)/(29826.16*$ratio^2*s+18641350000)");
+$y_22 = Formula("(($ratio+1)*(372.827)*$ratio*s+233016875)/(29826.16*$ratio^2*s+18641350000)");
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.02,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+For the given circuit, obtain the [`y`] parameters as functions of [`s`] when [`R = [$resistance_kohm]`] [`k\Omega`], [`C = 20`] [`nF`], [`L = 50`] [`mH`], and [`n = [$ratio]`].
+
+[@ image("UBC-CIR-18-022.png", width=>[$width], height=>[$height]) @]*
+
+[`y_{11}=`] [____________________]{"$y_11"} [`S`]  
+[`y_{12}=`] [____________________]{"$y_12"} [`S`]  
+[`y_{21}=`] [____________________]{"$y_21"} [`S`]  
+[`y_{22}=`] [____________________]{"$y_22"} [`S`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
