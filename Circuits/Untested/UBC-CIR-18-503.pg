@@ -1,0 +1,98 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('Kirchhoffs law', 'Nodal Analysis', 'Loop Analysis')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*3425;
+$height = $imgScale*1783;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$resistance = random(2,5,1);
+$voltage = random(4, 10, 2);
+
+#computation 
+$current_a = (($resistance)**3 + 15*($resistance)**2 - 2*$resistance*$voltage + 8*$resistance - $voltage)/(($resistance)**2+$resistance);
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.02,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-CIR-18-503.png", width=>[$width], height=>[$height]) @]*
+
+Given the values [`V_1 = [$voltage]`] [`V`], [`I_1 = [$resistance]`] [`A`], [`R_1 = [$resistance]`] [`\Omega`], [`R_2 = [$resistance + 1]`] [`\Omega`], [`R_3 = [$resistance*2]`] [`\Omega`], [`V_{out} = [$resistance*2]`] [`V`], find the value of the current source [`I_A`] in the circuit below.
+
+[`I_A=`] [_____]{"$current_a"} [`A`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
