@@ -1,0 +1,106 @@
+
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('NPN', 'DC analysis', 'hybrid pi model')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*2918;
+$height = $imgScale*2180;
+
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Complex");
+
+#given
+$re = random(5000, 50000, 5000);
+$rb = random(10000, 100000, 10000);
+
+#computation 
+$ib = (15-0.7)/($rb+101*$re);
+$ic = $ib*100;
+$gm = $ic/0.025;
+$rpi = 100/$gm;
+$vo = 101000*$rb*$re*$ib/(101050*$rb*$re*$ib+50000*$ib*$rb+5050000*$re*$ib+0.025*$rb*$re+25*$rb+1.25*$re+1250);
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.02,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-CIR-18-549.png", width=>[$width], height=>[$height]) @]*
+
+For the following circuit, you are told that [`R_S = 50`] [`\Omega`], [`C_S`] and [`C_E = 10`] [`\mu F`], [`R_B = [$rb]`] [`\Omega`], [`R_E = [$re]`] [`\Omega`], [`R_L = 1000`] [`\Omega`], and [`V_{CC} = 15`] [`V`], solve for [`r_{\pi}`], [`g_m`], and [`\frac{Vo}{Vs}`]. Assume [`V_{BE} = 0.7`] [`V`], [`V_T = 0.025`] [`V`], and [`\beta = 100`].
+
+[`g_m=`] [_____]{"$gm"} [`S`]  
+[`r_{\pi}=`] [_____]{"$rpi"} [`\Omega`]  
+[`\frac{Vo}{Vs}=`] [_____]{"$vo"}  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
