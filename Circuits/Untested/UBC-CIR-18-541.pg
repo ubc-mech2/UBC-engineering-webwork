@@ -1,0 +1,114 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('Thevenin equivalents', 'Norton equivalents')
+## RESOURCES('UBC-CIR-18-541.png')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+
+DOCUMENT();
+
+#image scale
+$imgScale = .18;
+
+#image aspect ratio
+$width = $imgScale*4094;
+$height = $imgScale*2813;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$i3 = random(2,10,1);
+$i3_amp = $i3/1000;
+$r = random(1,2,.2);
+$r_ohm = $r*1000;
+
+#computation 
+$vth = Formula("abs((-8483*$i3_amp*$r_ohm+18623)/4158)");
+$in = Formula("abs((-33932*$i3_amp*$r_ohm+74492)/(31975*$r_ohm))");
+$rth = Formula("$vth/$in");
+$max_power = Formula("$vth**2/(4*$rth)");
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.02,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+The following information is given: [`i_3 = [$i3]`] [`mA`], [`R_1 = [$r]`] [`k\Omega`], [`R_2 = [$r*2]`] [`k\Omega`], [`R_3 = [$r*3]`] [`k\Omega`], [`R_4 = [$r*4]`] [`k\Omega`], [`R_5 = [$r*5]`] [`k\Omega`].
+
+[@ image("UBC-CIR-18-541.png", width=>[$width], height=>[$height]) @]*
+
+*a)* Find the Norton equivalent seen by resistor [`R`] between nodes [`a`] and [`b`].
+
+[`I_N=`] [_____]{"$in"} [`A`]  
+[`R_N=`] [_____]{"$rth"} [`\Omega`]  
+
+*b)* If [`R`] is variable, what is the maximum power it could dissipate?
+
+[`P_{max}=`] [_____]{"$max_power"} [`W`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
