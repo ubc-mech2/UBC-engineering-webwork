@@ -1,0 +1,93 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('3-Phase Circuits', 'Line Current', 'Line Voltage', 'Wye Connection')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$av_power_load = 4000;
+$resistance = 50;
+
+#computation 
+$power_factor = cos(arctan(-25/$resistance));
+$line_current = sqrt($av_power_load/(3*$power_factor*sqrt(625+$resistance**2)));
+$phase_voltage = $av_power_load/(3*$power_factor*$line_current);
+$line_voltage = sqrt(3)*$phase_voltage;
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.02,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+A balanced Y-connected load with an impedance of [`[$resistance] - j25`] [`\Omega`] per phase receives [`[$av_power_load]`] [`W`] of power from a balanced three-phase generator. Determine the line voltage and line current.
+
+[`I_L=`] [_____]{"$line_current"} [`A`]  
+[`V_L=`] [_____]{"$line_voltage"} [`V`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
