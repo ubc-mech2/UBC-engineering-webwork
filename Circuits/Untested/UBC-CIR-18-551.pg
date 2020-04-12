@@ -1,0 +1,104 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('NPN', 'Hybrid pi model')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*2430;
+$height = $imgScale*2401;
+
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Complex");
+
+#given
+$r3 = random(1000,10000,1000);
+$r4 = random(1000,10000,1000);
+
+#computation 
+$ib = (9.48979591837*$r3**2*$r4-1428.57142857*$r3*$r4)/(72.148571424*$r3*$r4+144285.714286*$r4+1428571.42857+2142.85714285*$r3);
+$ic = 100*$ib;
+$gm = $ic/0.025;
+$rpi = 100/$gm;
+$vo = (40000*$gm*$r3*$r4*$rpi+40*$r3*$r4*$rpi+40000*$r3*$r4)/(40000*$gm*$r3*$r4*$rpi+61*$r3*$r4*$rpi+41000*$r3*$r4+42000*$r3*$rpi+42000*$r4*$rpi+2000000*($r3+$r4));
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.02,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-CIR-18-551.png", width=>[$width], height=>[$height]) @]*
+
+For the given circuit, [`V_T = 0.025`] [`V`], [`\beta = 100`], [`V_{BE} = 0.7`] [`V`], [`R_s = 50`] [`\Omega`], [`R_1 = 1000`] [`\Omega`], [`R_2 = 2000`] [`\Omega`], [`R_3 = [$r3]`] [`\Omega`], and [`R_4 = [$r4]`] [`\Omega`]. Solve for the voltage gain of the circuit.
+
+[`\frac{Vo}{Vs}=`] [_____]{"$vo"} [`V/V`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
