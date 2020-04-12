@@ -1,0 +1,111 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('Nodal Analysis', 'Loop Analysis', 'Power')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*2052;
+$height = $imgScale*1953;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$voltage = random(100, 200, 20);
+$resistance = random(5, 10, 1);
+$current_1 = $voltage*(2*$resistance - 1)/ (19*$resistance);
+$current_2 = $voltage*(-88*$resistance - 13)/ (133*$resistance);
+$c1 = sprintf("%0.2f",$current_1);
+$c2 = sprintf("%0.2f",$current_2);
+
+
+#computation 
+$total_power = ($voltage)**2*(366*($resistance)**2+13) / (133*1000*$resistance);
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.02,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-CIR-18-502.png", width=>[$width], height=>[$height]) @]*
+
+The sources below have value [`V_1 = [$voltage]`] [`V`] and [`I = [$voltage]`] [`A`]. The currents [`i_1`] and [`i_2`] in the figure below are [`[$c1]`] [`A`] and [`[$c2]`] [`A`], respectively. Given [`R_1 = [$resistance]`] [`\Omega`], [`R_2 = [$resistance*3]`] [`\Omega`], [`R_3 = [$resistance*2-1]`] [`\Omega`], [`R_4 = [$resistance*2 + 1]`] [`\Omega`], [`R_5 = [$resistance*2]`] [`\Omega`], [`R_6 = [$resistance*6]`] [`\Omega`], [`R_7 = [$resistance-1]`] [`\Omega`], [`R_8 = [$resistance*3 + 1]`] [`\Omega`]
+
+
+*a)* Compute the total power supplied by both sources.
+
+Total Power Supplied [`=`] [_____]{"$total_power"} [`kW`]
+
+*b)* Compute the total power dissipated by the resistors.
+
+Total Power Dissipated [`=`] [_____]{"$total_power"} [`kW`]
+
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
