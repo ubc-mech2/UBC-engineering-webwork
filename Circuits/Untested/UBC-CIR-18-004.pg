@@ -1,0 +1,106 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('Ideal Transformers', 'Magnetically Coupled Circuits', 'Dot Convention')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale =  .18;
+
+#image aspect ratio
+$width = $imgScale*3243;
+$height = $imgScale*2307;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$resistance = 50;
+$ratio_1 = .5;
+$ratio_2 = 5;
+
+#computation 
+$real = $resistance*($ratio_1*$ratio_2)**2+100*$ratio_2**2+50*$ratio_1**2;
+$imaginary = 75*($ratio_1*$ratio_2)**2-80*$ratio_1**2-40*$ratio_2**2;
+$current_1 = 200*($ratio_1*$ratio_2)**2/sqrt($real**2+$imaginary**2);
+$current_2 = 200*$ratio_1**2*$ratio_2/sqrt($real**2+$imaginary**2);
+$current_3 = 200*$ratio_1*$ratio_2**2/sqrt($real**2+$imaginary**2);
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.02,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-CIR-18-004.png", width=>[$width], height=>[$height]) @]*
+
+Report the magnitude of the 3 currents if [`R = [$resistance]`] [`\Omega`], [`n = [$ratio_1]`], and [`m = [$ratio_2]`].
+
+[`I_1=`] [_____]{"$current_1"} [`A`]  
+[`I_2=`] [_____]{"$current_2"} [`A`]  
+[`I_3=`] [_____]{"$current_3"} [`A`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
