@@ -1,0 +1,140 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('2nd Order Circuits')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .18;
+
+#image aspect ratio
+$width = $imgScale*2152;
+$height = $imgScale*1659;
+
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	'PGunion.pl'
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Complex");
+Context()->constants->add(j => i);
+
+#given
+$z_1 = random(10, 100, 10);
+$r_2 = random(25, 300, 25);
+
+
+#computation 
+$z_11 = 50+$r_2+10*i;
+$z_12 = -$r_2-$z_1*i;
+$z_21 = -$r_2-$z_1*i;
+$z_22 = $r_2+75*i;
+$det = $z_11*$z_22-$z_12*$z_21;
+$y_11 = $z_22/$det;
+$y_12 = -$z_12/$det;
+$y_21 = -$z_21/$det;
+$y_22 = $z_11/$det;
+
+$ztable =  BeginTable(center=>0,padding=>0,spacing=>0,separation=>0).
+     Row(['\(Z = \begin{bmatrix}z_{11}&&z_{12}\\z_{21}&&z_{22}\end{bmatrix}=\)','\(\Bigg[\)',ans_rule(10).$SPACE.ans_rule(10).$BR.ans_rule(10).$SPACE.ans_rule(10),'\(\Bigg]\)']).
+   EndTable();
+
+$ytable =  BeginTable(center=>0,padding=>0,spacing=>0,separation=>0).
+    Row(['\(Y = \begin{bmatrix}y_{11}&&y_{12}\\y_{21}&&y_{22}\end{bmatrix}=\)','\(\Bigg[\)',ans_rule(10).$SPACE.ans_rule(10).$BR.ans_rule(10).$SPACE.ans_rule(10),'\(\Bigg]\)']).
+   EndTable();
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.02,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-CIR-18-034.png", width=>[$width], height=>[$height]) @]*
+
+For the given circuit, [`R1 = 50`] [`\Omega`], [`R2 = [$r_2]`] [`\Omega`], [`Z1 = j[$z_1]`] [`\Omega`], [`Z2 = j10`] [`\Omega`], [`Z3 = j100`] [`\Omega`], and [`Z4 = -j25`] [`\Omega`].
+
+
+END_PGML
+
+BEGIN_TEXT
+$PAR
+$BR
+
+$ztable
+
+$PAR
+$BR
+
+$ytable
+
+END_TEXT
+
+ANS($z_11->cmp);
+ANS($z_12->cmp);
+ANS($z_21->cmp);
+ANS($z_22->cmp);
+
+ANS($y_11->cmp);
+ANS($y_12->cmp);
+ANS($y_21->cmp);
+ANS($y_22->cmp);
+
+##############################################################
+
+ENDDOCUMENT();
