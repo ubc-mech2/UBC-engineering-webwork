@@ -1,0 +1,116 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('Phase Plot', 'Complex Zeros', 'Complex Poles')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*2846;
+$height = $imgScale*1428;
+
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Complex");
+
+#given
+$pole = random(110, 190, 5);
+$slope = random(100, 300, 25);
+$xi = 90/$slope;
+$w_1 = 10;
+$w_2 = 0.1*$pole ;
+$w_3 = 10*10**(2*$xi);
+$w_4 =10*$pole;
+$c_2 = -90+$slope*log10($w_2/$w_1);
+$c_1 = -90+$slope*log10($w_3/$w_1)-180*log10($w_3/$w_2);
+$c_1r = sprintf("%0.2f",$c_1);
+$c_2r = sprintf("%0.2f",$c_2);
+$w_3r = sprintf("%0.2f",$w_3);
+
+#computation 
+$w_n = 10*10**($xi);
+$zero_1 = $w_n*$xi+i*$w_n*sin(arccos($xi));
+$zero_2 = $w_n*$xi+i*$w_n*sin(arccos($xi))*-1;
+$pole_1 = $pole;
+$pole_2 = $pole;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.02,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+For the given phase plot, solve for the non-zero poles and zeros of the transfer function if [`C_1 = [$c_1r]^{\circ}`], [`C_2 = [$c_2r]^{\circ}`], [`\omega_1 = [$w_1]`] [`rad/s`], [`\omega_2 = [$w_2]`] [`rad/s`], [`\omega_3 = [$w_3r]`] [`rad/s`], and [`\omega_4 = [$w_4]`] [`rad/s`].
+
+[@ image("UBC-CIR-18-029.png", width=>[$width], height=>[$height]) @]*
+
+[`z_1=`] [______]{"$zero_1"} [`rad/s`]  
+[`z_2=`] [______]{"$zero_2"} [`rad/s`]  
+[`p_1=`] [______]{"$pole_1"} [`rad/s`]  
+[`p_2=`] [______]{"$pole_2"} [`rad/s`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
