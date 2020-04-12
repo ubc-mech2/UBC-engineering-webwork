@@ -1,0 +1,103 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('Op amp', 'differential equation')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .18;
+
+#image aspect ratio
+$width = $imgScale*3352;
+$height = $imgScale*1760;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+Context()->variables->add(t=>"Real");
+Context()->variables->remove("x");
+
+#given
+$resistance = random(50000,300000,50000);
+$initial_v2 = random(1,20,1);
+
+#computation 
+$exponent = 1/($resistance**2*(50/(10**9))**2);
+$coefficient_1 = 5*50/(10**9)*$resistance-$initial_v2/2;
+$coefficient_2 = -5*50/(10**9)*$resistance-$initial_v2/2;
+$output_v0 = Formula("$coefficient_1*e^($exponent*t)+ $coefficient_2*e^(-$exponent*t)");
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.02,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-CIR-18-015.png", width=>[$width], height=>[$height]) @]*
+
+For the given circuit, report [`v_0(t)`] for [`t > 0`] if [`R = [$resistance/1000]`] [`k\Omega`], [`C =50`] [`nF`], [`v_1(t) = 10`] [`V`], and [`v_2(t) = [$initial_v2]`] [`V`]. 
+
+[`v_0(t)=`] [____________________]{"$output_v0"} [`V`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
