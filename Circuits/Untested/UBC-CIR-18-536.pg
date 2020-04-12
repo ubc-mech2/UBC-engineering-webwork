@@ -1,0 +1,118 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('Thevenin equivalents', 'Norton equivalents')
+## RESOURCES('UBC-CIR-18-536.png')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+
+DOCUMENT();
+
+#image scale
+$imgScale = .18;
+
+#image aspect ratio
+$width = $imgScale*3847;
+$height = $imgScale*1697;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+do{
+
+	#given
+	$a = random(0.1,1,0.1);
+	$r = random(16,32, 4);
+
+	#computation 
+	$vth = (1080*$a*$r-2124)/(6*$a*$r-19);
+	$ro = -33*(4*$r+255)/(5*(6*$a*$r-19));
+	$max_power = $vth**2/(4*$ro);
+	$power_delivered_180 = 1080*(900*$a**2*$r**3+84150*$a**2*$r**2-137445*$a*$r-14569*$r-762025)/(11*$r*(4*$r+255)*(6*$a*$r-19));
+
+}while($ro <= 0);
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.02,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[`a = [$a]`], [`R_1 = [$r]`] [`\Omega`], [`R_2 = [$r*2]`] [`\Omega`], [`R_3 = [$r*3]`] [`\Omega`], [`R_4 = [$r*4]`] [`\Omega`], [`R_5 = [$r*5]`] [`\Omega`], and [`R_o`] is adjusted for maximum power transfer to itself.
+
+[@ image("UBC-CIR-18-536.png", width=>[$width], height=>[$height]) @]*
+
+*a)* Find the value of [`R_o`].
+
+[`R_o=`] [_____]{"$ro"} [`\Omega`]  
+
+*b)* Find the maximum power that is delivered to [`R_o`].
+
+[`P_{max}=`] [_____]{"$max_power"} [`W`]  
+
+*c)* How much power does the [`180`] [`V`] source deliver when [`R_o`] is adjusted to its value in *a*?
+
+[`P_{180V}=`] [_____]{"$power_delivered_180"} [`W`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
