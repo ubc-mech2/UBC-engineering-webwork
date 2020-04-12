@@ -1,0 +1,127 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('Nodal Analysis', 'Loop Analysis')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+
+DOCUMENT();
+
+#image scale
+$imgScale = .8;
+
+#image aspect ratio
+$width = $imgScale*800;
+$height = $imgScale*316;
+
+
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$I1 = non_zero_random(-10,10,1);
+  
+do {
+  $I2 = non_zero_random(-10,10,1);
+  $I3 = non_zero_random(-10,10,1);
+} until ($I2+$I3 != 0);
+
+do {
+  $I4 = non_zero_random(-10,10,1);
+} until ($I3+$I4 != 0);
+
+
+#computation 
+$Vx = -25*(615*$I1-49*(21*$I2+$I3-20*$I4)) / 1151;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.02,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_TEXT
+
+In the circuit below, \(i_1 = $I1\) \(A\), \(i_2 = $I2\) \(A\), \(i_3 = $I3\) \(A\), and \(i_4 = $I4\) \(A\). 
+$BR Use nodal analysis to find \(V_x\).
+
+
+$PAR
+
+END_TEXT
+
+BEGIN_PGML
+
+[@ image("UBC-CIR-18-520.png", width=>[$width], height=>[$height]) @]*
+
+
+
+END_PGML
+
+BEGIN_TEXT
+
+
+
+$PAR  
+\(V_x\) = \{ ans_rule(10)\} \(V\)
+
+END_TEXT
+ANS(num_cmp($Vx, reltol => 2));
+
+##############################################################
+
+ENDDOCUMENT();
