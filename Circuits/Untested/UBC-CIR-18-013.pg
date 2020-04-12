@@ -1,0 +1,103 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('differential equation', 'op amp circuit')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale =  .18;
+
+#image aspect ratio
+$width = $imgScale*2985;
+$height = $imgScale*1273;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+Context()->variables->add(t=>"Real");
+Context()->variables->remove("x");
+
+#given
+$c_question = random(10, 300, 10);
+$c_farad = $c_question/(10**12);
+$r_question = random(25, 500, 25);
+$r_ohm = $r_question*10**3;
+
+#computation 
+$exponent = -1/($r_ohm*$c_farad);
+$coefficient = -5/($r_ohm*$c_farad);
+$output_voltage = Formula("$coefficient*t*e^($exponent*t)");
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.02,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-CIR-18-013.png", width=>[$width], height=>[$height]) @]*
+
+Solve for the output voltage [`v_0(t)`] if [`v_{in}(t) = 5u(t)`], [`R = [$r_question]`] [`k\Omega`], and [`C = [$c_question]`] [`pF`].
+
+[`v_0(t)=`] [____________________]{"$output_voltage"}
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
