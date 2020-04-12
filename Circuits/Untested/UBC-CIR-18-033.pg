@@ -1,0 +1,115 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('Voltage dependent voltage source', 'hybrid parameters', 'admittance parameters')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .18;
+
+#image aspect ratio
+$width = $imgScale*2277;
+$height = $imgScale*1273;
+
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Matrix");
+
+#given
+$r_2 = random(5, 200, 5);
+$a = random(10, 100, 5);
+
+#computation 
+$y_11 = (20+$r_2)/(70*$r_2+1000);
+$y_12 = -20/(70*$r_2+1000);
+$y_21 = (2*$a*$r_2+200)/(700*$r_2+10000);
+$y_22 = (100*$a+7*$r_2-600)/(700*$r_2+10000);
+$h_11 = (70*$r_2+1000)/($r_2+20);
+$h_12 = 20/($r_2+20);
+$h_21 = (20*$a*$r_2+2000)/(100*$r_2+2000);
+$h_22 = (20*$a+$r_2-80)/(100*$r_2+2000);
+
+$y = Matrix("[[$y_11,$y_12],[$y_21,$y_22]]");
+$h = Matrix("[[$h_11,$h_12],[$h_21,$h_22]]");
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.02,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-CIR-18-033.png", width=>[$width], height=>[$height]) @]*
+
+Solve for the [`h`] and [`y`] parameters of the given circuit if [`R_1 = 50`] [`\Omega`], [`R_2 = [$r_2]`] [`\Omega`], [`R_3 = 20`] [`\Omega`], [`R_4 = 100`] [`\Omega`], and [`\alpha = [$a]`].
+
+[`y=`][@ $y->ans_array @]*
+
+[`h=`][@ $h->ans_array @]*
+
+END_PGML
+
+ANS($y->cmp);
+ANS($h->cmp);
+
+
+##############################################################
+
+ENDDOCUMENT();
