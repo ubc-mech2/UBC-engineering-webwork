@@ -1,0 +1,103 @@
+# DESCRIPTION
+# Reversible Compressor
+# WeBWorK problem written by Hashem Jayhooni
+# Email
+# University of British Columbia
+# OPES Project
+# ENDDESCRIPTION
+
+## DBsubject(Thermodynamic)
+## DBchapter(First Thermodynamic Law)
+## Institution(University of British Columbia)
+## Author(Hashem Jayhooni)
+## Level(3)
+## KEYWORDS('?','?','?', '?')
+## RESOURCES('UBC-TH-17-070.png')
+
+# This work is licensed under a Creative Commons Attribution-NonCommercial-
+# ShareAlike 3.0 Unported License.
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "extraAnswerEvaluators.pl",
+  "PGasu.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
+
+#
+# Now we do the randomization of variables, and other computations
+# as needed for this problem.  Sometimes we compute the answers here.
+#
+
+
+$P1 = random(80,120,10); # entering pressure
+$T1 = random(24,30,0.5); # entering temperature
+$P2 = random(380,420,10); # second pressure
+$P3 = random(580,620,10); # third pressure
+$W = random(25,40,1); # Power supplied to the compressor
+$Cp = 1.1; # constant specific heat
+$Cv = 0.8; # constant specific heat
+
+
+$k = $Cp/$Cv;
+$Y = ($k-1)/$k;
+$T2 = ($T1+273)*(($P2/$P1)**$Y);
+$T3 = ($T1+273)*(($P3/$P1)**$Y);
+$R = $Cp*0.1*($T2-$T1-273)+$Cp*0.9*($T3-$T1-273);
+$mass_flow = $W/$R;
+
+
+
+
+
+BEGIN_TEXT
+Reversible Compressor
+$PAR 
+An ideal gas at $P1 kPa and $T1 C (centigrade) enters a steady-flow
+compressor. The gas is compressed to $P2 kPa, and 10 percent
+of the mass that entered the compressor is removed for some
+other use. The remaining 90 percent of the inlet gas is compressed
+to $P3 kPa before leaving the compressor. The entire
+compression process is assumed to be reversible and adiabatic.
+The power supplied to the compressor is measured to be $W
+kW. If the ideal gas has constant specific heats such that cv =
+0.8 kJ/kg.K and cp = 1.1 kJ/kg.K, (a) determine the specific heat ratio of the gas,
+the temperature of the gas at the two compressor exits, in K, and (b) determine
+the mass flow rate of the gas into the compressor, in kg/s.
+$PAR
+\{ image("UBC-TH-17-070.png", width=>358, height=>372, tex_size=>600) \}
+
+
+$PAR  
+specific heat ratio = \{ ans_rule(10)\} $PAR
+temperature of the gas at P2 = \{ ans_rule(10)\} (K) $PAR
+temperature of the gas at P3 = \{ ans_rule(10)\} (K) $PAR
+mass flow rate of the gas into the compressor = \{ ans_rule(10)\} (kg/s) $PAR
+
+
+
+#$BITALIC Pay attention to the unit of each parameter $EITALIC
+
+END_TEXT
+
+
+#
+# Tell WeBWork how to test if answers are right.  These should come in the
+# same order as the answer blanks above.  You tell WeBWork both the type of
+# "answer evaluator" to use, and the correct answer.
+#
+
+ANS(num_cmp($k, reltol => 5)); # 5% tolerance
+ANS(num_cmp($T2, reltol => 5)); # 5% tolerance
+ANS(num_cmp($T3, reltol => 5)); # 5% tolerance
+ANS(num_cmp($mass_flow, reltol => 5)); # 5% tolerance
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.
+
+
