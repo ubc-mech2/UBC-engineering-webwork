@@ -1,0 +1,119 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('3-Phase', 'Apparent Power', 'Power Factor', 'Complex Power', 'Line Impedance', 'Line Current')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Complex");
+Context()->constants->add(j => i);
+
+#given
+$apparent_power = random(10000,50000,5000);
+$presented_power = $apparent_power/1000;
+$power_factor = random(.2,.8,.1);
+
+#computation 
+$real = $apparent_power*0.5+20000*$power_factor+5000;
+$imaginary = sin(arccos($power_factor))*20000+$apparent_power*sin(arccos(0.5));
+$load_power = $real+($imaginary)*i;
+$line_current = ($real-$imaginary*i)/(3*250);
+$complex_power = $load_power+(10+15*i)*($real**2+$imaginary**2)/(3*250**2);
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.02,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+A 3-Phase system supplies power to 3 balanced loads in parallel. Using the information provided in the table and the knowledge that the voltage at the loads is [`250`] [`V_{rms}`] with a line impedance of [`10 +15j`] [`\Omega`], solve for the line current and the complex power delivered from the source.
+
+END_PGML
+
+BEGIN_TEXT
+
+$PAR
+\{
+	DataTable(
+		[	
+			['$BBOLD Load $EBOLD', '$BBOLD Power $EBOLD', '$BBOLD Power Factor $EBOLD'],
+			['1','\($presented_power\) \(kVA\)','\(0.5\) lagging'],
+			['2','\(20\) \(kVA\)','\($power_factor\) lagging'],
+			['3','\(5\) \(kW\)','\(1\)'],
+		],
+		center => 1,
+		allcellcss=>'padding-left:20px; padding-right:20px; padding-top:0px;  margin:auto; border: solid thin black;',
+		);
+\}
+$PAR
+
+END_TEXT
+
+BEGIN_PGML
+
+[`I_L=`] [_____]{"$line_current"} [`A`]  
+[`S=`] [_____]{"$complex_power"} [`VA`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
