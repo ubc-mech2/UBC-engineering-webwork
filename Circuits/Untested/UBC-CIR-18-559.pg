@@ -1,0 +1,112 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('Cascaded Amplifier', 'Common-Base amplifier', 'Common-Collector Amplifier')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*4311;
+$height = $imgScale*2080;
+
+
+
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	"niceTables.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Complex");
+
+#given
+$rs = random(50, 500, 50);
+$rl = random(5000, 50000, 5000);
+
+
+#computation 
+$gm1 = 10**(-3)*100/(101*25*10**(-3));
+$ib2 = (11.3/3500-0.1/101)/(1+450*101/3500);
+$gm2 = $ib2*100/0.025;
+$rpi1 = 100/$gm1;
+$rpi2 = 100/$gm2;
+$value_1 = -(1/$rpi2+1/3500);
+$value_2 = (1/450+1/$rl)/(1/$rpi2+$gm2)*$value_1;
+$value_3 = $gm1/($value_2-1/3500);
+$value_4 = -1/$rs/($gm1+1/4000+1/$rpi1+1/$rs);
+$gain = Formula("$value_3*$value_4");
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.02,
+);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-CIR-18-559.png", width=>[$width], height=>[$height]) @]*
+
+The following circuit depicts a common-base amplifier cascaded with a common-collector amplifier. Solve for the gain [`\frac{Vo}{Vs}`] if [`I_{E1} = 1`] [`mA`], [`\beta = 100`], [`V_T = 25`] [`mV`], [`V_{BE} = 0.7`] [`V`], [`R_{E1} = 4`] [`k\Omega`], [`R_{E2} = 450`] [`\Omega`], [`R_{B1} = 73`] [`k\Omega`], [`R_{B2} = 52`] [`k\Omega`], [`R_{C1} = 3.5`] [`k\Omega`], [`R_S = [$rs]`] [`\Omega`], and [`R_L = [$rl]`] [`\Omega`].
+
+[`\frac{Vo}{Vs}=`] [_____]{"$gain"}  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
