@@ -1,17 +1,40 @@
 ##DESCRIPTION
-## 222 Problem Set 3
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
 ##ENDDESCRIPTION
-
-##KEYWORDS('multiple choice', 'water', 'internal', 'energy')
 
 ## DBsubject('MECH 222')
 ## DBchapter('Homework')
 ## DBsection('222 Problem Set 3')
-## Date('7/17/2017')
 ## Institution('University of British Columbia')
-## Problem2
+## Author('UBC MECH2')
+## Date('7/17/2017')
+## Level()
+## KEYWORDS('multiple choice', 'water', 'internal', 'energy', '222PS3')
+## RESOURCES()
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Beginner
 
-#######################################################################
 
 DOCUMENT();      
 
@@ -23,6 +46,14 @@ loadMacros(
    "parserRadioButtons.pl",
    "contextFraction.pl",
 );
+TEXT(beginproblem());
+#image scale
+$imgScale = 1;
+
+#image aspect ratio
+$width = $imgScale*233;
+$height = $imgScale*233;
+
 
 $mc = RadioButtons( # Set up possible options
 [
@@ -36,11 +67,7 @@ labels => "ABC" );
 
 BEGIN_TEXT
 	
-Find the specific internal energy of water at \(60^{\circ}\)\(C\) and \(10\) \(MPa\) using 1) compressed liquid data: \(u_1\) ; 2) approximation with saturated liquid data; \(u_2\)
-
-$PAR
-
-\{ image( "imagename.png", width=>150, height=>150 ) \}
+Find the specific internal energy of water at \(60^{\circ}\)\(C\) and \(10\) \(MPa\) using $BR $SPACE 1) compressed liquid data: \(u_1\)  $BR $SPACE 2) approximation with saturated liquid data: \(u_2\)
 
 $PAR
 
