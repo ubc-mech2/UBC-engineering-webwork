@@ -2,10 +2,10 @@
 ## 220 Self Test - Constraints
 ##ENDDESCRIPTION
 
-##KEYWORDS('constraints', 'force', 'multiple choiceâ, âMECH220â, âSelfTest-Constraintsâ)
+##KEYWORDS('constraints', 'force', 'multiple choice', 'MECH220', 'SelfTest-Constraints')
 
 ## DBsubject('Statics')
-## DBchapter(âRigid bodiesâ)
+## DBchapter('Rigid bodies')
 ## DBsection('Constraints and statical determinacy')
 ## Date('6/27/2017')
 ## Institution('University of British Columbia')
