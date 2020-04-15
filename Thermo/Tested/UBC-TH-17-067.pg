@@ -1,21 +1,40 @@
-# DESCRIPTION
-# Refrigerator
-# # WeBWorK problem written by Hashem Jayhooni
-# Email
-# University of British Columbia
-# OPES Project
-# ENDDESCRIPTION
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Deanâ€™s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
 
 ## DBsubject(Thermodynamic)
 ## DBchapter(First Thermodynamic Law)
-## Institution(University of British Columbia)
-## Author(Hashem Jayhooni)
+## DBsection()
+## Institution('University of British Columbia')
+## Author('UBC MECH2')
+## Date()
 ## Level(3)
-## KEYWORDS('?','?','?', '?')
+## KEYWORDS()
 ## RESOURCES('UBC-TH-17-067.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Beginner
 
-# This work is licensed under a Creative Commons Attribution-NonCommercial-
-# ShareAlike 3.0 Unported License.
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
@@ -28,6 +47,14 @@ loadMacros(
 );
 
 TEXT(beginproblem());
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*2926;
+$height = $imgScale*1733;
+
 
 #
 # Now we do the randomization of variables, and other computations
@@ -50,24 +77,25 @@ $QH = $QL+$W/1000;
 
 
 BEGIN_TEXT
-Refrigerator
-$PAR 
 Refrigerant-134a enters the evaporator coils placed at
 the back of the freezer section of a household refrigerator at
-120 kPa with a quality of 20 percent and leaves at 120 kPa
-and -20°C. If the compressor consumes $W W of power and
-the COP of the refrigerator is $COP, determine (a) refrigerator load and the mass flow
-rate of the refrigerant, (b) enthalpy changed of the refrigerant and the rate of heat rejected to the
-kitchen air.
+\(120\) \(kPa\) with a quality of \(20% \) and leaves at \(120\) \(kPa\)
+and \(-20°C\). If the compressor consumes \($W\) \(W\) of power and
+the COP of the refrigerator is \($COP\), determine: $BR
+$SPACE 1. the power consumed by the refrigerator  $BR
+$SPACE 2. the mass flow rate of the refrigerant $BR
+$SPACE 3. the change in enthalpy of the refrigerant $BR
+$SPACE 4. the rate of heat rejection $BR
+
 $PAR
-\{ image("UBC-TH-17-067.png", width=>409, height=>305, tex_size=>600) \}
+\{ image("UBC-TH-17-067.png", width=>$width, height=>$height) \}
 
 
 $PAR  
-Refrigerator load = \{ ans_rule(10)\} (kW) $PAR
-Enthalpy changed of the refrigerant = \{ ans_rule(10)\} (kJ/kg) $PAR
-Mass flow rate of the refrigerant = \{ ans_rule(10)\} (kg/s) $PAR
-Rate of heat rejected to the kitchen air = \{ ans_rule(10)\} (kW) $PAR
+\(P=\) \{ ans_rule(10)\} \(kW\) $PAR
+\(\Delta h=\) \{ ans_rule(10)\} \(kJ/kg\) $PAR
+\(\dot{m}=\) \{ ans_rule(10)\} \(kg/s\) $PAR
+\(\dot{Q_H}=\) \{ ans_rule(10)\} \(kW\) $PAR
 
 
 
@@ -90,5 +118,3 @@ ANS(num_cmp($QH, reltol => 5)); # 5% tolerance
 
 
 ENDDOCUMENT();        # This should be the last executable line in the problem.
-
-
