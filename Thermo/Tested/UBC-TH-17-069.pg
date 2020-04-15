@@ -1,21 +1,40 @@
-# DESCRIPTION
-# Entropy
-# WeBWorK problem written by Hashem Jayhooni
-# Email
-# University of British Columbia
-# OPES Project
-# ENDDESCRIPTION
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Deanâ€™s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
 
 ## DBsubject(Thermodynamic)
 ## DBchapter(Second Thermodynamic Law)
-## Institution(University of British Columbia)
-## Author(Hashem Jayhooni)
+## DBsection()
+## Institution('University of British Columbia')
+## Author('UBC MECH2')
+## Date()
 ## Level(3)
-## KEYWORDS('?','?','?', '?')
+## KEYWORDS()
 ## RESOURCES('UBC-TH-17-069.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Beginner
 
-# This work is licensed under a Creative Commons Attribution-NonCommercial-
-# ShareAlike 3.0 Unported License.
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
@@ -28,6 +47,14 @@ loadMacros(
 );
 
 TEXT(beginproblem());
+
+#image scale
+$imgScale =  .3;
+
+#image aspect ratio
+$width = $imgScale*840;
+$height = $imgScale*1031;
+
 
 #
 # Now we do the randomization of variables, and other computations
@@ -52,23 +79,24 @@ $delS = $mass*$Cp*(ln($Tf)-ln($TK));
 
 
 BEGIN_TEXT
-Entropy
-$PAR 
-An insulated pistoncylinder device initially contains
-$V_in L of air at $P_in kPa and $T_in °C. Air is now heated for
-$t min by a 200-W resistance heater placed inside the cylinder.
+An insulated piston–cylinder device initially contains
+\($V_in\) \(L\) of air at \($P_in\) \(kPa\) and \($T_in °C\). Air is now heated for
+\($t\) \(min\) by a \(200\) \(W\) resistance heater placed inside the cylinder.
 The pressure of air is maintained constant during this
-process. Determine a) mass of the air, electrical work done during this process,
-b) final temperature and the entropy change of air, assuming constant specific heats (Cp = 1.02 kJ/kg.K).
-$PAR
-\{ image("UBC-TH-17-069.png", width=>326, height=>340, tex_size=>600) \}
+process. Assume a constant specific heat of \(Cp = 1.02\) \(kJ/kg\cdot K\)). $BR Determine: $BR
+
+$SPACE 1. the mass of the air inside the cylinder $BR
+$SPACE 2. th electrical work done during this process $BR
+$SPACE 3. the final temperature $BR
+$SPACE 4. the entropy change in air $PAR
+\{ image("UBC-TH-17-069.png", width=>$width, height=>$height) \}
 
 
 $PAR  
-mass of the air = \{ ans_rule(10)\} (kg) $PAR
-electrical work done during this process = \{ ans_rule(10)\} (kJ) $PAR
-Final temperature = \{ ans_rule(10)\} (K) $PAR
-Entropy change of air = \{ ans_rule(10)\} (kJ/K) $PAR
+\(m_{air}=\) \{ ans_rule(10)\} \(kg\) $PAR
+\(W_e=\) \{ ans_rule(10)\} \(kJ\) $PAR
+\(T_f=\)\{ ans_rule(10)\} \(K\) $PAR
+\(\Delta S_{air}=\) \{ ans_rule(10)\} \(kJ/K\) $PAR
 
 
 
@@ -90,5 +118,3 @@ ANS(num_cmp($delS, reltol => 5)); # 5% tolerance
 
 
 ENDDOCUMENT();        # This should be the last executable line in the problem.
-
-
