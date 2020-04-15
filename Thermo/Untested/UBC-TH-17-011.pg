@@ -1,0 +1,62 @@
+##missing header
+
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$m = random(1,2,.01);
+
+#image scale
+$imgScale =0.4;
+
+#image aspect ratio
+$width = $imgScale*1983;
+$height = $imgScale*556;
+
+#computation 
+$mVap = 142*$m/200;
+$mLiq = $m*(1-142/200);
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+	[@ image( "UBC-TH-17-011.png", width=>[$width], height=>[$height]) @]*
+
+	Liquid nitrogen is flowing into the tank at a rate of [`x=[$m]`] [`kg/s`], as shown in the figure. Calculate the flow rates of the [`N_2`] liquid and vapor exiting the tank.
+
+	[`\dot{m}_{liq}`] [_____]{"$mLiq"} [`kg/s`]  
+ 	[`\dot{m}_{vap}`] [_____]{"$mVap"} [`kg/s`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
