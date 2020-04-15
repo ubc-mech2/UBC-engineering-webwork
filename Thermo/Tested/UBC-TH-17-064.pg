@@ -1,21 +1,40 @@
-# DESCRIPTION
-# Enthalpy
-# WeBWorK problem written by Hashem Jayhooni
-# Email
-# University of British Columbia
-# OPES Project
-# ENDDESCRIPTION
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Deanâ€™s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
 
 ## DBsubject(Thermodynamic)
 ## DBchapter(First Thermodynamic Law)
-## Institution(University of British Columbia)
-## Author(Hashem Jayhooni)
+## DBsection()
+## Institution('University of British Columbia')
+## Author('UBC MECH2')
+## Date()
 ## Level(3)
-## KEYWORDS('?','?','?', '?')
-## RESOURCES('???.png')
+## KEYWORDS()
+## RESOURCES('UBC-TH-17-064.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Beginner
 
-# This work is licensed under a Creative Commons Attribution-NonCommercial-
-# ShareAlike 3.0 Unported License.
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
@@ -28,6 +47,14 @@ loadMacros(
 );
 
 TEXT(beginproblem());
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*1563;
+$height = $imgScale*1610;
+
 
 #
 # Now we do the randomization of variables, and other computations
@@ -52,27 +79,28 @@ $Mass_inlet = ($Mass_final)-($Mass_initial);
 
 
 BEGIN_TEXT
-Enthalpy
-$PAR 
-An insulated, vertical pistoncylinder device initially
-contains $Mass_initial kg of water, $Vapor_initial kg of which is in the vapor phase.
+An insulated, vertical piston-cylinder device initially
+contains \($Mass_initial\) \(kg\) of water, \($Vapor_initial\) \(kg\) of which is in the vapor phase.
 The mass of the piston is such that it maintains a constant pressure
-of 200 kPa inside the cylinder. Now steam at 0.5 MPa and
-350°C is allowed to enter the cylinder from a supply line until
-all the liquid in the cylinder has vaporized. Determine (a) initial and final enthalpies as well as the
-final temperature in the cylinder and (b) the final mass of water inside the cylinder and the mass of the steam
-that has entered.
+of \(200\) \(kPa\) inside the cylinder. Now steam at \(0.5\) \(MPa\) and
+\(350°C\) is allowed to enter the cylinder from a supply line until
+all the liquid in the cylinder has vaporized. Determine: $BR 
+$SPACE 1. the initial enthalpy in the cylinder $BR 
+$SPACE 2. the final enthalpy in the cylinder $BR 
+$SPACE 3. the final temperature in the cylinder $BR 
+$SPACE 4. the final mass of water inside the cylinder$BR 
+$SPACE 5. the mass of steam that entered the cylinder$BR 
 
 $PAR
-\{ image("UBC-TH-17-064.png", width=>284, height=>324, tex_size=>600) \}
+\{ image("UBC-TH-17-064.png", width=>$width, height=>$height) \}
 
 
 $PAR  
-Initial enthalpy of the cylinder = \{ ans_rule(10)\} (kJ/kg) $PAR
-Final enthalpy of the cylinder = \{ ans_rule(10)\} (kJ/kg) $PAR
-Final Temperature = \{ ans_rule(10)\} (C) $PAR
-Final mass of the water inside the cylinder = \{ ans_rule(10)\} (kJ/kg) $PAR
-Mass of steam entered the cylinder = \{ ans_rule(10)\} (K) $PAR
+\(h_i=\) \{ ans_rule(10)\} (kJ/kg) $PAR
+\(h_f=\) \{ ans_rule(10)\} (kJ/kg) $PAR
+\(T_f=\) \{ ans_rule(10)\} (C) $PAR
+\(m_f=\) \{ ans_rule(10)\} (kJ/kg) $PAR
+\(m_{steam}=\) \{ ans_rule(10)\} (K) $PAR
 
 
 
@@ -95,5 +123,3 @@ ANS(num_cmp($Mass_inlet, reltol => 5)); # 5% tolerance
 
 
 ENDDOCUMENT();        # This should be the last executable line in the problem.
-
-
