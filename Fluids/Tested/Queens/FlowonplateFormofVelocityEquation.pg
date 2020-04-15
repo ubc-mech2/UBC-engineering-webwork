@@ -1,0 +1,43 @@
+##############################################################
+
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",	# Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGchoicemacros.pl",
+	#"source.pl",	# allows code to be displayed on certain sites.
+	#"PGcourse.pl",	# Customization file for the course.
+	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+$mc = RadioButtons(
+	["\(u(y) = A + By + Cy^2\)  (\(A\),\(B\),\(C\) all non zero)", "\(u(y) = By - Cy^2\)  (\(B\), \(C\) both non zero)", "\(u(y) = Cy^2 + Dy^3\) (\(C\), \(D\) both non zero)", "\(u(y) = Cy^2\) (\(C\) non zero)"],
+	"\(u(y) = By - Cy^2\)  (\(B\), \(C\) both non zero)"
+);
+
+BEGIN_PGML
+
+[@ image('FlowonplateFormofVelocityEquation.png', width=>730, height=>350) @]*
+
+The solution will be of the form:  
+[@ $mc->buttons() @]*
+
+END_PGML
+
+ANS($mc->cmp());
+
+##############################################################
+
+ENDDOCUMENT();

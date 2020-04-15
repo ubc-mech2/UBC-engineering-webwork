@@ -1,0 +1,41 @@
+##############################################################
+
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",	# Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGchoicemacros.pl",
+	#"source.pl",	# allows code to be displayed on certain sites.
+	#"PGcourse.pl",	# Customization file for the course.
+	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+#given
+$a = random(2,2,1);
+
+
+BEGIN_PGML
+
+What is the ratio of the maximum velocity to the average velocity for a steady, fully developed, laminar flow in a circular tube?
+
+[`V_{max}:V_{ave}=`][____]
+
+END_PGML
+
+ANS(num_cmp(2, reltol => 0, ));
+
+##############################################################
+
+ENDDOCUMENT();

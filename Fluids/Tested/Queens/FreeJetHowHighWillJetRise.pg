@@ -1,0 +1,41 @@
+##############################################################
+
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",	# Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGchoicemacros.pl",
+	#"source.pl",	# allows code to be displayed on certain sites.
+	#"PGcourse.pl",	# Customization file for the course.
+	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+#given
+$H = random(1,10,0.1);
+
+
+BEGIN_PGML
+
+A reservoir is [`[$H]`] [`m`] deep and open to the atmosphere. A hose is connected to the bottom of the reservoir and a pointed vertically upwards. Making the same assumptions made in deriving the Bernoulli equation, how high into the air with the jet rise?
+
+[`h=`][____] [`m`]
+
+END_PGML
+
+ANS(num_cmp($H, reltol => 0, ));
+
+##############################################################
+
+ENDDOCUMENT();
