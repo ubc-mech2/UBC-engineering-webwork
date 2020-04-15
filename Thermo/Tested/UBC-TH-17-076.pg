@@ -1,3 +1,41 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution('University of British Columbia')
+## Author('UBC MECH2')
+## Date()
+## Level()
+## KEYWORDS('222PL1')
+## RESOURCES()
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Beginner
+
+
 DOCUMENT();
 
 loadMacros(
@@ -5,7 +43,7 @@ loadMacros(
    "MathObjects.pl",
    "parserRadioButtons.pl"
 );
-
+TEXT(beginproblem());
 $mc = RadioButtons(
 [
 "It will increase by a factor of 2",
@@ -17,7 +55,7 @@ $mc = RadioButtons(
 labels => "ABC" );
 
 BEGIN_TEXT
-Assume air in a closed container can be described as an ideal gas.  If the container temperature is increased from 20 deg C to 40 deg C, how will the pressure in the container change?
+Assume air in a closed container can be described as an ideal gas.  If the container temperature is increased from \(20^{\circ}C\) to \(40^{\circ}C\), how will the pressure in the container change?
 $PAR
 \{ $mc->buttons() \}
 
