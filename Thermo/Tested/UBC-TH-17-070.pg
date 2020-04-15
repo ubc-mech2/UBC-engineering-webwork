@@ -1,21 +1,40 @@
-# DESCRIPTION
-# Reversible Compressor
-# WeBWorK problem written by Hashem Jayhooni
-# Email
-# University of British Columbia
-# OPES Project
-# ENDDESCRIPTION
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
 
 ## DBsubject(Thermodynamic)
 ## DBchapter(First Thermodynamic Law)
-## Institution(University of British Columbia)
-## Author(Hashem Jayhooni)
+## DBsection()
+## Institution('University of British Columbia')
+## Author('UBC MECH2')
+## Date()
 ## Level(3)
-## KEYWORDS('?','?','?', '?')
+## KEYWORDS()
 ## RESOURCES('UBC-TH-17-070.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Beginner
 
-# This work is licensed under a Creative Commons Attribution-NonCommercial-
-# ShareAlike 3.0 Unported License.
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
@@ -28,6 +47,14 @@ loadMacros(
 );
 
 TEXT(beginproblem());
+
+#image scale
+$imgScale = .3;
+
+#image aspect ratio
+$width = $imgScale*1462;
+$height = $imgScale*1810;
+
 
 #
 # Now we do the randomization of variables, and other computations
@@ -56,31 +83,29 @@ $mass_flow = $W/$R;
 
 
 BEGIN_TEXT
-Reversible Compressor
-$PAR 
-An ideal gas at $P1 kPa and $T1 C (centigrade) enters a steady-flow
-compressor. The gas is compressed to $P2 kPa, and 10 percent
+An ideal gas at \(P_1=$P1\) \(kPa\) and \(T_1=$T1^{\circ}C\) enters a steady-flow
+compressor. The gas is compressed to \($P2\) \(kPa\), and \(10%\)
 of the mass that entered the compressor is removed for some
-other use. The remaining 90 percent of the inlet gas is compressed
-to $P3 kPa before leaving the compressor. The entire
+other use. The remaining \(90%\)  of the inlet gas is compressed
+to \(P_3=$P3\) \(kPa \) before leaving the compressor. The entire
 compression process is assumed to be reversible and adiabatic.
-The power supplied to the compressor is measured to be $W
-kW. If the ideal gas has constant specific heats such that cv =
-0.8 kJ/kg.K and cp = 1.1 kJ/kg.K, (a) determine the specific heat ratio of the gas,
-the temperature of the gas at the two compressor exits, in K, and (b) determine
-the mass flow rate of the gas into the compressor, in kg/s.
+The power supplied to the compressor is measured to be \(W=$W\)
+\(kW\). If the ideal gas has constant specific heats such that \(c_v =
+0.8\) \(kJ/kg\cdot K\) and \(c_p = 1.1 kJ/kg\cdot K\), determine: $BR
+1. the specific heat ratio of the gas $BR
+2. the temperature of the gas at the two compressor exits $BR
+3. the mass flow rate of the gas $BR
 $PAR
-\{ image("UBC-TH-17-070.png", width=>358, height=>372, tex_size=>600) \}
-
+\{ image("UBC-TH-17-070.png", width=>$width, height=>$height) \}
 
 $PAR  
-specific heat ratio = \{ ans_rule(10)\} $PAR
-temperature of the gas at P2 = \{ ans_rule(10)\} (K) $PAR
-temperature of the gas at P3 = \{ ans_rule(10)\} (K) $PAR
-mass flow rate of the gas into the compressor = \{ ans_rule(10)\} (kg/s) $PAR
+\(k=\) \{ ans_rule(10)\} $BR
+\(T_{P_2}=\) \{ ans_rule(10)\} \(K\) $BR
+\(T_{P_3}=\) \{ ans_rule(10)\} \(K\) $BR
+\(\dot{m}=\) \{ ans_rule(10)\} \(kg/s\)
 
 
-
+$PAR
 #$BITALIC Pay attention to the unit of each parameter $EITALIC
 
 END_TEXT
@@ -99,5 +124,3 @@ ANS(num_cmp($mass_flow, reltol => 5)); # 5% tolerance
 
 
 ENDDOCUMENT();        # This should be the last executable line in the problem.
-
-
