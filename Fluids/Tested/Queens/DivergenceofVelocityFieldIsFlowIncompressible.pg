@@ -1,0 +1,45 @@
+##############################################################
+
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",	# Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGchoicemacros.pl",
+	#"source.pl",	# allows code to be displayed on certain sites.
+	#"PGcourse.pl",	# Customization file for the course.
+	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+$mc = RadioButtons(
+	["Yes.", "No.", "Not enough information to determine.", "In some areas the fluid is compressible, but in other areas it isn't"],
+	"No."
+);
+
+BEGIN_PGML
+
+Consider the cartesian velocity field defined by the following equation:
+
+[`\vec V = 2xy \hat{\imath} + 3y \hat{\jmath} - z \hat{k}`]
+
+Is the flow in this velocity field incompressible?  
+[@ $mc->buttons() @]*
+
+END_PGML
+
+ANS($mc->cmp());
+
+##############################################################
+
+ENDDOCUMENT();

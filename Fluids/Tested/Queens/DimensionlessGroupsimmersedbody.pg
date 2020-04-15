@@ -1,0 +1,51 @@
+##############################################################
+
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",	# Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGchoicemacros.pl",
+	#"source.pl",	# allows code to be displayed on certain sites.
+	#"PGcourse.pl",	# Customization file for the course.
+	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+$mc = new_checkbox_multiple_choice();
+$mc->qa(
+	"Which dimensionless groups are applicable to model scaling problems for$BBOLD immersed bodies$EBOLD, such as a plane flying through the air?",
+	"Reynolds Number", 
+	"Drag Coefficient"
+);
+$mc->extra(
+	"Weber Number", 
+	"Froude Number", 
+	"Pressure Coefficient", 
+	"Mach Number"
+);
+
+BEGIN_PGML
+
+
+
+[@ $mc->print_q() @]*
+[@ $mc->print_a() @]*
+
+END_PGML
+
+ANS(checkbox_cmp($mc->correct_ans()));
+
+##############################################################
+
+ENDDOCUMENT();

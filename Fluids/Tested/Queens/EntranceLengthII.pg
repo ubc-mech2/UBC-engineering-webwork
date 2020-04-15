@@ -1,0 +1,42 @@
+##############################################################
+
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",	# Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGchoicemacros.pl",
+	#"source.pl",	# allows code to be displayed on certain sites.
+	#"PGcourse.pl",	# Customization file for the course.
+	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+#given
+$D = random(0.01,0.5,0.03);
+$Re = random(10000,10000000,10000);
+
+
+BEGIN_PGML
+
+What is  the entrance length for a turbulent flow in a pipe with an inside diameter [`[$D]`] m, when the Reynolds number is [`[$Re]`]?
+
+[`L=`][____] [`m`]
+
+END_PGML
+
+ANS(num_cmp(4.4*$D*($Re)**(1./6.), reltol => 0, ));
+
+##############################################################
+
+ENDDOCUMENT();
