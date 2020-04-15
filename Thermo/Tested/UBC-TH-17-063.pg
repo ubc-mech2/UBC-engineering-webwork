@@ -1,21 +1,40 @@
-# DESCRIPTION
-# Deceleration of Air in a Diffuser
-# WeBWorK problem written by Hashem Jayhooni (Nov. 20th,2017)
-# Email
-# University of British Columbia
-# OPES Project
-# ENDDESCRIPTION
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Deanâ€™s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
 
 ## DBsubject(Thermodynamic)
 ## DBchapter(First Thermodynamic Law)
-## Institution(University of British Columbia)
-## Author(Hashem Jayhooni)
+## DBsection()
+## Institution('University of British Columbia')
+## Author('UBC MECH2')
+## Date()
 ## Level(3)
-## KEYWORDS('?','?','?', '?')
-## RESOURCES('???.png')
+## KEYWORDS()
+## RESOURCES('UBC-TH-17-063.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Beginner
 
-# This work is licensed under a Creative Commons Attribution-NonCommercial-
-# ShareAlike 3.0 Unported License.
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
@@ -28,6 +47,14 @@ loadMacros(
 );
 
 TEXT(beginproblem());
+
+#image scale
+$imgScale = .25;
+
+#image aspect ratio
+$width = $imgScale*1822;
+$height = $imgScale*1077;
+
 
 #
 # Now we do the randomization of variables, and other computations
@@ -50,24 +77,22 @@ $T_outlet = $h_outlet/$Cp;
 
 
 BEGIN_TEXT
-Deceleration of Air in a Diffuser
-$PAR 
-Air at 10°C and $P_inlet kPa enters the diffuser of a jet engine steadily with a
-velocity of $V_inlet m/s. The inlet area of the diffuser is $A_inlet m^2. The air leaves
-the diffuser with a velocity that is very small compared with the inlet velocity.
-Determine (a) Specific volume of the air at diffuser inlet, the mass flow rate of the air, (b) the enthalpy and temperature of
-the air leaving the diffuser(Assumption: Cp = 1.005 and air is ideal gas).
+Air at \(10°C\) and \($P_inlet\) \(kPa\) enters the diffuser of a jet engine steadily with a velocity of \($V_inlet\) \(m/s\). The inlet area of the diffuser is \($A_inlet\) \(m^2\). The air leaves the diffuser with a velocity that is very small compared with the inlet velocity. (Assume \(Cp = 1.005\) and air is ideal gas). $BR Determine: $BR
+$SPACE 1. Specific volume of the air at diffuser inlet $BR
+$SPACE 2. the mass flow rate of the air $BR
+$SPACE 3. the enthalpy of the air leaving the diffuser $BR
+$SPACE 4. the temperature of the air leaving the diffuser $BR
 
 
 $PAR
-\{ image("UBC-TH-17-063.png", width=>345, height=>191, tex_size=>600) \}
+\{ image("UBC-TH-17-063.png", width=>$width, height=>$height) \}
 
 
 $PAR  
-Inlet specific volume = \{ ans_rule(10)\} (m^3/kg) $PAR
-Mass flow rate = \{ ans_rule(10)\} (kg/sec) $PAR
-outlet enthalpy = \{ ans_rule(10)\} (kJ/kg) $PAR
-outlet temperature = \{ ans_rule(10)\} (K) $PAR
+\(v_1=\) \{ ans_rule(10)\} \(m^3/kg\) $PAR
+\(\dot{m}=\) \{ ans_rule(10)\} \(kg/s\) $PAR
+\(h_2=\) \{ ans_rule(10)\} \(kJ/kg\) $PAR
+\(T_2=\) \{ ans_rule(10)\}\(K\) $PAR
 
 
 
@@ -88,6 +113,4 @@ ANS(num_cmp($h_outlet, reltol => 5)); # 5% tolerance
 ANS(num_cmp($T_outlet, reltol => 5)); # 5% tolerance
 
 
-ENDDOCUMENT();        # This should be the last executable line in the problem.
-
-
+ENDDOCUMENT(); 
