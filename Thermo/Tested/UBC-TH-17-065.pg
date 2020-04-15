@@ -1,21 +1,40 @@
-# DESCRIPTION
-# Regenerator
-# WeBWorK problem written by Hashem Jayhooni (Nov. 20th,2017)
-# Email
-# University of British Columbia
-# OPES Project
-# ENDDESCRIPTION
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Deanâ€™s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
 
 ## DBsubject(Thermodynamic)
 ## DBchapter(First Thermodynamic Law)
-## Institution(University of British Columbia)
-## Author(Hashem Jayhooni)
+## DBsection()
+## Institution('University of British Columbia')
+## Author('UBC MECH2')
+## Date()
 ## Level(3)
-## KEYWORDS('?','?','?', '?')
-## RESOURCES('???.png')
+## KEYWORDS()
+## RESOURCES('UBC-TH-17-065.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Beginner
 
-# This work is licensed under a Creative Commons Attribution-NonCommercial-
-# ShareAlike 3.0 Unported License.
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
@@ -28,6 +47,14 @@ loadMacros(
 );
 
 TEXT(beginproblem());
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*3131;
+$height = $imgScale*1311;
+
 
 #
 # Now we do the randomization of variables, and other computations
@@ -54,29 +81,29 @@ $AnnualMoney_saved = $AnnualFuel_saved*$Gas_cost;
 
 
 BEGIN_TEXT
-Regenerator
-$PAR 
-In a dairy plant, milk at 4°C is pasteurized continuously
-at 72°C at a rate of $Volume_flow L/s for 24 h a day and 365 days
+In a dairy plant, milk at \(4°C\) is pasteurized continuously
+at \(72°C\) at a rate of \($Volume_flow\) \(L/s\) for \(24 h\) a day and \(365\) days
 a year. The milk is heated to the pasteurizing temperature by
 hot water heated in a natural-gas-fired boiler that has an efficiency
-of $Eff_boiler percent. The pasteurized milk is then cooled by
-cold water at 18°C before it is finally refrigerated back to
-4°C. To save energy and money, the plant installs a regenerator
-that has an effectiveness of $Eff_regenerator percent. If the cost of natural
-gas is $Gas_cost dollar/therm (1 therm = 105,500 kJ), determine a) how much heat should transfer to the milk, how much heat will be saved in the current regenerator,
-b) how much energy and money will be saved because of saving fuel feeding the boiler for this
-company per year(approximation: density of milk is 1 kg/L and its Cp is 3.79 kJ/kg.°C).
+of \($Eff_boiler\) percent. The pasteurized milk is then cooled by
+cold water at \(18°C\) before it is finally refrigerated back to
+\(4°C\). To save energy and money, the plant installs a regenerator
+that has an effectiveness of \($Eff_regenerator %\). If the cost of natural
+gas is \($Gas_cost\) dollar/therm (1 therm = \(105,500 kJ\)), determine: $BR
+$SPACE 1. how much heat should transfer to the milk $BR
+$SPACE 2. how much heat will be saved in the current regenerator$BR
+$SPACE 3. how much energy and money the company saves per year $BR $PAR
+
+$BITALIC (assume \(\rho_{milk}=1\) \(kg/L\) and C_{p_{milk} is \(3.79 kJ/kg\cdot °C\)) $EITALIC
 $PAR
-\{ image("UBC-TH-17-065.png", width=>788, height=>505, tex_size=>600) \}
+\{ image("UBC-TH-17-065.png", width=>$width, height=>$height) \}
 
 
 $PAR  
-heat transfer to the milk = \{ ans_rule(10)\} (kJ/s) $PAR
-heat saved in the regenerator = \{ ans_rule(10)\} (kJ/s) $PAR
-Energy saved due to saving fuel feeding the boiler per second = \{ ans_rule(10)\} (therm/s) $PAR
-Energy saved due to saving fuel feeding the boiler per year = \{ ans_rule(10)\} (therm/year) $PAR
-Money saved due to saving fuel feeding the boiler per year = \{ ans_rule(10)\} (dollar/year) $PAR
+\(\dot{Q_{milk}}=\) \{ ans_rule(10)\} \(kJ/s\) $PAR
+Heat saved in the regenerator = \{ ans_rule(10)\} \(kJ/s\) $PAR
+Energy saved due to saving fuel feeding the boiler per year = \{ ans_rule(10)\} \(therm/yr\) $PAR
+Money saved due to saving fuel feeding the boiler per year = \{ ans_rule(10)\} $\(/yr\) $PAR
 
 
 
@@ -93,11 +120,9 @@ END_TEXT
 
 ANS(num_cmp($Heat_input, reltol => 5)); # 5% tolerance
 ANS(num_cmp($Heat_saved, reltol => 5)); # 5% tolerance
-ANS(num_cmp($Fuel_saved, reltol => 5)); # 5% tolerance
+#ANS(num_cmp($Fuel_saved, reltol => 5)); # 5% tolerance
 ANS(num_cmp($AnnualFuel_saved, reltol => 5)); # 5% tolerance
 ANS(num_cmp($AnnualMoney_saved, reltol => 5)); # 5% tolerance
 
 
 ENDDOCUMENT();        # This should be the last executable line in the problem.
-
-
