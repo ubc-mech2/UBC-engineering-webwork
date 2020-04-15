@@ -1,0 +1,41 @@
+##############################################################
+
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",	# Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGchoicemacros.pl",
+	#"source.pl",	# allows code to be displayed on certain sites.
+	#"PGcourse.pl",	# Customization file for the course.
+	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+$mc = RadioButtons(
+	["Acceleration in the y direction due to movement in the z direction", "y momentum transport in and out through CV surfaces facing in the z direction", "z momentum transport due to motion in the y direction", "viscous stress term in the z momentum equation"],
+	"y momentum transport in and out through CV surfaces facing in the z direction"
+);
+
+BEGIN_PGML
+
+This term appears in one of the Navier Stokes or continuity equations. Pick the best description of where this term fits: [`w {\partial v\over \partial z}`]  
+[@ $mc->buttons() @]*
+
+END_PGML
+
+ANS($mc->cmp());
+
+##############################################################
+
+ENDDOCUMENT();

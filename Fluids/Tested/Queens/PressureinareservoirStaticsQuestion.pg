@@ -1,0 +1,44 @@
+##############################################################
+
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",	# Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGchoicemacros.pl",
+	#"source.pl",	# allows code to be displayed on certain sites.
+	#"PGcourse.pl",	# Customization file for the course.
+	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+$mc = RadioButtons(
+	["\(P_1 = P_2\)", "\(P_2 = 3 P_1\)", "\(P_2 = \frac{1}{3} P_1\)", "\(P_2 = \frac{1}{2} P_1\)"],
+	"\(P_1 = P_2\)"
+);
+
+BEGIN_PGML
+
+How are [`P_1`] and [`P_2`] at the bottom of the two reservoirs related?
+
+[@ image('PressureinareservoirStaticsQuestion.jpg', width=>238, height=>145) @]*  
+
+[@ $mc->buttons() @]*
+
+END_PGML
+
+ANS($mc->cmp());
+
+##############################################################
+
+ENDDOCUMENT();

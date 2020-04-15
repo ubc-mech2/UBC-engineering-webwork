@@ -1,0 +1,41 @@
+##############################################################
+
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",	# Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGchoicemacros.pl",
+	#"source.pl",	# allows code to be displayed on certain sites.
+	#"PGcourse.pl",	# Customization file for the course.
+	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+$mc = RadioButtons(
+	["temporal acceleration term in the x momentum equation", "spatial acceleration term in the x momentum equation", "unsteady term in the continuity equation", "viscous stress term in the x momentum equation"],
+	"temporal acceleration term in the x momentum equation"
+);
+
+BEGIN_PGML
+
+This term appears in one of the Navier Stokes or continuity equations. Pick the best description of where this term fits: [`\partial u\over \partial t`]  
+[@ $mc->buttons() @]*
+
+END_PGML
+
+ANS($mc->cmp());
+
+##############################################################
+
+ENDDOCUMENT();

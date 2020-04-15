@@ -1,0 +1,45 @@
+##############################################################
+
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",	# Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGchoicemacros.pl",
+	#"source.pl",	# allows code to be displayed on certain sites.
+	#"PGcourse.pl",	# Customization file for the course.
+	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+$mc = RadioButtons(
+	["at \(x = A\), \(B\), or \(C\)", "at \(x = A\) only", "at \(x = B\) only", "at \(x = A\) or \(B\)", "at \(x = A\) or \(C\)", "at \(x = B\) or \(C\)"],
+	"at \(x = A\) or \(C\)"
+);
+
+BEGIN_PGML
+
+Water flows along a surface as indicated in the diagram below. The flow is entirely laminar.
+
+[@ image('LaminarFlowWhereCanweApplyFluidStatics.png', width=>692, height=>216) @]*
+
+At which cross-sections of the flow is pressure linearly dependent on y only, following the relations we have for fluid statics?  
+[@ $mc->buttons() @]*
+
+END_PGML
+
+ANS($mc->cmp());
+
+##############################################################
+
+ENDDOCUMENT();

@@ -1,0 +1,41 @@
+##############################################################
+
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",	# Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGchoicemacros.pl",
+	#"source.pl",	# allows code to be displayed on certain sites.
+	#"PGcourse.pl",	# Customization file for the course.
+	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+$mc = RadioButtons(
+	["The flow is likely laminar because the inertial forces are 'dominant'", "The flow is likely laminar because the viscous forces are 'dominant'", "The flow is likely transitional because the viscous and inertial forces are 'balanced'", "The flow is likely turbulent because the viscous forces are 'dominant'", "The flow is likely turbulent because the inertial are 'dominant'"],
+	"The flow is likely laminar because the viscous forces are 'dominant'"
+);
+
+BEGIN_PGML
+
+If a Reynolds number for flow around an immersed body is [`<1`] (very low), what is the most likely qualitative behavior of the flow, and why?  
+[@ $mc->buttons() @]*
+
+END_PGML
+
+ANS($mc->cmp());
+
+##############################################################
+
+ENDDOCUMENT();
