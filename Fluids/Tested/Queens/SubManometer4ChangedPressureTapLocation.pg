@@ -1,0 +1,47 @@
+##############################################################
+
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",	# Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGchoicemacros.pl",
+	#"source.pl",	# allows code to be displayed on certain sites.
+	#"PGcourse.pl",	# Customization file for the course.
+	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+$mc = RadioButtons(
+	["No Change", "h would increase", "h would decrease", "We can't tell from the information available"],
+	"No Change"
+);
+
+BEGIN_PGML
+
+The submersible shown in the diagram is horizontal at a depth of 15 metres below the surface in Lake Ontario. A tube is filled with lake water and open to the exterior through a port in the centre of the front of the submersible and open to the exterior through a port in the side of the hull, with a manometer connected in between as shown.
+
+[@ image('SubManometer4ChangedPressureTapLocation.png', width=>562, height=>211) @]*
+
+How would h change if the sub was travelling at the same speed, but with the static pressure tap (the one closest to the propeller) located on top of the sub, instead of on the side?
+
+   
+[@ $mc->buttons() @]*
+
+END_PGML
+
+ANS($mc->cmp());
+
+##############################################################
+
+ENDDOCUMENT();

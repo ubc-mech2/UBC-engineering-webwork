@@ -1,0 +1,53 @@
+##############################################################
+
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",	# Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGchoicemacros.pl",
+	#"source.pl",	# allows code to be displayed on certain sites.
+	#"PGcourse.pl",	# Customization file for the course.
+	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+$mc = new_checkbox_multiple_choice();
+$mc->qa(
+	"A number of assumptions about the state of the fluid must be made before the equation can be applied in this form. Select all assumptions that are required to apply the equation to a control volume problem.",
+	"The control volume is fixed", 
+	"The control volume is non-deforming"
+);
+$mc->extra(
+	"The system is at steady-state", 
+	"The fluid is inviscid", 
+	"Flow is laminar", 
+	"Flow is incompressible"
+);
+
+BEGIN_PGML
+
+The equation below is one of the standard forms of the continuity equation, from Munson and Okiishi:
+
+[`\partial/\partial t \int_{CV} \rho dV\llap{-} + \int_{CS} \rho \vec{V}\cdot \hat{n} dA = 0`]
+
+[@ $mc->print_q() @]*
+[@ $mc->print_a() @]*
+
+END_PGML
+
+ANS(checkbox_cmp($mc->correct_ans()));
+
+##############################################################
+
+ENDDOCUMENT();

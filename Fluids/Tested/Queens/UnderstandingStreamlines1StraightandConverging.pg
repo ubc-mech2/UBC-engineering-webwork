@@ -1,0 +1,47 @@
+##############################################################
+
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",	# Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGchoicemacros.pl",
+	#"source.pl",	# allows code to be displayed on certain sites.
+	#"PGcourse.pl",	# Customization file for the course.
+	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+$mc = RadioButtons(
+	["Its direction of travel changes, and magnitude of velocity increases.", "Its direction of travel is constant, and magnitiude of velocity increases.", "Its direction of travel is constant, and magnitiude of velocity decreases.", "Its direction of travel changes, and magnitiude of velocity is constant."],
+	"Its direction of travel is constant, and magnitiude of velocity increases."
+);
+
+BEGIN_PGML
+
+
+
+Consider the streamlines of a fluid depicted below.
+
+[@ image('UnderstandingStreamlines1StraightandConverging.png', width=>278, height=>143) @]*
+
+As a fluid particle travels from point [`A`] to point [`B`],  
+[@ $mc->buttons() @]*
+
+END_PGML
+
+ANS($mc->cmp());
+
+##############################################################
+
+ENDDOCUMENT();

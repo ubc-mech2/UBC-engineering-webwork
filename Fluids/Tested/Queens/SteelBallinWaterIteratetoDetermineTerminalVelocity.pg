@@ -1,0 +1,49 @@
+##############################################################
+
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",	# Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGchoicemacros.pl",
+	#"source.pl",	# allows code to be displayed on certain sites.
+	#"PGcourse.pl",	# Customization file for the course.
+	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+#given
+$d = random(7,15,1);
+
+
+BEGIN_PGML
+
+A smooth steel ball ([`\rho_{s} = 7850`] [`kg/m^{3}`]) of diameter [`d = 10`] [`mm`] is dropped into a container filled with water ([`\mu`][`_{^{g}}=1.12\cdot 10^{-3}`] [`Ns/m^{2}`]).
+
+
+
+[@ image('SteelBallinWaterIteratetoDetermineTerminalVelocity1.png', width=>319, height=>372) @]*
+
+Using the diagram below, determine the *terminal velocity*, [`V_{t}`], of the steel ball in the water.
+
+[@ image('SteelBallinWaterIteratetoDetermineTerminalVelocity2.png', width=>542, height=>363) @]* 
+
+[`V_{t}=`][____] [`m/s`]
+
+END_PGML
+
+ANS(num_cmp(sqrt(4/3*($d/1000*7850*9.81)/(0.5*998)), reltol => 5, ));
+
+##############################################################
+
+ENDDOCUMENT();

@@ -1,0 +1,45 @@
+##############################################################
+
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",	# Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGchoicemacros.pl",
+	#"source.pl",	# allows code to be displayed on certain sites.
+	#"PGcourse.pl",	# Customization file for the course.
+	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+$mc = RadioButtons(
+	["Past point \(A\).", "Past point \(B\).", "All the way to point \(C\).", "The pipette does not need to be used. The water will flow spontaneously."],
+	"Past point \(B\)."
+);
+
+BEGIN_PGML
+
+A siphoning tube is used to empty water from a cup. To initiate the flow in the siphon a pipette is used to draw water through the tube of constant internal diameter. The surrounding environment is held at atmospheric pressure.
+
+[@ image('SiphonHowFarMustthePipetteMovetheWater.png', width=>260, height=>374) @]*
+
+Refer to the labelled locations on the diagram. How far must water be drawn through the siphoning tube by the pipette before it will continue to flow, unassisted?  
+[@ $mc->buttons() @]*
+
+END_PGML
+
+ANS($mc->cmp());
+
+##############################################################
+
+ENDDOCUMENT();

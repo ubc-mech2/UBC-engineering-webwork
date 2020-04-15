@@ -1,0 +1,45 @@
+##############################################################
+
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",	# Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGchoicemacros.pl",
+	#"source.pl",	# allows code to be displayed on certain sites.
+	#"PGcourse.pl",	# Customization file for the course.
+	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+#given
+$h = random(2,5,1);
+
+
+BEGIN_PGML
+
+Two friends, John and Paul, are designing a yellow submarine for all their friends to live in. During regular operation the center of each window of the submarine will sit [`h = [$h]`] [`m`] below the surface of the water.
+
+[@ image('YellowSubmarineDeterminePressureattheCenteroftheWindow.png', width=>1026, height=>529) @]*
+
+Determine the gauge pressure that will be applied to the center of each window.
+
+[`P=`][____] [`kPa`]
+
+END_PGML
+
+ANS(num_cmp(998*9.81*$h/1000, reltol => 3, ));
+
+##############################################################
+
+ENDDOCUMENT();

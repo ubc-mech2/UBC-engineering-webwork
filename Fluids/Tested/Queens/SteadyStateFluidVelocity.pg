@@ -1,0 +1,42 @@
+##############################################################
+
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",	# Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGchoicemacros.pl",
+	#"source.pl",	# allows code to be displayed on certain sites.
+	#"PGcourse.pl",	# Customization file for the course.
+	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+$mc = RadioButtons(
+	["True","False"],
+	"False"
+);
+
+BEGIN_PGML
+
+A fluid at steady-state must have zero velocity at all points in its flow velocity field.
+
+[@ $mc->buttons() @]*
+
+END_PGML
+
+ANS($mc->cmp());
+
+##############################################################
+
+ENDDOCUMENT();
