@@ -1,0 +1,42 @@
+##############################################################
+
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",	# Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGchoicemacros.pl",
+	#"source.pl",	# allows code to be displayed on certain sites.
+	#"PGcourse.pl",	# Customization file for the course.
+	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+#given
+$D = random(13.5,13.5,1);
+$e = random(0.0015,0.0015,1);
+
+
+BEGIN_PGML
+
+What is the relative roughness for a [`3/4`] inch OD, [`12`] BWG, drawn copper tube? Note: You will have to look up the dimensions of a [`3/4`] inch OD [`12`] BWG tube and the roughness height for drawn copper tube.
+
+[____]
+
+END_PGML
+
+ANS(num_cmp($e/$D, reltol => 100, ));
+
+##############################################################
+
+ENDDOCUMENT();

@@ -1,0 +1,51 @@
+##############################################################
+
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",	# Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGchoicemacros.pl",
+	#"source.pl",	# allows code to be displayed on certain sites.
+	#"PGcourse.pl",	# Customization file for the course.
+	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+$mc = RadioButtons(
+	["The diameter of the pipe is \(2D\), and the pressure has decreased.", "The diameter of the pipe is \(2D\), and the pressure has increased.", "The diameter of the pipe is \(4D\), and the pressure has increased.", "The diameter of the pipe is \(4D\), and the pressure has decreased.", "The diameter of the pipe is \(D/2\), and the pressure has increased."],
+	"The diameter of the pipe is \(2D\), and the pressure has increased."
+);
+
+BEGIN_PGML
+
+Air travels through a long, straight duct of diameter D with an average velocity of [`20`] [`m/s`]. The flow exits the diffuser with a velocity of [`5`] [`m/s`].
+
+[@ image('ConfinedFlowDuctDiameterAfteraDiffuser.png', width=>577, height=>303) @]*
+
+
+
+
+
+After the exit of the diffuser,
+
+Discuss: For confined flow, what is the relationship between change is diameter and change in average velocity?  
+[@ $mc->buttons() @]*
+
+END_PGML
+
+ANS($mc->cmp());
+
+##############################################################
+
+ENDDOCUMENT();

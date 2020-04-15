@@ -1,0 +1,42 @@
+##############################################################
+
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",	# Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGchoicemacros.pl",
+	#"source.pl",	# allows code to be displayed on certain sites.
+	#"PGcourse.pl",	# Customization file for the course.
+	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+#given
+$mu = random(1**(-4),1**(-2),1**(-4));
+$ro = random(6**(2),1.2**(3),1**(2));
+
+
+BEGIN_PGML
+
+A given fluid has a dynamic viscosity of [`[$mu]`] [`Ns/m^{2}`] and a density of [`[$ro]`] [`kg/m^{3}`]. Determine the kinematic viscosity.
+
+[`\nu=`][____] [`m^{2}/s`]
+
+END_PGML
+
+ANS(num_cmp($mu/$ro, reltol => 3, ));
+
+##############################################################
+
+ENDDOCUMENT();

@@ -1,0 +1,46 @@
+##############################################################
+
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",	# Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGchoicemacros.pl",
+	#"source.pl",	# allows code to be displayed on certain sites.
+	#"PGcourse.pl",	# Customization file for the course.
+	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+$mc = RadioButtons(
+	["True","False"],
+	"False"
+);
+
+BEGIN_PGML
+
+The depicted velocity field represents a 2D incompressible flow field.
+
+[@ image('ConservationofMass.jpg', width=>560, height=>420) @]*
+
+[@ $mc->buttons() @]*
+
+_Hint:This about conservation of mass. Can the flow through the boundaries sum to zero?_
+
+END_PGML
+
+ANS($mc->cmp());
+
+##############################################################
+
+ENDDOCUMENT();

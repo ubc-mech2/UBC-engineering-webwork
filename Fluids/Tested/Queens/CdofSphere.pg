@@ -1,0 +1,42 @@
+##############################################################
+
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",	# Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGchoicemacros.pl",
+	#"source.pl",	# allows code to be displayed on certain sites.
+	#"PGcourse.pl",	# Customization file for the course.
+	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+#given
+$v = random(1,10,1);
+$d = random(10,60,1);
+
+
+BEGIN_PGML
+
+What is the expected drag coefficient for a smooth [`[$d]`] [`cm`] diameter sphere in atmospheric air at [`[$v]`] [`m/s`]?
+
+[`C_d=`][____]
+
+END_PGML
+
+ANS(num_cmp(0.48, reltol => 30, ));
+
+##############################################################
+
+ENDDOCUMENT();

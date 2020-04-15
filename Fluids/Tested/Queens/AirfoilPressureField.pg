@@ -1,0 +1,43 @@
+##############################################################
+
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",	# Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGchoicemacros.pl",
+	#"source.pl",	# allows code to be displayed on certain sites.
+	#"PGcourse.pl",	# Customization file for the course.
+	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+$mc = RadioButtons(
+	["\(P_A > P_C > P_B\)", "\(P_A > P_B > P_C\)", "\(P_C = P_B\)", "\(P_C > P_A > P_B\)"],
+	"\(P_A > P_C > P_B\)"
+);
+
+BEGIN_PGML
+
+Assuming the Bernoulli equation is valid along streamlines containing the points [`A`],[`B`], [`C`] and that  the velocity is constant along the left edge of the image. Choose the correct statement.  
+
+[@ image('AirfoilPressureField.jpg', width=>703, height=>411) @]*  
+[@ $mc->buttons() @]*
+
+END_PGML
+
+ANS($mc->cmp());
+
+##############################################################
+
+ENDDOCUMENT();
