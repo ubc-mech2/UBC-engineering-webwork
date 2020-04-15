@@ -1,22 +1,40 @@
-# DESCRIPTION
-# Energy transport by mass
-# Thermodynamic
-# WeBWorK problem written by Hashem Jayhooni
-# Email
-# University of British Columbia
-# OPES Project
-# ENDDESCRIPTION
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
 
 ## DBsubject(Thermodynamic)
 ## DBchapter(Energy_Transport)
-## Institution(University of British Columbia)
-## Author(Hashem Jayhooni)
+## DBsection()
+## Institution('University of British Columbia')
+## Author('UBC MECH2')
+## Date()
 ## Level(3)
-## KEYWORDS('?','?','?', '?')
-## RESOURCES('Thermodynamic Practice Question 1.png')
+## KEYWORDS()
+## RESOURCES('UBC-TH-17-061.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Beginner
 
-# This work is licensed under a Creative Commons Attribution-NonCommercial-
-# ShareAlike 3.0 Unported License.
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
@@ -29,6 +47,14 @@ loadMacros(
 );
 
 TEXT(beginproblem());
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*1536;
+$height = $imgScale*1400;
+
 
 #
 # Now we do the randomization of variables, and other computations
@@ -55,25 +81,29 @@ $E_rate = $Mass_rate*$E_total;
 BEGIN_TEXT
 Energy transport by mass
 $PAR 
-Steam is leaving a $Volume L pressure cooker whose operating pressure is 150 kPa.
+Steam is leaving a \($Volume\) \(L\) pressure cooker whose operating pressure is \(150\) \(kPa\).
 It is observed that the amount of liquid in the cooker has
-decreased by $del_vol L in $time min after the steady operating conditions are
-established, and the cross-sectional area of the exit opening is $Aera mm^2.
-Determine (a) the mass of steam has leaved the pressure cooker in the period of time, the mass flow rate of the steam and the exit velocity, (b) the
-total and flow energies of the steam per unit mass, and (c) the rate at which energy leaves the cooker by steam.
-
+decreased by \($del_vol\) \(L\) in \($time\) \(min\) after the steady operating conditions are
+established, and the cross-sectional area of the exit opening is \($Aera\) \(mm^2\).
+Determine: $BR
+$SPACE 1. the mass of steam that left the pressure cooker in that period of time $BR
+$SPACE 2. the mass flow rate of the steam $BR
+$SPACE 3. the exit velocity of the steam $BR
+$SPACE 4. flow energy of the steam per unit mass $BR
+$SPACE 5. the total energy of the steam per unit mass $BR
+$SPACE 6. the rate at which energy leaves the cooker in the form of steam $BR
 
 $PAR
-\{ image("UBC-TH-17-061.png", width=>382, height=>440, tex_size=>600) \}
+\{ image("UBC-TH-17-061.png", width=>$width, height=>$height) \}
 
 
 $PAR  
-Mass = \{ ans_rule(10)\} (kg) $PAR
-Mass flow rate = \{ ans_rule(10)\} (kg/sec) $PAR
-Velocity = \{ ans_rule(10)\} (m/sec) $PAR
-Steam flow energy = \{ ans_rule(10)\} (kJ/kg) $PAR
-Steam total energy = \{ ans_rule(10)\} (kJ/kg) $PAR
-The energy rate leaving the pressure cooker = \{ ans_rule(10)\} (kJ/sec) $PAR
+\(m=\) \{ ans_rule(10)\} \(kg\) $PAR
+\(\dot{m}=\) \{ ans_rule(10)\} \(kg/s\) $PAR
+\(v=\) \{ ans_rule(10)\} \(m/s\) $PAR
+Steam flow energy = \{ ans_rule(10)\} \(kJ/kg\) $PAR
+Steam total energy = \{ ans_rule(10)\} \(kJ/kg\) $PAR
+The energy rate leaving the pressure cooker = \{ ans_rule(10)\} \(kJ/s\) $PAR
 
 
 #$BITALIC Pay attention to the unit of each parameter $EITALIC
@@ -94,6 +124,4 @@ ANS(num_cmp($E_flow, reltol => 5)); # 5% tolerance
 ANS(num_cmp($E_total, reltol => 5)); # 5% tolerance
 ANS(num_cmp($E_rate, reltol => 5)); # 5% tolerance
 
-ENDDOCUMENT();        # This should be the last executable line in the problem.
-
-
+ENDDOCUMENT();
