@@ -1,21 +1,40 @@
-# DESCRIPTION
-# Entropy generation
-# WeBWorK problem written by Hashem Jayhooni 
-# Email
-# University of British Columbia
-# OPES Project
-# ENDDESCRIPTION
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Deanâ€™s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
 
 ## DBsubject(Thermodynamic)
 ## DBchapter(Entropy)
-## Institution(University of British Columbia)
-## Author(Hashem Jayhooni)
+## DBsection()
+## Institution('University of British Columbia')
+## Author('UBC MECH2')
+## Date()
 ## Level(3)
-## KEYWORDS('?','?','?', '?')
+## KEYWORDS()
 ## RESOURCES('UBC-TH-17-062.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Beginner
 
-# This work is licensed under a Creative Commons Attribution-NonCommercial-
-# ShareAlike 3.0 Unported License.
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
@@ -28,6 +47,14 @@ loadMacros(
 );
 
 TEXT(beginproblem());
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*1973;
+$height = $imgScale*1450;
+
 
 #
 # Now we do the randomization of variables, and other computations
@@ -52,23 +79,23 @@ $S_gen = $delS_air+$delS_sur;
 
 
 BEGIN_TEXT
-Entropy generation
-$PAR 
-A constant-volume tank contains $mass kg of air at $P
-kPa and $Tt °C. The air is cooled to the surroundings temperature
-of $Ta °C. Assume constant specific heats at 300 K (Cv = 0.718 kJ/Kg.K).
-(a) Determine the entropy change of the air in the tank during
-the process, in kJ/K and heat transfer to the surroundings in kJ, (b) determine entropy change of the surroundings as well as the net entropy change
-of the universe due to this process, in kJ/K.
+A constant-volume tank contains \($mass\) \(kg\) of air at \($P\)
+\(kPa\) and \($Tt\)\(°C\). The air is cooled to the surroundings temperature
+of \($Ta°C\). Assume constant specific heats at \(300K\) (\(C_v=0.718\) \(kJ/Kg\cdot K\)). Determine: $BR
+$SPACE 1. the entropy change of the air in the tank during
+the process $BR
+$SPACE 2. heat transfer to the surroundings  $BR
+$SPACE 3. entropy change of the surroundings  $BR
+$SPACE 4. entropy change of the universe $BR
 $PAR
-\{ image("UBC-TH-17-062.png", width=>294, height=>238, tex_size=>600) \}
+\{ image("UBC-TH-17-062.png", width=>$width, height=>$height) \}
 
 
 $PAR  
-entropy change of the air in the tank = \{ ans_rule(10)\} (kJ/kg.K) $PAR
-heat transfer to the surroundings = \{ ans_rule(10)\} (kJ) $PAR
-entropy change of the surroundings = \{ ans_rule(10)\} (kJ/kg.K) $PAR
-net entropy change of the universe = \{ ans_rule(10)\} (kJ/kg.K) $PAR
+\(\Delta S_{tank}=\) \{ ans_rule(10)\} \(kJ/kg\cdot K\) $PAR
+\(Q=\) \{ ans_rule(10)\} \(kJ\) $PAR
+\(\Delta S_{surr}=\) \{ ans_rule(10)\}  \(kJ/kg\cdot K\) $PAR
+\(\Delta S_{univ}=\) \{ ans_rule(10)\}  \(kJ/kg\cdot K\)$PAR
 
 
 
@@ -89,6 +116,4 @@ ANS(num_cmp($delS_sur, reltol => 5)); # 5% tolerance
 ANS(num_cmp($S_gen, reltol => 5)); # 5% tolerance
 
 
-ENDDOCUMENT();        # This should be the last executable line in the problem.
-
-
+ENDDOCUMENT(); 
