@@ -1,21 +1,40 @@
-# DESCRIPTION
-# Condesation
-# WeBWorK problem written by Hashem Jayhooni
-# Email
-# University of British Columbia
-# OPES Project
-# ENDDESCRIPTION
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Deanâ€™s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
 
 ## DBsubject(Thermodynamic)
 ## DBchapter(First Thermodynamic Law)
-## Institution(University of British Columbia)
-## Author(Hashem Jayhooni)
+## DBsection()
+## Institution('University of British Columbia')
+## Author('UBC MECH2')
+## Date()
 ## Level(3)
-## KEYWORDS('?','?','?', '?')
-## RESOURCES('???.png')
+## KEYWORDS()
+## RESOURCES('UBC-TH-17-066.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Beginner
 
-# This work is licensed under a Creative Commons Attribution-NonCommercial-
-# ShareAlike 3.0 Unported License.
 
 DOCUMENT();        # This should be the first executable line in the problem.
 
@@ -28,6 +47,14 @@ loadMacros(
 );
 
 TEXT(beginproblem());
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*2503;
+$height = $imgScale*973;
+
 
 #
 # Now we do the randomization of variables, and other computations
@@ -52,24 +79,27 @@ $Heat_input = $Mass_waterflow*$Cp*($To_w-$Ti_w);
 $Mass_steamflow = $Heat_input/$hfg;
 
 
-BEGIN_TEXT
-Condesation
-$PAR 
-Steam at 40°C condenses on the outside of a $L m long,
-$D cm diameter thin horizontal copper tube by cooling
-water that enters the tube at $Ti_w °C at an average velocity of $Velocity
-m/s and leaves at $To_w °C. Determine the water mass flow rate, heat transfer to the water along the tube, 
-enthalpy changed for condensed steam and finally rate of condensation
-of steam (density of water is 0.997 kg/L and its Cp is 4.18 kJ/kg.°C).
+BEGIN_TEXT 
+Steam at \(40°C\) condenses on the outside of a \($L\) \(m\) long,
+\($D\) \(cm \) diameter thin horizontal copper tube by cooling
+water that enters the tube at \($Ti_w°C\) at an average velocity of \($Velocity\)
+\(m/s\) and leaves at \($To_w°C\). Determine:$BR
+
+$SPACE 1. the mass flow rate of water$BR
+$SPACE 2. heat transfer to the water along the tube$BR
+$SPACE 3. enthalpy change for condensed steam $BR
+$SPACE 4. rate of condensation of steam $BR
+
+$PAR $BITALIC (assume \(\rho_{water}=0.997\) \(kg/L\) and \(C_{p_{water}}=4.18\) \(kJ/kg\cdot °C\)). $EITALIC
 $PAR
-\{ image("UBC-TH-17-066.png", width=>535, height=>236, tex_size=>600) \}
+\{ image("UBC-TH-17-066.png", width=>$width, height=>$height) \}
 
 
 $PAR  
-water mass flow rate = \{ ans_rule(10)\} (kg/s) $PAR
-heat transfer to the water = \{ ans_rule(10)\} (kJ/s) $PAR
-enthalpy changed for condensed steam = \{ ans_rule(10)\} (kJ/kg) $PAR
-rate of condensation of steam = \{ ans_rule(10)\} (kg/s) $PAR
+\(\dot{m_{water}}=\) \{ ans_rule(10)\} \(kg/s\) $PAR
+\(Q=\) \{ ans_rule(10)\} \(kJ/s\) $PAR
+\(\Delta h=\)\{ ans_rule(10)\} \(kJ/kg\) $PAR
+rate of condensation of steam = \{ ans_rule(10)\} \(kg/s\) $PAR
 
 
 
@@ -93,5 +123,3 @@ ANS(num_cmp($Mass_steamflow, reltol => 5)); # 5% tolerance
 
 
 ENDDOCUMENT();        # This should be the last executable line in the problem.
-
-
