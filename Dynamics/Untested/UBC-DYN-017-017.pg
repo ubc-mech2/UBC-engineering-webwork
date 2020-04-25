@@ -1,0 +1,87 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+##missing header
+
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$theta = 30;#random(20,40,1);
+$thetaR = $theta*pi/180;
+
+#image scale
+$imgScale = 1;
+
+#image aspect ratio
+$width = $imgScale*499;
+$height = $imgScale*418;
+
+#computation
+$iG = 5/12;
+$n = 5*9.81*cos($thetaR);
+$aGt = (20-.3*$n)/5;
+$alpha = 5*$aGt*cos($thetaR)/(2*$iG);
+$aGAt = -$alpha/2;
+$a = $aGt - $aGAt;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+	[@ image( "UBC-DYN-17-017.png", width=>[$width], height=>[$height]) @]*
+
+	A slider block with negligible mass is connected to a uniform rod with a mass of [`5`] [`kg`]. If [`20`] [`N`] of force is applied to the block in the direction of the guide, calculate the acceleration of the slider when it starts to move from rest. Assume the coefficient of kinetic friction between the slider block and the guide is [`0.3`] and the guide is oriented [`\theta=[$theta]^{\circ}`] above the horizontal.
+
+	[`a=`] [______]{"$a"} [`m/s^2`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
