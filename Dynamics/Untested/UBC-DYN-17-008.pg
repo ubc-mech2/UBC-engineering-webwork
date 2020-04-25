@@ -1,0 +1,92 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+##missing header
+
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$v0 = random(10,15,.1);
+$alpha = random(25,35,1);
+$alphaR = $alpha*pi/180;
+$t = 0;
+$a = .1;
+
+#image scale
+$imgScale = .5;
+
+#image aspect ratio
+$width = $imgScale*1883;
+$height = $imgScale*1050;
+
+#computation
+$vX0 = $v0*cos($alphaR);
+$vY0 = $v0*sin($alphaR);
+$vX = 1/(1/$vX0 - $a*$t/(cos($alphaR)));
+$b = ($vY0 - sqrt(9.81*sin($alphaR)/$a))/($vY0 + sqrt(9.81*sin($alphaR)/$a));
+$c = sqrt(9.81*sin($alphaR)/$a);
+$d = 2*sqrt($a/sin($alphaR))*$t;
+$vY = ($c + $c*$b*(e**$d))/(1-$b*(e**$d));
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+	[@ image( "UBC-DYN-17-008.png", width=>[$width], height=>[$height]) @]*
+
+	An object is ejected from a stationary ship at [`[$v0]`] [`m/s`] at an angle of [`\alpha=[$alpha]^{\circ}`] below the horizontal. Because of the water's viscosity, a drag acceleration of [`-Av^2`] is applied to the object. Constant [`A=0.1`] [`m^2`] is the frontal surface area of the object, and [`v`] is its velocity. Find both components of the object's velocity [`[$t]`] seconds after its been ejected. Hint: [`\int\frac{dx}{(x+a)(x+b)}=\frac{1}{b-a}ln\frac{x+a}{x+b}`]
+
+	[`V_x=`] [______]{"$vX"} [`m/s`]  
+	[`V_y=`] [______]{"$vY"} [`m/s`]   
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
