@@ -1,0 +1,84 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+##missing header
+
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$vB = random(1,3,.1);
+$alpha = random(20,30,1);
+$alphaR = $alpha*pi/180;
+
+#image scale
+$imgScale = 1;
+
+#image aspect ratio
+$width = $imgScale*620;
+$height = $imgScale*362;
+
+#computation
+$omegaAC = $vB/(.15*sin($alphaR));
+$vC = $omegaAC*sqrt(((.35*sin($alphaR))**2) + ((.2*cos($alphaR))**2));
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+	[@ image( "UBC-DYN-17-010.png", width=>[$width], height=>[$height]) @]*
+
+	The horizontal control rod has a velocity of [`V_B = [$vB]`] [`m/s`]. Determine the absolute velocity of point [`C`] the instant [`\alpha=[$alpha]^{\circ}`].
+
+	[`V_C=`] [______]{"$vC"} [`m/s`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
