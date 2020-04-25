@@ -19,21 +19,22 @@
 ##
 ##ENDDESCRIPTION
 
-##DESCRIPTION
-## 221 Prelab 3 Kayaking (Group A&B)
-##ENDDESCRIPTION
-
-##KEYWORDS('multiple choice', 'kayaker', 'direction', 'force')
-
-## DBsubject('MECH 221')
-## DBchapter('Prelab Quizzes')
-## DBsection('Prelab 3 Kayaking (Group A&B)')
-## Date('7/5/2017')
+## DBsubject(Statics)
+## DBchapter(Particles)
+## DBsection(Free-body diagrams)
 ## Institution('University of British Columbia')
-## Question Set 1 - 3
-## Problem1
+## Author('UBC MECH2')
+## Date(7/5/2017)
+## Level(3)
+## KEYWORDS('multiple choice', 'kayaker', 'direction', 'force', '221PL3')
+## RESOURCES('UBC-DYN-17-087.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Beginner
 
-#######################################################################
 
 DOCUMENT();      
 
@@ -44,6 +45,15 @@ loadMacros(
   "contextFraction.pl",
   "PGcourse.pl"
 );
+
+TEXT(beginproblem());
+
+#image scale
+$imgScale = .13;
+
+#image aspect ratio
+$width = $imgScale*3400;
+$height = $imgScale*2646;
 
 $mc = RadioButtons( # Set up possible options
 [
@@ -70,7 +80,7 @@ BEGIN_TEXT
 Consider the kayaker shown in the image. The x-axis points in the forward direction, the y-axis to the left of the kayaker, and the z-axis upwards. Which of the following best describes the direction of the force the water exerts on the kayak paddle at the instant shown? Assume the kayaker is paddling in the forward direction.
 $PAR
 
-\{ image( "UBC-DYN-17-087.jpg", width=>246, height=>350 ) \}
+\{ image( "UBC-DYN-17-087.png", width=>$width, height=>$height) \}
 
 $PAR
 
