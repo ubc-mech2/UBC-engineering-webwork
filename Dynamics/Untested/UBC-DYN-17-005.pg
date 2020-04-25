@@ -1,0 +1,86 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+##missing header
+
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$theta = random(30,45,1);
+$vB = 30*5/18;
+$vA = 100*5/18;
+$thetaR = $theta*pi/180;
+
+#image scale
+$imgScale = .4;
+
+#image aspect ratio
+$width = $imgScale*1210;
+$height = $imgScale*1510;
+
+#computation
+$omega = -$vB/10;
+$vi = -$vA*sin($thetaR) - $vB - $omega* 20;
+$vj = $vA*cos($thetaR);
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+	[@ image( "UBC-DYN-17-005.png", width=>[$width], height=>[$height]) @]*
+
+	A police car maintains a constant speed of [`30`] [`km/h`] and follows the path of an arc, as shown in the figure. Car [`A`] drives [`\theta=[$theta]^{\circ}`] west of north at [`100 km/h`]. Calculate the velocity of Car [`A`] measured relative to the officer in the police car.
+
+	[`v_{A/B}=`] [______]{"$vi"}[`i`] [`+`] [______]{"$vj"}[`j`] [`m/s`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
