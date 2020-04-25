@@ -1,0 +1,60 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+##DESCRIPTION
+## 221 Prelab 11 Impulse
+##ENDDESCRIPTION
+
+##KEYWORDS('prelab','impulse')
+
+## DBsubject('MECH 221')
+## DBchapter('Prelab Quizzes')
+## DBsection('Prelab 11 Impulse')
+## Date('11/6/2017')
+## Institution('University of British Columbia')
+## Problem 7
+
+########################################################################
+
+DOCUMENT();
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl"
+);
+
+Context("Numeric");
+$h = random(0.5,2.5,0.01);
+$F = random(40,60,1);
+$L = random(10,20,0.1);
+$m = random(1000,1500,1);
+$EA = Compute("(((($F*1000 - 9.81*$m)/($m*9.81))^2 - 1)*$m*9.81*($L+$h))/(2*$h)")->cmp(tolType => 'absolute',tolerance => 1);
+
+BEGIN_PGML
+An elevator system has a secondary safety cable in case the primary cable fails. The secondary cable is [`[$h]m`] longer than the primary cable (ie. if the primary cable fails, the elevator will experience [`[$h]m`] of free fall before the secondary cable engages). What should be the value of [`EA`] such that maximum force on the safety cable does not exceed [`[$F]kN`]? The elevator system has the following specifications: car maximum mass [`[$m]kg`] and primary cable length ranges from [`[$L]m`] to [`60m`]. Assume the primary cable failure occurs when the car is stationary. Hint: use the equation for maximum rope force derived in the lab write-up and consider which cable length maximizes the force. (Give your answer in [`Pa \cdot m^2`], ie. Newtons.)
+
+[`EA`] = [____________________]{$EA}
+END_PGML
+
+$showPartialCorrectAnswers = 1;
+
+ENDDOCUMENT();
