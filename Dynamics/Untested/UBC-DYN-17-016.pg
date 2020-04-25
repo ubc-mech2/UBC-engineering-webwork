@@ -1,0 +1,82 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+##missing header
+
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$t = random(3,7,.1);
+
+#image scale
+$imgScale = 1;
+
+#image aspect ratio
+$width = $imgScale*529;
+$height = $imgScale*386;
+
+#computation
+$alpha = 15*9.81*2/(15 + 15*2*2);
+$omega = $alpha*$t;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+	[@ image( "UBC-DYN-17-016.png", width=>[$width], height=>[$height]) @]*
+
+	A rope is wrapped around a [`100`] [`kg`], [`2`] [`m`] diameter drum ([`A`]) and passes frictonless pulley [`B`]. Weight [`m=15`] [`kg`] is suspended from the rope. Caclulate the angular velocity of drum [`A`] [`[$t]`] seconds after weight [`m`] is released from rest. Assume the radius of gyration of drum [`A`] is [`1`] [`m`]. Neglect the mass of the rope and the friction between the rope and the pulley.
+
+	[`\omega=`] [______]{"$omega"} [`rad/s`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
