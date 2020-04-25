@@ -1,0 +1,87 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+##missing header
+
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$vC = random(7,9,.1);
+
+#image scale
+$imgScale = 1;
+
+#image aspect ratio
+$width = $imgScale*579;
+$height = $imgScale*419;
+
+#computation
+$omegaOC = $vC/.4;
+$vA = .25*$omegaOC;
+$omegaAD = $vA/.4;
+$vD = .3*$omegaAD;
+$omegaBD = $vD/.5;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+	[@ image( "UBC-DYN-17-004.png", width=>[$width], height=>[$height]) @]*
+
+	A piston rod pushes up joint [`C`] with the velocity of [`V_c = [$vC]`] [`m/s`]. Calculate the angular velocity of each linkage, [`OC`], [`AD`], and [`BD`] for the position shown, where linkage [`BD`] is vertical and [`OC`] is horizontal.
+
+	[`\omega_{OC}=`] [______]{"$omegaOC"} [`rad/s`]  
+	[`\omega_{AD}=`] [______]{"$omegaAD"} [`rad/s`]  
+	[`\omega_{BD}=`] [______]{"$omegaBD"} [`rad/s`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
