@@ -1,0 +1,109 @@
+##DESCRIPTION
+## 
+## Created by the UBC Faculty of Applied Science.  
+## Project led by Agnes d'Entremont, Jonathan Verrett, and Negar M. Harandi. 
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION 
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinetics of rigid bodies)
+## DBsection(Angular impulse and momentum)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('Angular impulse and momentum')
+## RESOURCES('')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Easy
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*1439;
+$height = $imgScale*1750;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$mb = random (50,90,1); #kg
+$ma = 3.5;
+$wb = 0.45; #m
+$La = 0.85; #m
+$omega = 1.5; #rev/s
+
+#computation
+$N = (0.5*$mb*($wb/2)**2 + 2*(1/12*$ma*$La**2 + $ma*(($La+$wb)/2)**2))* $omega / (0.5*($mb + 2*$ma)*($wb/2)**2); #rev/s
+
+#set tolerance
+Context()->flags->set(
+tolerance=>0.01,
+tolType=>'absolute'
+);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-DYN-18-058.png", width=>[$width], height=>[$height]) @]*
+
+Consider an ice skater with his arms horizontally and fully stretched with a rotational speed [`[$omega]`] [`rev/s`]. While he is rotating, he brings his arms into a vertical position and put them close to the centerline of his body. In this case, calculate the rotational speed of the ice skater's body.  
+
+Use the following assumptions to calculate this rotational speed:  
+	[`\cdot`] The total mass of the ice skater is [`m = [$mb] + [$ma]`] [`kg`]  
+	[`\cdot`] The mass of each arm is [`[$ma]`] [`kg`]  
+	[`\cdot`] When both arms are fully stretched, you can model the torso and the lower limb with a vertical solid cylinder  
+	[`\cdot`] When both arms are fully stretched, you can model the arms with two horizontal solid cylinders attached to the body  
+	[`\cdot`] When both arms are brought close to the centerline of the body, you can model the whole body with a vertical solid cylinder  
+
+[`N = `][____]{"$N"} [`rev/s`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT()};
