@@ -1,0 +1,135 @@
+##DESCRIPTION
+## 
+## Created by the UBC Faculty of Applied Science.  
+## Project led by Agnes d'Entremont, Jonathan Verrett, and Negar M. Harandi. 
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Vibrations)
+## DBchapter(One DOF vibration: free)
+## DBsection(Viscous damping)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Intermediate
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .4;
+
+#image aspect ratio
+$width = $imgScale*652;
+$height = $imgScale*1001;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+Context()->variables->add(A=>"Real");
+Context()->variables->add(B=>"Real");
+Context()->variables->add(a=>"Real");
+#given
+do{
+	$m = random(15,20,1);
+	$k = random(1000,1500,1);
+	$c = random(600,900,1);
+	$l = .3;
+	$h = .6;
+	$mp= random(60,80,1);
+	$xbar = .1;
+	$ybar = .25;
+
+#computation
+
+	$m1 = $h*$m;
+	$m2 = $l*$m;
+	$mtot = $mp + $m1 + $m2;
+	$ytot = ($h*.5*$m1 + $ybar*$mp)/$mtot;
+
+	$ipo = $mp*(($l - $xbar)**2 + $ybar**2);
+	$io = 1/3*$m1*$h*$h + $m1*$l*$l + 1/3*$m2*$l*$l + $ipo;
+
+	$A = sqrt(2*$l/$c*$io*sqrt($k/$io));
+}while($A >= .95*$l);
+
+#computation
+$B = Formula("$c*A^2/$io");
+$C = Formula("$k*B^2/$io");
+$D = Formula("$ytot*$mtot*a/$io");
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+Engineers are designing a passenger seat in a high-speed train. When the train is in motion, let a denote the train's acceleration along a straight section of track. The seat rotates about the point [`O`]. Let [`a`] denote the angular position of the seat (measured counterclockwise). Pictured is position [`\theta = 0^{\circ}`]. 
+
+[@ image("UBC-DYN-18-079.png", width=>[$width], height=>[$height]) @]*
+
+A spring ([`k = [$k]`] [`N/m`]) and damper ([`c = [$c]`] [`Ns/m`]) are placed under the seat at distances [`B`] and [`A`] (measured in meters) from [`O`]. The seat and seatback have a constant width (into the page), dimensions [`l = [$l]`] [`m`] and [`h = [$h]`] [`m`], and a mass per unit length of [`[$m]`] [`kg/m`].
+
+*a)* Assume that a [`[$mp]`] [`kg`] passenger sitting in the seat acts like a point mass located at [`G_{passenger}`] ([`\bar{x} = [$xbar]`] [`m`] and [`\bar{y} = [$ybar]`] [`m`]) and is rigidly attached to and moving with the seat due to a seat belt. The train accelerates at the rate [`a`] ([`m/s^2`]) as shown. Find the equation of motion of the seat/passenger system in terms of [`a`], [`A`], and [`B`]:
+
+>>[``\ddot{\theta}+``][_____]{"$B"}[``\dot{\theta}+``][_____]{"$C"}[``\theta=``][_____]{"$D"}<<
+
+*b)* The spring is placed at the seatback [`B = l = [$l]`] [`m`]. Where should the damper be placed so that the system is critically damped?
+
+[`A=`] [_____]{"$A"} [`m`]  
+
+END_PGML
+
+
+
+##############################################################
+
+ENDDOCUMENT()};
