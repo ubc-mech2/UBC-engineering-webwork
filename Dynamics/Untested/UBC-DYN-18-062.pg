@@ -1,0 +1,113 @@
+##DESCRIPTION
+## 
+## Created by the UBC Faculty of Applied Science.  
+## Project led by Agnes d'Entremont, Jonathan Verrett, and Negar M. Harandi. 
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinetics of rigid bodies)
+## DBsection(Conservation of Momentum)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('Conservation of momentum' , 'circular disk' , 'angular velocity', 'rotation')
+## RESOURCES('')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Intermediate
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*1845;
+$height = $imgScale*2151;
+
+
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$omegaO = random(1.2,10,0.1);# rad/s
+$omegar = 3;# rad/s
+$m = 4.3;# kg
+$L = 1.1;# m
+$R= 0.35;# m
+
+#computation
+$IA = 0.5*$m*$R**2;# kg.m2
+$IO = $IA + $m*$L**2;
+$HOa = $IO * $omegaO; 
+$HOb = $IA * ($omegaO - $omegar) + $m*($L**2)*$omegaO;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.1,
+tolType=>'absolute'
+);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+Use the following assumptions for the two cases shown in the figure below ([`a`],[`b`]) and calculate the angular momentum of the disk about point [`O`].  
+	[`\cdot`] The mass of the disk is [`m = [$m]`] [`kg`].  
+	[`\cdot`] The radius of the disk is [`R = [$R]`] [`m`].  
+    [`\cdot`] The length of the rod is [`L = [$L]`][`m`].  
+	[`\cdot`] The angular velocity of the bar is [`\omega_O = [$omegaO]`] [`rad/s`] [`CW`]  
+	[`\cdot`] In case ([`b`]), [`\theta`] is increasing with the rate of [`[$omegar]`] [`rad/s`] [`CCW`]  
+
+[@ image("UBC-DYN-18-062.png", width=>[$width], height=>[$height]) @]*
+
+[`|H_{O_a}|=`] [_____]{"$HOa"} [`kg\cdot m^2/s`]  
+[`|H_{O_b}|=`] [_____]{"$HOb"} [`kg\cdot m^2/s`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT()};
