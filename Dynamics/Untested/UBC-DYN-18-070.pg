@@ -1,0 +1,105 @@
+##DESCRIPTION
+## 
+## Created by the UBC Faculty of Applied Science.  
+## Project led by Agnes d'Entremont, Jonathan Verrett, and Negar M. Harandi. 
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinetics of rigid bodies)
+## DBsection(Linear impulse and momentum)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('Linear impulse', 'Momentum', 'velocity', 'ball', 'ramp' )
+## RESOURCES('')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Intermediate
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*3134;
+$height = $imgScale*1544;
+
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$theta1 = random(10,30,1) * pi/180;# rad
+$theta2 = 7 *pi/180;# rad
+$V1 = 2.5;# m/s
+$dt = 1.5;# s
+$g = 9.81;# m/s2
+
+
+#computation
+$V2x= $dt*$g*sin($theta2)- $V1* sin($theta1);# m/s
+$V2y= $V1* cos($theta1);# m/s
+$V2 = sqrt($V2x**2 + $V2y**2);# m/s
+
+
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+
+Assume that you throw a ball with an initial velocity [`V_1 = [$V1]`] [`m/s`] on a surface shown in the figure below ([`\theta_1 = [$theta1*180/pi]^{\circ}`], [`\theta_2=[$theta2*180/pi]^{\circ}`]). Calculate the velocity of the ball after [`[$dt]`] seconds.
+
+[@ image("UBC-DYN-18-070.png", width=>[$width], height=>[$height]) @]*
+
+[`V_2=`] [_____] [`m/s`]  
+
+END_PGML
+
+ANS(num_cmp($V2,tol=>.01));
+
+##############################################################
+
+ENDDOCUMENT()};
