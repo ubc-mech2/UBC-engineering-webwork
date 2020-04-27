@@ -1,0 +1,104 @@
+##DESCRIPTION
+## 
+## Created by the UBC Faculty of Applied Science.  
+## Project led by Agnes d'Entremont, Jonathan Verrett, and Negar M. Harandi. 
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinetics of rigid bodies)
+## DBsection(Conservation of energy)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('Conservation of energy', 'amusement park' , 'rail', 'velocity')
+## RESOURCES('')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Intermediate
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*2267;
+$height = $imgScale*1674;
+
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$v1 = random(20,40,1);# m/s
+$r = random(5,11,1);# m
+$g = 9.81;# m/s^2
+
+#computation
+$rav = 2*sqrt(2)*$r/pi;
+$v2 = sqrt($v1**2 - 4*$g*$rav);
+
+
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+
+Assume that the speed of the wagons, shown in the figure below, are equal to [`v_1 = [$v1]`] [`m/s`] when passing through the lowest part of the rail. If [`r = [$r]`] [`m`], calculate the velocity of the wagons, [`v_2`], when passing through the highest point of the rail. Assume the arc centres for the dip and the hill are at the same height.  
+
+[@ image("UBC-DYN-18-065.png", width=>[$width], height=>[$height]) @]*
+
+_Neglect any friction loss._
+
+[`v_2=`] [_____] [`m/s`]  
+
+
+END_PGML
+
+ANS(num_cmp($v2,tol=>.1));
+
+##############################################################
+
+ENDDOCUMENT()};
