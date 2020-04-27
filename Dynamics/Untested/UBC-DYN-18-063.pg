@@ -1,0 +1,106 @@
+##DESCRIPTION
+## 
+## Created by the UBC Faculty of Applied Science.  
+## Project led by Agnes d'Entremont, Jonathan Verrett, and Negar M. Harandi. 
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinetics of rigid bodies)
+## DBsection(Conservation of Momentum)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('Conservation of momentum' , 'diving' , 'angular velocity')
+## RESOURCES('')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Intermediate
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .25;
+
+#image aspect ratio
+$width = $imgScale*1868;
+$height = $imgScale*1050;
+
+
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$N2 = random(2,2.5,0.1);# rev/s
+$L = random(1.5,2,0.1);# m 
+$d = $L/2-0.1;# m
+$r = $d/2;# m
+
+
+#computation
+$N1 = $N2 * (2/5) * $r**2 /(1/12*($L**2));# rev/s
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+tolType=>'absolute'
+);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+
+In the figure below, a diver's body position and orientation is shown when transitioning from position [`A`] to position [`B`]. Find the angular velocity of the diver's body in position [`A`] in [`rev/s`], if the angular velocity of his body in position [`B`] is [`[$N2]`] [`rev/s`].
+Hint: You can simplify diver's body in position A with a slender rod ([`L = [$L]`] [`m`]) and in position [`B`] with a sphere ([`d = [$d]`] [`m`]). 
+
+[@ image("UBC-DYN-18-063.png", width=>[$width], height=>[$height]) @]*
+
+[`N_1=`] [_____]{"$N1"} [`rev/s`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT()};
