@@ -1,0 +1,114 @@
+##DESCRIPTION
+## 
+## Created by the UBC Faculty of Applied Science.  
+## Project led by Agnes d'Entremont, Jonathan Verrett, and Negar M. Harandi. 
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinetics of rigid bodies)
+## DBsection(Equations of motion)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('equations of motion' , 'rotation about a fixed axis' , 'reaction force' , 'angular acceleration')
+## RESOURCES('')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Advanced
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScaleA = 1;
+$imgScaleB = .15;
+
+#image aspect ratio
+$widthA = $imgScaleA*410;
+$heightA = $imgScaleA*274;
+$widthB = $imgScaleB*2351;
+$heightB = $imgScaleB*972;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$mL = random(1.3,10,0.1); #kg
+$L = 0.4; #m
+$LG = 0.15; #m
+$RG = 0.21; #m
+$mC = 1.5; #kg
+$dc = 0.13; #m
+$LC =2*0.07; #m
+$g = 9.81; #m/s2
+
+#computation
+$r2 = $dc/2;
+$IGC = 1/2*$mC*$r2**2 + 1/12*$mC*$LC**2;
+$IOC = $IGC + $mC*($dc/2 + $L)**2;
+$IOL = $mL* $RG**2;
+$alpha = ($mC*$g*($dc/2 + $L) + $mL*$g* $LG ) / ($IOC + $IOL );
+$R = ($mC + $mL)*$g - ($mC *($dc/2 + $L) + $mL * $LG) * $alpha;
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.1,
+tolType=>'absolute'
+);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-DYN-18-054a.png", width=>[$widthA], height=>[$heightA]) @]* [@ image("UBC-DYN-18-054b.png", width=>[$widthB], height=>[$heightB]) @]*
+
+Calculate the reaction force applied to the supporting point [`O`], just after the system is released from rest (shown in the figures above). The mechanism can pivot about [`O-O`] axis.  The thin-walled hollow cylinder [`A`] has a mass of [`m_C = [$mC]`] [`kg`]. The link [`B`] has a mass of [`m_L = [$mL]`] [`kg`] and a radius of gyration about [`O-O`] of [`r_G = [$RG]`] [`m`].  
+
+[`R = `][____]{"$R"} [`N`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
