@@ -1,0 +1,99 @@
+##DESCRIPTION
+## 
+## Created by the UBC Faculty of Applied Science.  
+## Project led by Agnes d'Entremont, Jonathan Verrett, and Negar M. Harandi. 
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Vibrations)
+## DBchapter(One DOF vibration: general forced)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .5;
+
+#image aspect ratio
+$width = $imgScale*653;
+$height = $imgScale*730;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+
+
+#computation 
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+A speed control device on a production line has a roller with a spring and a damper attached. Contact with material on the production line causes an external force [`F(t)`] on the roller. The roller has the center of gravity [`G`] offset from the centroid [`O`] by a distance [`e`]. The mass moment of inertia about [`G`] is [`I_G=mR^2`], where [`R`] is the radius of gyration of the roller. 
+
+[@ image("UBC-DYN-18-088.png", width=>[$width], height=>[$height]) @]*
+
+Take the sum of moments about [`O`] to find the differential equation describing the system motion in terms of [`\theta`] and its derivatives, as well as [`m`], [`c`], [`k`], [`r`], [`e`], [`R`] and the forcing function [`F(t)`]
+
+>>[``\ddot{\theta}+``][_____]{"$B"}[``\dot{\theta}+``][_____]{"$C"}[``\theta=``][_____]{"$D"}[``F(t)``]<<
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT()};
