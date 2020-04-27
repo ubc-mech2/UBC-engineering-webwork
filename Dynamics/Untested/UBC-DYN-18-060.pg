@@ -1,0 +1,107 @@
+##DESCRIPTION
+## 
+## Created by the UBC Faculty of Applied Science.  
+## Project led by Agnes d'Entremont, Jonathan Verrett, and Negar M. Harandi. 
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinetics of rigid bodies)
+## DBsection(Impact: eccentric)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('Impact', 'collision', 'billiard', 'velocity')
+## RESOURCES('')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Easy
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*1305;
+$height = $imgScale*1543;
+
+
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$V = 2.3;# m/s
+$theta1 = random(35,45,1);
+$theta1r = $theta1 * pi / 180;
+$theta2 = random(10,30,1);
+$theta2r = $theta2 * pi / 180;
+$m = 0.1;#kg
+#computation
+$VA = $V /( sin($theta1r) / tan($theta2r) + cos($theta1r));
+$VB = $VA *sin($theta1r) / sin($theta2r);
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.0001,
+);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+Billiard ball [`A`] is moving with velocity [`V = [$V]`] [`m/s`] in the direction shown in the figure below. After Ball [`A`] hits ball [`B`], both balls start moving in different directions with [`\theta_A = [$theta1]^{\circ}`] and  [`\theta_B = [$theta2]^{\circ}`]. Assume that both balls have an equal mass of [`m = [$m]`] [`kg`] and calculate their velocity, [`v_A`] and [`v_B`], just after impact.
+
+
+[@ image("UBC-DYN-18-060.png", width=>[$width], height=>[$height]) @]*
+
+[`v_A=`] [_____]{"$VA"} [`m/s`]  
+[`v_B=`] [_____]{"$VB"}  [`m/s`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT()};
