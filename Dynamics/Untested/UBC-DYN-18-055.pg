@@ -1,0 +1,99 @@
+##DESCRIPTION
+## 
+## Created by the UBC Faculty of Applied Science.  
+## Project led by Agnes d'Entremont, Jonathan Verrett, and Negar M. Harandi. 
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinematics of rigid bodies)
+## DBsection(General plane motion)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('General plane motion' , 'kinematic constraints', 'angular acceleration', 'angular velocity')
+## RESOURCES('')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Intermediate
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*1914;
+$height = $imgScale*1269;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$a = random(1,5,0.1); #m/s2
+$r = random(0.080,0.120,0.005); #m
+
+#computation
+$alpha = 5*$a/7/$r;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.1,
+tolType=>'absolute'
+);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+In the case of a sudden rear crash, a linear acceleration of [`[$a]`] [`m/s^2`] is applied to the neck and the head is freely pivoting about point [`O`] (the axis of rotation is in the plane). Assume that you can use a model of a solid sphere with a radius of [`[$r]`] [`m`] to analyze the dynamics of the human head motion during the car collision. Calculate the angular acceleration of the head right after the collision. 
+
+[@ image("UBC-DYN-18-055.png", width=>[$width], height=>[$height]) @]*
+
+[`\alpha =`] [____]{"$alpha"} in [`rad/s^2`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
