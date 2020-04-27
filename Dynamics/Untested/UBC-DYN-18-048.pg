@@ -1,0 +1,110 @@
+##DESCRIPTION
+## 
+## Created by the UBC Faculty of Applied Science.  
+## Project led by Agnes d'Entremont, Jonathan Verrett, and Negar M. Harandi. 
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinematics of rigid bodies)
+## DBsection(General plane motion)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('equations of motion' , 'General plane motion', 'wheel', 'force')
+## RESOURCES('')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Intermediate
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*2626;
+$height = $imgScale*1330;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$v = random (4,20,0.1); #m/s
+$theta = 45; #degree
+$R = 0.55; #m
+$r = 0.3; #m
+$m = 15; #kg
+$d1 = 1.1; #m
+$d2 = 0.9; #m
+$g = 9.81; #m/s2
+
+#computation
+$theta_r = $theta*pi/180; #rad
+$w = $v/$R; #rad/s
+$an = $r * $w**2; #m/s2
+$By = (-$m*$g*$d1 + $m*$an *  cos($theta_r) *$d1) / ($d1 + $d2); #N
+$Bx = $m*$an * sin($theta_r); #N
+$F = sqrt($Bx**2 + $By**2); #N
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-DYN-18-048.png", width=>[$width], height=>[$height]) @]*
+
+In the figure below, find the force applied to pin [`B`] when the vehicle is moving at its constant maximum velocity of [`v = [$v]`] [`m/s`]. Pin [`A`] sits in a frictionless slot on the link [`AB`] and the mass of the link [`AB`] that is connecting the wheels is [`m = [$m]`] [`kg`]. Assume [`\theta = [$theta]^{\circ}`].
+
+[`F_B = `][____]{"$F"} [`N`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT()};
