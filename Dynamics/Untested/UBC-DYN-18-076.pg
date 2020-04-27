@@ -1,0 +1,123 @@
+##DESCRIPTION
+## 
+## Created by the UBC Faculty of Applied Science.  
+## Project led by Agnes d'Entremont, Jonathan Verrett, and Negar M. Harandi. 
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Vibrations)
+## DBchapter(One DOF vibration: harmonic excitation)
+## DBsection(Undamped)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Intermediate
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*2369;
+$height = $imgScale*1391;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$m = random(200,300,10);
+$a = random(30,50,1);
+$lambda = random(4,6,.1);
+$k = random(500,1000,5);
+$v = 10;
+
+#computation
+$wn = sqrt(2*$k/$m);
+$tau = $lambda*3.6/$v;
+$w0 = 2*pi/$tau;
+$mf = 1/(1-($w0/$wn)**2);
+$vr = $wn*$lambda/2/pi*3.6;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-DYN-18-076.png", width=>[$width], height=>[$height]) @]*
+
+A [`[$m]-`][`kg`] trailer is pulled with constant speed over the surface of a bumpy road, which may be approximated as a cosine curve with an amplitude of [`\frac{h}{2}=[$a]`] [`mm`] and wavelength of [`2d = [$lambda]`] [`m`]. Two springs, [`s`], with stiffness [`[$k]`] [`N/m`] each, support the trailer. Neglect the mass of the wheels. Assume [`v = [$v]`] [`km/h`]. Find:
+
+*a)* the natural frequency, [`\omega_n`]
+
+[`\omega_n=`] [_____]{"$wn"} [`rad/s`]  
+
+*a)* the forcing frequency, [`\omega_0`]
+
+[`\omega_0=`] [_____]{"$w0"} [`rad/s`]  
+
+*a)* the magnification factor, [`MF`]
+
+[`MF=`] [_____]{"$mf"}  
+
+*a)* At what velocity will the trailer experience resonance?  
+
+[`v=`] [_____]{"$vr"} [`km/hr`]  
+
+END_PGML
+
+
+
+##############################################################
+
+ENDDOCUMENT()};
