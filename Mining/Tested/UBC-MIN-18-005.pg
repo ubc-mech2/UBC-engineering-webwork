@@ -1,22 +1,5 @@
 ##DESCRIPTION
-##
-## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
-##
-## Contact: agnes.dentremont@mech.ubc.ca
-##
-## This work is licensed under the Creative Commons
-## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
-## <https://creativecommons.org/licenses/by-sa/4.0/>
-##
-## We gratefully acknowledge the financial support for this 
-## project provided by UBC Vancouver students via the Teaching
-## and Learning Enhancement Fund. We also gratefully acknowledge
-## additional funding support from BCcampus, the UBC Department of
-## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
-##
-## This work was completed on the traditional, ancestral, and unceded
-## territory of the Musqueam people. 
-##
+## 
 ##ENDDESCRIPTION
 
 ## DBsubject(Mining Engineering)
@@ -387,7 +370,7 @@ Target Pit Phase Selling Prices : `\$` [`[$selling_price_phase1]`],  `\$` [`[$se
       ["15.0 < grade < 17.5", [$grade_15_17_phase1], [$grade_15_17_phase2], [$grade_15_17_phase3], [$grade_15_17_phase4], [$grade_15_17_phase_final]],
       ["17.5 < grade < 20.0", [$grade_17_20_phase1], [$grade_17_20_phase2], [$grade_17_20_phase3], [$grade_17_20_phase4], [$grade_17_20_phase_final]],
       ["20.0 < grade < 22.5", [$grade_20_22_phase1], [$grade_20_22_phase2], [$grade_20_22_phase3], [$grade_20_22_phase4], [$grade_20_22_phase_final]],
-      ["22.5 < grade < 27.5 (average)", [$grade_22_average_phase1], [$grade_22_average_phase2], [$grade_22_average_phase3], [$grade_22_average_phase4], [$grade_22_average_phase_final]]
+      ["22.5 < grade (average = 27.5)", [$grade_22_average_phase1], [$grade_22_average_phase2], [$grade_22_average_phase3], [$grade_22_average_phase4], [$grade_22_average_phase_final]]
     ],
     center => 1,
     midrules=>1,
