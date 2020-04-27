@@ -1,0 +1,117 @@
+##DESCRIPTION
+## 
+## Created by the UBC Faculty of Applied Science.  
+## Project led by Agnes d'Entremont, Jonathan Verrett, and Negar M. Harandi. 
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinetics of rigid bodies)
+## DBsection(Conservation of Momentum)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('Conservation of momentum', 'wheel', 'angular velocity')
+## RESOURCES('')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Advanced
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*2549;
+$height = $imgScale*1234;
+
+
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$m = 80; #kg
+$g = 9.81; #m/s2
+$r = 0.23;# m
+$rG = 0.17; #m
+$theta =  random(10,30,1); #degree
+$thetar = $theta * pi/180;
+$N = 200; #rev/min
+$dt = random(1,5,0.1); #s
+
+#computation
+$mu = tan($thetar);
+$t = ($m*$rG**2)*2*pi*$N/60/($mu*$m*$g*cos($thetar)*$r);
+$v = (9.81*sin($thetar) * $dt) /( 1+$rG**2/$r**2 );
+
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+
+Assume that you are riding a one-wheel Segway on an inclined surface. Consider the case where the wheel is rotating with a constant speed of [`N = [$N]`] [`rpm`] but you are not moving forward and the wheel is slipping in place.  
+1.	For how long is the wheel going to slip?
+1.	Calculate the linear velocity of the center of the wheel [`[$dt]`] [`s`] after the wheel stops slipping.  
+
+[@ image("UBC-DYN-18-064.png", width=>[$width], height=>[$height]) @]*
+
+Use the following assumptions:
+	[`\cdot`] Mass of the disk is [`m = [$m]`] [`kg`]  
+	[`\cdot`] Radius of the disk is [`r = [$r]`] [`m`]  
+	[`\cdot`] Radius of gyration of the disk about its center is [`r_G = [$rG]`] [`m`]  
+	[`\cdot`] Angle of the inclined surface is [`\theta = [$theta]^{\circ}`]  
+
+[`t=`] [_____] [`s`]  
+[`v=`] [_____] [`m/s`]
+
+END_PGML
+
+ANS(num_cmp($t,tol=>.01));
+ANS(num_cmp($v,tol=>.1));
+
+##############################################################
+
+ENDDOCUMENT()};
