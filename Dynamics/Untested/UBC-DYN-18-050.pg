@@ -1,0 +1,101 @@
+##DESCRIPTION
+## 
+## Created by the UBC Faculty of Applied Science.  
+## Project led by Agnes d'Entremont, Jonathan Verrett, and Negar M. Harandi. 
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Vibration)
+## DBchapter(One DOF vibration: harmonic excitation)
+## DBsection(Undamped)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('One DOF vibration: harmonic excitation (undamped)', 'undamped forced vibration', 'pulley', 'cart', 'spring')
+## RESOURCES('')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Easy
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*2323;
+$height = $imgScale*1942;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$k = random(100,1000,10); #N/m.
+$m = 0.5; #kg
+
+#computation
+$f = sqrt($k/6/$m)/(2*pi);
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.005,
+);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-DYN-18-050.png", width=>[$width], height=>[$height]) @]*
+
+For the system shown in the figure, use the following assumptions and find the natural frequency of the system.  
+	[`\cdot`] Force applied to the cylinder [`F = 2sin(\omega t)`]  
+	[`\cdot`] Stiffness of the spring [`k = [$k]`] [`N/m`]  
+	[`\cdot`] Mass [`m = [$m]`] [`kg`]
+
+[`f = `][____]{"$f"} [`Hz`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT()};
