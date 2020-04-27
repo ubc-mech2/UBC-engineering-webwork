@@ -1,0 +1,125 @@
+##DESCRIPTION
+## 
+## Created by the UBC Faculty of Applied Science.  
+## Project led by Agnes d'Entremont, Jonathan Verrett, and Negar M. Harandi. 
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Kinetics of particles)
+## DBsection(Principle of work and energy)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Intermediate
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .4;
+
+#image aspect ratio
+$width = $imgScale*1140;
+$height = $imgScale*778;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$mb = random(5,10,.1);
+$md = random(2,4,.1);
+$l = random(1,3,.1);
+$r = random(75,125,5);
+$h = random(.25,.50,.1);
+
+$mcEqual = PopUp(["?","Greater than","Equal to","Less than"], "Equal to");
+$mcLess = PopUp(["?","Greater than","Equal to","Less than"], "Less than");
+
+#computation
+$va = Formula("sqrt(($mb+4*$md)*9.81*$h/(.5*$mb + 3*$md))");
+$vb = Formula("sqrt(($mb+2*$md)*9.81*$h/(.5*$mb + 3/4*$md))");
+$vc = Formula("sqrt(($mb*9.81*$h)/(.5*$mb + $md))");
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-DYN-18-080.png", width=>[$width], height=>[$height]) @]*
+
+*a)* A bar of mass [`m_b =[$mb]`] [`kg`] and length [`l = [$l]`] [`m`], is guided down a chute between four disks, each with mass of [`m_d = [$md]`] [`kg`] and radius [`r = [$r]`] [`mm`]. Assume that the forces on the disks are sufficient to prevent slipping, there is no friction at the pin joints, and the bar is released from rest. Find the velocity of the bar in each case after it has dropped a distance [`h = [$h]`] [`m`]. 
+
+[`v_a=`] [_____] [`m/s`]  
+[`v_b=`] [_____] [`m/s`]  
+[`v_c=`] [_____] [`m/s`]  
+
+*b)* Over time, the pin joints wear and develop friction that results in a moment about each pin - how would the value of velocity (after moving distance [`h`]) qualitatively compare to that of the frictionless pin in each case?
+
+Case (a): [@ $mcLess->menu() @]*  
+Case (b): [@ $mcEqual->menu() @]*  
+Case (c): [@ $mcLess->menu() @]*  
+
+END_PGML
+
+ANS($va->cmp);
+ANS($vb->cmp);
+ANS($vc->cmp);
+
+ANS($mcLess->cmp);
+ANS($mcEqual->cmp);
+ANS($mcLess->cmp);
+
+##############################################################
+
+ENDDOCUMENT()};
