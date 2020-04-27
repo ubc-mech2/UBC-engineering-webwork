@@ -1,0 +1,124 @@
+##DESCRIPTION
+## 
+## Created by the UBC Faculty of Applied Science.  
+## Project led by Agnes d'Entremont, Jonathan Verrett, and Negar M. Harandi. 
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinematics of rigid bodies)
+## DBsection(Rotation about a fixed axis)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .4;
+
+#image aspect ratio
+$width = $imgScale*1444;
+$height = $imgScale*787;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$dA = 25; #cm
+$dB = 5; #cm
+$dRear = 66; #cm
+$crank = 18.5; #cm
+
+$omega0 = 50; #rpm
+
+#computation 
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+Denise Mueller-Korenek broke the paced bicycle land speed record in September 2018, riding [`296`] [`km/hr`] directly behind a dragster (taking advantage of the wind break and aerodynamic pull of the vehicle). Her bike had only one very high gear setting, created with two chains and a series of chainrings and cogs, specifically designed for being able to pedal at high speeds. It was too high a gear setting to be able to start pedalling from rest, so she had to be towed up to a certain speed at which she could begin to pedal.
+
+[@ image("UBC-DYN-18-081.png", width=>[$width], height=>[$height]) @]*
+
+Assume:
+	[`\cdot`] No slip of chains on chainrings or cogs  
+	[`\cdot`] No slip of the rear wheel on the ground  
+	[`\cdot`] Chainring [`C`] and Cog [`B`] are rigidly fixed to the same shaft  
+
+Dimensions:  
+	[`\cdot`] Chainring [`A`] diameter [`=`] Chainring [`C`] diameter [`=`] [`[$dA]`] [`cm`]  
+	[`\cdot`] Cog [`B`] diameter [`=`] Cog [`D`] diameter = [`[$dB]`] [`cm`]  
+	[`\cdot`] Rear wheel diameter [`=`] [`[$rearD]`] [`cm`]  
+	[`\cdot`] Crankarm length (centre of chainring to pedal) [`=`] [`[$crank]`] [`cm`]  
+
+*a)* Assume that Mueller-Korenek could achieve a low cycling cadence of [`50`] [`rpm`] (that is, [`50`] complete revolutions of a pedal in one minute) once the dragster had towed her up to a certain speed.  What was her ground speed when she was able to start pedaling at [`50`] [`rpm`]?  
+
+[`\vec{v_i}=`] [_____]{"$vi"} [`m/s`]  
+
+*b)* What was her cadence at her final velocity of [`296`] [`km/hr`]?
+
+[`\omega_f=`] [_____]{"$omegaF"} [`rad/s`]  
+
+*c)* What was the velocity of her pedal centre of gravity, [`\vec{v_p}`], (located where the pedal connects to the crankarm) when the crankarm is pointing toward the rear wheel?  
+
+[`\vec{v_p}=`] [_____]{"$vp"} [`m/s`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT()};
