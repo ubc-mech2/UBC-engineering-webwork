@@ -1,22 +1,5 @@
 ##DESCRIPTION
-##
-## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
-##
-## Contact: agnes.dentremont@mech.ubc.ca
-##
-## This work is licensed under the Creative Commons
-## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
-## <https://creativecommons.org/licenses/by-sa/4.0/>
-##
-## We gratefully acknowledge the financial support for this 
-## project provided by UBC Vancouver students via the Teaching
-## and Learning Enhancement Fund. We also gratefully acknowledge
-## additional funding support from BCcampus, the UBC Department of
-## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
-##
-## This work was completed on the traditional, ancestral, and unceded
-## territory of the Musqueam people. 
-##
+## 
 ##ENDDESCRIPTION
 
 ## DBsubject(Mining Engineering)
@@ -647,13 +630,15 @@ If head grade `>``=` [`[$Leach_relationship_max_cutoff]`] then recovery = `75 %`
   )
 @]***    
 
-Given the data above, complete the following table:  
+Given the data above, complete the following table: 
+
+For responses -1 < 1, please use at least 3 decimal places for WeBWorK to recognize your response. 
 
 [@
   DataTable(
     [
-      ["Percent `Cu` (`%`)", "Leach Net Value", "Mill Net Value"],
-      [[$head_grade1], ans_rule(7), ans_rule(7)],
+      ["Percent `Cu` (`%`)", "Leach Net Value (\$)", "Mill Net Value (\$)"],
+      [[$head_grade1], ans_rule(4), ans_rule(7)],
       [[$head_grade2], ans_rule(7), ans_rule(7)],
       [[$head_grade3], ans_rule(7), ans_rule(7)],
       [[$head_grade4], ans_rule(7), ans_rule(7)],
