@@ -1,0 +1,101 @@
+##DESCRIPTION
+## 
+## Created by the UBC Faculty of Applied Science.  
+## Project led by Agnes d'Entremont, Jonathan Verrett, and Negar M. Harandi. 
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinetics of rigid bodies)
+## DBsection(Conservation of energy)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('Conservation of energy', 'spacecraft', 'Mars' , 'gravity')
+## RESOURCES('')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Easy
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .3;
+
+#image aspect ratio
+$width = $imgScale*1416;
+$height = $imgScale*1113;
+
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$v = random(1000,4000,20);# km/h
+$gm = 3.711;# m/s2
+$Rm = 3390;# km
+
+#computation
+$vimpact = sqrt($gm*$Rm*1000 + ($v*1000/3600)**2)*3.6;
+
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+
+As part of a Mars exploration mission, a spacecraft is headed to the center of this planet. Assume that the spacecraft has a velocity of [`[$v]`] [`km/h`] when it reaches a position above the planet [`R = [$Rm]`] [`km`] equal to the radius of Mars. At this point, the rockets controlling its descent fail. Compute the impact velocity of the spacecraft when it reaches the surface of Mars. 
+
+Assume that Mars is not moving and assume that the gravity of Mars at the surface of the planet is [`g_m = [$gm]`] [`m/s^2`]. (Hint: the force of gravity is not constant over the path of the spacecraft.)
+
+[@ image("UBC-DYN-18-069.png", width=>[$width], height=>[$height]) @]*
+
+[`v_{impact}=`] [_____] [`km/h`]  
+
+END_PGML
+
+ANS(num_cmp($vimpact,tol=>5));
+
+##############################################################
+
+ENDDOCUMENT()};
