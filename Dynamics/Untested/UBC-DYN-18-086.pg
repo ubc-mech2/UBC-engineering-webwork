@@ -1,0 +1,120 @@
+##DESCRIPTION
+## 
+## Created by the UBC Faculty of Applied Science.  
+## Project led by Agnes d'Entremont, Jonathan Verrett, and Negar M. Harandi. 
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinetics of rigid bodies)
+## DBsection(Equations of motion)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .4;
+
+#image aspect ratio
+$width = $imgScale*1374;
+$height = $imgScale*737;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$mcHigher = PopUp(["?","Higher","Lower"], "Higher");
+
+#computation 
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+A bar (length [`L`], mass [`m`]) is pinned at [`A`] and suspended horizontally by a cable at [`B`]. The cable breaks Ã¢ÂÂ complete the rest of this question for the instant after it breaks.
+
+[@ image("UBC-DYN-18-086.png", width=>[$width], height=>[$height]) @]*
+
+*a)* Find it's angular acceleration
+
+[`\alpha=`] [_____] [`m/s^2`]  
+
+*b)* Write one kinematic constraint.
+
+[_____]  
+
+*c)* Find the reaction force vector at pin [`A`]
+
+[`\vec{R_A}=`] [_____] [`N`]  
+
+
+*d)* Is this reaction force at [`A`] higher or lower than you would expect with the cable intact? What force would you expect with the cable intact?
+
+[@ $mcHigher->menu() @]*  
+[`\overrightarrow{R_{A_{Expected}}}=`] [_____] [`N`]  
+
+END_PGML
+
+#ANS($alpha->cmp);
+#ANS($const->cmp);
+#ANS($rA1->cmp);
+ANS($mcHigher->cmp);
+#ANS($rA2->cmp);
+
+##############################################################
+
+ENDDOCUMENT()};
