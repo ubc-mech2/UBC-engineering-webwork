@@ -1,0 +1,108 @@
+##DESCRIPTION
+## 
+## Created by the UBC Faculty of Applied Science.  
+## Project led by Agnes d'Entremont, Jonathan Verrett, and Negar M. Harandi. 
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Vibrations)
+## DBchapter(One DOF vibration: free)
+## DBsection(Undamped)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Intermediate
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*1268;
+$height = $imgScale*2046;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+Context()->variables->add(D=>"Real");
+Context()->variables->add(r=>"Real");
+
+#given
+$T = random(.6,2,.1);
+$dt = random(.1,.3,.01);
+$b = random(1.5,2.5,.1);
+
+#computation
+$wn2ab = 4*pi*pi/($T)**2;
+$wn2a = 4*pi*pi/($T-$dt)**2;
+$a = $wn2ab*$b/($wn2a-$wn2ab);
+$k = $wn2a*$a;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+A spring has two masses, [`A`] and [`B`], hanging down from it. The period of vibration with both masses ([`A`] and [`B`]) attached is [`[$T]`] [`s`], and with only [`A`] attached ([`B`] removed) is [`[$T-$dt]`] [`s`]. The mass of [`B`] is [`[$b]`] [`kg`]. Find the mass of [`A`] and the spring constant, [`k`].
+
+[@ image("UBC-DYN-18-075.png", width=>[$width], height=>[$height]) @]*
+
+[`m_A=`] [_____]{"$a"} [`kg`]  
+[`k=`] [_____]{"$k"} [`kg\cdot m^2`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT()};
