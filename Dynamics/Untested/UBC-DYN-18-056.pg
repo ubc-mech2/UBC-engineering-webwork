@@ -1,0 +1,111 @@
+##DESCRIPTION
+## 
+## Created by the UBC Faculty of Applied Science.  
+## Project led by Agnes d'Entremont, Jonathan Verrett, and Negar M. Harandi. 
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinematics of rigid bodies)
+## DBsection(General plane motion)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('General plane motion' , 'kinematic constraints', 'angular acceleration', 'angular velocity' , 'collision simulation' , 'linear acceleration' , 'linear velocity')
+## RESOURCES('')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Intermediate
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*1608;
+$height = $imgScale*1592;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$m =  45; #kg
+$rr = 0.50; #m
+$r =  0.85; #m
+$ko = 0.6; #m
+$theta = 40;
+$thetar = 40*pi/180; #rad
+$g = 9.81; #m/s2
+$a = random(1,11,0.5)*$g; #m/s2
+
+#computation
+$v = $r*sqrt(2)/$ko * sqrt($g*$rr*(1-cos($thetar)) + $a*$rr* sin($thetar));
+
+#set tolerance
+Context()->flags->set(
+tolerance=>0.01,
+);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-DYN-18-056.png", width=>[$width], height=>[$height]) @]*
+
+Human dummies are used to analyze kinematics of human body motion for car crash or collision simulations. Use the following assumptions to find the velocity relative to the car with which the dummy's head is hitting the steering wheel.  
+	[`\cdot`] Hips are fixed during the crash and upper body is freely pivoting about the hip  
+	[`\cdot`] The equivalent mass above the hip is [`m = [$m]`] [`kg`]  
+	[`\cdot`] Center of gravity for the equivalent mass above the hip is [`OG = [$rr]`] [`m`]  
+	[`\cdot`] The distance between the forehead and the pivoting point [`r = [$r]`] [`m`]  
+	[`\cdot`] The radius of gyration of the upper body about the hip is [`r_O = [$kO]`] [`m`]  
+	[`\cdot`] The constant stopping deceleration of the vehicle is [`a = [$a]`] [`m/s^2`]  
+	[`\cdot`] The angle of contact is [`\theta = [$theta]^{\circ}`]  
+
+[`v = `][____]{"$v"} [`m/s`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
