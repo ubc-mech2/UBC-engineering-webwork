@@ -1,0 +1,110 @@
+##DESCRIPTION
+## 
+## Created by the UBC Faculty of Applied Science.  
+## Project led by Agnes d'Entremont, Jonathan Verrett, and Negar M. Harandi. 
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinematics of rigid bodies)
+## DBsection(Relative motion: velocity, rotating axes)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('Relative motion: velocity, rotating axes', 'mechanism', 'link')
+## RESOURCES('')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Intermediate
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*2249;
+$height = $imgScale*2059;
+
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$R1 = random(60,90,5);# mm
+$R2 = 130;# mm
+$L = 350;# mm
+$omega = random(1.1,2.5,1);# rad/s
+$b = 40;# mm
+
+#computation
+$theta = arcsin(($R2 + $b)/$L);
+$O1C = $L/sin($theta);
+$EC = ($O1C -$b- $R2)/1000;
+$AC = $L/tan($theta)/1000;
+$VA = $R1 * $omega/1000;
+$VE = $EC/$AC*$VA;
+$wB = $VA / $AC;
+
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+
+In the figure shown below, [`OA`] is [`R_1 = [$R1]`] [`mm`] and is rotating with an angular velocity of [`[$omega]`] [`rad/s`] (CCW) about [`O`]. A rectangular bar is attached at point [`A`] and is free to rotate about this point. The other side of the rectangular bar is supported by a wheel with a radius of  [`R_2 = [$R2]`] [`mm`]. Determine the angular velocity of the rectangular bar and the velocity of point [`E`] when [`OA`] is vertical as shown in the figure. 
+
+[@ image("UBC-DYN-18-066.png", width=>[$width], height=>[$height]) @]*
+
+[`\omega_B=`] [_____] [`rad/s`]  
+[`v_E=`] [_____] [`m/s`]  
+
+END_PGML
+
+ANS(num_cmp($wB,reltol=>1));
+ANS(num_cmp($VE,reltol=>.1));
+
+
+##############################################################
+
+ENDDOCUMENT()};
