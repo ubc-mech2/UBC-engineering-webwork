@@ -1,0 +1,125 @@
+##DESCRIPTION
+## 
+## Created by the UBC Faculty of Applied Science.  
+## Project led by Agnes d'Entremont, Jonathan Verrett, and Negar M. Harandi. 
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Statics)
+## DBchapter(Distributed forces: moment of inertia)
+## DBsection(Mass moment of inertia)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Intermediate
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScaleA = .5;
+$imgScaleB = .5;
+
+#image aspect ratio
+$widthA = $imgScaleA*729;
+$heightA = $imgScaleA*665;
+$widthB = $imgScaleB*689;
+$heightB = $imgScaleB*609;
+
+
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$l = random(6,10,.1);
+$h = random(2,4,.1);
+$t = random(.1,.2,.01);
+$rho = random(5,10,.1);
+
+#computation
+$xc = $l/2;
+$xg = $xc;
+$yc = $h/2;
+$yg = (3.6*$h**2/2 - 1.8*$h**3/3)/(3.6*$h - 1.8*$h**2/2);
+
+$m = $rho*$l*$h*$t;
+$izzg = 1/12*$m*($l**2+$h**2);
+$izz = 3*($izzg + $m*($xc**2+$yc**2));
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,
+);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+*a)* Find the centroid ([`x_C`], [`y_C`]) and centre of mass ([`x_G,`] [`y_G`]) of the single wind turbine blade highlighted below. Density varies such that [`\rho = 3(2-y)`] [`kg/m^3`]. Assume the blade is [`[$t]`] [`m`] thick and that the blades have the dimensions [`L=[$l]`] [`m`] and [`H = [$h]`] [`m`].
+
+[@ image("UBC-DYN-18-074a.png", width=>[$widthA], height=>[$heightA]) @]*
+
+[`x_C=`] [_____]{"$xc"} [`m`]  
+[`y_C=`] [_____]{"$yc"} [`m`]  
+[`x_G=`] [_____]{"$xg"} [`m`]  
+[`y_G=`] [_____]{"$yg"} [`m`]  
+
+*b)* Find [`I_{zz}`] at the centre hub, [`O`], for the complete 3-blade wind turbine below.  Assume equally-spaced blades. Assume density of each blade is constant at [`[$rho]`] [`kg/m^3`] for this part of the question. Assume the blade is [`[$t]`] [`m`] thick and that the blades have the dimensions [`L=[$l]`] [`m`] and [`H = [$h]`] [`m`].
+
+[@ image("UBC-DYN-18-074b.png", width=>[$widthB], height=>[$heightB]) @]*
+
+[`I_{zz}=`] [_____]{"$izz"}  [`kg\cdot m^4`]
+
+END_PGML
+
+
+
+##############################################################
+
+ENDDOCUMENT()};
