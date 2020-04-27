@@ -1,0 +1,124 @@
+##DESCRIPTION
+## 
+## Created by the UBC Faculty of Applied Science.  
+## Project led by Agnes d'Entremont, Jonathan Verrett, and Negar M. Harandi. 
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Statics)
+## DBchapter(Distributed forces: moment of inertia)
+## DBsection(Mass moment of inertia)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScaleA = .35;
+$imgScaleB = .35;
+
+#image aspect ratio
+$widthA = $imgScaleA*756;
+$heightA = $imgScaleA*868;
+$widthB = $imgScaleB*738;
+$heightB = $imgScaleB*856;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$d = 1.2;
+$w = 3;
+
+$mcYes = PopUp(["?","Yes","No"], "Yes");
+
+#computation 
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+You are considering two different novel designs for a set of train wheels rigidly mounted on an axle. One set uses cones as wheels and the other uses hemispheres. All these wheels have a diameter of [`[$d]`] [`m`] and both types have the same width. The overall width of each wheelset is [`[$w]`] [`m`].
+
+[@ image("UBC-DYN-18-083a.png", width=>[$widthA], height=>[$heightA]) @]*
+
+*a)* Find the mass moment of inertia of each wheelset above (two wheels plus axle) about the axis of the axle.
+
+[`I_c=`] [_____] [`kg\cdot m^2`]  
+[`I_h=`] [_____] [`kg\cdot m^2`]  
+
+*b)* Which wheelset will take less effort to get rolling?
+
+[@ $mcYes->menu() @]*
+
+[@ image("UBC-DYN-18-083b.png", width=>[$widthB], height=>[$heightB]) @]*
+
+*c)* You realize that train wheels have flanges that lie on the *inside* of each
+rail because that helps prevent tipping/derailment - oops. How will the mass
+moments of inertia change if you reverse the orientation of each wheel?
+
+[@ $mcYes->menu() @]*
+
+END_PGML
+
+#ANS($ic->cmp);
+#ANS($ih->cmp);
+ANS($mcYes->cmp);
+ANS($mcYes->cmp);
+
+##############################################################
+
+ENDDOCUMENT()};
