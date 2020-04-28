@@ -1,0 +1,97 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Fluid mechanics)
+## DBchapter(Integral relations for a control volume)
+## DBsection(Linear momentum)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-FLU-18-080.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*3393;
+$height = $imgScale*1420;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$V= random(30,40,1);# [m/s]
+$U= random(10,1,20);# [m/s]
+
+#computation
+$Ans= 1/15*(999*($V-$U)**2*pi/4*(0.025**2)*(1+sin(30*pi/180))-0.92*$U**2);#[m/s^2]
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01,);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-FLU-18-080.png", width=>[$width], height=>[$height]) @]*
+
+The [`15`] [`kg`] cart is propelled by the steady water jet with velocity of [`[$V]`] [`m/s`] as shown in the figure. Total resistance to its motion is [`F=kU^2`] where [`k=0.92`] [`s^2/m^2`]. Find the acceleration of cart when its velocity [`U=[$U]`] [`m/s`]. [`\rho_{H_2O} =999`] [`kg/m^3`] 
+
+[`a=`] [____]{"$Ans"} [`m/s^2`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
