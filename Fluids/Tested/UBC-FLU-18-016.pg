@@ -1,0 +1,121 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Fluid mechanics)
+## DBchapter(Definitions)
+## DBsection(Thermodynamic properties of a fluid)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('Pressure force on flat surface', 'pressure force on curved surface', 'pressure vessel')
+## RESOURCES('UBC-FLU-18-016.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*2808;
+$height = $imgScale*1230;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$r = random(0,20,1);
+$AirMass = 2000 + $r * 50;#random(2000,3000,50);# [kg]
+$InnerDia = 3 + $r * .05;#random(3,4,0.05);# [m]
+$OuterDia = 3.05 + $r * .05;#random(3.05,4.05,0.05);# [m]
+$Length = 5 + $r * .1;#random(5,7,0.1);# [m]
+
+#computation
+$TankVol = pi/4*($InnerDia**2)*$Length;
+$AirDensity = $AirMass/$TankVol;
+$IntPressure = $AirDensity*287*(20+ 273.15);
+$Force = $IntPressure*pi/4*($InnerDia**2) - 101325*pi/4*($OuterDia**2);
+$Ans_a = ($Force/(pi/4*($OuterDia**2 - $InnerDia**2)))/(10**6);# [MPa]
+$Ans_b = $Ans_a; #[MPa]
+
+#set tolerance
+Context()->flags->set(
+tolerance=>1,
+tolType=>'absolute');
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-FLU-18-016.png", width=>[$width], height=>[$height]) @]*
+
+A cylindrical pressure vessel with inner diameter [`D_i = [$InnerDia]`] [`m`], outer diameter [`D_o = [$OuterDia]`] [`m`], and length [`L = [$Length]`] [`m`] contains [`[$AirMass]`] [`kg`] of pressurized air at [`20^{\circ}C`]. 
+
+1. Ignoring bending, determine the average normal stress within the cylindrical shell.
+
+After one year of cyclical usage, the endcaps of the pressure vessel have coned outward by a distance [`z=0.25`] [`m`]; all other dimensions have remained unchanged. 
+
+END_PGML
+
+BEGIN_TEXT
+$PAR
+$SPACE $SPACE 2. If the air in the vessel is pressurized to the same amount as in part $BBOLD 1$EBOLD, determine the new average normal stress within the cylindrical shell.
+
+END_TEXT
+
+BEGIN_PGML
+
+[`\sigma=`] [____]{"$Ans_a"} [`MPa`]  
+[`\sigma_{new}=`] [____]{"$Ans_b"} [`MPa`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
