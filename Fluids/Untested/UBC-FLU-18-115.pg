@@ -1,0 +1,110 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Deanâs Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Fluid mechanics)
+## DBchapter(Flow past immersed bodies)
+## DBsection(Forces on objects immersed in a flow)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$r = random(0,20,1);
+$ThrustCoeff = 2 + $r * .1;#(2,4,0.1) [-]
+$TowerThickTmp = 10 + $r * .2;#(10,14,0.2) [cm]
+$BendingStrengthTmp = 500 + $r * 10;#(500,700,10) [MPa]
+$SafetyFactor = 1.5 + $r * -0.02;#(1.5,1.1,-0.02) [-]
+
+$WindSpeed = 100*1000/3600;
+$Height = 90;
+$RotorRad = 63;
+$RotorArea = pi*($RotorRad**2);
+$TowerThick = $TowerThickTmp/100;
+$BendingStrength = $BendingStrengthTmp*(10**6);
+$ThrustForce = 0.5*$ThrustCoeff*1.2*$RotorArea*($WindSpeed**2);
+$ThrustMoment = $ThrustForce*$Height;
+
+$OuterRadGuess = 15;
+
+do{
+	$Func = ($OuterRadGuess**4 - ($OuterRadGuess - $TowerThick)**4)*(pi/4)* $BendingStrength/($SafetyFactor*$ThrustMoment) - $OuterRadGuess;
+	$dFunc = ((pi/4)*$BendingStrength/($SafetyFactor*$ThrustMoment))*(4*$OuterRadGuess**3 -4*($OuterRadGuess - $TowerThick)**3);
+	$OuterRad = $OuterRadGuess - $Func/$dFunc;
+	$err = abs($OuterRad - $OuterRadGuess);
+	$OuterRadGuess = $OuterRad;
+}while($err > 1/(10**6));
+
+$Ans = 2 * $OuterRad;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.02,
+tolType=>'absolute');
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+Since wind turbine blades rotate along a plane that is perpendicular to the incoming wind, the magnitude and direction of drag and lift forces vary at different locations along the blades (the blades also usually twist along their lengths). As a result, wind turbine engineers define an overall thrust coefficient that may be used to calculate the total thrust force acting normal to the wind turbine rotor. At an extreme operating condition subject to [`100`] [`km/h`] wind with an air density of [`1.2`] [`kg/m^3`], the thrust coefficient of a parked wind turbine (no rotation) is [`[$ThrustCoeff]`]. The center of the turbine's rotor is located [`90`] [`m`] above the ground and the rotor radius is [`63`] [`m`]. Determine the minimum acceptable tower base outer diameter if the tower is a hollow cylinder with thickness [`[$TowerThickTmp]`] [`cm`]. The tower material has an allowable bending strength of [`[$BendingStrengthTmp]`] [`MPa`]. Ignore the drag force on the tower itself as well as the weight of the tower and apply a safety factor of [`[$SafetyFactor]`].
+
+[`D_o=`] [____]{"$Ans"} [`m`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
