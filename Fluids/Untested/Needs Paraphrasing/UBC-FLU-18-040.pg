@@ -1,0 +1,97 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Fluid mechanics)
+## DBchapter(Integral relations for a control volume)
+## DBsection(Energy)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-FLU-18-040.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*701;
+$height = $imgScale*1528;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$D=random(.04,.06,.001);# [in]
+$Q= random(.3, .4, .01);# [mL/s]
+
+#computation
+$Ans = pi*998.7*9.81*(($D*0.0254)**4)/(128*0.917*$Q/10**6)*(0.153+0.917)-2*998.7*$Q/10**6/(16*pi*0.917);#[kg/(m.s)]
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05,);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-FLU-18-040.png", width=>[$width], height=>[$height]) @]*
+
+The device in the figure is used to measure the viscosity of water: a tank and a capillary tube. The flow is laminar and has negligible entrance loss, [`h_f=\frac{32\mu LV}{\rho gd^2}`]. Students measure water temperature with a thermometer and flowrate with a stopwatch and a graduated cylinder. Density is measured by weighing a known volume. Calculate [`\mu`] for the following actual data: [`T = 16.5^{\circ}C`], [`\rho = 998.7`] [`kg/m^3`], [`d = [$D]`] [`in`], [`Q = [$Q]`] [`mL/s`], [`L = 36.1`] [`in`], and [`H = 0.153`] [`m`]. 
+
+[`\mu=`] [____]{"$Ans"} [`kg/m\cdot s`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
