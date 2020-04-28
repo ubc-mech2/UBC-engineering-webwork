@@ -1,0 +1,97 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Fluid mechanics)
+## DBchapter(Integral relations for a control volume)
+## DBsection(Linear momentum)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-FLU-18-075.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*2086;
+$height = $imgScale*1133;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$Vj= random(1,5,1);# [m/s]
+$Aj= random(0.1,1,0.1);# [m^2]
+
+#computation
+$Ans= 998*$Aj*($Vj-3)**2*(1-cos(60*pi/180));# [N]
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05,);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-FLU-18-075.png", width=>[$width], height=>[$height]) @]*
+
+In the figure, the water jet with [`V_j=[$Vj]`] [`m/s`] and [`A_j=[$Aj]`] [`m^2`] strikes a vane which moves to the right at constant velocity [`V_c=3`] [`m/s`] on a frictionless cart. Compute the force [`F_x`] required to restrain the cart for [`\theta=60^{\circ}`].
+
+[`F_x=`] [____]{"$Ans"} [`N`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
