@@ -1,0 +1,96 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Fluid mechanics)
+## DBchapter(Integral relations for a control volume)
+## DBsection(Linear momentum)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-FLU-18-074.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*2834;
+$height = $imgScale*1349;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$Vj= random(1,5,1);# [m/s]
+
+#computation
+$Ans= 2*998* 0.1* 60*2*pi/60*0.2 *($Vj-0.2*2*pi)**2; #[W]
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05,);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-FLU-18-074.png", width=>[$width], height=>[$height]) @]*
+
+A water jet of velocity [`V_j`] and area [`A_j`] strikes a single [`180^{\circ}`] bucket on a turbine wheel rotating at angular velocity [`\Omega`]. Find the delivered power to the wheel at this instant for [`R=0.2`] [`m`], [`\Omega=60`] [`rpm`], [`V_j=[$Vj]`] [`m/s`] and [`A_j=0.1`] [`m^2`].
+
+[`P=`] [____]{"$Ans"} [`W`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
