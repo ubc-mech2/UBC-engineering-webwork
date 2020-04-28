@@ -1,0 +1,97 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Fluid mechanics)
+## DBchapter(Integral relations for a control volume)
+## DBsection(Linear momentum)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-FLU-18-068.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*2745;
+$height = $imgScale*1001;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$V1= random(0.5,1,0.1); #[m/s]
+$W= random(1,2,0.1); #[m]
+
+#computation
+$Ans= 998*2*$W*$V1**2*(1/(1-sin(50*pi/180))-1);# [N]
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05,);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-FLU-18-068.png", width=>[$width], height=>[$height]) @]*
+
+The vertical gate in a water channel is partially open, as in the figure. Assuming no change in water level and a hydrostatic pressure distribution, Find the streamwise force, [`F_x`], on one-half of the gate for water at [`20^{\circ}C`], [`V_1 = [$V1]`] [`m/s`], [`h = 2`] [`m`], [`w = [$W]`] [`m`], and [`\theta = 50^{\circ}`]. 
+
+[`F_x=`] [____]{"$Ans"} [`N`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
