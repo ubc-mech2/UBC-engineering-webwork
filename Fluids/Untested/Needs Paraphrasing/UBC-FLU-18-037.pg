@@ -1,0 +1,84 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Fluid mechanics)
+## DBchapter(Integral relations for a control volume)
+## DBsection(Energy)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-FLU-18-037.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*3064;
+$height = $imgScale*1763;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$C=random(100,500,50);# [m^5/s^2]
+$H=random(3,10,1);# [m]
+
+#computation
+$Ans1 = sqrt($H/(3*$C));# [m^3/s]
+$Ans2 = 998*9.81*$Ans1*(2*$H/3);# [W]
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.02);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-FLU-18-037.png", width=>[$width], height=>[$height]) @]*
+
+Consider a turbine extracting energy from a penstock in a dam, as shown in the figure. For turbulent flow, the friction head loss is [`h_f = CQ^2`], where the constant [`C`] depends upon penstock dimensions and water physical properties. For [`H=[$H]`] [`m`] and [`C=[$C]`] [`m^5/s^2`], find: 
+1. The maximum turbine power. 
+2. The corresponding flow rate. 
+
+[`P=`] [____]{"$Ans2"} [`W`]  
+[`Q=`] [____]{"$Ans1"} [`m^3/s`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
