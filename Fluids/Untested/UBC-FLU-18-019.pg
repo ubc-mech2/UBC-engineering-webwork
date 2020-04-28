@@ -1,0 +1,95 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Fluid mechanics)
+## DBchapter(Pressure distributions)
+## DBsection(Buoyancy and stability)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('Buoyancy')
+## RESOURCES('')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$r = random(0,20,1);
+$Depth = 1000 + $r *25;#(1000,1500,25) [m]
+$MassIW = 100000 + $r*2500;#(100000,150000,2500) [m]
+$CableDensity = 2000 + $r *50;#(2000,3000,50) [kg/m3]
+$Offset = 10 + $r;#(10,30,1) [m]
+$StressAllowTmp = 60 + $r;#(60,80,1) [MPa]
+
+#computation
+$StressAllow = $StressAllowTmp*(10**6);
+$Ans = (sqrt(4*$MassIW*9.81/(pi*($StressAllow + 1025*9.81*$Depth - $CableDensity*9.81*($Depth + $Offset)))))*100;# [cm]
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.25,
+tolType=>'absolute');
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+
+A marine crane is being designed to meet the following requirements: (i) the maximum ocean depth reached by the crane's cable should be [`[$Depth]`] [`m`], (ii) the crane must support an object with a mass-in-water equal to [`[$MassIW]`] [`kg`]. The material chosen for the cable has a density of [`[$CableDensity]`] [`kg/m^3`] and an allowable stress of [`[$StressAllowTmp]`] [`MPa`]. The top end of the cable is attached to a winch that is located [`[$Offset]`] [`m`] above the ocean surface. Determine the minimum cable diameter that is necessary for meeting these requirements. Assume a water density of [`1025`] [`kg/m^3`].
+
+[`d=`] [____]{"$Ans"} [`cm`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
