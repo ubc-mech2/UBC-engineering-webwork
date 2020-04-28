@@ -1,0 +1,112 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Fluid mechanics)
+## DBchapter(Differential relations for fluid flow)
+## DBsection(Linear momentum)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$r = random(0,20,1);
+$LocalAccelX = 3 + $r * .15;#(3,6,0.15) m/s2
+$LocalAccelY = 5 + $r * .15;#(5,8,0.15) m/s2
+$VelXGradX = 1 + $r * .15;#(1,4,0.15) s-1
+$VelYGradX = 2 + $r * .15;#(2,5,0.15) s-1
+$VelXGradY = 1.5 + $r * .15;#(1.5,4.5,0.15) s-1
+$VelYGradY = .5 + $r * .15;#(0.5,3.5,0.15) s-1
+$VelX = 2.5 + $r * .15;#(2.5,5.5,0.15) m/s
+$VelY = 1.25 + $r * .15;#(1.25,4.25,0.15) m/s
+
+#computation
+$Ans_a = (-998*($LocalAccelX + $VelX*$VelXGradX + $VelY*$VelXGradY))/1000; #[kPa/m]
+$Ans_b = (998*(-9.81) - 998*($LocalAccelY + $VelX*$VelYGradX + $VelY*$VelYGradY))/1000;# [kPa/m]
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.2,
+tolType=>'absolute');
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+In order to determine flow behaviour within a control volume, computational fluid dynamics (CFD) programs solve the continuity and momentum conservation equations using some method for solving partial differential equations (e.g. finite difference, finite volume, or finite element methods). Say that, at a single point within a fluid domain, the following data is output from a CFD solver:
+
+	[`\cdot`] A local fluid acceleration in the [`x`] direction of [`[$LocalAccelX]`] [`m/s^2`]  
+	[`\cdot`] A local fluid acceleration in the [`y`] direction of [`[$LocalAccelY]`] [`m/s^2`]  
+	[`\cdot`] A gradient of the [`x`] component of velocity in the [`x`] direction of [`[$VelXGradX]`] [`s^{-1}`]  
+	[`\cdot`] A gradient of the [`y`] component of velocity in the [`x`] direction of [`[$VelYGradX]`] [`s^{-1}`]  
+	[`\cdot`] A gradient of the [`x`] component of velocity in the [`y`] direction of [`[$VelXGradY]`] [`s^{-1}`]  
+	[`\cdot`] A gradient of the [`y`] component of velocity in the [`y`] direction of [`[$VelYGradY]`] [`s^{-1}`]  
+	[`\cdot`] An [`x`] component of velocity of [`[$VelX]`] [`m/s`]  
+	[`\cdot`] A [`y`] component of velocity of [`[$VelY]`] [`m/s`]  
+
+Assuming that the simulation is two-dimensional in the [`x-y`] plane, the fluid is inviscid, and gravity acts in the negative [`y`] direction, the fluid is water at [`20^{\circ}C`], determine:  
+1. the pressure gradient in the [`x`] direction.  
+2. the pressure gradient in the [`y`] direction. 
+
+[`\nabla P_x=`] [____]{"$Ans_a"} [`kPa/m`]  
+[`\nabla P_y=`] [____]{"$Ans_b"} [`kPa/m`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
