@@ -1,0 +1,87 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Fluid mechanics)
+## DBchapter(Integral relations for a control volume)
+## DBsection(Energy)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-FLU-18-038.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*3469;
+$height = $imgScale*2161;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$H= random(15,20,0.5) ;# [ft]
+$Q= random(10000,15000,500);# [gal/min]
+
+#computation
+$ht=150-25-$H;# [ft]
+$hhp=150+$H-25;# [ft]
+$QC= $Q*0.0022;# [ft^3/s]
+$Ans1= 62.4*$QC*$ht;# [ ft.lbf/s]
+$Ans2=$hhp*62.4*$QC;# [ft.lbf/s]
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.02,);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-FLU-18-038.png", width=>[$width], height=>[$height]) @]*
+
+The pump-turbine system the figure draws water from the upper reservoir in the daytime to produce power for a city. At night, it pumps water from lower to upper reservoirs to restore the situation. For a design flow rate of [`[$Q]`] [`gal/min`] in either direction, the friction head loss is [`[$H]`] [`ft`]. Estimate the power: 
+1. Extracted by the turbine 
+2. Delivered by the pump
+
+[`P_{turbine}=`] [____]{"$Ans1"} [`ft\cdot lbf/s`]  
+[`P_{pump}=`] [____]{"$Ans2"} [`ft\cdot lbf/s`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
