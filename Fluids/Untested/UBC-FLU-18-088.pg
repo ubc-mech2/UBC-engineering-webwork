@@ -1,0 +1,89 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Fluid mechanics)
+## DBchapter(Differential relations for fluid flow)
+## DBsection(Linear momentum)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$r = random(0,20,1);
+$Height = 0.2+$r*-.005;#(0.2,0.1,-0.005) [m]
+$Angle = 5+$r*.5;#(5,15,0.5) [Â°]
+
+$Ans = (1260*9.81/(2*1.5))*sin($Angle*pi/180)*($Height**2);# [m/s]
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.2,
+tolType=>'absolute');
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+Fluid flows freely down an inclined surface with steady, fully-developed, laminar, and two-dimensional behaviour. If the fluid is glycerin at [`20^{\circ}C`], the inclination angle is [`[$Angle]^{\circ}`] above the horizontal plane, and the thickness of the liquid layer is [`[$Height]`] [`m`], determine the fluid velocity (magnitude only) at the air-water interface. Since the dynamic viscosity of air is five orders of magnitude lower than that of glycerin at room temperature, you may assume that the air above the water is inviscid.
+
+[`U=`] [____]{"$Ans"} [`m/s`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
