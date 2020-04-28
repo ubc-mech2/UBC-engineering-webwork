@@ -1,0 +1,98 @@
+##DESCRIPTION
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
+##ENDDESCRIPTION
+
+## DBsubject(Fluid mechanics)
+## DBchapter(Integral relations for a control volume)
+## DBsection(Linear momentum)
+## Institution(University of British Columbia)
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-FLU-18-076.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*3396;
+$height = $imgScale*1213;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$Vj= random(1,5,1);# [m/s]
+$Q = .1;
+$k = 100;
+$z = 998*$Q/2/$k;
+
+#computation
+$Ans= $z + sqrt($z**2 + 2*$z*$Vj);# [m/s]
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05,);
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-FLU-18-076.png", width=>[$width], height=>[$height]) @]*
+
+The boat in the figure is jet-propelled  by a pump which develops a volume flow rate [`Q=[$Q]`] [`m^3/s`] and ejects water out the stem at velocity [`V_j=[$Vj]`] [`m/s`]. If the boat drag force is [`F =kV`], where [`k=[$k]`] is a constant, find the steady forward speed, [`V`], of the boat.
+
+[`V=`] [____]{"$Ans"} [`m/s`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
