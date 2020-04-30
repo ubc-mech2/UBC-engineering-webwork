@@ -1,0 +1,82 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-053.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+Context()->variables->add(A=>"Real");
+Context()->variables->add(B=>"Real");
+Context()->variables->add(G=>"Real");
+Context()->variables->add(h=>"Real");
+#given
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*1675;
+$height = $imgScale*1146;
+
+#computation 
+$k = Formula("2 pi h G/(ln(B/A))");
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-SM-18-053.png", width=>[$width], height=>[$height]) @]*
+
+The diagram shows an annular shear spring made from rubber. A rigid ring is attached to the outside diameter of the rubber, and a solid rod is attached to the inside diameter. The inner and outer radii of the rubber are [`r_i=A`], and [`r_o=B`] and its axial length is [`h`]. The shear modulus [`G`] Derive an expression for the stiffness of the rubber shear spring in terms of [`A`], [`B`], [`h`], and [`G`]. 
+
+[`k=`] [____________________]{"$k"}
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT()};
