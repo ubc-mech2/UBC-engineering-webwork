@@ -1,0 +1,103 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-050.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$l = random(60,100,1);
+$ea = 70;
+$aa = 150;
+$say = 75;
+$es = 210;
+$as = 50;
+$ssy = random(200,400,5);
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*894;
+$height = $imgScale*1287;
+
+#computation 
+$k = $aa*$ea/($as*$es);
+
+if($k > ($say/$ssy)) {
+	#al yields first
+	$fa = $say*$aa;
+	$fs = $fa/$k;
+}
+else{
+	#st yields first
+	$fs = $ssy*$as;
+	$fa = $k*$fs;
+}
+$fmax = ($fs + $fa)/1000;
+$delta = $fs * $l/($as * $es);
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-SM-18-050.png", width=>[$width], height=>[$height]) @]*
+
+An electric power cable [`[$l]`] [`m`] long is made of a steel core surrounded by an aluminum shell. The materials have the following properties:  
+[`E_a = [$ea]`] [`GPa`], [`A_a = [$aa]`] [`mm^2`], [`\sigma_{Y_a}=[$say]`] [`MPa`]  
+[`E_s = [$es]`] [`GPa`], [`A_s = [$as]`] [`mm^2`], [`\sigma_{Y_s}=[$ssy]`] [`MPa`]. 
+
+Compute the the maximum load the cable can withstand before either material yields, and the elongation under this load. For simplicity, assume that the aluminum and steel are both elasuc/perfectly plastic. 
+
+[`F_{max}=`] [____]{"$fmax"} [`kN`]  
+[`\delta=`] [____]{"$delta"} [`mm`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT()};
