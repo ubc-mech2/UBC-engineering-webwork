@@ -1,0 +1,81 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Kinetics of particles)
+## DBsection(2D equations of motion)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .3;
+
+#image aspect ratio
+$width = $imgScale*957;
+$height = $imgScale*1496;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$m = random(50,60,.1);
+$v = random(5,9,.1);
+$rx = random(300,400,1);
+$ry = random(1500,2500,1);
+
+#computation 
+$a = ($ry - $m*9.81)/$m;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-BME-18-008.png", width=>[$width], height=>[$height]) @]*
+
+A [`[$m]`] [`kg`] runner is running forward at [`[$v]`] [`m/s`] when his foot strikes the ground. The vertical ground reaction force acting under his foot at this instant is [`R_y = [$ry]`] [`N`]. The friction force acting under his foot is a [`R_x=[$rx]`] [`N`] braking force. These are the only external forces on the runner other than gravity.
+
+[`a=`] [_____]{"$a"} [`m/s^2`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

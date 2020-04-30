@@ -1,0 +1,71 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinetics of rigid bodies)
+## DBsection(Potential energy)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$v = random(7,10,.1);
+$m = random(40,60,1);
+$cog = random(.75,1.25,.01);
+
+#computation 
+$h = $cog+ $v*$v/2/9.81;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+Zoe is pole-vaulting. At the end of her approach run, she has a horizontal velocity of [`[$v]`] [`m/s`] and her center of gravity is [`[$cog]`] [`m`] high. If Zoe's mass is [`[$m]`] [`kg`], estimate how high she should be able to vault if her kinetic and potential energies are all converted to potential energy.
+
+[`h=`] [_____]{"$h"} [`m`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

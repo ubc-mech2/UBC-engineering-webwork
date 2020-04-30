@@ -1,0 +1,115 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Kinematics of particles)
+## DBsection(Rectilinear motion)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+do {
+
+	#given
+	$ds = random(40,50,1);
+	$dm = random(10,20,1);
+	$vbx = random(20,30,.1);
+	$vby = random(5,10,.1);
+	$h = random(1.5,2,.01);
+	$vm = random(7,10,.1);
+	$mcYes = PopUp(["?","Yes","No"], "Yes");
+	$mcNo = PopUp(["?","Yes","No"], "No");
+
+	#computation 
+	$hp = $vby**2/9.81/2 + $h;
+	$t = $ds/$vbx;
+	$h2 = $h + $vby*$t - .5*9.81*$t*$t;
+
+}while($h2 <= .1 or $h2 >= 3);
+
+$tm = $dm/$vm;
+
+if($tm < $t) {
+	$mcCorrect = $mcYes;
+}
+else {
+	$mcCorrect = $mcNo;
+}
+
+$h2 = Formula("$h2");
+$t = Formula("$t");
+$hp = Formula("$hp");
+$mcCorrect = $mcYes;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+Sam fields a baseball hit to him in the left field. He then throws the ball to third to force out the base runner, Mike. Sam releases the ball [`[$h]`] [`m`] above the ground with a vertical velocity of [`[$vby]`] [`m/s`] and a horizontal velocity of [`[$vbx]`] [`m/s`]. At the instant Sam releases the ball, he is [`[$ds]`] [`m`] from the third baseman, Charlie, and Mike is [`[$dm]`] [`m`] from third base and running at [`[$vm]`] [`m/s`] toward third. Assume that air resistance does not affect the flight of the ball when answering the following questions.
+
+*a)* How high in the air does the ball go?
+
+[`y_{peak}=`] [_____] [`m`]  
+
+*b)* How much time does it take for the ball to reach the third baseman?
+
+[`t=`] [_____] [`s`]  
+
+*c)* How high is the ball when it reaches the third baseman?
+
+[`y=`] [_____] [`m`]  
+
+*d)* If Mike maintains a constant velocity of [`[$vm]`] [`m/s`] toward third base, does he reach third base before the ball reaches the third baseman?
+
+[@$mcCorrect->menu()@]*
+
+END_PGML
+
+ANS($hp->cmp);
+ANS($t->cmp);
+ANS($h2->cmp);
+ANS($mcCorrect->cmp);
+
+##############################################################
+
+ENDDOCUMENT();

@@ -1,0 +1,71 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Statics)
+## DBchapter(Distributed forces: moment of inertia)
+## DBsection(Parallel axis theorem: area moment of inertia)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$m = random(.5,.7,.01);
+$i = random(.1,.3,0.01);
+$l = random(.7,1.1,.01);
+
+#computation 
+$i2 = $i + $m * $l * $l;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+A [`[$m]`] [`kg`] lacrosse stick has a moment of inertia about a transverse axis through its center of gravity of [`[$i]`] [`kg \cdot m^2`]. When a player swings the stick at an opponent, the axis of rotation is through the end of the stick [`[$l]`] [`m`] from the center of gravity of the stick. What is the moment of inertia relative to this swing axis?
+
+[`I=`] [_____]{"$i2"} [`kg \cdot m^2`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

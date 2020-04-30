@@ -1,0 +1,78 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinetics of rigid bodies)
+## DBsection(Angular impulse and momentum)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$t = random(.2,.4,.01);
+$l = random(40,60,.1);
+$moi = random(1.8,2.8,.1);
+
+#computation 
+$to = $l/$t;
+$omega = $l/$moi;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+Sarah's twist angular momentum increases from [`0`] to [`[$l]`] [`kg\cdot m^2/s`] in [`[$t]`] [`s`] as she initiates a twisting jump on the ice. During this [`[$t]`] [`s`], her moment of inertia about her twist axis is [`[$moi]`] [`kg\cdot m^2`].
+
+*a)* How large is the average torque that produces this change in angular momentum?
+
+[`T=`] [_____]{"$to"} [`Nm`]  
+
+*b)* How fast is Sarah's twist angular velocity at the end of the [`[$t]`] [`s`]?
+
+[`\omega_f=`] [_____]{"$omega"} [`rad/s`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

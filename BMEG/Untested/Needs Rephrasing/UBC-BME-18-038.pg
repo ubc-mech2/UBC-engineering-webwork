@@ -1,0 +1,83 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinetics of rigid bodies)
+## DBsection(Kinetic energy)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$v = random(40,60,1);
+$m = random(.15,.25,.01);
+$d = random(5,20,1);
+
+#computation 
+$ke = .5*$m*$v*$v;
+$w = -$ke;
+$f = $ke/$d*100;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+A baseball strikes the catcher's glove with a horizontal velocity of [`[$v]`] [`m/s`]. The mass of the baseball is [`[$m]`] [`kg`]. The displacement of the baseball due to the deformation of the catcher's glove and the movement of the catcher's hand is [`[$d]`] [`cm`] from the instant it first makes contact with the glove until it stops.
+
+*a)* How much kinetic energy does the baseball possess just before it strikes the glove?
+
+[`KE=`] [_____]{"$ke"} [`J`]  
+
+*b)* How much work does the catcher do on the baseball during the catch?
+
+[`W=`] [_____]{"$w"} [`J`]  
+
+*c)* What is the average impact force exerted by the glove on the baseball?
+
+[`F=`] [_____]{"$f"} [`N`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

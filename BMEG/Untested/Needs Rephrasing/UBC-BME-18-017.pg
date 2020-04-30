@@ -1,0 +1,72 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Statics)
+## DBchapter(Distributed forces: moment of inertia)
+## DBsection(Radius of gyration: area moment of inertia)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$m = random(50,70,1);
+$omega = random(6,10,.1);
+$omega2 = random(20,30,.1);
+$i = random(15,20,1);
+
+#computation 
+$k = sqrt($i*$omega/$m/$omega2);
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+A [`[$m]`] [`kg`] diver has an angular velocity of [`[$omega]`] [`rad/s`] about her transverse axis when she leaves the board in a layout position. When she tucks, her angular velocity increases to [`[$omega2]`] [`rad/s`]. If her moment of inertia is [`[$i]`] [`kg \cdot m^2`] in the layout position, what is her radius of gyration in the tuck position?
+
+[`k=`] [_____]{"$k"} [`m`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

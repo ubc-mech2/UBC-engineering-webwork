@@ -1,0 +1,84 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Statics)
+## DBchapter(Distributed forces: centroid and center of gravity)
+## DBsection(Center of mass)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .25;
+
+#image aspect ratio
+$width = $imgScale*1819;
+$height = $imgScale*998;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$w1 = random(15,25,.1);
+$w2 = random(15,25,.1);
+$l = random(2,2.5,.1);
+$r1 = random(20,40,1);
+$r2 = random(20,40,1);
+$b = random(10,20,.1);
+
+#computation 
+$sigmaM = $w1*$r1/100 + $b*$l/2 + $w2*($l-$r2/100);
+$xg = $sigmaM/($w1+$w2+$b);
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-BME-18-013.png", width=>[$width], height=>[$height]) @]*
+
+A weightifter has mistakenly placed a [`w_1=[$w1]`] [`kg`] plate on one end of the barbell and a [`w_2=[$w2]`] [`kg`] plate on the other end of the barbell. The barbell is [`[$l]`] [`m`] long and has a mass of [`[$b]`] [`kg`] without the plates on it. The [`[$w1]`] [`kg`] plate is located [`r_1 = [$r1]`] [`cm`] from the right end of the barbell, and the [`[$w2]`] [`kg`] plate is located [`r_2=[$r2]`] [`cm`] from the left end of the barbell. where is the center of gravity, [`x_G`], measured from the right end of the barbell with the weight plates on it?
+
+[`x_G=`] [_____]{"$xg"} [`m`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

@@ -1,0 +1,70 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Kinematics of particles)
+## DBsection(Rectilinear motion)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$h = random(2,3,.1);
+$v = random(4,6,.1);
+
+#computation 
+$hf = $h + $v*$v/2/9.81;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+A volleyball player sets the ball for the spike. When the ball leaves the setter's fingers, it is [`[$h]`] [`m`] high and has a vertical velocity of [`[$v]`] [`m/s`] upward. How high will the ball go?
+
+[`h=`] [_____]{"$hf"} [`m`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

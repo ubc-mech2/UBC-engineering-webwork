@@ -1,0 +1,71 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Kinetics of particles)
+## DBsection(Linear impulse and momentum)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$t = random(.1,.2,.01);
+$m = random(3,5,.1);
+$v = random(15,25,.1);
+
+#computation 
+$F = -$m*$v/$t;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+A boxer is punching a heavy bag. The time of impact of the glove with the bag is [`[$t]`] [`s`]. The mass of the glove and his hand is [`[$m]`] [`kg`]. The velocity of the glove just before the impact is [`[$v]`] [`m/s`]. What is the average impact force exerted on the glove?
+
+[`F=`] [_____]{"$F"} [`N`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

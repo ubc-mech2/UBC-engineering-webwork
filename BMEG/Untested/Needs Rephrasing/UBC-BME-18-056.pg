@@ -1,0 +1,70 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinetics of rigid bodies)
+## DBsection(Angular impulse and momentum)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$theta = random(3000,4000,10);
+$moi = random(.6,.9,.01);
+
+#computation 
+$t = $moi*$theta*pi/180;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+Tom's leg angularly accelerates [`[$theta]^{\circ}/s^2`] around the hip joint during a roundhouse kick in the transverse plane. The moment of inertia of the leg around the axis of rotation for this kick is [`[$moi]`] [`kg\cdot m^2`]. How large is the torque that produces this acceleration?
+
+[`T=`] [_____]{"$t"} [`Nm`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

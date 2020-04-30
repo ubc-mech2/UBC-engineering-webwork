@@ -1,0 +1,70 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Kinematics of particles)
+## DBsection(Rectilinear motion)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$vx = random(10,20,.1);
+$vy = random(15,25,.1);
+
+#computation 
+$t = 2*$vy/9.81;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+A punter punts the football. The football leaves the punter's foot with a vertical velocity of [`[$vy]`] [`m/s`] and a horizontal velocity of [`[$vx]`] [`m/s`]. What is the hang time of the football? Assume that air resistance has no effect and that the heights at landing and release are the same.
+
+[`t=`] [_____]{"$t"} [`s`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

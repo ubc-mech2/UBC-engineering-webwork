@@ -1,0 +1,71 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Mechanics of materials)
+## DBchapter(Strain)
+## DBsection(Axial strain)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$A = random(1,3,.1);
+$F = random(60000,80000,100);
+$E = 70;
+
+#computation 
+$eps = $F/$A/$E/1000;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+A material is subjected to a tensile load of [`[$F]`] [`N`]. Its cross-sectional area is [`[$A]`] [`cm^2`]. The elastic modulus for this material is [`[$E]`] [`GPa`]. What strain results from this tensile load? 
+
+[`\epsilon=`] [_____]{"$eps"} [`%`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

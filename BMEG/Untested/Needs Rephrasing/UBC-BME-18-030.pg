@@ -1,0 +1,71 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Kinetics of particles)
+## DBsection(Linear impulse and momentum)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$m = random(.3,.5,.01);
+$t = random(.01,.02,.001);
+$v = random(20,30,.1);
+
+#computation 
+$fx = $m*$v/$t;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+A [`[$m]`] [`kg`] soccer ball is stationary on the field when Darryl kicks it. Darryl's foot is in contact with the ball for [`[$t]`] [`s`] during the kick. The horizontal velocity of the ball as it leaves his foot is [`[$v]`] [`m/s`]. What is the average horizontal force exerted by Darryl’s foot on the ball during the [`[$t]`] [`s`] of contact (assume that friction between the ball and the field is zero)?
+
+[`F_x=`] [_____]{"$fx"} [`N`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

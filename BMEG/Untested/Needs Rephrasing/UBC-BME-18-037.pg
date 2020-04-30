@@ -1,0 +1,83 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinetics of rigid bodies)
+## DBsection(Kinetic energy)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$m = random(20,30,1);
+$v = random(80,100,1);
+$d = random(55,70,1);
+$f = random(300,350,1);
+
+#computation 
+$ke = .5*$m*$v**2/1000;
+$fave = $ke/$d*100;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+An archer draws his compound bow and shoots an arrow. The [`[$m]`] [`g`] arrow leaves the bow with a velocity of [`[$d]`] [`m/s`]. The power stroke of the bow is [`[$d]`] [`cm`]; that is, the bowstring exerts force on the arrow through a displacement of [`[$d]`] [`cm`]. The peak draw weight of the bow is [`[$f]`] [`N`]. (_This is the maximum force that the archer has to exert on the bowstring._)
+
+*a)* How much kinetic energy does the arrow have after release?
+
+[`KE=`] [_____]{"$ke"} [`J`]  
+
+*b)* How much work does the bowstring do on the arrow?
+
+[`W=`] [_____]{"$ke"} [`J`]  
+
+*c)* What average force does the bowstring exert on the arrow?
+
+[`F=`] [_____]{"$fave"} [`N`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

@@ -1,0 +1,80 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinetics of rigid bodies)
+## DBsection(Angular impulse and momentum)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .5;
+
+#image aspect ratio
+$width = $imgScale*616;
+$height = $imgScale*717;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$moi1 = random(.15,.3,.01);
+$m = random(.3,.6,.01);
+$r = random(40,60,1);
+
+#computation 
+$moi2 = $moi1 + $m*$r**2/100/100;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-BME-18-053.png", width=>[$width], height=>[$height]) @]*
+
+The moment of inertia of the lower leg and foot about an axis through the knee joint is [`[$moi1]`] [`kg\cdot m^2`]. What is the moment of inertia of the leg and foot about the knee joint if a [`[$m]`] [`kg`] shoe is worn on the foot? Assume that the shoe's mass is all concentrated in one point [`L=[$r]`] [`cm`] from the knee joint.
+
+[`I_{knee}=`] [_____]{"$moi2"} [`kg\cdot m^2`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

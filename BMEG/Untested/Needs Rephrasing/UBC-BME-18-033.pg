@@ -1,0 +1,78 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Kinetics of particles)
+## DBsection(Impact)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$h = random(220,250,1);
+$hmin = random(125,145,1);
+$hmax = random($hmin+20,$hmin+40,1);
+
+#computation 
+$emin = sqrt($hmin/$h);
+$emax = sqrt($hmax/$h);
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+To earn the _FIFA Approved_ label, a soccer ball must bounce at least [`[$hmin]`] [`cm`] high and no more than [`[$hmax]`] [`cm`] high when dropped from a height of [`[$h]`] [`cm`] onto a steel plate.
+
+*a)* What is the minimum coefficient of restitution of a _FIFA Approved_ soccer ball?
+
+[`e_{min}=`] [_____]{"$emin"}
+
+*b)* What is the maximum coefficient of restitution of a _FIFA Approved_ soccer ball?
+
+[`e_{max}=`] [_____]{"$emax"} 
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

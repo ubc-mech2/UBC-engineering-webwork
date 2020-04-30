@@ -1,0 +1,88 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinematics of rigid bodies)
+## DBsection(Rotation about a fixed axis)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+do{
+
+	#given
+	$v = random(40,60,1);
+	$omega = random(100,150);
+	$d = random(30,45,1);
+	$m = random(130,180,1);
+
+	#computation 
+	$v2 = $omega*$d/100;
+	$p = $v2/$v*100;
+	$a = $omega**2*$d/100;
+	$f = $m/1000*$a;
+
+}while($p > 95 or $p < 75);
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+During the delivery phase of fastball pitch, the arm internally rotates at the shoulder. The angular velocity of this internal rotation peaks at [`[$omega]`] [`rad/s`]. At this instant, the elbow angle is [`90^{\circ}`], so the angular velocity of the forearm is also [`[$omega]`] [`rad/s`]. The baseball in the pitcher's hand is [`[$d]`] [`cm`] from this axis of rotation through the shoulder joint. At this instant the linear velocity of the baseball is [`[$v]`] [`m/s`].
+
+*a)* How much of the baseball's total linear velocity is due to the [`[$omega]`] [`rad/s`] angular velocity of the forearm?
+
+[_____]{"$p"} [`%`]  
+
+*b)* What is the centripetal acceleration of the baseball at this instant?
+
+[`a_r=`] [_____]{"$a"} [`m/s^2`]  
+
+*c)* How large is the force exerted by the pitcher on the baseball to cause this acceleration? The baseball's mass is [`[$m]`] [`g`].
+
+[`F=`] [_____]{"$f"} [`N`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

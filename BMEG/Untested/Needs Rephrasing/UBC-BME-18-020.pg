@@ -1,0 +1,90 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Statics)
+## DBchapter(Particles)
+## DBsection(Resultants)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .3;
+
+#image aspect ratio
+$width = $imgScale*1138;
+$height = $imgScale*776;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+do {
+
+	#given
+	$theta = random(15,35,1);
+	$thetar = $theta*pi/180;
+	$fd = random(10,30,1);
+	$mu = random(.05,.15,.01);
+	$m = random(50,70,1);
+
+	#computation 
+	$w = $m*9.81*cos($thetar);
+	$fr = $mu*$w;
+	$r = $m*9.81*sin($thetar) - $fd - $fr;
+
+}while($r <= 0);
+
+$rx = $r*cos($thetar);
+$ry = - $r*sin($thetar);
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-BME-18-020.png", width=>[$width], height=>[$height]) @]*
+
+Amy is in a tuck and skiing straight down a [`\theta=[$theta]^{\circ}`] slope. Air resistance pushes backward on her with a force of [`[$fd]`] [`N`]. The coefficient of dynamic friction between her skis and the snow is [`[$mu]`]. Amy's mass is [`[$m]`] [`kg`]. What is the resultant of the external forces that act on Amy?
+
+[`\vec{R}=`] [`(`][_____]{"$rx"}[`\hat{i}+`][_____]{"$ry"}[`\hat{j})`] [`N`]
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

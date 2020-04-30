@@ -1,0 +1,89 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinetics of rigid bodies)
+## DBsection(Potential energy)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$m = random(15,25,.1);
+$h = random(1,2,.01);
+$dt = random(4,6,1);
+$t = random(10,15,1);
+$t2 = $t-$dt; 
+
+
+#computation 
+$ke = $m*$h*9.81;
+$w = -($ke + $m*9.81*$dt/100);
+$f = abs($w/$dt*100);
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[$a]
+
+To test the impact performance of a [`[$t]`] [`cm`] thick gymnastics mat, a [`[$m]`] [`kg`] cylindrical mass is dropped onto the mat from a height of [`[$h]`] [`m`] above the mat. During the impact, the cylinder's vertical velocity reaches zero at the instant the mat has compressed to only [`[$t2]`] [`cm`] thick.
+
+*a)* How much kinetic energy does the cylinder have at the instant just before it contacts the mat?
+
+[`KE=`] [_____]{"$ke"} [`J`]  
+
+*b)* How much work does the mat do to stop the fall of the cylinder?
+
+[`W=`] [_____]{"$w"} [`J`]  
+
+*c)* What average vertical force does the mat exert on the cylinder during the impact, from contact until the cylinder's vertical velocity is zero?
+
+[`F=`] [_____]{"$f"} [`N`]  
+
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

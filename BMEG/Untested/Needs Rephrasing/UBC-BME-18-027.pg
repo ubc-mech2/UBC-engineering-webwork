@@ -1,0 +1,78 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Kinematics of particles)
+## DBsection(Rectilinear motion)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$h = 27.43;
+$hi = random(.5,2,.01);
+
+#computation 
+$vi = sqrt(2*9.81*($h-$hi));
+$vf = sqrt($vi**2 + 2*9.81*$hi);
+$t = ($vi+$vf)/9.81; 
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+At the Dallas Cowboys Stadium, the minimum clearance height between the football field and the gigantic video screens that hang over the field is only [`[$h]`] [`m`]. In the first game played at the Cowboys Stadium on August 21, 2009, a punter's kick hit the video screen.
+
+*a)* What minimum initial vertical velocity would a football need to have to hit the video screens if it were kicked from a height [`[$hi]`] [`m`] above the playing field surface? Assume that air resistance does not affect the flight of the football.
+
+[`v_i=`] [_____]{"$vi"} [`m/s`]  
+
+*b)* If the video screens were not in the way, what would be the hang time for a football kicked [`[$h]`] [`m`] high? Again, assume that air resistance does not affect the flight of the football and that the ball is [`[$hi]`] [`m`] above the playing field when it is kicked.
+
+[`t=`] [_____]{"$t"} [`s`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

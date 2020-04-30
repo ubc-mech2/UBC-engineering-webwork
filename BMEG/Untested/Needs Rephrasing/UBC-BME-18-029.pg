@@ -1,0 +1,97 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Kinetics of particles)
+## DBsection(2D equations of motion)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .5;
+
+#image aspect ratio
+$width = $imgScale*353;
+$height = $imgScale*512;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$mb = random(70,90,.1);
+$ms = random(3,6,.1);
+$f = random(600,800,1);
+
+#computation 
+$abx = -$f/$mb;
+$aby = -9.81;
+$asx = $f/$ms;
+$asy = -9.81;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-BME-18-029.png", width=>[$width], height=>[$height]) @]*
+
+Blanche, a [`[$mb]`] [`kg`] shot-putter, is putting the [`[$ms]`] [`kg`] shot in a track meet. Just before she releases the shot, Blanche is in the air (her feet are off the ground). At this instant, the only force she exerts against the shot is an [`[$f]`] [`N`] horizontal force directed forward.
+
+*a)* What is Blanche's horizontal acceleration at this instant?
+
+[`a_{B_x}=`] [_____]{"$abx"} [`m/s^2`]  
+
+*b)* What is Blanche's vertical acceleration at this instant?
+
+[`a_{B_y}=`] [_____]{"$aby"} [`m/s^2`]  
+
+*c)* What is the shot's horizontal acceleration at this instant?
+
+[`a_{s_x}=`] [_____]{"$asx"} [`m/s^2`]  
+
+*d)* What is the shot's vertical acceleration at this instant?
+
+[`a_{s_y}=`] [_____]{"$asy"} [`m/s^2`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

@@ -1,0 +1,78 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinetics of rigid bodies)
+## DBsection(Radius of gyration: mass moment of inertia)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$m = random(.3,.4,.01);
+$kt = random(5,10,.1);
+$ks = random(15,25,.1);
+
+#computation 
+$it = $m*$kt**2/100/100;
+$is = $m*$ks**2/100/100;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+A tennis racket has a mass of [`[$m]`] [`kg`]. The radius of gyration of the racket about its longitudinal (twist) axis is [`[$kt]`] [`cm`], and its radius of gyration about its swing axis is [`[$ks]`] [`cm`].
+
+*a)* What is the moment of inertia of this racket about its longitudinal axis?
+
+[`I_{twist}=`] [_____]{"$it"} [`kg\cdot m^2`]  
+
+*b)* What is the moment of inertia of this racket about its swing axis?
+
+[`I_{swing}=`] [_____]{"$is"} [`kg\cdot m^2`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

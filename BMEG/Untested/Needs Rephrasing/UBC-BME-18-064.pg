@@ -1,0 +1,84 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Statics)
+## DBchapter(Rigid bodies)
+## DBsection(Resultants)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .5;
+
+#image aspect ratio
+$width = $imgScale*1378;
+$height = $imgScale*762;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$f1 = random(30,40,1);
+$f2 = random(60,70,1);
+$d1 = random(30,40,1);
+$d2 = random(50,60,1);
+$d = random(3,5,1);
+$theta = random(5,15,1);
+
+#computation 
+$fmd = $f1*$d1 + $f2*$d2;
+$fm = $fmd/$d;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-BME-18-064.png", width=>[$width], height=>[$height]) @]*
+
+Show shoulder abduction in the frontal plane with a weight in the hand is a common exercise to strengthen the deltoids. If [`F_1 = [$f1]`] and [`F_2 = [$f2]`], what is the force ([`F_M`]) required in the left deltoid to sustain a weight held in the hand at an abduction angle of [`90^{\circ}`]? Assume that [`F_1`] and [`F_2`] are [`[$d1]`] [`cm`] and [`[$d2]`] [`cm`] away from the center of the scapulo-humeral joint, respectively, and assume that the deltoid acts alone at an angle of [`[$theta]^{\circ}`] above the horizontal with a moment arm of [`[$d]`] [`cm`].
+
+[`F_M=`] [_____]{"$fm"} [`N`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

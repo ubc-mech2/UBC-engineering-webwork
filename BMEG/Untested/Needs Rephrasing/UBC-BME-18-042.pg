@@ -1,0 +1,72 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinetics of rigid bodies)
+## DBsection(Potential energy)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$m = random(70,90,1);
+$h = random(5,7,.1);
+$cog = random(1,1.5,.01);
+$cogf = random(.3,.7,.01);
+
+#computation 
+$f = $m*9.81*($h-$cogf)/($cog-$cogf);
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+Mike is a [`[$m]`] [`kg`] pole-vaulter. He falls from a peak height of [`[$h]`] [`m`] after pole-vaulting over a crossbar set at that height. He lands on a thick mat. When Mike first makes contact with the mat, his center of gravity is only [`[$cog]`] [`m`] high. During Mike's impact with the mat, the mat compresses. At the point of maximum compression, Mike's vertical velocity reaches zero, and his center of gravity is only [`[$cogf]`] [`m`] high. What average force did the mat exert on Mike during this impact?
+
+[`F=`] [_____]{"$f"} [`N`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

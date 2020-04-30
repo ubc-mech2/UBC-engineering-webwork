@@ -1,0 +1,83 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Kinetics of particles)
+## DBsection(2D equations of motion)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .45;
+
+#image aspect ratio
+$width = $imgScale*810;
+$height = $imgScale*563;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$m = random(75,85,.1);
+$fr = random(9,15,.1);
+$d = fr + random(2,5.1);
+$theta = random(10,30,1);
+$thetar = $theta*pi/180;
+
+#computation 
+$fx = $m*9.81*sin($thetar) - $fr - $d;
+$ax = $fx/$m;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-BME-18-032.png", width=>[$width], height=>[$height]) @]*
+
+Scott is rolling down a [`\theta = [$theta]^{\circ}`] slope on his skateboard. The total mass of Scott and the skateboard is [`[$m]`] [`kg`]. The rolling friction between the skateboard wheels and the concrete is [`[$f]`] [`N`] acting backward against the skateboard. The drag force due to air resistance is [`[$d]`] [`N`] acting backward against Scott. What is Scott's acceleration?
+
+[`a=`] [_____]{"$ax"} [`m/s^2`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

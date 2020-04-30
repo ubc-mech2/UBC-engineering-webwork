@@ -1,0 +1,82 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Statics)
+## DBchapter(Rigid bodies)
+## DBsection(2D equilibrium)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .5;
+
+#image aspect ratio
+$width = $imgScale*492;
+$height = $imgScale*593;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$d = random(7,10,.1);
+$dm = $d/100;
+$theta = random(30,40,1);
+$thetar = $theta*pi/180;
+$t = random(200,400,1);
+
+#computation 
+$fp = $t/(sin($thetar)*$dm);
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-BME-18-044.png", width=>[$width], height=>[$height]) @]*
+
+The patellar tendon attaches to the tibia at the tibial tuberosity. The tibial tuberosity is [`d=[$d]`] [`cm`] from the center of the knee joint (*a*). The patellar tendon pulls at an angle of [`\theta=[$theta]^{\circ}`] to a line passing through the tibial tuberosity and the center of the knee joint. If the patellar tendon produces an extension torque around the knee joint equal to [`[$t]`] [`Nm`], how large is the force, [`F_p`], in the patellar tendon?
+
+[`F_p=`] [_____]{"$fp"} [`N`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

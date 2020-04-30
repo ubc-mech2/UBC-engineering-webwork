@@ -1,0 +1,108 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Kinematics of particles)
+## DBsection(Rectilinear motion)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+do{
+
+	#given
+	$vy = random(1,4,.1);
+	$vx = random(5,9,.1);
+	$t = random(.6,1.3,.01);
+	$cog = random(.8,1.2,.01);
+
+	#computation 
+	$r = sqrt($vx**2 + $vy**2);
+	$theta = 180/pi*arctan($vy/$vx);
+	$vx2 = $vx;
+	$dx = $t*$vx;
+	$vy2 = $vy - 9.81*$t;
+	$h = $cog + $vy**2/2/9.81;
+	$h2 = $cog + $vy*$t - .5*9.81*$t*$t;
+
+}while($h2 <= .2 or $h2 >= .8);
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+Gerri leaves the long jump takeoff board with a vertical velocity of [`[$vx]`] [`m/s`] and a horizontal velocity of [`[$vy]`] [`m/s`].
+
+*a)* What is Gerri's resultant velocity at takeoff?
+
+[`r=`] [_____]{"$r"} [`m/s`]  
+
+*b)* What is Gerri's takeoff angle - the angle of her resultant takeoff velocity with horizontal?
+
+[`\theta=`] [_____]{"$theta"} [`^{\circ}`]  
+
+*c)* What is Gerri's horizontal velocity just before she lands?
+
+[`v_x=`] [_____]{"$vx2"} [`m/s`]  
+
+*d)* If Gerri is in the air for [`[$t]`] [`s`], what is her horizontal displacement during this time in the air?
+
+[`\Delta x=`] [_____]{"$dx"} [`m`]  
+
+*e)* What is Gerri's vertical velocity at the end of her [`[$t]`] [`s`] flight?
+
+[`v_y=`] [_____]{"$vy2"} [`m/s`]  
+
+*f)* If Gerri's center of gravity was [`[$cog]`] [`m`] high at the instant of takeoff, how high will it be at the peak of her flight?
+
+[`y_{peak}=`] [_____]{"$h"} [`m`]  
+
+*g)* How high is Gerri's center of gravity at the end of her flight, when she first hits the pit?
+
+[`y_f=`] [_____]{"$h2"} [`m`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

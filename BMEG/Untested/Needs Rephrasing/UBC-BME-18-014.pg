@@ -1,0 +1,71 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinematics of rigid bodies)
+## DBsection(Rotation about a fixed axis)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$lh = random(10,20,1);
+$rh = random(45,70,1);
+$rp = random(120,160,1);
+
+#computation 
+$lp = $rp/$rh*$lh;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+A golfer's hands move through an arc length of [`[$lh]`] [`cm`] during a putt. What arc length does the head of the putter move through if the hands are [`[$rh]`] [`cm`] from the axis of rotation and the putter's head is [`[$rp]`] [`cm`] from the axis of rotation?
+
+[`l=`] [_____]{"$lp"} [`cm`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

@@ -1,0 +1,83 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Kinematics of particles)
+## DBsection(Rectilinear motion)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$hc = random(2,3,.01);
+$v = random(4,6,.01);
+$cog = random(1,1.5,.01);
+
+#computation 
+$ay = -9.81;
+$t = $v/9.81;
+$h = $cog + $v*$t - .5*9.81*$t*$t;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+Brian is attempting to high jump over a crossbar set at [`[$hc]`] [`m`]. At the instant of takeoff (when he is no longer in contact with the ground) his vertical velocity is [`[$v]`] [`m/s`], and his center of gravity is [`[$cog]`] [`m`] high.
+
+*a)* What is Brian's vertical acceleration at the instant of takeoff?
+
+[`a_y=`] [_____]{"$ay"} [`m/s^2`]  
+
+*b)* How much time elapses after takeoff until Brian reaches his peak height?
+
+[`t=`] [_____]{"$t"} [`s`]  
+
+*c)* What peak height does Brian's center of gravity achieve?
+
+[`y_{peak}=`] [_____]{"$h"} [`m`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

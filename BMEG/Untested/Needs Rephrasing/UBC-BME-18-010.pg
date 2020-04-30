@@ -1,0 +1,70 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Kinetics of particles)
+## DBsection(Work of a force)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$F = random(150,300,1);
+$d = random(20,30,.1);
+
+#computation 
+$u = -$F*$d/100;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+A therapist is helping a patient with stretching exercises. She pushes on the patient's foot with an average force of [`[$F]`] [`N`]. The patient resists the force and moves the foot [`[$d]`] [`cm`] toward the therapist. How much work did the therapist do on the patient's food during this stretching exercise.
+
+[`U=`] [_____]{"$u"} [`J`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
