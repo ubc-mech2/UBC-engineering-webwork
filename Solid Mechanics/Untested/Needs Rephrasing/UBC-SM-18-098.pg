@@ -1,0 +1,93 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-098.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .15;
+
+#image aspect ratio
+$width = $imgScale*2195;
+$height = $imgScale*1029;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+Context()->variables->add(A=>"Real");
+Context()->variables->add(Y=>"Real");
+Context()->variables->add(L=>"Real");
+Context()->variables->add(a=>"Real");
+Context()->variables->add(E=>"Real");
+Context()->variables->remove("x");
+
+#computation 
+$dy = Formula("3 Y L /(2 E)");
+$dp = Formula("3 Y L / E");
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+no solution yet
+
+[@ image("UBC-SM-18-098.png", width=>[$width], height=>[$height]) @]*
+
+A rigid bar [`ACB`] is supported on a fulcrum at [`C`] and loaded by a force [`P`] at end [`B`]. Three identical wires made of an elastoplastic material
+(yield stress [`Y`] and modulus of elasticity [`E`]) resist the load [`P`]. Each wire has cross-sectional area [`A`] and length [`L`].
+1. 	Determine the yield load [`P_Y`] and the corresponding yield displacement [`\delta_Y`] at point [`B`].
+2. 	Determine the plastic load [`P_p`] and the corresponding displacement [`\delta_P`] at point [`B`] when the load just reaches the value [`P_p`].
+3. 	Draw a load-displacement diagram with the load [`P`] as ordinate and the displacement [`\delta_B`] of point [`B`] as abscissa. [`no\: solution\: yet`]
+
+[`\delta_Y=`] [_____]{"$dy"}  
+[`\delta_P=`] [_____]{"$dp"}  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

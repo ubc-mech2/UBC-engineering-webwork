@@ -1,0 +1,117 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-087.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScaleA = .2;
+$imgScaleB = .2;
+
+#image aspect ratio
+$widthA = $imgScaleA*808;
+$heightA = $imgScaleA*1251;
+
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"niceTables.pl"
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$load = 60;
+$dmid = 20; $amid = 173;
+$dout = 12; $aout = 76.7;
+$inc = 40;
+
+#computation 
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-SM-18-087.png", width=>[$widthA], height=>[$heightA]) @]*
+
+END_PGML
+
+BEGIN_TEXT
+
+$PAR
+\{
+	DataTable(
+		[
+			['$BBOLD Nominal Diameter$EBOLD (\(mm\))','$BBOLD Approximate Weight$EBOLD (\(N/m\))','$BBOLD Effective Area $EBOLD (\(mm^2\)) ','$BBOLD Ultimate Load $EBOLD (\(kN\)) '],
+			['12','6.1','76.9','102'],
+			['20','13.9','173','231'],
+			['25','24.4','304','406'],
+			['32','38.5','481','641'],
+			['38','55.9','697','930'],
+			['44','76.4','948','1260'],
+			['50','99.8','1230','1650'],
+		],
+		center => 0,
+		allcellcss=>'padding-left:10px; padding-right:10px; border: solid thin #CCCCCC;',
+		);
+\}
+$PAR
+
+END_TEXT
+
+BEGIN_PGML
+
+Three steel cables jointly support a load of [`[$load]`] [`kN`], The diameter of the middle cable is [`[$dmid]`] [`mm`] and the diameter of each outer cable is [`[$dout]`] [`mm`]. The tensions in the cables are adjusted so that each cable carries one-third of the load (i.e. [`[$load/3]`] [`kN`]). Later, the load is increased by [`[$inc]`] [`kN`] to a total load of [`[$load+$inc]`] [`kN`].
+1. 	What percent of the total load is now carried by the middle cable?
+2. 	What are the stresses [`\sigma_m`] and [`\sigma_o`] in the middle and outer cables, respectively? 
+
+[`%=`] [_____]{"$per"}  
+[`\sigma_m=`] [_____]{"$sigmaM"} [`MPa`]  
+[`\sigma_o=`] [_____]{"$sigmaO"} [`MPa`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
