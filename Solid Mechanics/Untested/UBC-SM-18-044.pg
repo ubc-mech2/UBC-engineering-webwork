@@ -1,0 +1,82 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-044.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+Context()->variables->add(L=>"Real");
+Context()->variables->add(E=>"Real");
+Context()->variables->add(I=>"Real");
+Context()->variables->add(w=>"Real");
+Context()->variables->remove("x");
+#given
+
+
+#image scale
+$imgScale = .25;
+
+#image aspect ratio
+$width = $imgScale*2090;
+$height = $imgScale*1047;
+
+#computation 
+$tip = Formula("w L ^4 / (30 E I)");
+$mid = Formula("49 w L^4 / (480 E I)");
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-SM-18-044.png", width=>[$width], height=>[$height]) @]*
+
+A cantilever beam of length [`L`] and flexural rigidity [`EI`] supports a distributed load that varies linearly from zero at the free end to [`w /`]unit length at the fixed end. Derive formulas for the deflections of the beam at the free end and at the midpoint in terms of [`L`], [`E`], [`I`], and [`w`]. 
+
+[`\delta_{tip}=`] [_____________________]{"$tip"}  
+[`\delta_{mid}=`] [_____________________]{"$mid"}
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

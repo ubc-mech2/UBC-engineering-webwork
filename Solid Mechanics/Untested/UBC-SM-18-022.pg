@@ -1,0 +1,83 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-022.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$p = random(0.4,3,.2);
+$t = random(1000,1500,100);
+
+#image scale
+$imgScale = .25;
+
+#image aspect ratio
+$width = $imgScale*2300;
+$height = $imgScale*1388;
+
+#computation 
+$ta = ($p**2 + 1/2)* $t /($p**2 + 1);
+$td = ($p)* $t /(2*($p**2 + 1));
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+>>[@ image( "UBC-SM-18-022.png", width=>[$width], height=>[$height]) @]*<<
+
+Uniform circular shaft [`AC_1`] of length [`L`] and polar moment of area [`J`] is attached to a rigid wall at end [`A`] and connected to a step-down gear at the other end, [`C_1`]. A belt drive at mid-span [`B`] applies a torque [`T_M=[$t]`] [`Nm`] to the shaft. A second identical shaft [`C_2D`] is torqued by the gear at end [`C2`] and connected to the rigid wall at the other end, [`D`]. The shafts are supported by smooth ball bearings, which are located near the gear unit. The step down gear ratio is [`[$p]`]. Determine the torques [`T_A`] and [`T_D`] of the shafts at their fixed ends [`A`] and [`D`].
+
+[`T_A=`] [_____]{"$ta"}  
+[`T_D=`] [_____]{"$td"}
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT()};

@@ -1,0 +1,80 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-031.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$load = random(20,40,1);
+$d = random(3,7,.5);
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*2785;
+$height = $imgScale*1516;
+
+#computation 
+$i = pi*($d**4)/64;
+$m = $load*10;
+$smax = $m*$d/(2*$i);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-SM-18-031.png", width=>[$width], height=>[$height]) @]*
+
+The diagram shows a train axle with bearings at the ends that support the weight of the train. Each wheel supports a load of [`[$load]`] [`kip`]. The diameter of the axle is [`[$d]`][`"`]. Determine the maximum bending stress in the centre section of the axle. For a circular shaft, [`I = \frac{\pi r^4}{4}`]. 
+
+[`\sigma_{max}=`] [____] [`ksi`]
+
+END_PGML
+
+ANS(num_cmp($smax,reltol=>5));
+
+##############################################################
+
+ENDDOCUMENT()};

@@ -1,0 +1,97 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-026.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+
+$Etmp = 200;
+$E = $Etmp*(10**9);
+$Itmp = 2;
+$I = $Itmp/(10**5);
+$Jtmp = .5;
+$J = $Jtmp/(10**5);
+$L = random(1,2,.1);
+$P = random(700,900,10);
+
+#image scale
+$imgScale = .25;
+
+#image aspect ratio
+$width = $imgScale*2068;
+$height = $imgScale*1012;
+
+#computation 
+$x = $L;
+$dab = -($P/($E*$I)*(-$L*$x**2 + 1/6 *$x**3))*1000;
+$x = 2*$L;
+$dbc = -($P/($E*$J)*(-$L*$x**2 + 1/6 *$x**3 + 3/2*(1-$J/$I)*($L**2)*$x + 2/3*($J/$I-1)*($L**3)))*1000;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+>>[@ image( "UBC-SM-18-026.png", width=>[$width], height=>[$height]) @]*<<
+
+A cantilever beam is made of two uniform segments of the same material and of equal length [`L`], but having different 2nd moments of area [`I`] and [`J`]. A human load [`P=Mg`] is applied at the free end of the cantilever. Determine the deflection of the beam at point [`B`], [`C`]. Assume the following properties:
+	[`E=[$Etmp]`] [`GPa`]  
+	[`I_1 = [$Itmp]\cdot10^{-5} `] [`m^4`]  
+	[`I_2= [$Jtmp]\cdot10^{-5} `] [`m^4`]  
+	[`L = [$L]`] [`m`]  
+	[`P=Mg=[$P]`] [`N`]
+
+
+[`\delta_{B}=`] [______]{"$dab"} [`mm`]  
+[`\delta_{C}=`] [______]{"$dbc"} [`mm`] 
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT()};

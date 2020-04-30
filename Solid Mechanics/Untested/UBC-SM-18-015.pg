@@ -1,0 +1,89 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-015.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$pl = 225;
+$y = 56.3;
+$ys = 275;
+$u = 350;
+$f = 310;
+$e = 10;
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*2300;
+$height = $imgScale*1844;
+
+
+#computation 
+#set tolerance
+Context()->flags->set(
+tolerance=>.1);
+
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+>>[@ image( "UBC-SM-18-015.png", width=>[$width], height=>[$height]) @]*<<
+
+A metal specimen was subjected to a tensile test. From the load-deflection data, the stress-strain curve shown in the figure above was computed. Find the following parameters:
+1. The proportional limit: [____]{"$pl"} [`MPa`]  
+2. The Young's modulus: [____]{"$y"} [`GPa`]  
+3. The yield strength (using the [`0.2%`] offset method): [____]{"$ys"} [`MPa`]  
+4. The ultimate strength: [____]{"$u"} [`MPa`]  
+5. The fracture strength: [____]{"$f"} [`MPa`]  
+6. The % elongation at fracture: [____]{"$e"}[`%`]  
+
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT()};

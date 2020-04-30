@@ -1,0 +1,93 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-030.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+$r = random(.2,.4,.05);
+$t = random(.02,.04,.005);
+$p = random(200,300,25);
+$m = 20;
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*1969;
+$height = $imgScale*768;
+
+#computation 
+$R = $r + $t;
+$stheta = $p*$r/$t;
+$sa = $p*$r/(2*$t);
+$tau = $m * $R *2/(pi*($R**4 - $r**4));
+
+$c = ($stheta + $sa)/2;
+$r = sqrt(((($stheta-$sa)/2)**2)+($tau**2));
+$smax = $c + $r;
+$smin = $c - $r;
+$theta = arctan(abs($tau*2/($stheta-$sa)))/2*180/pi;
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-SM-18-030.png", width=>[$width], height=>[$height]) @]*
+
+A thin-walled pipe, with end-caps attached, has an inside radius of [`[$r]`][`"`] and wall thickness of [`[$t]`][`"`]. It is pressurized to [`[$p]`] [`psi`], and supports a torsional load [`[$m]`] [`lb\cdot in`]. Use the Mohr's circle contruction to determine the principal stresses and directions at a point on the pipe surface. Sketch a representative element of the pipe surface showing the principal stresses and their orientation relative to thepipe axis. Hint: For a circular pipe, [`J=\frac{\pi(R^4 - r^4)}{2}`].
+
+[`\sigma_{max}=`] [____] [`psi`]  
+[`\sigma_{min}=`] [____] [`psi`]  
+[`\theta_p=`] [____] [`^{\circ}`]
+
+END_PGML
+
+ANS(num_cmp($smax,reltol=>5));
+ANS(num_cmp($smin,reltol=>5));
+ANS(num_cmp($theta,reltol=>5));
+
+##############################################################
+
+ENDDOCUMENT()};
