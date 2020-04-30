@@ -1,0 +1,97 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-084.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .15;
+
+#image aspect ratio
+$width = $imgScale*4247;
+$height = $imgScale*1130;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$l = 2.4;
+$d1 = 20;
+$d2 = random(8,16,2);
+$e = 205;
+$p = random(18,36,2);
+$q = 18.33;
+
+#computation 
+$delta1= $p * $l / $e * (1/(pi *$d1*$d1/4) + 1/(pi*$d2*$d2/4))*1000;
+$vol = ((pi *$d1*$d1/4) + (pi*$d2*$d2/4))*$l;
+$d = sqrt($vol*4/pi/2/$l);
+$area = pi*$d*$d/4;
+$delta2 = $p * 2 * $l/$e/$area*1000;
+$delta3 = ($q*$l*$l/2/$e/(pi/4*$d1*$d1) + $p * $l/$e/$area)*1000;
+
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-SM-18-084.png", width=>[$width], height=>[$height]) @]*
+
+The segmented steel bar is subjected to a tensile force [`P = [$p]`] [`kN`]. Both segments have an identical length of [`[$l/2]`] [`m`] and diameters of [`d_1 = [$d1]`] [`mm`] and [`d_2 = [$d2]`] [`mm`]. The modulus of elasticity is [`E = [$e]`] [`GPa`].
+
+1. Determine the elongation of the bar.
+2. If the same volume of material is used to make a uniform bar with length [`[$l]`] [`m`], calculate the elongation under the same loading condition.
+3. If the left segment of the bar is subjected to a uniformly distributed load [`q =[$q]`] [`kN/m`], as shown in figure *b*, calculate the elongation of this bar.
+
+[`\delta_1=`] [_____]{"$delta1"} [`mm`]  
+[`\delta_2=`] [_____]{"$delta2"} [`mm`]  
+[`\delta_3=`] [_____]{"$delta3"} [`mm`] 
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

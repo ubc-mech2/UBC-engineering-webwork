@@ -1,0 +1,92 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-135.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .15;
+
+#image aspect ratio
+$width = $imgScale*2394;
+$height = $imgScale*1001;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$L = random(2.1,3.9,0.1);
+$h = random(200,300,1);
+$P = 6;
+$bend = 8.2;
+$shear = .7;
+$gamma = 5.5;
+
+#computation 
+$b1 = $P*$L/2/(-7/72*$gamma*$h*$L*$L + $bend*$h*$h/6)*1000000;
+$b2 = 3*$P/$h/($shear*1000 - 5/6*$gamma*$L)*1000000;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-SM-18-135.png", width=>[$width], height=>[$height]) @]*
+
+A beam [`ABC`] is supported at points [`A`] and [`B`] and has height [`h = [$h]`] [`mm`] and length [`L= [$L*7/3]`] [`mm`]. The distance between two supports is [`L = [$L]`] [`mm`] and the beam is subjected to a concentrated load [`3P = [$P*3]`] [`kN`] at midspan of the supports. Also, a moment [`PL/2 = [$P*$L/2]`] [`kNm`] is applied at the free end of the beam. Determine the required width [`b`]: 
+
+1. based on the allowable bending stress of [`[$bend]`] [`MPa`]. 
+2. based on the allowable shear stress of [`[$shear]`] [`MPa`].
+
+Consider the effect of weight by assuming a weight density of [`\gamma = [$gamma] kN/m^3`]. 
+
+[`b_1=`] [_____]{"$b1"} [`mm`]  
+[`b_2=`] [_____]{"$b2"} [`mm`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

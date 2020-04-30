@@ -1,0 +1,88 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-097.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .15;
+
+#image aspect ratio
+$width = $imgScale*1911;
+$height = $imgScale*1634;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+Context()->variables->add(A=>"Real");
+Context()->variables->add(Y=>"Real");
+Context()->variables->add(R=>"Real");
+Context()->variables->remove("x");
+
+#given
+$mc = PopUp(["?","It increases","It decreases","It remains the same"], "It remains the same");
+
+#computation 
+$Ans = Formula("5 Y A");
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-SM-18-097.png", width=>[$width], height=>[$height]) @]*
+
+Load [`P`] is applied to a horizontal rigid bar [`AB`], which is hung from five identical wires that have a cross-sectional area [`A`]. The wires are attached to a curved surface of radius [`R`].
+1. Derive the formula of the plastic load [`P_p`] if the material of the wires has an ideal elastoplastic behaviour with yield stress [`Y`]. [_______]{"$Ans"}
+2. 	How is [`P_p`] changed if the rigid bar [`AB`] is replaced by a flexible? [@ $mc->menu() @]*
+3. 	How is [`P_p`] changed by increasing the radius [`R`]? [@ $mc->menu() @]*
+
+END_PGML
+
+ANS($mc->cmp);
+ANS($mc->cmp);
+
+##############################################################
+
+ENDDOCUMENT();

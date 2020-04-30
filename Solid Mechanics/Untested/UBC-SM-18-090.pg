@@ -1,0 +1,88 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-090.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .15;
+
+#image aspect ratio
+$width = $imgScale*989;
+$height = $imgScale*1847;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$W = random(2560,3560,5);
+$d = random(24,32,1);
+$es = 205;
+$alphas = 12;
+$alphaa = 24;
+
+#computation 
+$as = pi*$d*$d /4;
+$dt = $W/(2 * $es * $as *($alphaa-$alphas))*(10**5);
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-SM-18-090.png", width=>[$width], height=>[$height]) @]*
+
+Two steel and one aluminum wires hold a rigid bar of weight [`W = [$W]`] [`N`] . The diameter of the wires is [`[$d]`] [`mm`]. Before they were loaded, all three wires had the same length and equally spaced.
+
+If the entire load is carried by the steel wires determine the temperature increase [`\Delta T`]. (Assume [`E_s = [$es] GPa`], [`\alpha_s = [$alphas] \times 10^{-6}/^{\circ}C`], and [`\alpha_a = [$alphaa] \times 10^{-6}/^{\circ}C`].)
+
+
+[`\Delta T=`] [_____]{"$dt"} [`^{\circ}C`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

@@ -1,0 +1,84 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-077.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*2064;
+$height = $imgScale*626;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$d = random(40,60,2);
+$e = 200;
+$v = random(.003,.006,.001);
+$deltad = $d*(1+$v) - $d;
+$nu = .3;
+
+#computation 
+$Ans = $e * pi / 4 * $d * $deltad/$nu;
+
+
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-SM-18-077.png", width=>[$width], height=>[$height]) @]*
+
+The steel bar shown in the figure has the diameter [`d = [$d]`] [`mm`], modulus of elasticity, [`E = [$e]`] [`GPa`], and Poisson's ratio [`\nu= [$nu]`]. Calculate the maximum compressive force permitted if clearance requirements limit the diameter of the bar to [`[$d+$deltad]`] [`mm`].
+
+[`P_{max}=`] [_____] [`kN`]  
+
+END_PGML
+
+ANS(num_cmp($Ans,reltol=>5));
+
+##############################################################
+
+ENDDOCUMENT();

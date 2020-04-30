@@ -1,0 +1,113 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-139.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .15;
+
+#image aspect ratio
+$width = $imgScale*4331;
+$height = $imgScale*2009;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$h = random(300,400,1);
+$b = 200;
+$t = random(10,20,1);
+$F = 250;
+$v = 3.2;
+
+
+#computation 
+$b1 = $b - 2*$t;
+$h1 = $h - 2*$t;
+$I = 1/12*($b * $h**3 - $b1*$h1**3);
+
+$Qa = $b*$t*($h-$t)/2;
+$Qb = ($b-2*$t)*$t*($h - $t)/2;
+
+$sa = 2*$F*$I/$v/$Qa/1000;
+$sb = 2*$F*$I/$v/$Qb/1000;
+
+$sa = Formula("$sa");
+$sb = Formula("$sb");
+
+if ($sa > $sb) {
+	$mc = PopUp(["?","A","B"], "A");
+}
+else {
+	$mc = PopUp(["?","A","B"], "B");
+}
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-SM-18-139.png", width=>[$width], height=>[$height]) @]*
+
+To support a shear force [`V = [$v]`] [`kN`], a wood box is required with a specific dimensions of ([`[$b]`] [`mm`] [`\times`] [`[$h]`] [`mm`]) and thickness of ([`t = [$t]`] [`mm`]) . In order to fabricate the box two different configuration has been shown in the figure. Both configuration are formed by nail with an allowable shear force of [`[$F]`] [`N`].   
+
+1. 	What is the maximum longitudinal spacing [`s_A`] for the nails in beam [`A`]?
+2. 	What is the maximum longitudinal spacing [`s_B`] for the nails in beam [`B`]?
+3. 	Which beam is more efficient in resisting the shear force? [@ $mc->menu() @]*
+
+[`s_A=`] [_____] [`mm`]  
+[`s_B=`] [_____] [`mm`]  
+
+END_PGML
+
+ANS($mc->cmp);
+ANS($sa->cmp);
+ANS($sb->cmp);
+
+
+##############################################################
+
+ENDDOCUMENT();

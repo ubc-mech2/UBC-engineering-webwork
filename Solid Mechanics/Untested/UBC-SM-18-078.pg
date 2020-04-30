@@ -1,0 +1,92 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-078.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .15;
+
+#image aspect ratio
+$width = $imgScale*2394;
+$height = $imgScale*2172;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$p = random(500,700,50);
+$tf = 25;
+$dp = random(44,54,2);
+$tg = 38;
+
+#computation 
+$tauAve = $p/4/(pi *$dp * $dp/4)*1000;
+$sigmabf=  $p / 4 / ($dp * $tf)*1000;
+#$sigmabg = $p / 2 / ($dp * $tg)*1000; guset plates and pin
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-SM-18-078.png", width=>[$width], height=>[$height]) @]*
+
+The figure shows the structure used to support the upper deck of a stadium. The camp plate transfers the force [`P=[$p]`] [`kN`] to four flange plates (thickness [`t_f = [$tf]`] [`mm`]) through the pin (diameter [`d_p = [$dp]`] [`mm`]) in the gusset plates (thickness [`t_g = [$tg]`] [`mm`]). Determine:
+
+1. 	The average shear stress [`\tau_{ave}`] in the pin.
+2. 	The average bearing stress between the flange plates and the pin ([`\sigma_{b}`])
+
+[`\tau_{ave}=`] [_____] [`MPa`]  
+[`\sigma_{b}=`] [_____] [`MPa`]  
+
+END_PGML
+
+ANS(num_cmp($tauAve,reltol=>5));
+ANS(num_cmp($sigmabf,reltol=>5));
+
+##############################################################
+
+ENDDOCUMENT();

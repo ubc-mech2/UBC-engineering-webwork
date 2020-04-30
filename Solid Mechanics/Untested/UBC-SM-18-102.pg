@@ -1,0 +1,93 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-102.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .25;
+
+#image aspect ratio
+$width = $imgScale*377;
+$height = $imgScale*960;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$d1 = 125;
+$d2 = random(145,180,1);
+$g = 80;
+$t = 20;
+
+#computation 
+$I = pi /32 * ($d2**4 - $d1 ** 4);
+$tau2 = $t * $d2 / 2 / $I * 1000000;
+$tau1 = $t * $d1 / 2 / $I * 1000000;
+$theta = $t / $g / $I * 180/pi * 1000000;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-SM-18-102.png", width=>[$width], height=>[$height]) @]*
+
+The construction drill in the figure has a hollow shaft with an outer diameter of [`d_2 = [$d2]`] [`mm`] and inner diameter of [`d_1 = [$d1]`] [`mm`]. Modulus of elasticity is [`G = [$g]`] [`GPa`].
+If a torque of [`[$t]`] [`kNm`] is applied, determine:
+1. 	Shear stress [`\tau_2`] at the outer surface,
+2. 	Shear stress [`\tau_1`] at the lamer surface, and
+3.  Angle of twist [`\theta`] per unit length.
+
+
+[``\tau_2``] [_____]{"$tau1"} [`MPa`]  
+[``\tau_1``] [_____]{"$tau2"} [`MPa`]  
+[`\theta`] [_____]{"$theta"} [`^{\circ}/m`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

@@ -1,0 +1,98 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-104.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .15;
+
+#image aspect ratio
+$width = $imgScale*2602;
+$height = $imgScale*1872;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$l1 = random(1,1.5,0.1);
+$l2 = .9;
+$d1 = random(74,90,1);
+$d2 = 60;
+$l = $l1 + $l2;
+
+#computation 
+$phi1 = $l1/$d1**4 + $l2/$d2**4;
+$phi2 = $l/(1-.8**4);
+$d4 = ($phi2/$phi1)**.25;
+
+$dtest1 = $d1/(1-.8**4)**(1/3);
+$dtest2 = $d2/(1-.8**4)**(1/3);
+
+$d42 = $dtest1 < $dtest2 ? $dtest1 : $dtest2;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-SM-18-104.png", width=>[$width], height=>[$height]) @]*
+
+A two-segment shaft is shown in the figure on top. The diameter of the left segment is [`[$d1]`] [`mm`] and its length is [`[$l1]`] [`m`]. The right segment has a diameter of [`[$d2]`] [`mm`] and length of [`[$l2]`] [`m`].
+
+A hollow shaft made of the same material and having the same length is shown at the bottom. The hallow shaft has a thickness of [`t=d/10`], where [`d`] is the outer diameter. Same torque is applied to both shafts.
+
+1.  Calculate the outer diameter [`d_{o_1}`] of the hallow shaft so it has a same torsional stiffness as the two-segment shaft.
+2.  Calculate the outer diameter [`d_{o_2}`] of the hallow shaft so it has a same maximum shear stress as the two-segment shaft. Assume torque [`T`] is applied at either end of both shafts.
+
+
+[`d_{o_1}=`] [_____]{"$d4"} [`mm`]  
+[`d_{o_2}=`] [_____]{"$d42"} [`mm`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

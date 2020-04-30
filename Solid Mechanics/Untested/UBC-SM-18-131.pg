@@ -1,0 +1,99 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-131.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .15;
+
+#image aspect ratio
+$width = $imgScale*2494;
+$height = $imgScale*2093;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$q = 22.5;
+$L = 1.95;
+$h = random(200,400,1);
+$b = random(100,200,1);
+
+#computation 
+$A = $b * $h;
+$S = $b* $h * $h/6;
+
+$va = $q * $L / 2;
+$taua = 3/2 * $va / $A*1000000;
+$sigmaa = $q * $L**2 / 8 / $S*1000000;
+
+$vb = $q * $L;
+$taub = 3/2 * $vb / $A*1000000;
+$sigmab = $q * $L**2 / 2 / $S*1000000;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-SM-18-131.png", width=>[$width], height=>[$height]) @]*
+
+A beam is needed to carry a uniform load of [`q=[$q]`] [`kN/m`] with the length of [`[$L]`] [`m`] and a rectangular cross section of width [`[$b]`] [`mm`] and height [`[$h]`] [`mm`]. Compare the the maximum shear stress [`\tau_{max}`] and the maximum bending stress [`\sigma_{max}`] for  *a)* simply supported configuration and *b)*  replacing the right-hand support with a sliding support that can only apply reactive moment.
+
+*a)*  
+[`\tau_{max_a}=`] [_____]{"$taua"} [`kPa`]  
+[`\sigma_{max_a}=`] [_____]{"$sigmaa"} [`MPa`]  
+
+ 
+*b)*  
+[`\tau_{max_b}=`] [_____]{"$taub"} [`kPa`]  
+[`\sigma_{max_b}=`] [_____]{"$sigmab"} [`MPa`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

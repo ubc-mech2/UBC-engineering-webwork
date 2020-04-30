@@ -1,0 +1,99 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-086.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*1623;
+$height = $imgScale*1636;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$l = 350;
+$db = random(20,35,1);
+$da = random(40,26,1);
+$ea = 72; 
+$eb = 100;
+$percent = .1;
+$ballow = 120;
+$aallow = 80;
+
+#computation 
+$aa = pi/4 * ($da**2 - $db**2);
+$ab = pi / 4 * $db**2;
+
+$p = ($ea * $aa + $eb * $ab)*$percent/100;
+$pa = $aallow/$ea;
+$pb = $ballow/$eb;
+$notPmax = $pa < $pb ? $pa : $pb;
+$pmax = $notPmax * ($ea * $aa + $eb * $ab)/1000;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-SM-18-086.png", width=>[$width], height=>[$height]) @]*
+
+A cylindrical composite of brass (inner) and aluminum (outer) has the length of [`[$l]`] [`mm`]. Load [`P`] is applied according to the figure. The diameter of the brass part is [`[$db]`] [`mm`], and the outside diameter of the aluminum part is [`[$da]`] [`mm`]. 
+1. 	Determine the magnitude of the load if the length of the assembly decreases by [`[$percent]%`]. Aluminum and brass have moduli of elasticity of [`[$ea]`] [`GPa`] and [`[$eb]`] [`GPa`], respectively.
+2. 	Determine the maximum load [`P`] if the allowable stresses in the aluminum and brass are [`[$aallow]`] [`MPa`] and [`[$ballow]`] [`MPa`], respectively.
+
+
+
+[`P=`] [_____]{"$p"} [`kN`]  
+[`P_{max}=`] [_____]{"$pmax"} [`kN`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

@@ -1,0 +1,92 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-134.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .15;
+
+#image aspect ratio
+$width = $imgScale*2578;
+$height = $imgScale*849;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$L = 1.2;
+$b = random(100,200,1);
+$h = random(200,300,1);
+$gamma = 5.4;
+$bend = 8.5;
+$shear = .8;
+
+#computation 
+$A = $b*$h;
+$S = $b*$h*$h/6;
+$q = $gamma * $b *$h;
+
+$pa = ($bend*$S - $q*$L**2/8)/($L/4)/1000000;
+$V = 2/3*$A*$shear;
+$pb = ($V - $q*$L/2/1000)/1000*2;
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-SM-18-134.png", width=>[$width], height=>[$height]) @]*
+
+A simply supported  lumber is needed to carry a load at its midspan. It has a length of [`[$L]`] and its cross section has width of [`[$b]`] [`mm`] and height of [`[$h]`] [`mm`]. Determine the maximum value of the load [`P`] according to *a)* the allowable bending stress is [`[$bend]`] [`MPa`], and *b)*  the allowable shear stress is [`[$shear]`] [`MPa`]. Consider the effect of lumber weight by assuming its density is [`[$gamma]`] [`kN/m^3.`]
+
+[`P_a=`] [_____]{"$pa"} [`kN`]  
+[`P_b=`] [_____]{"$pb"} [`kN`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

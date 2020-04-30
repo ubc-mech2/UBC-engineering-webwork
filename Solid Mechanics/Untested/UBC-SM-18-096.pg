@@ -1,0 +1,86 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-096.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .15;
+
+#image aspect ratio
+$width = $imgScale*1829;
+$height = $imgScale*1189;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+Context()->variables->add(A=>"Real");
+Context()->variables->add(Y=>"Real");
+Context()->variables->add(t=>"Real");
+Context()->variables->remove("x");
+#given
+
+
+#computation 
+$Ans = Formula("2 Y A sin(t)");
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-SM-18-096.png", width=>[$width], height=>[$height]) @]*
+
+The vertical load [`P`] is applied to the steel bars in the figure. Assume an ideal elastoplastic behaviour for steel with yield stress [`Y`]. Each bar has cross-sectional area [`A`]. 
+
+Derive the formula for yield load [`P_Y`] in terms of cross-sectional area [`A`], yield stress [`Y`], and angle [`\theta = t`] according to the figure.
+
+
+[`P_Y=`] [_____]{"$Ans"}  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

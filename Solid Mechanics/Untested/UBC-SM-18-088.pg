@@ -1,0 +1,90 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-088.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .15;
+
+#image aspect ratio
+$width = $imgScale*1634;
+$height = $imgScale*2078;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$p=random(30,100,5);
+$aa =6000;
+$as = random(500,600,5);
+$ea = 70;
+$es = 200;
+
+#computation 
+$sigmaA= Formula("-2*$ea*$p / ($ea*$aa + 2*$es*$as)*1000");
+$sigmaS= Formula("4*$es*$p / ($ea*$aa + 2*$es*$as)*1000");
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-SM-18-088.png", width=>[$width], height=>[$height]) @]*
+
+The aluminum and steel pipes are connected by plate [`C`]. The aluminum pipe is twice longer than the steel pipe.
+
+Calculate the stresses [`\sigma_a`] and [`\sigma_s`] if [`P = [$p]`] [`kN`] applied at plate [`C`], cross-sectional area of aluminum pipe [`A_a = [$aa]`] [`mm^2`], cross-sectional area of steel pipe [`A_s = [$as] mm^2`], modulus of elasticity of aluminum [`E_a = [$ea]`] [`GPa`], and modulus of elasticity of steel [`E_s = [$es]`] [`GPa`].
+
+
+[`\sigma_a=`] [_____]{"$sigmaA"} [`MPa`]  
+[`\sigma_s=`] [_____]{"$sigmaS"} [`MPa`]  
+
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

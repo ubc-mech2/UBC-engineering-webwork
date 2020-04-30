@@ -1,0 +1,98 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-136.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .15;
+
+#image aspect ratio
+$width = $imgScale*3161;
+$height = $imgScale*1501;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$L = random(10,20,1);
+$sigma = 110;
+$tau = 50;
+
+$b = random(400,500,1);
+$h = 1864;
+$h1 = 1800;
+$tf = 32;
+$tw = random(15,20,1);
+
+#computation 
+$I = 1/12*($b * $h**3 - $b*$h1**3 + $tw*$h1**3);
+$S = 2*$I/$h;
+$q1 = $sigma * $S/5*48/$L**2/1000000;
+$q2 = 64*$tau*$I*$tw/3/$L/($b*$h**2 - $b*$h1**2 + $tw * $h1**2)/1000;
+$qmax = min($q1,$q2);
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-SM-18-136.png", width=>[$width], height=>[$height]) @]*
+
+A beam of length [`L = 14`] [`m`] is simply supported at its both ends and is subjected to a distributed load as shown in the figure with maximum amplitude of [`q`] at the middle and [`q/2`] at supports.  
+
+Determine the maximum load [`q`] if the allowable bending stress [`\sigma_{allow} = [$sigma]`] [`MPa`], and an allowable shear stress [`\tau_{allow} = [$tau]`] [`MPa`].
+
+The beam has a I-shape cross section shown in the figure with the following dimensions: [`h= [$h]`] [`mm`],  [`b = [$b]`] [`mm`],  [`t_f = [$tf]`] [`mm`], and  [`t_w= [$tw]`] [`mm`] 
+
+
+[`q_{max}=`] [_____]{"$qmax"} [`kN/m`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();

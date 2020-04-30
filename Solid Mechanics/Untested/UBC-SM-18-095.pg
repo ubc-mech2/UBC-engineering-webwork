@@ -1,0 +1,87 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-095.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .15;
+
+#image aspect ratio
+$width = $imgScale*1802;
+$height = $imgScale*1947;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$sigma0 = random(520,620,1);
+$e = random(8,12,.1);
+$a = 50;
+
+#computation 
+$s = $sigma0/(1 + $e/$a);
+$c = -$sigma0/($e + $a);
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-SM-18-095.png", width=>[$width], height=>[$height]) @]*
+
+During the manufacturing process of prestressed concrete beams, internal steel wires are prestretched by force [`Q`] (part *a* of the figure). Then, concrete is poured around the wires to form a beam. After the concrete sets, the force [`Q`] is removed (part *c* of the figure). Thus, the concrete is under compression and the wires are constrained. Calculate the stresses in both materials if:
+
+Force [`Q`] produces an initial stress [`\sigma_0 = [$sigma0]`]  [`MPa`] in the wires. The ration of the moduli of elasticity of the steel to the concrete is [`[$e]`] and the cross-sectional areas are in the ratio of [`1:[$a]`].
+
+
+[`\sigma_s=`] [_____]{"$s"} [`MPa`]  
+[`\sigma_c=`] [_____]{"$c"} [`MPa`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
