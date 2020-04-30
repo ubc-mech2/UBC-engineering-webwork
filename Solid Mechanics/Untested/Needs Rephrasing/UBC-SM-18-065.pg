@@ -1,0 +1,79 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-065.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+#given
+
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*1608;
+$height = $imgScale*1449;
+
+#computation 
+$beta  = 2-sqrt(2);
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-SM-18-065.png", width=>[$width], height=>[$height]) @]*
+
+ A thin-walled steel pipe of length [`L`], diameter [`D`], cross-section area [`A`], density [`\rho`], and flexural rigidity [`EI`] is held up by cables as shown. The sling used to secure the pipe forms an equilateral triangle of side length [`s`], where [`s`] is centred within [`L`]. Find the ratio [`\beta = s/L`] that minimizes the bending stress in the pipe.
+
+ [`\beta=`] [____________________]{"$beta"}
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT()};

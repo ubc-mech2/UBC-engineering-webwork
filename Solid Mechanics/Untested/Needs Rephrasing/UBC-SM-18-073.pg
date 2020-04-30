@@ -1,0 +1,80 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Institution()
+## Author()
+## Date()
+## Level()
+## KEYWORDS('')
+## RESOURCES('UBC-SM-18-073.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+
+##############################################################
+
+DOCUMENT();
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+Context()->variables->add(L=>"Real");
+#given
+
+
+#image scale
+$imgScale = .2;
+
+#image aspect ratio
+$width = $imgScale*1840;
+$height = $imgScale*2005;
+
+#computation 
+$x = Formula("L/3");
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.05);
+
+##############################################################
+#
+#  PGML 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-SM-18-073.png", width=>[$width], height=>[$height]) @]*
+
+A jib crane consists of a beam [`ABC`]. It's left end, [`A`], is pinned, and it is supported at its midpoint, [`B`], and right end, [`C`], by two identical steel wires, length [`h`], cross-section area [`A`], and Young's modulus [`E`]. The crane hook is supported from a trolley that can move along the length of the beam. When the crane is unloaded, the wires are both tight. Find the required distance [`x`] (in terms of [`L`]) of the trolley from [`C`] so that a load, [`F`], on the crane hook does not cause any change in the vertical reaction force at [`A`]. 
+
+[`x=`] [____________________]{"$x"}
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT();
