@@ -1,0 +1,116 @@
+
+1.The_Nature_of_Science_and_Physics	
+
+Dynamics (or Rigid Body Dynamics):
+2.Kinematics	
+3.Two_Dimensional_Kinematics	
+4.Dynamics_Force_and_Newtons_Laws_of_Motion	
+5.Friction_Drag_and_Elasticity	
+6.Uniform_Circular_Motion_and_Gravitation	
+7.Work_Energy_and_Energy_Resources	
+8.Linear_Momentum_and_Collisions	
+9.Static_and_Torque
+10.Rotational_Motion_and_Angular_Momentum
+----
+
+Fluids (or Fluid Mechanics):	
+11.Fluid_Statics	
+12.Fluid_Dynamics_and_Medical_Applications
+---- 
+
+Heat and Temperature:	
+13.Temperature_Kinetic_Theory_and_the_Gas_Laws
+14.Heat_and_Heat_Transfer	
+15.Thermodynamics
+----
+
+Waves:
+16.Oscillatory_Motion_and_Waves	
+17.Physics_of_Hearing
+----
+
+Electricity and DC Circuits:	(Or put under "Electricity and Magnetism")
+18.Electric_Field	
+19.Electric_Potential_and_Electric_Field
+20.Electric_Current	
+21.Circuits_and_DC_Instruments
+----
+
+Magnetism and AC Circuits:
+22.Magnetism
+23.Electromagnetic_Induction_AC_Circuits_and_Electrical_Technologies
+24.Electromagnetic_Waves
+----
+
+Optics:	
+25.Geometric_Optics	
+26.Vision_and_Optical
+27.Wave_Optics	fix bugs reported by Edfinity
+---- 
+
+
+Relativity and quantum
+
+28.Special_Relativity/28-06.Relativistic_Energy
+29.Introduction_to_Quantum_Physics
+30.Atomic_Physics
+31.Radioactivity_and_Nuclear_Physics
+32.Medical_Applications_of_Nuclear_Physics
+33.Particle_Physics
+34.Frontiers_of_Physics
+
+
+Additional notes: 
+
+in College_Physics_Urone/3.Two_Dimensional_Kinematics/Vector_Addition_Subtraction_Graphical_method, some of the questions were not complete from origin contrib git. This might have to be updated later on.
+
+Some mistakes in formatting detected in the problems from Fluid statics
+
+Formatting mistakes in Physics of Hearing
+
+Foramtting mistkaes in Electric field, coulombs law
+
+Electric current    - current
+                    - Ohms law resistance...
+                    - Resistance and resistivity
+                    - Electrical power 
+                    - Alternating current 
+                    - Electric hazards
+
+Magnetism : - Magnetic field strength on a moving charge
+            - Force on a moving charge
+            - The Hall effect
+            - Magnetic force on a current carrying wire
+            - Torque on a current loop 
+            - Magnetic force between two parallel conductors
+            - More applications of magnetism
+
+Electro magnetic induction, AC circuits and electrical technologies:    - Transformers
+
+Electromagnetic_Waves:  - electromagnetic spectrum
+                        - Energy in electromagnetic waves
+
+
+Wave optics: all
+
+Atomic physics: - Discovery of the atom
+                - Discovery of the parts of the atom
+                - Bohrs
+                - 30-04.X_Rays_Atomic_Origins_and_Applications
+                - Pauli exclusion theorem 
+
+
+Something weird about the Geometric Opctics - law of reflection 
+Something weird about fusion in medical applications of nuclear physics
+
+Particle Physics: - yukawa particles
+                  - Accelerators
+                  - Quarks (only small formatting error in NU_U17-33-05-001.pg)
+                  - Guts
+                  - Missing questions from Cosmology
+                  - No questions in super strings
+
+
+most of these problems seem to have issues with either formatting or the such, The best thing to do is to either manually fix the ones which instructors are interested in,
+or wait till they are all fixed by the original uploaders on Git and update the folders from the APSC TLEF folder with corrected files then.
+
