@@ -71,7 +71,7 @@ no solution implemented yet
 
 [@ image("UBC-SM-18-117.png", width=>[$width], height=>[$height]) @]*
 
-The uniformly loaded beam [`ABC`] has simple supports at [`A`] and [`B`] and an overhang [`BC`].
+As shown in the diagram, the beam [`ABC`] has supports at [`A`] and [`B`] and an overhang from [`B`] to [`C`] and is subject to a uniform loa.d
 
 Draw the shear-force and bending-moment diagrams for this beam.
 
