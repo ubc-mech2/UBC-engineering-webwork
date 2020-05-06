@@ -72,12 +72,13 @@ tolerance=>.05);
 
 BEGIN_PGML
 
- A cylindrical pressure vessel with hemispherical endcaps, diameter [`D`] and wall thickness [`T`], contains gas at pressure [`p`]. The elastic properties of the wall material are [`E`] and [`v`]. 
-1. Derive a formula for the change in diameter of the pressure vessel at a point away from the ends. 
-2. Repeat part the first part for a spherical pressure vessel of diameter [`D`] and wall thickness [`t`]. 
-3. A cylindrical pressure vessel as described in part (1) has hemispherical end caps as described in part (2) Determine the ratio of the wall thicknesses [`\frac{t}{T}`] that will eliminate St. Venant type distortions near the ends.  
+A cylindrical pressure vessel with hemispherical endcaps, wall thickness [`T`] and diameter [`D`] holds a gas at pressure [`p`]. The wall material has elastic properties of [`E`] and [`v`]. 
+1. Derive a formula for the change in diameter of the pressure vessel at a point far from the ends. 
+2. Repeat part 1 for a spherical pressure vessel of wall thickness [`t`] and diameter [`D`]. 
+3. A cylindrical pressure vessel with wall thickness [`T`]  as described in part (1) has hemispherical end caps with wall thickness [`t`] as described in part (2). What is the ratio of the wall thicknesses [`\frac{t}{T}`] that will eliminate St. Venant type distortions near the ends.  
 
-_Hint: The end distortions occur if the change in diameter of the end caps is different from that of the cylinder_.
+_Hint: The distortions occur if the change in diameter of the end caps is different from the change in diameter of the cylinder_.
+
 
 [`\Delta D_c=`] [________________]{"$ddc"}  
 [`\Delta D_s=`] [________________]{"$dds"}  
