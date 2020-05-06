@@ -69,7 +69,7 @@ BEGIN_PGML
 
 [@ image("UBC-SM-18-073.png", width=>[$width], height=>[$height]) @]*
 
-A jib crane consists of a beam [`ABC`]. It's left end, [`A`], is pinned, and it is supported at its midpoint, [`B`], and right end, [`C`], by two identical steel wires, length [`h`], cross-section area [`A`], and Young's modulus [`E`]. The crane hook is supported from a trolley that can move along the length of the beam. When the crane is unloaded, the wires are both tight. Find the required distance [`x`] (in terms of [`L`]) of the trolley from [`C`] so that a load, [`F`], on the crane hook does not cause any change in the vertical reaction force at [`A`]. 
+A jib crane consists of a beam [`AC`] which is pinned at point [`A`] to an anchor wall, and is supported at points [`B`] and [`C`] by two wires. The wires are made of steel and are the same, with length [`h`], cross-section area [`A`], and Young's modulus [`E`]. The crane hook can move along the bottom of the beam. The wires are both tight when the crane is unloaded. What is the distance [`x`] (in terms of [`L`]) that the crane hook can move from [`C`] so that a load, [`F`], on the crane does not result in a change of the vertical reaction force at [`A`].
 
 [`x=`] [____________________]{"$x"}
 
