@@ -10,7 +10,7 @@
 ## Date()
 ## Level()
 ## KEYWORDS('')
-## RESOURCES('UBC-SM-18-115.png')
+## RESOURCES('UBC-SM-18-117.png')
 ## TitleText('TBD')
 ## EditionText('TBD')
 ## AuthorText('TBD')
@@ -25,8 +25,8 @@ DOCUMENT();
 $imgScale = .15;
 
 #image aspect ratio
-$width = $imgScale*1920;
-$height = $imgScale*995;
+$width = $imgScale*1554;
+$height = $imgScale*855;
 
 loadMacros(   
 	"PGstandard.pl",     # Standard macros for PG language
@@ -69,11 +69,11 @@ BEGIN_PGML
 
 no solution implemented yet
 
-[@ image("UBC-SM-18-115.png", width=>[$width], height=>[$height]) @]*
+[@ image("UBC-SM-18-117.png", width=>[$width], height=>[$height]) @]*
 
-As shown in the diagram, beam [`ABC`] is loaded by a vertical load [`P`] acting at the end of an L-shaped bracket [`BDE`].
-1. 	Draw the shear-force and bending-moment diagrams for beam [`ABC`].
-2. 	Now assume that load [`P`] at [`E`] is directed to the right. The distance from point [`B`] to point [`D`] is [`L/5`]. Draw the shear-force, bending-moment and axial-force diagrams for [`ABC`].
+The uniformly loaded beam [`ABC`] has simple supports at [`A`] and [`B`] and an overhang [`BC`].
+
+Draw the shear-force and bending-moment diagrams for this beam.
 
 
 END_PGML
