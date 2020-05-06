@@ -102,9 +102,9 @@ END_TEXT
 
 BEGIN_PGML
 
-Three steel cables jointly support a load of [`[$load]`] [`kN`], The diameter of the middle cable is [`[$dmid]`] [`mm`] and the diameter of each outer cable is [`[$dout]`] [`mm`]. The tensions in the cables are adjusted so that each cable carries one-third of the load (i.e. [`[$load/3]`] [`kN`]). Later, the load is increased by [`[$inc]`] [`kN`] to a total load of [`[$load+$inc]`] [`kN`].
-1. 	What percent of the total load is now carried by the middle cable?
-2. 	What are the stresses [`\sigma_m`] and [`\sigma_o`] in the middle and outer cables, respectively? 
+Three steel cables are used to support a load of [`[$load]`] [`kN`]. The center cable has a diameter of [`[$dmid]`] [`mm`] and the outer cables each have a diameter of [`[$dout]`] [`mm`]. The cables are adjusted so that the tension in each cable results in one-third of the load being supported (i.e. [`[$load/3]`] [`kN`]). Later, an increase is added to the load of [`[$inc]`] [`kN`], resulting in a total load of [`[$load+$inc]`] [`kN`].
+1. 	What percent of the total load is carried by the middle cable after the load is increased?
+2. 	What is the stress in the center cable [`\sigma_m`] and in the outer cables [`\sigma_o`]? 
 
 [`%=`] [_____]{"$per"}  
 [`\sigma_m=`] [_____]{"$sigmaM"} [`MPa`]  
