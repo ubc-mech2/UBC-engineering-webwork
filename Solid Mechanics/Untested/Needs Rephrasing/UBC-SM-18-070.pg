@@ -73,7 +73,7 @@ BEGIN_PGML
 
 [@ image("UBC-SM-18-070.png", width=>[$width], height=>[$height]) @]*
 
-A wheel rests on the ground and supports a vertical load of [`[$load]`] [`kN`] at its central axle, as shown in the diagram. The three equally-spaced spokes are identical. They are [`[$l]`] [`m`] long, [`[$d]`] [`mm`] in diameter, and made of steel with [`E = 210`] [`Gpa`], [`\nu = 0.3`] and density [`\rho=[$rho]`] [`kg/m^3`]. You may assume that the rim is rigid compared with the spokes, and does not significantly deform. Determine the force in each of the three spokes. 
+As shown in the diagram, a wheel sitting on a flat surface supports a vertical load of [`[$load]`] [`kN`] at the center axle. The three spokes are the same, made of steel ([`E = 210`] [`Gpa`], [`\nu = 0.3`] and density [`\rho=[$rho]`] [`kg/m^3`]),  and are equally spaced around the center axle. The spokes are [`[$l]`] [`m`] long, and [`[$d]`] [`mm`] in diameter. Assume that the rim is rigid compared to the spokes, and does not deform. What is the force in each of the three spokes.
 
 [`F_{AB}=`] [____]{"$fab"} [`kN`]  
 [`F_{AC}=`] [____]{"$fac"} [`kN`]  
