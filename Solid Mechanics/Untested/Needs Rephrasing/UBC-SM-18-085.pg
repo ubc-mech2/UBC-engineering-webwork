@@ -78,10 +78,11 @@ BEGIN_PGML
 
 [@ image("UBC-SM-18-085.png", width=>[$width], height=>[$height]) @]*
 
-A wood pile, driven into the earth, supports a load [`P`] entirely by friction along its sides (see figure part a). The friction force [`f`] per unit length of pile is assumed to be uniformly distributed over the surface of the pile. The pile has length [`L`], cross-sectional area [`A`], and modulus of elasticity [`E`].
-1. 	Derive a formula for the shortening [`\delta`] of the pile in terms of [`P`], [`L`], [`E`], and [`A`].
-2. 	Derive a function which models how the compressive stress [`\sigma_c`], varies throughout the length of the pile.
-3. 	Repeat parts 1 and 2 if skin friction [`f`] varies linearly with depth ([`f(y) = f_0(1-y/L)`], see figure *b*).
+As shown in the diagram (*a*), a wooden stake is driven into the ground to support a load [`P`]. The load is to be entirely supported by friction along the sides of the stake. The friction force [`f`] per unit length of the stake is assumed to be uniformly distributed over the surface of the stake. The stake has length [`L`], cross-sectional area [`A`], and modulus of elasticity [`E`].
+1. 	Derive a formula for the change in length [`\delta`] of the stake in terms of [`P`], [`L`], [`E`], and [`A`].
+2. 	Derive a function modeling the compressive stress [`\sigma_c`], and how it varies along the length of the stake.
+3. 	Repeat parts 1 and 2 for a situation where skin friction [`f`] varies linearly with depth ([`f(y) = f_0(1-y/L)`], (*b* in the diagram).
+
 
 [`\delta=`] [_____]{"$d"}  
 [`\sigma(y)=`] [_____]{"$s"}  
