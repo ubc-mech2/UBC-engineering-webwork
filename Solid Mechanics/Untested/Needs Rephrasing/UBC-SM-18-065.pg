@@ -68,7 +68,7 @@ BEGIN_PGML
 
 [@ image("UBC-SM-18-065.png", width=>[$width], height=>[$height]) @]*
 
- A thin-walled steel pipe of length [`L`], diameter [`D`], cross-section area [`A`], density [`\rho`], and flexural rigidity [`EI`] is held up by cables as shown. The sling used to secure the pipe forms an equilateral triangle of side length [`s`], where [`s`] is centred within [`L`]. Find the ratio [`\beta = s/L`] that minimizes the bending stress in the pipe.
+As shown in the figure, a thin-walled steel pipe is held up by cables. The pipe has a length of [`L`], diameter [`D`], cross-section area [`A`], density [`\rho`], and flexural rigidity [`EI`]. The cable sling used to support the pipe creates an equilateral triangle with side length [`s`], centered within [`L`]. What is the ratio [`\beta = s/L`] to minimize the bending stress in the pipe.
 
  [`\beta=`] [____________________]{"$beta"}
 
