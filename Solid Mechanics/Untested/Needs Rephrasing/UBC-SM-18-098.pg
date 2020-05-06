@@ -77,11 +77,13 @@ no solution yet
 
 [@ image("UBC-SM-18-098.png", width=>[$width], height=>[$height]) @]*
 
-A rigid bar [`ACB`] is supported on a fulcrum at [`C`] and loaded by a force [`P`] at end [`B`]. Three identical wires made of an elastoplastic material
-(yield stress [`Y`] and modulus of elasticity [`E`]) resist the load [`P`]. Each wire has cross-sectional area [`A`] and length [`L`].
-1. 	Determine the yield load [`P_Y`] and the corresponding yield displacement [`\delta_Y`] at point [`B`].
-2. 	Determine the plastic load [`P_p`] and the corresponding displacement [`\delta_P`] at point [`B`] when the load just reaches the value [`P_p`].
-3. 	Draw a load-displacement diagram with the load [`P`] as ordinate and the displacement [`\delta_B`] of point [`B`] as abscissa. [`no\: solution\: yet`]
+As shown in the diagram, a rigid bar [`AB`] is pinned to a support at point [`C`] creating a fulcrum. A force [`P`] is applied at point [`B`] and is supported by three identical wires made of an elastoplastic material
+(cross-sectional area [`A`] and length [`L`], yield stress [`Y`] and modulus of elasticity [`E`]).
+
+1. 	At point [`B`], what is the yield load [`P_Y`] and yield displacement [`\delta_Y`]? 
+2. 	At point [`B`], what is the plastic load [`P_p`] and displacement [`\delta_P`] when the load just reaches the plastic load value.
+3. 	Draw a load-displacement diagram using the load [`P`] as ordinate and the displacement [`\delta_B`] of point [`B`] as abscissa. [`no\: solution\: yet`]
+
 
 [`\delta_Y=`] [_____]{"$dy"}  
 [`\delta_P=`] [_____]{"$dp"}  
