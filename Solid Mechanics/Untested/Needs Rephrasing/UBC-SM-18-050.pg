@@ -87,11 +87,14 @@ BEGIN_PGML
 
 [@ image("UBC-SM-18-050.png", width=>[$width], height=>[$height]) @]*
 
-An electric power cable [`[$l]`] [`m`] long is made of a steel core surrounded by an aluminum shell. The materials have the following properties:  
-[`E_a = [$ea]`] [`GPa`], [`A_a = [$aa]`] [`mm^2`], [`\sigma_{Y_a}=[$say]`] [`MPa`]  
-[`E_s = [$es]`] [`GPa`], [`A_s = [$as]`] [`mm^2`], [`\sigma_{Y_s}=[$ssy]`] [`MPa`]. 
+An electric power cable is comprised of a steel core with an aluminum shell. The cable is [`[$l]`] [`m`] long and has the following physical properties:
 
-Compute the the maximum load the cable can withstand before either material yields, and the elongation under this load. For simplicity, assume that the aluminum and steel are both elasuc/perfectly plastic. 
+[`E_a = [$ea]`] [`GPa`], [`A_a = [$aa]`] [`mm^2`], [`\sigma_{Y_a}=[$say]`] [`MPa`]  
+[`E_s = [$es]`] [`GPa`], [`A_s = [$as]`] [`mm^2`], [`\sigma_{Y_s}=[$ssy]`] [`MPa`].  
+
+Consider the aluminum and steel to both be elastic/perfectly plastic.
+
+Find the the maximum load the cable can support before either the steel or aluminum yields, and the elongation under this load. 
 
 [`F_{max}=`] [____]{"$fmax"} [`kN`]  
 [`\delta=`] [____]{"$delta"} [`mm`]
