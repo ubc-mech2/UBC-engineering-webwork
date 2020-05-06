@@ -71,11 +71,12 @@ no solution implemented yet
 
 [@ image("UBC-SM-18-118.png", width=>[$width], height=>[$height]) @]*
 
-The beam ABC shown in the figure is simply supported at [`A`] and [`B`], and has an overhang from [`B`] to [`C`]. The loads consist of a horizontal force [`P_i= 1800`] [`N`] acting at the end of the vertical arm and a vertical force [`P_2 = 4000`] [`N`] acting at the end of the overhang.
+As shown in the diagram, the beam [`ABC`] is supported at [`A`] and [`B`] and has an overhang from [`B`] to [`C`].  Loads are applied which consist of a horizontal force [`P_1= 1800`] [`N`] acting at the end of the vertical arm above [`A`] and a vertical force [`P_2 = 4000`] [`N`] acting at [`C`].
 
 Draw the shear-force and bending-moment diagrams for this beam. 
 
-_Note: Disregard the widths of the beam and vertical arm and use centerline dimensions when making calculations._	
+_Note: ignore the widths of the beam and vertical arm and only use centerline dimensions when making calculations._	
+	
 
 
 
