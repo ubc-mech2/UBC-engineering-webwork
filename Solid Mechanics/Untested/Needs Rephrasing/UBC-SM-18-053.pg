@@ -71,7 +71,8 @@ BEGIN_PGML
 
 [@ image("UBC-SM-18-053.png", width=>[$width], height=>[$height]) @]*
 
-The diagram shows an annular shear spring made from rubber. A rigid ring is attached to the outside diameter of the rubber, and a solid rod is attached to the inside diameter. The inner and outer radii of the rubber are [`r_i=A`], and [`r_o=B`] and its axial length is [`h`]. The shear modulus [`G`] Derive an expression for the stiffness of the rubber shear spring in terms of [`A`], [`B`], [`h`], and [`G`]. 
+An annular shear spring is made from rubber, as shown in the figure above. A solid rod is fixed to the inside diameter of the rubber, and a rigid ring is attached to the outside diameter. The axial length of the rubber is [`h`] and the inner and outer radii are [`r_i=A`], and [`r_o=B`] respectively. Given the shear modulus [`G`], derive the expression for the stiffness of the rubber shear spring using the terms of [`A`], [`B`], [`h`], and [`G`]. 
+
 
 [`k=`] [____________________]{"$k"}
 
