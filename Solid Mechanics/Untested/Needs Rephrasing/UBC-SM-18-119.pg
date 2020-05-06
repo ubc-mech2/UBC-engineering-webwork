@@ -71,9 +71,9 @@ no solution implemented yet
 
 [@ image("UBC-SM-18-119.png", width=>[$width], height=>[$height]) @]*
 
-The cantilever beam shown in the figure supports a concentrated load and a segment of uniform load.
+As shown in the diagram, beam [`AB`] is anchored at [`A`] and is subject to a point load [`P`] and distributed uniform load [`q`].
 
-Draw the shear-force and bending-moment diagrams for this cantilever bean.
+Draw the shear-force and bending-moment diagrams for this cantilever beam.
 
 
 END_PGML
