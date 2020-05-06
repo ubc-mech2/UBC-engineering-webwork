@@ -71,9 +71,9 @@ no solution implemented yet
 
 [@ image("UBC-SM-18-120.png", width=>[$width], height=>[$height]) @]*
 
-The compound beam [`ABCDE`] shown in the figure consists of two beams ([`AD`] and [`DE`]) joined by a hinged connection at [`D`]. The hinge can transmit a shear force but not a bending moment. The loads on the beam consist of a [`4`] [`kN`] force at the end of a bracket attached at point [`B`] and a [`2`] [`kN`] force at the midpoint of beam [`DE`]
+As shown in the diagram, a compound beam [`ABCDE`] consists of two beams ([`AD`] and [`DE`]) which are connected via a hinged connection at [`D`].  Shear force can be transmitted by the hinge but not a bending moment. Loads on the beam consist of [`P_1`], a [`4`] [`kN`] force at the end of a L-shaped bracket attached at point [`B`] and [`P_2`] which is a [`2`] [`kN`] force at the midpoint of beam [`DE`]
 
-Draw the shear-force and bending-moment diagrams for this compound beam.
+For the compound beam, draw the shear-force and bending-moment diagrams.
 
 END_PGML
 
