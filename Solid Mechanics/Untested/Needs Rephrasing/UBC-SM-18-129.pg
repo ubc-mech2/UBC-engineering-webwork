@@ -74,9 +74,9 @@ BEGIN_PGML
 
 [@ image("UBC-SM-18-129.png", width=>[$width], height=>[$height]) @]*
 
-A pontoon bridge is constructed of two longitudinal wood beams, known as balks, that span between adjacent pontoons and support the transverse floor beams, which are called chesses. For purposes of design, assume that a uniform floor load of [`[$load]`] [`kPa`] acts over the chesses. (This load includes an allowance for the weights of the chesses and balks.) Also, assume that the chesses are [`[$chess]`] [`mm`] long and that the balks are simply supported with a span of [`[$balk]`] [`mm`], The allowable bending stress in the wood is [`[$bend]`] [`MPa`].
-1. 	if the balks have a square cross section, what is their minimum required width [`b_{min}`]?
-2. 	Repeat part [`1`] if the balk width is [`1.5b`] and the balk depth is [`b`]; compare the cross-sectional areas of the two designs.
+As shown in the diagram, a pontoon bridge is comprised of two parallel wood beams, called balks, that span between pontoons and support the floor beams running perpendicular to the balks, called chesses. Assume that the chesses undergo a uniform floor load of [`[$load]`] [`kPa`]. (This load allows for the weights of chesses and balks.) The chesses are [`[$chess]`] [`mm`] long and the balks have a span of [`[$balk]`] [`mm`] and are simply supported on the pontoons. The allowable bending stress in the wood used for the chesses and balks is [`[$bend]`] [`MPa`].
+1. 	Assume the balks have a square cross section, what is their minimum required width [`b_{min}`]?
+2. 	Repeat part [`1`], using a balk width of [`1.5b`] and a balk height of [`b`]; compare the resulting cross-sectional areas of the two designs.
 
 [`b_{min_1}=`] [_____]{"$bmin1"} [`mm`]  
 [`b_{min_2}=`] [_____]{"$bmin2"} [`mm`]  
