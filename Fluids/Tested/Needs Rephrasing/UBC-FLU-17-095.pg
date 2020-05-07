@@ -50,9 +50,9 @@ $b = Compute("$a^(1.5)")->cmp(tolType => 'relative', tolerance => 0.05);
 
 
 BEGIN_PGML
-Consider laminar flow of a fluid over a flat plate. Now the free-stream velocity of the fluid is increased [`[$a]`]x. Determine the change in the drag force on the plate. Assume the flow to remain laminar. 
+A fluid flows laminarly over a flat plate. If the free-stream velocity of the fluid is increased [`[$a]`]x, what is the change in the drag force imparted on the plate? Assume the flow remains laminar. 
 
-Change in drag force = [____________________]{$b} 
+Change in drag force = [____________________]{$b}
 
 
 
