@@ -1,104 +1,66 @@
 ##DESCRIPTION
-## 
+##
+## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
+##
+## Contact: agnes.dentremont@mech.ubc.ca
+##
+## This work is licensed under the Creative Commons
+## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+## <https://creativecommons.org/licenses/by-sa/4.0/>
+##
+## We gratefully acknowledge the financial support for this 
+## project provided by UBC Vancouver students via the Teaching
+## and Learning Enhancement Fund. We also gratefully acknowledge
+## additional funding support from BCcampus, the UBC Department of
+## Mechanical Engineering, and the UBC Applied Science Deanâs Office.  
+##
+## This work was completed on the traditional, ancestral, and unceded
+## territory of the Musqueam people. 
+##
 ##ENDDESCRIPTION
 
 ## DBsubject(Fluid mechanics)
-## DBchapter(Viscous flow in ducts)
-## DBsection(Multiple-pipe systems)
-## Institution(University of British Columbia)
-## Author()
-## Date()
-## Level()
-## KEYWORDS('')
-## RESOURCES('UBC-FLU-18-109.png')
+## DBchapter(Pressure distributions)
+## DBsection(Hydrostatic pressure)
+## Institution('University of British Columbia')
+## Author('UBC MECH2')
+## Date(24/1/2018)
+## Level(2)
+## KEYWORDS('Pressure','Pressure at a Point', 'Variation of Pressure with Depth','222PS1')
+## RESOURCES()
 ## TitleText('TBD')
 ## EditionText('TBD')
 ## AuthorText('TBD')
 ## Section('TBD')
 ## Problem('TBD')
+## Beginner
 
-##############################################################
 
 DOCUMENT();
 
-#image scale
-$imgScale = .2;
-
-#image aspect ratio
-$width = $imgScale*2580;
-$height = $imgScale*1309;
-
-loadMacros(   
-	"PGstandard.pl",     # Standard macros for PG language
-	"MathObjects.pl",
-	"PGML.pl",
-	"parserPopUp.pl",
-	"parserMultiAnswer.pl",
-	"parserRadioButtons.pl",
-	#"source.pl",        # allows code to be displayed on certain sites.
-	#"PGcourse.pl", 	 # Customization file for the course
-   	);
-
-TEXT(beginproblem());
-
-##############################################################
-#
-#  Setup
-#
-#
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl"
+);
 
 Context("Numeric");
-#given
-$r = random(0,20,1);
-$AvgVel2 = 2 + $r * .2;#(2,6,0.2) [m/s]
-$TubeLength1Tmp = 30 + $r * -.5;#(30,20,-0.5) [cm]
-$TubeLength2Tmp = 3 + $r * -.1;#(3,1,-0.1) [cm]
+$a = random(50,75,1);
+$b = random(350,500,10);
+$c = random(0.4,0.6,0.05);
+$h = $a * 9.81 / (1000 * $c);
 
-$ResCoeff = 3;
-$TubeDia1 = 0.5*0.0254;
-$TubeDia2 = 0.0625*0.0254;
-$TubeLength1 = $TubeLength1Tmp/100;
-$TubeLength2 = $TubeLength2Tmp/100;
-$TubeArea1 = pi/4*($TubeDia1**2);
-$TubeArea2 = pi/4*($TubeDia2**2);
-$FlowRate = $AvgVel2*$TubeArea2;
-$AvgVel1 = $FlowRate/$TubeArea1;
-$ReNum1 = 1200*$AvgVel1*$TubeDia1/0.025;
-$ReNum2 = 1200*$AvgVel2*$TubeDia2/0.025;
-$FricCoeff1 = 64/$ReNum1;
-$FricCoeff2 = 64/$ReNum2;
-$PressDrop1 = 1200*$FricCoeff1*$TubeLength1*($AvgVel1**2)/(2*$TubeDia1);
-$PressDrop2 = 1200*$FricCoeff2*$TubeLength2*($AvgVel2**2)/(2*$TubeDia2);
-$PressDrop = $PressDrop1 + $PressDrop2 + $ResCoeff*1200*($AvgVel1**2)/2 + 1/2*1200*(2*$AvgVel2**2 - $AvgVel1**2);#AvgVel2 has kinetic energy correction factor
-$Ans = $PressDrop*$TubeArea1 ;#[N]
-
-#set tolerance
 Context()->flags->set(
-tolerance=>.01,
-tolType=>'absolute');
-
-##############################################################
-#
-#  PGML 
-#
-#
+tolerance=>.01);
 
 BEGIN_PGML
+A woman weighing [`[$a]`] [`kg`] has a total foot imprint area of [`[$b]`] [`cm^2`]. She is planning to go snowshoeing and wants to pick the right size of snowshoes, as she knows the snow cannot withstand pressures higher than [`[$c]`] [`kPa`]. What is the minimum size of the snowshoes she needs (imprint area per shoe, in [`m^2`]) to be able to walk on the snow without sinking?
 
-[@ image("UBC-FLU-18-109.png", width=>[$width], height=>[$height]) @]*
-
-As shown in the diagram, an automated syringe needs to administer medicinal fluid at a velocity of [`V_e = [$AvgVel2]`] [`m/s`]. The diameter is [`D_1 = 0.5`] [`in`] in the first segment of the syringe, and [`D_2 = 0.0625`] [`in`] in the second segment. The reducing portion has a flow resistance coefficient of [`K = 3`]. The length of the first and second segment are [`L_1 = [$TubeLength1Tmp]`] [`cm`]  and [`L_2 = [$TubeLength2Tmp]`] [`cm`] respectively. What is the force [`F_p`] the piston must be pushed to achieve the required velocity? The medicinal fluid`s density and viscosity are [`1200`] [`kg/m3`] and [`0.025`] [`Pa\cdot s`].
-
-[`F_p=`] [_____]{"$Ans"} [`N`]
-
-_Notes: Assume that the fluid is perfectly incompressible. The flow resistance coefficient of the reducing portion is applicable to the fluid velocity in the first segment of the syringe_.
-
-_Hints: While the no-slip boundary condition implies that the velocity is uniform across the piston, the velocity profile will not be uniform at the syringe exit_.
-
+Imprint Area/Shoe = [____________________]{"$h"} [`m^2`]
 
 
 END_PGML
 
-##############################################################
+$showPartialCorrectAnswers = 1;
 
 ENDDOCUMENT();
