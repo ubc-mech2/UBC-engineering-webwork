@@ -69,7 +69,7 @@ $ans = sqrt(2 * ($B*1000) / 1.1);
 
 BEGIN_PGML
 
-A pitot-static probe is used to measure the velocity of an aircraft flying at [`[$A]`] [::m::]. If the differential pressure reading is [`[$B]`] [::kPa::], determine the velocity of the aircraft.  The density of air is [`1.1`] [`kg/m^3`]
+Aircraft use a pitot-static probe to measure velocity while in flight. At an altitude of [`[$A]`] [::m::], if the differential pressure reading is [`[$B]`] [::kPa::], what is the velocity of the aircraft? Assume the air density is [`1.1`] [`kg/m^3`]
 
 [`V=`] [________]{$ans}[`m/s`]
 
