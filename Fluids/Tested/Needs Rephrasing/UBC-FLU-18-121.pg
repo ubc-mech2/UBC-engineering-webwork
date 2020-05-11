@@ -1,4 +1,4 @@
- ##DESCRIPTION
+##DESCRIPTION
 ## 
 ## Created by the UBC Faculty of Applied Science.  
 ## Project led by Agnes d'Entremont, Jonathan Verrett, and Negar M. Harandi. 
@@ -86,7 +86,7 @@ BEGIN_PGML
 
 [@ image("UBC-FLU-18-121.png", width=>[$width], height=>[$height]) @]*
 
-At what speed should the [`35`]-[`in`] diameter pump of the figure be run to produce a head of [`[$H]`] [`ft`] at a discharge of [`[$Q]`] [`gal/min?`] [`H(Q)`] for this pump is [`H(ft)=235-0.125Q^2`] and [`Q`] is in [`kgal/min`].
+The diagram illustrates the performance data of a variety of pumps, pumping water at [`710`] [`rpm`]. If the [`35`]-[`in`] diameter pump is selected, what speed should it be run at to produce a head of [`[$H]`] [`ft`] with a discharge of [`[$Q]`] [`gal/min`]? The head as a function of discharge [`H(Q)`] for this pump is [`H(ft)=235-0.125Q^2`], where [`Q`] is in [`kgal/min`].
 
 [`\omega=`] [____]{"$Ans"} [`rpm`]
 
