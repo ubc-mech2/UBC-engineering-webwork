@@ -89,8 +89,7 @@ BEGIN_PGML
 
 [@ image("UBC-FLU-18-033.png", width=>[$width], height=>[$height]) @]*
 
-The manometer fluid in the figure is mercury. Estimate the volume flow in the tube if the flowing fluid is at [`20^{\circ}C`], [`1`] [`atm`] and has a density of [`[$rho]`] [`lb/ft^3`]. The diameter of the pipe is [`[$D]`] [`in`].
-
+Shown in the diagram is a manometer holding mercury. What is the volume flow in the [`[$D]`] [`in`] diameter pipe if the fluid inside is at [`20^{\circ}C`], [`1`] [`atm`] and has a density of [`[$rho]`] [`lb/ft^3`]? 
 [`Q=`] [____]{"$Ans"} [`ft^3/s`]
 
 END_PGML
