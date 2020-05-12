@@ -88,7 +88,7 @@ BEGIN_PGML
 
 [@ image("UBC-FLU-18-041.png", width=>[$width], height=>[$height]) @]*
 
-The horizontal pump in the figure discharges [`20^{\circ}C`] water at [`[$Q]`] [`m^3/hr`]. Neglecting losses, what power is delivered to the water by the pump?
+[`20^{\circ}C`] water is expelled by the horizontal pump in the diagram at [`[$Q]`] [`m^3/hr`]. What is the power delivered to the water by the pump? Neglect losses.
 
 [`P=`] [____]{"$Ans"} [`kW`]
 
