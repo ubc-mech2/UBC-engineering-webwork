@@ -86,7 +86,7 @@ BEGIN_PGML
 
 [@ image("UBC-FLU-18-061.png", width=>[$width], height=>[$height]) @]*
 
-Water flows through a semi-circular nozzle as shown in the figure. Find the [`y`]-component of the force [`R_y`] required to hold the nozzle if the circle has a radius [`R=[$RR]`] [`m`] and outflow velocity [`V=[$VV]`] [`m/s`]. [`\rho_{H_2O}=999`] [`kg/m^3`].
+As shown in the diagram, water flows into a semi-circular nozzle through a pipe. The nozzle has a radius [`R=[$RR]`] [`m`] and is expelling water at a velocity [`V=[$VV]`] [`m/s`]. What is the [`y`]-component of the reaction force [`R_y`] required to hold the nozzle steady? Use a water density of [`\rho_{H_2O}=999`] [`kg/m^3`].
 
 [`R_y=`] [____]{"$Ans"} [`N`]
 
