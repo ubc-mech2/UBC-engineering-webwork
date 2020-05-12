@@ -86,7 +86,7 @@ BEGIN_PGML
 
 [@ image("UBC-FLU-18-029.png", width=>[$width], height=>[$height]) @]*
 
-If losses are neglected in the figure, for what water level [`h`] will the flow begin to form vapor cavities at the throat of the nozzle with [`D_1=[$D1]`] [`cm`]? vapor pressure is [`4242`] [`Pa`] and density of the water is [`996`] [`kg/m^3`].
+Considering the nozzle depicted in the diagram, at what water level, [`h`], will vapor cavities begin to be formed by the flow in the [`D_1=[$D1]`] [`cm`] throat of the nozzle? Neglect losses throughout the system in the diagram, assume vapor pressure is [`4242`] [`Pa`] and use a water density of [`996`] [`kg/m^3`].
 
 [`h=`] [____]{"$Ans"} [`m`]
 
