@@ -85,7 +85,7 @@ BEGIN_PGML
 
 [@ image("UBC-FLU-18-056.png", width=>[$width], height=>[$height]) @]*
 
-Water flows between parallel plates as shown in the figure ([`u = u_{max}\big[1 - \big(\frac{y}{h}\big)^2\big]`]). Evaluate ratio of x-momentum flux at outlet to that at inlet when [`U=[$velocity]`] [`m/s`]. 
+As shown in the figure, water flows between two parallel plates. The water enters the plates at the inlet with a constant velocity [`U=[$velocity]`] [`m/s`], and exits the outlet with a velocity profile characterized by the function, ([`u = u_{max}\big[1 - \big(\frac{y}{h}\big)^2\big]`]). What is the ratio of x-momentum flux at the outlet to that at the inlet?  
 
 [____]{"$Ans"}
 
