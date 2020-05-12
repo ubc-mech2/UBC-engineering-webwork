@@ -1,3 +1,4 @@
+
 ##DESCRIPTION
 ##
 ## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
@@ -18,6 +19,7 @@
 ## territory of the Musqueam people. 
 ##
 ##ENDDESCRIPTION
+
 
 ## DBsubject(Fluid mechanics)
 ## DBchapter(Integral relations for a control volume)
@@ -88,7 +90,7 @@ BEGIN_PGML
 
 [@ image("UBC-FLU-18-039.png", width=>[$width], height=>[$height]) @]*
 
-A fireboat draws seawater ([`SG = 1.025`]) from a submerged pipe and discharges it through a nozzle, as in the figure. The total head loss is [`[$H]`] [`ft`]. If the pump efficiency is [`[$Efficiency]`] percent, what power is required to drive it?
+As shown in the diagram, seawater ([`SG = 1.025`]) is drawn from a submerged pipe and sprayed out a nozzle, for use by a fireboat to extinguish fires. The total head loss is [`[$H]`] [`ft`]. What is the power required to drive the pump, if the efficiency is [`[$Efficiency]`] [`%`]?
 
 [`P=`] [____]{"$Ans"} [`ft\cdot lbf/s`]
 
