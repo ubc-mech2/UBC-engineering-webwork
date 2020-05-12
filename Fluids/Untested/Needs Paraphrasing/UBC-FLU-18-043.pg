@@ -1,3 +1,4 @@
+  
 ##DESCRIPTION
 ##
 ## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
@@ -85,8 +86,9 @@ BEGIN_PGML
 
 [@ image("UBC-FLU-18-043.png", width=>[$width], height=>[$height]) @]*
 
-Air flows in the isolated turbomachine with mass flow rate of [`[$MD]`] [`kg/s`]. Find the shaft work interaction with surroundings.  
-_Hint: if power is into the CV use the negative sign_.
+If air flows at a mass rate of [`[$MD]`] [`kg/s`] into the isolated turbomachine, what is the shaft work interaction with surroundings?
+_Hint: if power is going into the CV, use a negative sign_.
+
 
 [`P=`] [____]{"$Ans"} [`kW`]
 
