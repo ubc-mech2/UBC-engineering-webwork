@@ -85,7 +85,7 @@ BEGIN_PGML
 
 [@ image("UBC-FLU-18-042.png", width=>[$width], height=>[$height]) @]*
 
-The insulated tank in the figure is to be filled from a high-pressure air supply. Initial conditions in the tank are [`T =20^{\circ}C`] and [`p=200`] [`kPa`]. When the valve is opened, the initial mass flow rate into the tank is [`[$MD]`] [`kg/s`]. Assuming an ideal gas, estimate the initial rate of temperature rise of the air in the tank.
+As shown in the diagram, an insulated [`200`] [`L`] tank is connected to a high-pressure air supply. The tank initially is at [`T =20^{\circ}C`] and [`p=200`] [`kPa`]. The initial mass flow rate into the tank when the valve is opened is [`[$MD]`] [`kg/s`]. What is the initial rate of temperature rise of the air in the tank? Assume the air acts as an ideal gas.
 
 [`T/s= `] [____]{"$Ans"} [`\frac{^{\circ}C}{s}`]
 
