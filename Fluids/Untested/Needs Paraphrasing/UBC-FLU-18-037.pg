@@ -1,22 +1,5 @@
 ##DESCRIPTION
-##
-## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
-##
-## Contact: agnes.dentremont@mech.ubc.ca
-##
-## This work is licensed under the Creative Commons
-## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
-## <https://creativecommons.org/licenses/by-sa/4.0/>
-##
-## We gratefully acknowledge the financial support for this 
-## project provided by UBC Vancouver students via the Teaching
-## and Learning Enhancement Fund. We also gratefully acknowledge
-## additional funding support from BCcampus, the UBC Department of
-## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
-##
-## This work was completed on the traditional, ancestral, and unceded
-## territory of the Musqueam people. 
-##
+## 
 ##ENDDESCRIPTION
 
 ## DBsubject(Fluid mechanics)
@@ -87,9 +70,9 @@ BEGIN_PGML
 
 [@ image("UBC-FLU-18-037.png", width=>[$width], height=>[$height]) @]*
 
-Consider a turbine extracting energy from a penstock in a dam, as shown in the figure. For turbulent flow, the friction head loss is [`h_f = CQ^2`], where the constant [`C`] depends upon penstock dimensions and water physical properties. For [`H=[$H]`] [`m`] and [`C=[$C]`] [`m^5/s^2`], find: 
-1. The maximum turbine power. 
-2. The corresponding flow rate. 
+As shown in the diagram, a turbine extracts energy from a penstock in a dam. The friction head loss is characterized as [`h_f = CQ^2`] for turbulent flow. The constant [`C`] depends upon penstock dimensions and physical properties of water. If [`H=[$H]`] [`m`] and [`C=[$C]`] [`m^5/s^2`], what is the: 
+1. maximum turbine power?
+2. corresponding flow rate?
 
 [`P=`] [____]{"$Ans2"} [`W`]  
 [`Q=`] [____]{"$Ans1"} [`m^3/s`]
