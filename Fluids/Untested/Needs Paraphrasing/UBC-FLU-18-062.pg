@@ -86,7 +86,7 @@ BEGIN_PGML
 
 [@ image("UBC-FLU-18-062.png", width=>[$width], height=>[$height]) @]*
 
-Air flows in the long straight pipe with cross section area of [`A_1=A_2=[$AA]`] [`ft^2`] as shown in the figure. Find the axial force of the air on the pipe if the property conditions of the inlet air are [`P_1=30`] [`psia`], [`T_1=140^{\circ}F`], and [`V_1=500`] [`ft/s`] and the outlet conditions are: [`V_2=[$V2]`] [`ft/s`] and [`P_2=11.3`] [`psia`].
+As shown in the diagram, air flows through a long straight pipe. The pipe has equal cross sections at point [`1`] and [`2`] which is to say [`A_1=A_2=[$AA]`] [`ft^2`]. The inlet air is at [`P_1=30`] [`psia`], [`T_1=140^{\circ}F`] and traveling with a velocity [`V_1=500`] [`ft/s`], and the outlet air is at [`P_2=11.3`] [`psia`] travelling at [`V_2=[$V2]`] [`ft/s`]. What is the axial force exerted by the air on the pipe? 
 
 [`F=`] [____]{"$Ans"} [`lbf`]
 
