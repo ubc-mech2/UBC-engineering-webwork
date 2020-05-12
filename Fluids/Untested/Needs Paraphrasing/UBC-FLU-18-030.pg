@@ -86,7 +86,7 @@ BEGIN_PGML
 
 [@ image("UBC-FLU-18-030.png", width=>[$width], height=>[$height]) @]*
 
-As shown in the diagram, a [`35^{\circ}C`] water flow discharges from a tank. The conditions outside the tank are standard atmosphere at sea-level. What nozzle diameter [`D`] will result in cavitation if [`h=[$H]`] [`ft`]? Use a vapor pressure of [`5600`] [`Pa`] and neglect losses in the system. .
+As shown in the diagram, a [`35^{\circ}C`] water flow discharges from a tank. The conditions outside the tank are standard atmosphere at sea-level. What nozzle diameter [`D`] will result in cavitation if [`h=[$H]`] [`ft`]? Use a vapor pressure of [`5600`] [`Pa`] and neglect losses in the system.
 
 [`D=`] [____]{"$Ans"} [`ft`]
 
