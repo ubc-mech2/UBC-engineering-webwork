@@ -86,7 +86,7 @@ BEGIN_PGML
 
 [@ image("UBC-FLU-18-066.png", width=>[$width], height=>[$height]) @]*
 
-A water jet with a velocity of [`V_j  =[$Vj]`] [`m/s`] with a diameter [`D_j =[$Dj]`] [`m`] strikes a fixed cone and deflects back as a conical sheet at the same velocity. Find the restraining force if [`\theta=60^{\circ}`].
+As shown in the diagram, a water jet with sprays with a diameter [`D_j =[$Dj]`] [`m`] into the center of a fixed cone and is deflected backwards in a conical sheet. The velocity of the jet and the deflected sheet are equal at [`V_j  =[$Vj]`] [`m/s`]. What is the restraining force to hold the cone in place if [`\theta=60^{\circ}`]?
 
 [`F=`] [____]{"$Ans"} [`N`]
 
