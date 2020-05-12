@@ -85,7 +85,7 @@ BEGIN_PGML
 
 [@ image("UBC-FLU-18-065.png", width=>[$width], height=>[$height]) @]*
 
-In the figure a perfectly balanced [`[$W]`] [`N`] weight and platform are supported by a steady water jet.  What is the jet's velocity if the platform's mass is negligible?
+As shown in the diagram, a [`[$W]`] [`N`] weight is perfectly balanced on a platform which is supported from below by a water jet.  What must the velocity of the jet be to support the weight if the platform's mass is negligible?
 
 [`v=`] [____]{"$Ans"} [`m/s`]
 
