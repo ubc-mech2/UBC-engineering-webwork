@@ -1,3 +1,4 @@
+
 ##DESCRIPTION
 ##
 ## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
@@ -86,7 +87,7 @@ BEGIN_PGML
 
 [@ image("UBC-FLU-18-040.png", width=>[$width], height=>[$height]) @]*
 
-The device in the figure is used to measure the viscosity of water: a tank and a capillary tube. The flow is laminar and has negligible entrance loss, [`h_f=\frac{32\mu LV}{\rho gd^2}`]. Students measure water temperature with a thermometer and flowrate with a stopwatch and a graduated cylinder. Density is measured by weighing a known volume. Calculate [`\mu`] for the following actual data: [`T = 16.5^{\circ}C`], [`\rho = 998.7`] [`kg/m^3`], [`d = [$D]`] [`in`], [`Q = [$Q]`] [`mL/s`], [`L = 36.1`] [`in`], and [`H = 0.153`] [`m`]. 
+Illustrated in the diagram is a device which is used to measure the viscosity of water. The device is comprised of a tank and a capillary tube. The flow is laminar and has negligible entrance loss, with friction head loss characterized by [`h_f=\frac{32\mu LV}{\rho gd^2}`]. Temperature is measured with a thermometer to be [`T = 16.5^{\circ}C`], and flowrate measured using a stopwatch and graduated cylinder to be [`Q = [$Q]`] [`mL/s`]. Density is measured by weighing a known volume to be [`\rho = 998.7`] [`kg/m^3`]. What is [`\mu`] given the following dimensional information, [`d = [$D]`] [`in`], [`L = 36.1`] [`in`], and [`H = 0.153`] [`m`]?
 
 [`\mu=`] [____]{"$Ans"} [`kg/m\cdot s`]
 
