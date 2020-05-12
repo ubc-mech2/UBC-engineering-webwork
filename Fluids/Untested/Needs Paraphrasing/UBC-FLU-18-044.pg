@@ -87,7 +87,7 @@ BEGIN_PGML
 
 [@ image("UBC-FLU-18-044.png", width=>[$width], height=>[$height]) @]*
 
-The turbine is operating on water and it generates [`[$P]`] [`kW`] power. Find the pressure drop  across the turbine if the flow rate of turbine is [`[$Q]`] [`m^3/s`].
+The turbine shown in the diagram has water flowing through it and generates [`[$P]`] [`kW`] of power. If the flow rate of the turbine is [`[$Q]`] [`m^3/s`], what is the pressure drop from point [`1`] to point [`2`], across the turbine? 
 
 [`P=`] [____]{"$Ans"} [`kPa`]
 
