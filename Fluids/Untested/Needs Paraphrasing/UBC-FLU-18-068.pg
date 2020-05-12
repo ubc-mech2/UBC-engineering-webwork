@@ -1,3 +1,4 @@
+  
 ##DESCRIPTION
 ##
 ## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
@@ -86,7 +87,7 @@ BEGIN_PGML
 
 [@ image("UBC-FLU-18-068.png", width=>[$width], height=>[$height]) @]*
 
-The vertical gate in a water channel is partially open, as in the figure. Assuming no change in water level and a hydrostatic pressure distribution, Find the streamwise force, [`F_x`], on one-half of the gate for water at [`20^{\circ}C`], [`V_1 = [$V1]`] [`m/s`], [`h = 2`] [`m`], [`w = [$W]`] [`m`], and [`\theta = 50^{\circ}`]. 
+As shown in the figure, a gate in a water channel is partially open, making an angle of [`\theta = 50^{\circ}`] between the gate and the wall of the channel. What is the force, [`F_x`], exerted parallel to the stream (streamwise), on one-half of the gate? The [`20^{\circ}C`] water is travelling at [`V_1 = [$V1]`] [`m/s`] and the water level is [`h = 2`] [`m`]. Use [`w = [$W]`][`m`]. Assume the water level along the channel does not change and a hydrostatic pressure distribution on the gate. 
 
 [`F_x=`] [____]{"$Ans"} [`N`]
 
