@@ -59,7 +59,7 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-A therapist is helping a patient with stretching exercises. She pushes on the patient's foot with an average force of [`[$F]`] [`N`]. The patient resists the force and moves the foot [`[$d]`] [`cm`] toward the therapist. How much work did the therapist do on the patient's food during this stretching exercise.
+A therapist helping a patient with stretching exercises pushes on the patient's foot with an average force of [`[$F]`] [`N`]. Resisting the force, the patient moves their foot [`[$d]`] [`cm`] toward the therapist. How much work did the therapist do on the patient's food during the stretch?
 
 [`U=`] [_____]{"$u"} [`J`]  
 
