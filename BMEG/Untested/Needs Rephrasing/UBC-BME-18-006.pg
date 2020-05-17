@@ -59,7 +59,7 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-A punter punts the football. The football leaves the punter's foot with a vertical velocity of [`[$vy]`] [`m/s`] and a horizontal velocity of [`[$vx]`] [`m/s`]. What is the hang time of the football? Assume that air resistance has no effect and that the heights at landing and release are the same.
+A punter kicks a football, which leaves the punter's foot with a vertical and horizontal velocity of [`[$vy]`] [`m/s`] and [`[$vx]`] [`m/s`] respectively. How much hang time does the kick result in? Neglect air resistance and assume that the heights are the same at landing and release.
 
 [`t=`] [_____]{"$t"} [`s`]  
 
