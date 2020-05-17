@@ -1,22 +1,5 @@
 ##DESCRIPTION
-##
-## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
-##
-## Contact: agnes.dentremont@mech.ubc.ca
-##
-## This work is licensed under the Creative Commons
-## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
-## <https://creativecommons.org/licenses/by-sa/4.0/>
-##
-## We gratefully acknowledge the financial support for this 
-## project provided by UBC Vancouver students via the Teaching
-## and Learning Enhancement Fund. We also gratefully acknowledge
-## additional funding support from BCcampus, the UBC Department of
-## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
-##
-## This work was completed on the traditional, ancestral, and unceded
-## territory of the Musqueam people. 
-##
+## 
 ##ENDDESCRIPTION
 
 ## DBsubject(Fluid mechanics)
@@ -88,7 +71,7 @@ BEGIN_PGML
 
 [@ image("UBC-FLU-18-079.png", width=>[$width], height=>[$height]) @]*
 
-The vertical jet of water is impinging on a [`65`] [`lbf`] disk. The jet velocity is [`[$V]`] [`ft/s`] and the area of the jet is [`[$A]`] [`ft^2`]. If the distance between the inlet of the jet and disk is [`[$h]`] [`ft`], find the vertical acceleration at the shown instant (at this instant the velocity of the disk is [`U=15`] [`ft/s`]). [`\rho_{H_2O} =1.94`] [`slug/ft^3`] and [`g=32.2`] [`ft/s^2`].
+A disk weighing [`65`] [`lbf`] is struck by a vertical jet of water. At the instant shown in the diagram, the disk is travelling [`U=15`] [`ft/s`].  The jet velocity is travelling [`[$V]`] [`ft/s`] with an area of [`[$A]`] [`ft^2`]. If the height of the disk above the jet [`h`] is [`[$h]`] [`ft`], what is the vertical acceleration at the instant shown in the diagram? Use a water density of [`\rho_{H_2O} =1.94`] [`slug/ft^3`] and gravitational acceleration of [`g=32.2`] [`ft/s^2`]..
 
 [`a_v=`] [____]{"$Ans"} [`ft/s^2`]
 
