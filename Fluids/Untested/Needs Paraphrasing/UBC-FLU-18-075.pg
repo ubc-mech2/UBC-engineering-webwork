@@ -1,22 +1,5 @@
 ##DESCRIPTION
-##
-## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
-##
-## Contact: agnes.dentremont@mech.ubc.ca
-##
-## This work is licensed under the Creative Commons
-## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
-## <https://creativecommons.org/licenses/by-sa/4.0/>
-##
-## We gratefully acknowledge the financial support for this 
-## project provided by UBC Vancouver students via the Teaching
-## and Learning Enhancement Fund. We also gratefully acknowledge
-## additional funding support from BCcampus, the UBC Department of
-## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
-##
-## This work was completed on the traditional, ancestral, and unceded
-## territory of the Musqueam people. 
-##
+## 
 ##ENDDESCRIPTION
 
 ## DBsubject(Fluid mechanics)
@@ -86,8 +69,7 @@ BEGIN_PGML
 
 [@ image("UBC-FLU-18-075.png", width=>[$width], height=>[$height]) @]*
 
-In the figure, the water jet with [`V_j=[$Vj]`] [`m/s`] and [`A_j=[$Aj]`] [`m^2`] strikes a vane which moves to the right at constant velocity [`V_c=3`] [`m/s`] on a frictionless cart. Compute the force [`F_x`] required to restrain the cart for [`\theta=60^{\circ}`].
-
+As shown in the diagram, a water jet with [`V_j=[$Vj]`] [`m/s`] and [`A_j=[$Aj]`] [`m^2`] strikes an angled plane on a cart, which moves to the right constantly at [`V_c=3`] [`m/s`]. What is the force [`F_x`] required to restrain the cart for [`\theta=60^{\circ}`]? Neglect friction. 
 [`F_x=`] [____]{"$Ans"} [`N`]
 
 END_PGML
