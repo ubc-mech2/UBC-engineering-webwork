@@ -1,22 +1,5 @@
 ##DESCRIPTION
-##
-## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
-##
-## Contact: agnes.dentremont@mech.ubc.ca
-##
-## This work is licensed under the Creative Commons
-## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
-## <https://creativecommons.org/licenses/by-sa/4.0/>
-##
-## We gratefully acknowledge the financial support for this 
-## project provided by UBC Vancouver students via the Teaching
-## and Learning Enhancement Fund. We also gratefully acknowledge
-## additional funding support from BCcampus, the UBC Department of
-## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
-##
-## This work was completed on the traditional, ancestral, and unceded
-## territory of the Musqueam people. 
-##
+## 
 ##ENDDESCRIPTION
 
 ## DBsubject(Fluid mechanics)
@@ -86,7 +69,7 @@ BEGIN_PGML
 
 [@ image("UBC-FLU-18-077.png", width=>[$width], height=>[$height]) @]*
 
-The plate and cart are unrestrained, with frictionless wheels. Find the time required for the cart to accelerate to [`90%`] of the jet's velocity. The cart mass's is [`[$M] kg`], the jet velocity is [`V_j=[$Vj]`] [`m/s`] and [`A_j=0.0003`] [`m^2`]. Water density is [`1000`] [`kg/m^3`].
+A cart with frictionless wheels is unrestrained and struck by a jet of water. The cart mass's is [`[$M] kg`], and the jet is travelling [`V_j=[$Vj]`] [`m/s`] with an area [`A_j=0.0003`] [`m^2`]. What is the time it will take for the cart to accelerate to [`90%`] of the jet's velocity? Use a water density of [`1000`] [`kg/m^3`].
 
 [`t=`] [____]{"$Ans"} [`s`]
 
