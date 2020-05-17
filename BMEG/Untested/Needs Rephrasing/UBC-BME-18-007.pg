@@ -61,7 +61,7 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-A golf ball is struck by a golf club. The mass of the ball is [`[$m]`] [`g`], and the mass of the club head is [`[$head]`] [`g`]. The club head's velocity immediately prior to impact is [`[$v]`] [`m/s`]. If the coefficient of restitution between the club head and ball is [`[$e]`], how fast is the ball moving immediately after impact?
+A [`[$m]`] [`g`] golf ball is struck by a [`[$head]`] [`g`] golf club. Immediately before the impact, the club head's velocity is [`[$v]`] [`m/s`]. How fast is will the ball move immediately after impact if the coefficient of restitution between the club head and ball is [`[$e]`]?
 
 [`v=`] [_____]{"$vf"} [`m/s`]  
 
