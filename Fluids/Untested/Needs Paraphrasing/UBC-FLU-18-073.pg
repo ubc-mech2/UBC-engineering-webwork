@@ -1,22 +1,5 @@
 ##DESCRIPTION
-##
-## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
-##
-## Contact: agnes.dentremont@mech.ubc.ca
-##
-## This work is licensed under the Creative Commons
-## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
-## <https://creativecommons.org/licenses/by-sa/4.0/>
-##
-## We gratefully acknowledge the financial support for this 
-## project provided by UBC Vancouver students via the Teaching
-## and Learning Enhancement Fund. We also gratefully acknowledge
-## additional funding support from BCcampus, the UBC Department of
-## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
-##
-## This work was completed on the traditional, ancestral, and unceded
-## territory of the Musqueam people. 
-##
+## 
 ##ENDDESCRIPTION
 
 ## DBsubject(Fluid mechanics)
@@ -86,7 +69,7 @@ BEGIN_PGML
 
 [@ image("UBC-FLU-18-073.png", width=>[$width], height=>[$height]) @]*
 
-As can often be seen in a kitchen sink when the faucet is running, a highspeed channel flow ([`V_1`],[`h_1`]) may "jump" to a low-speed, low-energy condition ([`V_2`],[`h_2`]) as shown in the figure. The pressure at sections [`1`] and [`2`] is approximately hydrostatic, and wall friction is negligible. Use the continuity and momentum relations to find [`\frac{h_2}{h_1}`] for [`h_1=[$h1]`] [`m`] and [`V_1=[$V1]`] [`m/s`].
+As shown in the diagram, it is possible for a highspeed channel flow ([`V_1`],[`h_1`]) to "jump" to a low-speed, low-energy condition ([`V_2`],[`h_2`]). This phenomenon can often be observed in a kitchen sink with the faucet on. At sections [`1`] and [`2`], the pressure can be treated as approximately hydrostatic. Using the continuity and momentum relations, what is [`\frac{h_2}{h_1}`] for [`h_1=[$h1]`] [`m`] and [`V_1=[$V1]`] [`m/s`]? Neglect wall friction.
 
 [`\frac{h_2}{h_1}=`] [____]{"$Ans"}
 
