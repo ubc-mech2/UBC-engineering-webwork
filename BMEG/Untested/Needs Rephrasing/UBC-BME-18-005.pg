@@ -59,7 +59,7 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-A volleyball player sets the ball for the spike. When the ball leaves the setter's fingers, it is [`[$h]`] [`m`] high and has a vertical velocity of [`[$v]`] [`m/s`] upward. How high will the ball go?
+During a volleyball game, a player sets the ball up for the spike. At the moment the ball leaves the setter's fingers, it has a height of [`[$h]`] [`m`] and is travelling upward at a vertical velocity of [`[$v]`] [`m/s`]. How high will the ball travel?  
 
 [`h=`] [_____]{"$hf"} [`m`]  
 
