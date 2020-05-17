@@ -1,22 +1,5 @@
 ##DESCRIPTION
-##
-## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
-##
-## Contact: agnes.dentremont@mech.ubc.ca
-##
-## This work is licensed under the Creative Commons
-## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
-## <https://creativecommons.org/licenses/by-sa/4.0/>
-##
-## We gratefully acknowledge the financial support for this 
-## project provided by UBC Vancouver students via the Teaching
-## and Learning Enhancement Fund. We also gratefully acknowledge
-## additional funding support from BCcampus, the UBC Department of
-## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
-##
-## This work was completed on the traditional, ancestral, and unceded
-## territory of the Musqueam people. 
-##
+## 
 ##ENDDESCRIPTION
 
 ## DBsubject(Fluid mechanics)
@@ -86,7 +69,7 @@ BEGIN_PGML
 
 [@ image("UBC-FLU-18-072.png", width=>[$width], height=>[$height]) @]*
 
-Gasoline at [`20^{\circ}C`] is flowing at [`V_1=[$V1]`] [`m/s`] in a [`5`] [`cm`] diameter pipe when it encounters a [`1`] [`m`] length of uniform radial wall suction. After the suction, the velocity has dropped to [`10`] [`m/s`]. If [`P_1=[$P1]`] [`kPa`], estimate [`P_2`] if wall friction is neglected. The density of the gasoline is [`680`] [`kg/m^3`].
+[`20^{\circ}C`] Gasoline at [`P_1=[$P1]`] [`kPa`] is flowing at [`V_1=[$V1]`] [`m/s`]  when it enters a section of the pipe with uniform radial wall suction. The pipe is [`5`] [`cm`] diameter, and the section with radial wall suction is [`1`] [`m`] long. Upon leaving the section with suction, the velocity has dropped to [`10`] [`m/s`]. What is [`P_2`], neglecting wall friction? Use a gasoline density of [`680`] [`kg/m^3`].
 
 [`P_2=`] [____]{"$Ans"} [`kPa`]
 
