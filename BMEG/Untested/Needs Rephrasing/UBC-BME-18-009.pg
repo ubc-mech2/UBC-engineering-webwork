@@ -60,7 +60,7 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-A boxer is punching a heavy bag. The time of impact of the glove with the bag is [`[$t]`] [`s`]. The mass of the glove and his hand is [`[$m]`] [`kg`]. The velocity of the glove just before the impact is [`[$v]`] [`m/s`]. What is the average impact force exerted on the glove?
+A boxer is practicing by punching a heavy bag. Their glove and hand have a combined mass of [`[$m]`] [`kg`] and just before impact are travelling with a velocity of [`[$v]`] [`m/s`]. The glove impacts the bag for [`[$t]`] [`s`]. Find the average impact force exerted on the glove.
 
 [`F=`] [_____]{"$F"} [`N`]  
 
