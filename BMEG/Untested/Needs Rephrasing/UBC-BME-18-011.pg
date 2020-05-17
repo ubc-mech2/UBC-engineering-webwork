@@ -60,7 +60,7 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-A pitcher exerts an average horizontal force of [`[$F]`] [`N`] on a [`[$m]`] [`kg`] baseball during the delivery of the pitch. His hand and the ball move through a horizontal displacement of [`[$d]`] [`m`] during this period of force application. If the ball's horizontal velocity was zero at the start of the delivery phase, how fast will the ball be going at the end of the delivery phase when the pitcher releases it?
+A pitcher throwing a [`[$m]`] [`kg`] baseball exerts an average horizontal force of [`[$F]`] [`N`] on the ball. Their hand and the ball travel through a horizontal displacement of [`[$d]`] [`m`] during the period of force application. If, at the beginning of force delivery, the ball's horizontal velocity was zero, how fast will the ball be travelling at the end of the delivery phase once the pitcher lets go?
 
 [`v=`] [_____]{"$v"} [`m/s`]  
 
