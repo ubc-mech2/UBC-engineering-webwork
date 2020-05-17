@@ -1,22 +1,5 @@
 ##DESCRIPTION
-##
-## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
-##
-## Contact: agnes.dentremont@mech.ubc.ca
-##
-## This work is licensed under the Creative Commons
-## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
-## <https://creativecommons.org/licenses/by-sa/4.0/>
-##
-## We gratefully acknowledge the financial support for this 
-## project provided by UBC Vancouver students via the Teaching
-## and Learning Enhancement Fund. We also gratefully acknowledge
-## additional funding support from BCcampus, the UBC Department of
-## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
-##
-## This work was completed on the traditional, ancestral, and unceded
-## territory of the Musqueam people. 
-##
+## 
 ##ENDDESCRIPTION
 
 ## DBsubject(Fluid mechanics)
@@ -86,7 +69,7 @@ BEGIN_PGML
 
 [@ image("UBC-FLU-18-078.png", width=>[$width], height=>[$height]) @]*
 
-The cart moves at constant velocity [`[$V]`] [`m/s`] and takes on water with a scoop [`80`] [`cm`] wide which dips [`h = [$H]`] [`cm`] into a pond. Neglect air drag and wheel friction. Estimate the force required to keep the cart moving.
+As shown in the diagram, a cart is traveling along a rail, collecting water with a scoop. The cart is moving at constant velocity [`[$V]`] [`m/s`], using a scoop [`80`] [`cm`] wide which dips [`h = [$H]`] [`cm`] into the pond. What is the force required to keep the cart moving, neglecting air drag and wheel friction?
 
 [`F=`] [____]{"$Ans"} [`N`]
 
