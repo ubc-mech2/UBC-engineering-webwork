@@ -69,7 +69,7 @@ BEGIN_PGML
 
 [@ image("UBC-BME-18-012.png", width=>[$width], height=>[$height]) @]*
 
-Jeff is pushing on a door with a horizontal force of [`F_J = [$fj]`] [`N`]. The moment arm of this force around the hinges of the door is [`d_1 = [$d1]`] [`cm`]. Ted is pushing in the opposite direction on the other side of the door. The moment arm of his pushing force is [`d_2 = [$d2]`] [`cm`]. How large is the force that Ted pushes with if the door is in static equilibrium?
+Two individuals arrived at a door at the same time. Jeff pushes from one side of the door with a horizontal force of [`F_J = [$fj]`] [`N`] in a location resulting in a moment arm [`d_1 = [$d1]`] [`cm`] from the hinges of the door. On the other side of the door, Ted is pushing in the opposite direction in a location resulting in a moment arm of [`d_2 = [$d2]`] [`cm`]. What is the force that Ted mush push the door if it is in static equilibrium?  
 
 [`F_T = `] [_____]{"$ft"} [`N`]
 
