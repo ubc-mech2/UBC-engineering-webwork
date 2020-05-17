@@ -1,22 +1,5 @@
 ##DESCRIPTION
-##
-## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
-##
-## Contact: agnes.dentremont@mech.ubc.ca
-##
-## This work is licensed under the Creative Commons
-## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
-## <https://creativecommons.org/licenses/by-sa/4.0/>
-##
-## We gratefully acknowledge the financial support for this 
-## project provided by UBC Vancouver students via the Teaching
-## and Learning Enhancement Fund. We also gratefully acknowledge
-## additional funding support from BCcampus, the UBC Department of
-## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
-##
-## This work was completed on the traditional, ancestral, and unceded
-## territory of the Musqueam people. 
-##
+## 
 ##ENDDESCRIPTION
 
 ## DBsubject(Fluid mechanics)
@@ -87,7 +70,7 @@ BEGIN_PGML
 
 [@ image("UBC-FLU-18-076.png", width=>[$width], height=>[$height]) @]*
 
-The boat in the figure is jet-propelled  by a pump which develops a volume flow rate [`Q=[$Q]`] [`m^3/s`] and ejects water out the stem at velocity [`V_j=[$Vj]`] [`m/s`]. If the boat drag force is [`F =kV`], where [`k=[$k]`] is a constant, find the steady forward speed, [`V`], of the boat.
+As shown in the diagram, a jet-boat is propelled forward by a pump with a volume flow rate of [`Q=[$Q]`] [`m^3/s`], pulling water in and ejecting it from the stem at velocity [`V_j=[$Vj]`] [`m/s`]. The drag force on the boat is [`F =kV`], with [`k=[$k]`] being a constant. What is the forward speed [`V`] of the boat?
 
 [`V=`] [____]{"$Ans"} [`m/s`]
 
