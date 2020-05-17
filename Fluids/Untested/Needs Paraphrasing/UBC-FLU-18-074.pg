@@ -1,22 +1,5 @@
 ##DESCRIPTION
-##
-## Created by the UBC Department of Mechanical Engineering. Project led by Agnes d'Entremont.
-##
-## Contact: agnes.dentremont@mech.ubc.ca
-##
-## This work is licensed under the Creative Commons
-## Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
-## <https://creativecommons.org/licenses/by-sa/4.0/>
-##
-## We gratefully acknowledge the financial support for this 
-## project provided by UBC Vancouver students via the Teaching
-## and Learning Enhancement Fund. We also gratefully acknowledge
-## additional funding support from BCcampus, the UBC Department of
-## Mechanical Engineering, and the UBC Applied Science Dean’s Office.  
-##
-## This work was completed on the traditional, ancestral, and unceded
-## territory of the Musqueam people. 
-##
+## 
 ##ENDDESCRIPTION
 
 ## DBsubject(Fluid mechanics)
@@ -85,7 +68,7 @@ BEGIN_PGML
 
 [@ image("UBC-FLU-18-074.png", width=>[$width], height=>[$height]) @]*
 
-A water jet of velocity [`V_j`] and area [`A_j`] strikes a single [`180^{\circ}`] bucket on a turbine wheel rotating at angular velocity [`\Omega`]. Find the delivered power to the wheel at this instant for [`R=0.2`] [`m`], [`\Omega=60`] [`rpm`], [`V_j=[$Vj]`] [`m/s`] and [`A_j=0.1`] [`m^2`].
+As shown in the diagram, a water jet with velocity [`V_j=[$Vj]`] [`m/s`] and area [`A_j=0.1`] [`m^2`] contacts a single [`180^{\circ}`] bucket on a turbine wheel. The wheel is rotating at angular velocity [`\Omega=60`] [`rpm`]. At this instant in time, what is the delivered power to the wheel if [`R=0.2`] [`m`]? 
 
 [`P=`] [____]{"$Ans"} [`W`]
 
