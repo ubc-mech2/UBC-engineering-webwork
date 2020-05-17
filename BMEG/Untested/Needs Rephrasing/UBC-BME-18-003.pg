@@ -60,7 +60,7 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-A material is subjected to a tensile load of [`[$F]`] [`N`]. Its cross-sectional area is [`[$A]`] [`cm^2`]. The elastic modulus for this material is [`[$E]`] [`GPa`]. What strain results from this tensile load? 
+A material with elastic modulus [`[$E]`] [`GPa`] is being tested on a tensile testing machine. A sample of the material with a cross-sectional area of [`[$A]`] [`cm^2`] is subjected to a tensile load of [`[$F]`] [`N`]. What is the strain that results from the tensile load applied?
 
 [`\epsilon=`] [_____]{"$eps"} [`%`]  
 
