@@ -61,7 +61,7 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-A [`[$m]`] [`kg`] diver has an angular velocity of [`[$omega]`] [`rad/s`] about her transverse axis when she leaves the board in a layout position. When she tucks, her angular velocity increases to [`[$omega2]`] [`rad/s`]. If her moment of inertia is [`[$i]`] [`kg \cdot m^2`] in the layout position, what is her radius of gyration in the tuck position?
+A diver weighing [`[$m]`] [`kg`] leaves the board in a layout position with an angular velocity of [`[$omega]`] [`rad/s`] about their transverse axis. The angular velocity of the diver increases to [`[$omega2]`] [`rad/s`] when they tuck. What is their radius of gyration in the tuck position, if in the layout position their moment of inertia is [`[$i]`] [`kg \cdot m^2`]?
 
 [`k=`] [_____]{"$k"} [`m`]  
 
