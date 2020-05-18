@@ -62,17 +62,18 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-Brian is attempting to high jump over a crossbar set at [`[$hc]`] [`m`]. At the instant of takeoff (when he is no longer in contact with the ground) his vertical velocity is [`[$v]`] [`m/s`], and his center of gravity is [`[$cog]`] [`m`] high.
+Brian is participating in the track and field event high jump. The bar for the high jump is set at [`[$hc]`] [`m`]. At the moment of takeoff, when Brian is no longer touching the ground, he has a velocity of [`[$v]`] [`m/s`], and his center of gravity is at a height of [`[$cog]`] [`m`].
 
-*a)* What is Brian's vertical acceleration at the instant of takeoff?
+*a)* At the moment of takeoff what is Brian's vertical acceleration?
 
 [`a_y=`] [_____]{"$ay"} [`m/s^2`]  
 
-*b)* How much time elapses after takeoff until Brian reaches his peak height?
+*b)* Between when Brian takes off and reaches his peak, how much time elapses?
 
 [`t=`] [_____]{"$t"} [`s`]  
 
-*c)* What peak height does Brian's center of gravity achieve?
+*c)* What is the peak height that Brian's center of gravity achieves?
+
 
 [`y_{peak}=`] [_____]{"$h"} [`m`]  
 
