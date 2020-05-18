@@ -60,7 +60,7 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-A golfer's hands move through an arc length of [`[$lh]`] [`cm`] during a putt. What arc length does the head of the putter move through if the hands are [`[$rh]`] [`cm`] from the axis of rotation and the putter's head is [`[$rp]`] [`cm`] from the axis of rotation?
+A golfer using a putter holds the putter [`[$rh]`] [`cm`] from the axis of rotation and moves their hands through an arc length of [`[$lh]`] [`cm`] during a putt. If the head of the putter is [`[$rp]`] [`cm`] from the axis of rotation, what arc length does it pass through in the putt?
 
 [`l=`] [_____]{"$lp"} [`cm`]  
 
