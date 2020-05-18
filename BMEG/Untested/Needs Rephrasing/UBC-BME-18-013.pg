@@ -73,7 +73,7 @@ BEGIN_PGML
 
 [@ image("UBC-BME-18-013.png", width=>[$width], height=>[$height]) @]*
 
-A weightifter has mistakenly placed a [`w_1=[$w1]`] [`kg`] plate on one end of the barbell and a [`w_2=[$w2]`] [`kg`] plate on the other end of the barbell. The barbell is [`[$l]`] [`m`] long and has a mass of [`[$b]`] [`kg`] without the plates on it. The [`[$w1]`] [`kg`] plate is located [`r_1 = [$r1]`] [`cm`] from the right end of the barbell, and the [`[$w2]`] [`kg`] plate is located [`r_2=[$r2]`] [`cm`] from the left end of the barbell. where is the center of gravity, [`x_G`], measured from the right end of the barbell with the weight plates on it?
+A weightifter is setting up for an exercise and loading a barbell which is [`[$l]`] [`m`] long and weighs [`[$b]`] [`kg`] without any plates on it. They mistakenly load different weights on each end of the barbell, loading a [`w_1=[$w1]`] [`kg`] plate on one end and a [`w_2=[$w2]`] [`kg`] plate on the other end. As shown in the diagram, the plates are located in different spots relative to the ends of the barbell, with the [`[$w1]`] [`kg`] plate located [`r_1 = [$r1]`] [`cm`] from the right end, and the [`[$w2]`] [`kg`] plate located [`r_2=[$r2]`] [`cm`] from the left end. With the weights loaded on as described, where is the center of gravity, [`x_G`], measured from the right end of the barbell? 
 
 [`x_G=`] [_____]{"$xg"} [`m`]  
 
