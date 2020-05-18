@@ -60,7 +60,7 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-A [`[$m]`] [`kg`] lacrosse stick has a moment of inertia about a transverse axis through its center of gravity of [`[$i]`] [`kg \cdot m^2`]. When a player swings the stick at an opponent, the axis of rotation is through the end of the stick [`[$l]`] [`m`] from the center of gravity of the stick. What is the moment of inertia relative to this swing axis?
+A lacrosse stick has a moment of inertia about a transverse axis through its center of gravity of [`[$i]`] [`kg \cdot m^2`]. When the stick is swung, the axis of rotation is through the end of the stick which is located [`[$l]`] [`m`] from the center of gravity of the stick. Relative to this swing axis, what is the moment of inertia? The stick has a mass of [`[$m]`] [`kg`].
 
 [`I=`] [_____]{"$i2"} [`kg \cdot m^2`]  
 
