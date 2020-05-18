@@ -77,13 +77,13 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-It is the final seconds of an ice hockey game between the Flyers and the Bruins. The Bruins are down by [`1`] point. With [`20`] [`s`] left in the game, the Bruins pull the goalie and have him play as a forward in an attempt to tie the game. The Flyers successfully defend their goal for [`9`] [`s`]. With only [`[$t]`] [`s`] remaining on the game clock, a Flyer shoots the puck on the ice past the skates and sticks of the other players and toward the Bruins' goal. The puck is [`[$s]`] [`m`] from the goal when it leaves the stick with an initial horizontal velocity of [`[$v]`] [`m/s`]. The shot is perfectly directed toward the empty goal, but the ice slows the puck down at a constant rate of [`[$a]`] [`m/s^2`] as it slides toward the goal. None of the Bruins can stop the puck before it reaches the goal.
+[`20`] [`s`] are left in the third period of an ice hockey game between the Flyers and the Bruins. The Bruins are down by [`1`] point. With such little time remaining, the Bruins pull the goalie allowing them to have another forward come on to the ice. The Bruins are able to successfully defend their goal until a Flyer takes a shot with only [`[$t]`] [`s`] remaining. The puck travels past the sticks of all the other players, toward the Bruins' goal. The player who shot the puck was [`[$s]`] [`m`] from the goal, and the puck left their stick with an initial horizontal velocity of [`[$v]`] [`m/s`]. Although the shot is lined up with the Bruins empty net, the ice causes the puck to slow constantly at a rate of [`[$a]`] [`m/s^2`]. 
 
-*a)* How far from the goal is the puck when the game clock reaches zero and the horn sounds to end the game? (_Answer with a positive number if the puck has not entered the goal yet and answer with a negative number otherwise._)
+*a)* When the game clock reaches zero and the game ends, how far from the goal is the puck? (_Use a positive number if the puck is not yet in the net and a negative number if the puck made it into the net._)
 
 [`d=`] [_____] [`m`]  
 
-*b)* Do the Flyers win the game by [`1`] or [`2`] points?
+*b)* How many points do they Flyers win the game by? [`1`] or [`2`]
 
 [@ $mcCorrect->menu() @]*
 
