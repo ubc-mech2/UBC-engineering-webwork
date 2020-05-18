@@ -79,7 +79,7 @@ BEGIN_PGML
 
 [@ image("UBC-BME-18-020.png", width=>[$width], height=>[$height]) @]*
 
-Amy is in a tuck and skiing straight down a [`\theta=[$theta]^{\circ}`] slope. Air resistance pushes backward on her with a force of [`[$fd]`] [`N`]. The coefficient of dynamic friction between her skis and the snow is [`[$mu]`]. Amy's mass is [`[$m]`] [`kg`]. What is the resultant of the external forces that act on Amy?
+Amy is skiing straight down a [`\theta=[$theta]^{\circ}`] slope. She is in a tuck to reduce her drag, resulting in air resistance pushing backward against her with a force of [`[$fd]`] [`N`]. Her skis and the snow have a coefficient of dynamic friction [`[$mu]`]. If Amy's mass is [`[$m]`] [`kg`], what is the resultant of the external forces that are acting on her?
 
 [`\vec{R}=`] [`(`][_____]{"$rx"}[`\hat{i}+`][_____]{"$ry"}[`\hat{j})`] [`N`]
 
