@@ -60,7 +60,7 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-A warm hockey puck has a coefficient of restitution of [`[$ew]`], while a frozen hockey puck has a coefficient of restitution of only [`[$ef]`]. In the NHL, the pucks to be used in games are kept frozen. During a game, the referee retrieves a puck from the cooler to restart play but is told by the equipment manager that several warm pucks were just put into the cooler. To check to make sure he has a game-ready puck, the referee drops the puck on its side from a height of [`[$h]`] [`m`]. How high should the puck bounce if it is a frozen puck?
+Hockey pucks have differing coefficients of restitution based on temperature, with warm hockey pucks having a coefficient of restitution of [`[$ew]`], and frozen hockey pucks having a coefficient of restitution of only [`[$ef]`]. In the NHL, the pucks used during games are kept frozen and refs will retrieve a puck from the cooler when restarting play. During a game, a ref retrieves a puck but is informed by the equipment manager that several warm pucks were just put into the cooler and not game-ready. As a way to check whether he has a frozen, game-ready puck, the referee drops the puck from a height of [`[$h]`] [`m`] on its side. If the puck is frozen, how high should it bounce?
 
 [`h=`] [_____]{"$hb"} [`m`]  
 
