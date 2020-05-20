@@ -61,7 +61,7 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-A tennis racket has a mass of [`[$m]`] [`kg`]. The radius of gyration of the racket about its longitudinal (twist) axis is [`[$kt]`] [`cm`], and its radius of gyration about its swing axis is [`[$ks]`] [`cm`].
+The tennis racket with a mass of [`[$m]`] [`kg`] has a radius of gyration about its longitudinal (twist) and swing axis of [`[$kt]`] [`cm`] and [`[$ks]`] [`cm`] respectively. 
 
 *a)* What is the moment of inertia of this racket about its longitudinal axis?
 
