@@ -62,19 +62,20 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-An archer draws his compound bow and shoots an arrow. The [`[$m]`] [`g`] arrow leaves the bow with a velocity of [`[$d]`] [`m/s`]. The power stroke of the bow is [`[$d]`] [`cm`]; that is, the bowstring exerts force on the arrow through a displacement of [`[$d]`] [`cm`]. The peak draw weight of the bow is [`[$f]`] [`N`]. (_This is the maximum force that the archer has to exert on the bowstring._)
+An archer using a compound bow nocks and shoots a [`[$m]`] [`g`] arrow. The arrow has a velocity of [`[$d]`] [`m/s`] when it leaves the bow. The bow has a power stroke of [`[$d]`] [`cm`], which is to say, the bowstring exerts force on the arrow through a displacement of [`[$d]`] [`cm`]. The bow has a peak draw weight of [`[$f]`] [`N`], which is the maximum force that the archer has to exert pulling the bowstring back.
 
-*a)* How much kinetic energy does the arrow have after release?
+*a)* After release, how much kinetic energy does the arrow have?
 
 [`KE=`] [_____]{"$ke"} [`J`]  
 
-*b)* How much work does the bowstring do on the arrow?
+*b)* How much work is done to the arrow by the bowstring?
 
 [`W=`] [_____]{"$ke"} [`J`]  
 
-*c)* What average force does the bowstring exert on the arrow?
+*c)* What average force is exerted on the arrow by the bowstring?
 
 [`F=`] [_____]{"$fave"} [`N`]  
+
 
 END_PGML
 
