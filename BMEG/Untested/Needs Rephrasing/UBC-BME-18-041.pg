@@ -60,7 +60,7 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-Zoe is pole-vaulting. At the end of her approach run, she has a horizontal velocity of [`[$v]`] [`m/s`] and her center of gravity is [`[$cog]`] [`m`] high. If Zoe's mass is [`[$m]`] [`kg`], estimate how high she should be able to vault if her kinetic and potential energies are all converted to potential energy.
+Zoe has a mass of [`[$m]`] [`kg`] and is competing in the pole-vault at a track and field meet. Just before vaulting during her approach run, she is travelling horizontally with a velocity of [`[$v]`] [`m/s`] and her center of gravity is [`[$cog]`] [`m`] high. If all of her kinetic and potential energies are converted to purely potential energy, how high should Zoe be able to vault?
 
 [`h=`] [_____]{"$h"} [`m`]  
 
