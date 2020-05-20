@@ -60,7 +60,7 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-A [`[$m]`] [`kg`] soccer ball is stationary on the field when Darryl kicks it. Darryl's foot is in contact with the ball for [`[$t]`] [`s`] during the kick. The horizontal velocity of the ball as it leaves his foot is [`[$v]`] [`m/s`]. What is the average horizontal force exerted by Darryl’s foot on the ball during the [`[$t]`] [`s`] of contact (assume that friction between the ball and the field is zero)?
+A stationary [`[$m]`] [`kg`] soccer ball is kicked by Darryl the defenseman. During the kick, Darryl's foot makes contact with the ball for [`[$t]`] [`s`] and as it leaves his foot, it has a horizontal velocity of [`[$v]`] [`m/s`]. During the [`[$t]`] [`s`] of contact, what is the average horizontal force exerted on the ball by Darryl's foot? Ignore friction between the ball and the field.
 
 [`F_x=`] [_____]{"$fx"} [`N`]  
 
