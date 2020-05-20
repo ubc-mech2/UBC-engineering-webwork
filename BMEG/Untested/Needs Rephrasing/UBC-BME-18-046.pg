@@ -68,7 +68,7 @@ BEGIN_PGML
 
 [@ image("UBC-BME-18-046.png", width=>[$width], height=>[$height]) @]*
 
-A barbell is loaded with two [`[$mplate]`] [`kg`] plates on its right side and two [`[$mplate]`] [`kg`] plates on its left side. The barbell is [`2.2`] [`m`] long, and its unloaded mass is [`[$mbar]`] [`kg`]. The two [`[$mplate]`] [`kg`] plates on the right side are locked in place at [`35`] [`cm`] and [`40`] [`cm`] from the right end of the bar. The two [`[$mplate]`] [`kg`] plates on the left side have slipped. One is [`30`] [`cm`] from the left end of the bar, and the other is [`20`] [`cm`] from the left end of the bar. Where is the center of gravity of this barbell with the four plates measured from the left end of the bar?
+As shown in the diagram, a [`2.2`] [`m`] long barbell which weighs [`[$mbar]`] [`kg`] unloaded, is loaded with four [`[$mplate]`] [`kg`] plates, two on its right side and two on its left side. The two plates on the right side are located at [`35`] [`cm`] and [`40`] [`cm`] from the right end of the bar. The two plates on the left side have shifted and are at [`30`] [`cm`] and [`20`] [`cm`] from the left end of the bar. Measured from the left end of the bar, where is the center of gravity of this barbell with the four plates?
 
 [`CoG=`] [_____]{"$cog"} [`cm`]  
 
