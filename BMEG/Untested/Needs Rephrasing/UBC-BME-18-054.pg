@@ -64,21 +64,21 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-Lily is a [`[$m]`] [`kg`] diver. At the instant of takeoff, her angular momentum about her transverse axis is [`[$l]`] [`kg\cdot m^2/s`]. Her radius of gyration about the transverse axis is [`[$k1]`] [`m`] at this instant. During the dive, Lily tucks and reduces her radius of gyration about the transverse axis to [`[$k2]`] [`m`].
+Lily is a diver with a mass of [`[$m]`] [`kg`]. Her angular momentum about her transverse axis is [`[$l]`] [`kg\cdot m^2/s`] at the instant of takeoff. At this same instant, her radius of gyration about the transverse axis is [`[$k1]`] [`m`]. At some point during the dive, Lily reduces her radius of gyration about the transverse axis to [`[$k2]`] [`m`] by tucking. 
 
-*a)* At takeoff, what is Lily's moment of inertia about her transverse axis?
+*a)* What is Lily's moment of inertia about her transverse axis at takeoff?
 
 [`I_i`] [_____]{"$moi1"} [`kg\cdot m^2`]  
 
-*b)* At takeoff, what is Lily's angular velocity about the transverse axis?
+*b)* What is Lily's angular velocity about the transverse axis at takeoff?
 
 [`\omega_i=`] [_____]{"$omega1"} [`rad/s`]  
 
-*c)* After Lily tucks, what is her moment of inertia about her transverse axis?
+*c)* What is Lily's moment of inertia about her transverse axis after she tucks?
 
 [`I_f=`] [_____]{"$moi2"} [`kg\cdot m^2`]  
 
-*d)* After Lily tucks, what is her angular velocity about the transverse axis?
+*d)* What is Lily's angular velocity about the transverse axis after she tucks?
 
 [`\omega_f=`] [_____]{"$omega2"} [`rad/s`]  
 
