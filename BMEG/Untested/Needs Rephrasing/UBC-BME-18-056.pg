@@ -59,7 +59,7 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-Tom's leg angularly accelerates [`[$theta]^{\circ}/s^2`] around the hip joint during a roundhouse kick in the transverse plane. The moment of inertia of the leg around the axis of rotation for this kick is [`[$moi]`] [`kg\cdot m^2`]. How large is the torque that produces this acceleration?
+During a roundhouse kick, Tom's leg angularly accelerates [`[$theta]^{\circ}/s^2`] around the hip joint in the transverse plane. For this kick, the moment of inertia of the leg around the axis of rotation is [`[$moi]`] [`kg\cdot m^2`]. What is the torque that produces this acceleration?
 
 [`T=`] [_____]{"$t"} [`Nm`]  
 
