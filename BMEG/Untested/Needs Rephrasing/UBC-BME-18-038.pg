@@ -62,19 +62,20 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-A baseball strikes the catcher's glove with a horizontal velocity of [`[$v]`] [`m/s`]. The mass of the baseball is [`[$m]`] [`kg`]. The displacement of the baseball due to the deformation of the catcher's glove and the movement of the catcher's hand is [`[$d]`] [`cm`] from the instant it first makes contact with the glove until it stops.
+A [`[$m]`] [`kg`] baseball strikes a catcher's glove with a horizontal velocity of [`[$v]`] [`m/s`]. The baseball moves through a displacement of [`[$d]`] [`cm`] from the instant it first makes contact with the glove until it stops. This displacement is due to the combination of deformation of the catcher's glove and the movement of the catcher's hand.
 
-*a)* How much kinetic energy does the baseball possess just before it strikes the glove?
+*a)* Just before it strikes the glove, how much kinetic energy does the baseball have?
 
 [`KE=`] [_____]{"$ke"} [`J`]  
 
-*b)* How much work does the catcher do on the baseball during the catch?
+*b)* During the catch, how much work does the catcher do on the baseball?
 
 [`W=`] [_____]{"$w"} [`J`]  
 
-*c)* What is the average impact force exerted by the glove on the baseball?
+*c)* What is the average impact force exerted on the baseball by the glove?
 
 [`F=`] [_____]{"$f"} [`N`]  
+
 
 END_PGML
 
