@@ -63,19 +63,20 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-Peter, a [`[$m]`] [`kg`] basketball player, lands on his feet after completing a slam dunk and then immediately jumps up again to celebrate his basket. When his feet first touch the floor after the dunk, his velocity is [`[$vd]`] [`m/s`] downward; when his feet leave the floor [`[$t]`] [`s`] later, as he jumps back up, his velocity is [`[$vu]`] [`m/s`] upward.
+Peter, a [`[$m]`] [`kg`] basketball player, lands on his feet after a slam dunk and then jumps up to celebrate his basket. When he first lands after the dunk, his velocity is [`[$vd]`] [`m/s`] downward; [`[$t]`] [`s`] later his feet leave the floor when he jumps back up, his velocity now [`[$vu]`] [`m/s`] upward. During the [`[$t]`] [`s`] Peter is touching the ground:
 
-*a)* What is the impulse exerted on Peter during this [`[$t]`] [`s`]?
+*a)* What is the impulse exerted on him?
 
 [`I=`] [_____]{"$i"} [`N\cdot s`]  
 
-*b)* What is the average net force exerted on Peter during this [`[$t]`] [`s`]?
+*b)* What is the average net force exerted on him?
 
 [`F=`] [_____]{"$f"} [`N`]  
 
-*c)* What is the average reaction force exerted upward by the floor on Peter during this [`[$t]`] [`s`]?
+*c)* What is the average reaction force exerted upward by the floor on him?
 
 [`R=`] [_____]{"$r"} [`N`]
+
 
 END_PGML
 
