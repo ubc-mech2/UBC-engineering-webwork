@@ -64,18 +64,19 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-Tonya crashes into Nancy while they are practicing their figure skating routines. Tonya's mass is [`[$mt]`] [`kg`] and Nancy's mass is [`[$mn]`] [`kg`]. Just before the collision occurs, Tonya's velocity is [`[$vt]`] [`m/s`] and Nancy's velocity is [`[$vn]`] [`m/s`]. During the collision, Tonya exerts an average force of [`[$f]`] [`N`] against Nancy.
+During figure skating practice, Tonya crashes into Nancy. The moment before the collision occurs, Tonya and Nancy's velocities are [`[$vt]`] [`m/s`] and [`[$vn]`] [`m/s`] respectively. During the collision, an average force of [`[$f]`] [`N`] is exerted by Tonya against Nancy. Tonya and Nancy's masses are [`[$mt]`] [`kg`] and [`[$mn]`] [`kg`] respectively. 
 
-*a)* How big is the average force Nancy exerts against Tonya during the collision?
+*a)* What is the average force exerted by Nancy against Tonya during the collision?
 
 [`F=`] [_____]{"$f"} [`N`]  
 
-*b)* If this is the only horizontal force acting on each skater during the collision, what average horizontal acceleration does each skater experience during the collision?
+*b)* Consider this to be the only horizontal force acting on each skater during the collision. What is the average horizontal acceleration Tonya and Nancy experience during the collision?
 
 [`a_T=`] [_____]{"$at"} [`m/s^2`]  
 [`a_N=`] [_____]{"$an"} [`m/s^2`]  
 
-*c)* If the collision is perfectly inelastic, how fast will Tonya and Nancy be moving immediately after the collision?
+*c)* How fast will Tonya and Nancy be moving immediately after the collision if this is a perfectly inelastic collision?
+
 
 [`v=`] [_____]{"$v"} [`m/s`]  
 
