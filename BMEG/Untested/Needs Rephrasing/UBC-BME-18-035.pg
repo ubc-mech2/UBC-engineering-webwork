@@ -62,7 +62,7 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-A [`[$mball]`] [`kg`] baseball collides with a [`[$mbat]`] [`kg`] bat. The ball has a velocity of [`[$v]`] [`m/s`] immediately before the collision. The center of mass of the bat also has a velocity of [`[$v]`] [`m/s`], but in the opposite direction, just before the collision. The coefficient of restitution between the bat and the ball is [`[$e]`]. Estimate how fast the baseball is moving as it leaves the bat following the collision.
+A baseball is struck by a bat. The [`[$mball]`] [`kg`] ball has a velocity of [`[$v]`] [`m/s`] immediately prior to being hit. The center of mass of the [`[$mbat]`] [`kg`] bat is travelling with the same velocity of [`[$v]`] [`m/s`] immediately prior to the hit, but in the opposite direction. If the coefficient of restitution between the bat and the ball is [`[$e]`], how fast is the baseball moving as it leaves the bat after the collision?
 
 [`v=`] [_____]{"$vf"} [`m/s`]  
 
