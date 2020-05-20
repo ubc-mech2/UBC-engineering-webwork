@@ -61,13 +61,15 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-To earn the _FIFA Approved_ label, a soccer ball must bounce at least [`[$hmin]`] [`cm`] high and no more than [`[$hmax]`] [`cm`] high when dropped from a height of [`[$h]`] [`cm`] onto a steel plate.
+In order to earn the _FIFA Approved_ label, when a soccer ball is dropped from a height of [`[$h]`] [`cm`] onto a steel plate, it must bounce at least [`[$hmin]`] [`cm`] high and no more than [`[$hmax]`] [`cm`] high.  
 
-*a)* What is the minimum coefficient of restitution of a _FIFA Approved_ soccer ball?
+For a _FIFA Approved_ soccer ball:  
+
+*a)* What is the minimum coefficient of restitution?
 
 [`e_{min}=`] [_____]{"$emin"}
 
-*b)* What is the maximum coefficient of restitution of a _FIFA Approved_ soccer ball?
+*b)* What is the maximum coefficient of restitution?
 
 [`e_{max}=`] [_____]{"$emax"} 
 
