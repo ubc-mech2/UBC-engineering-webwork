@@ -72,23 +72,24 @@ BEGIN_PGML
 
 [@ image("UBC-BME-18-029.png", width=>[$width], height=>[$height]) @]*
 
-Blanche, a [`[$mb]`] [`kg`] shot-putter, is putting the [`[$ms]`] [`kg`] shot in a track meet. Just before she releases the shot, Blanche is in the air (her feet are off the ground). At this instant, the only force she exerts against the shot is an [`[$f]`] [`N`] horizontal force directed forward.
+Blanche is competing in shot-put at a track and field meet, putting the [`[$ms]`] [`kg`] shot. At the moment before she releases the shot, Blanche becomes airborne (her feet are off the ground). At the moment of her put, Blanche exerts a horizontal force against the shot of [`[$f]`] [`N`], directed forward. Blanche has a mass of [`[$mb]`] [`kg`]. At the moment Blanche releases the shot:
 
-*a)* What is Blanche's horizontal acceleration at this instant?
+*a)* What is her horizontal acceleration?
 
 [`a_{B_x}=`] [_____]{"$abx"} [`m/s^2`]  
 
-*b)* What is Blanche's vertical acceleration at this instant?
+*b)* What is her vertical acceleration?
 
 [`a_{B_y}=`] [_____]{"$aby"} [`m/s^2`]  
 
-*c)* What is the shot's horizontal acceleration at this instant?
+*c)* What is the shot's horizontal acceleration?
 
 [`a_{s_x}=`] [_____]{"$asx"} [`m/s^2`]  
 
-*d)* What is the shot's vertical acceleration at this instant?
+*d)* What is the shot's vertical acceleration?
 
 [`a_{s_y}=`] [_____]{"$asy"} [`m/s^2`]  
+
 
 END_PGML
 
