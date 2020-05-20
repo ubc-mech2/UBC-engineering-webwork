@@ -61,13 +61,14 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-At the Dallas Cowboys Stadium, the minimum clearance height between the football field and the gigantic video screens that hang over the field is only [`[$h]`] [`m`]. In the first game played at the Cowboys Stadium on August 21, 2009, a punter's kick hit the video screen.
+The Dallas Cowboys Stadium has video screens which only allow for [`[$h]`] [`m`] clearance between the field and the screen. During the first game played at the Cowboys Stadium, a punter's kick hit the video screen. Ignore air resistance when considering the following questions. 
 
-*a)* What minimum initial vertical velocity would a football need to have to hit the video screens if it were kicked from a height [`[$hi]`] [`m`] above the playing field surface? Assume that air resistance does not affect the flight of the football.
+*a)* If the football was kicked from a height [`[$hi]`] [`m`] above the field, what is the minimum initial vertical velocity it would need to hit the video screen?
 
 [`v_i=`] [_____]{"$vi"} [`m/s`]  
 
-*b)* If the video screens were not in the way, what would be the hang time for a football kicked [`[$h]`] [`m`] high? Again, assume that air resistance does not affect the flight of the football and that the ball is [`[$hi]`] [`m`] above the playing field when it is kicked.
+*b)* If there were no video screens in the way, what would be the hang time for a football kicked [`[$h]`] [`m`] high from an initial height of [`[$hi]`] [`m`] above the field?
+
 
 [`t=`] [_____]{"$t"} [`s`]  
 
