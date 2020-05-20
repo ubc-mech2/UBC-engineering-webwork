@@ -59,7 +59,7 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-Kristen is spinning on the ice at [`[$omega]`] [`rad/s`] about her longitudinal axis when she abducts her arms and doubles her radius of gyration about her longitudinal axis from [`[$k]`] [`cm`] to [`[$k*2]`] [`cm`]. If her angular momentum is conserved, what is her angular velocity about her longitudinal axis after she increases her radius of gyration?
+Kristen is a figure skater performing a routine in a competition. During her routine, she is spinning at [`[$omega]`] [`rad/s`] about her longitudinal axis when doubles her radius of gyration about her longitudinal axis from [`[$k]`] [`cm`] to [`[$k*2]`] [`cm`] by abducting her arms. What is her angular velocity about her longitudinal axis after she increases her radius of gyration, if her angular momentum is conserved?
 
 [`\omega_f=`] [_____]{"$omega2"} [`rad/s`]  
 
