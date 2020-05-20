@@ -61,7 +61,7 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-Mike is a [`[$m]`] [`kg`] pole-vaulter. He falls from a peak height of [`[$h]`] [`m`] after pole-vaulting over a crossbar set at that height. He lands on a thick mat. When Mike first makes contact with the mat, his center of gravity is only [`[$cog]`] [`m`] high. During Mike's impact with the mat, the mat compresses. At the point of maximum compression, Mike's vertical velocity reaches zero, and his center of gravity is only [`[$cogf]`] [`m`] high. What average force did the mat exert on Mike during this impact?
+Mike has a mass of [`[$m]`] [`kg`] and is competing in a pole-vault event at a track and field meet. After vaulting over the bar, he falls from a peak height of [`[$h]`] [`m`] and lands on a gymnastics mat. Upon initial contact with the mat, Mike's center of gravity is [`[$cog]`] [`m`] high. The mat compresses during Mike's landing impact. Mike's vertical velocity reaches zero at the point of maximum mat compression and his center of gravity becomes [`[$cogf]`] [`m`] high. During his landing impact, what average force did the mat exert on Mike?
 
 [`F=`] [_____]{"$f"} [`N`]  
 
