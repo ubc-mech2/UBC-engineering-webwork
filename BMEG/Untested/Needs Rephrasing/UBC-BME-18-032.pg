@@ -72,7 +72,7 @@ BEGIN_PGML
 
 [@ image("UBC-BME-18-032.png", width=>[$width], height=>[$height]) @]*
 
-Scott is rolling down a [`\theta = [$theta]^{\circ}`] slope on his skateboard. The total mass of Scott and the skateboard is [`[$m]`] [`kg`]. The rolling friction between the skateboard wheels and the concrete is [`[$f]`] [`N`] acting backward against the skateboard. The drag force due to air resistance is [`[$d]`] [`N`] acting backward against Scott. What is Scott's acceleration?
+Scott is rolling down a [`\theta = [$theta]^{\circ}`] hill on his skateboard. Scott and his skateboard have a combined mass of [`[$m]`] [`kg`]. There are 2 forces acting backwards against Scott and his board, friction and air resistance. The rolling friction between the skateboard wheels and the concrete is [`[$fr]`] [`N`] and the drag force due to air resistance is [`[$d]`] [`N`]. What is Scott's resulting acceleration?  
 
 [`a=`] [_____]{"$ax"} [`m/s^2`]  
 
