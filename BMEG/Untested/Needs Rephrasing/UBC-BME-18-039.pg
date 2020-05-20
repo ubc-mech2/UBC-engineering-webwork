@@ -67,17 +67,17 @@ BEGIN_PGML
 
 [$a]
 
-To test the impact performance of a [`[$t]`] [`cm`] thick gymnastics mat, a [`[$m]`] [`kg`] cylindrical mass is dropped onto the mat from a height of [`[$h]`] [`m`] above the mat. During the impact, the cylinder's vertical velocity reaches zero at the instant the mat has compressed to only [`[$t2]`] [`cm`] thick.
+A [`[$m]`] [`kg`] cylindrical mass is dropped onto a [`[$t]`] [`cm`] thick gymnastics mat from a height of [`[$h]`] [`m`] above the mat, to test its impact performance. The results of the impact test show that the cylinder's vertical velocity reaches zero at the instant the mat has compressed to only [`[$t2]`] [`cm`] thick.
 
-*a)* How much kinetic energy does the cylinder have at the instant just before it contacts the mat?
+*a)* At the instant before it contacts the mat, how much kinetic energy does the cylinder have?
 
 [`KE=`] [_____]{"$ke"} [`J`]  
 
-*b)* How much work does the mat do to stop the fall of the cylinder?
+*b)* In stopping the fall of the cylinder, how much work does the mat do?
 
 [`W=`] [_____]{"$w"} [`J`]  
 
-*c)* What average vertical force does the mat exert on the cylinder during the impact, from contact until the cylinder's vertical velocity is zero?
+*c)* From the point of contact until the cylinder has stopped, what average vertical force does the mat exert on the cylinder during the impact? 
 
 [`F=`] [_____]{"$f"} [`N`]  
 
