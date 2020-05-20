@@ -61,13 +61,13 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-Sarah's twist angular momentum increases from [`0`] to [`[$l]`] [`kg\cdot m^2/s`] in [`[$t]`] [`s`] as she initiates a twisting jump on the ice. During this [`[$t]`] [`s`], her moment of inertia about her twist axis is [`[$moi]`] [`kg\cdot m^2`].
+Sarah is a figure skater performing a routine in a competition. As she initiates a twisting jump during her routine, her twist angular momentum increases from [`0`] to [`[$l]`] [`kg\cdot m^2/s`] in [`[$t]`] [`s`]. Her moment of inertia about her twist axis is [`[$moi]`] [`kg\cdot m^2`] during this [`[$t]`] [`s`].
 
-*a)* How large is the average torque that produces this change in angular momentum?
+*a)* What is the average torque that produces this change in angular momentum?
 
 [`T=`] [_____]{"$to"} [`Nm`]  
 
-*b)* How fast is Sarah's twist angular velocity at the end of the [`[$t]`] [`s`]?
+*b)* At the end of the [`[$t]`] [`s`], how fast is Sarah's twist angular velocity?
 
 [`\omega_f=`] [_____]{"$omega"} [`rad/s`]  
 
