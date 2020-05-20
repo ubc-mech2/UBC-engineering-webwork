@@ -71,7 +71,7 @@ BEGIN_PGML
 
 [@ image("UBC-BME-18-044.png", width=>[$width], height=>[$height]) @]*
 
-The patellar tendon attaches to the tibia at the tibial tuberosity. The tibial tuberosity is [`d=[$d]`] [`cm`] from the center of the knee joint (*a*). The patellar tendon pulls at an angle of [`\theta=[$theta]^{\circ}`] to a line passing through the tibial tuberosity and the center of the knee joint. If the patellar tendon produces an extension torque around the knee joint equal to [`[$t]`] [`Nm`], how large is the force, [`F_p`], in the patellar tendon?
+As shown in the diagram, the patellar tendon is attached to the tibia at the tibial tuberosity. The tibial tuberosity is located [`d=[$d]`] [`cm`] from the center of the knee joint (*a*). This mounting configuration results in the patellar tendon pulling at an angle of [`\theta=[$theta]^{\circ}`] relative to a line passing through the tibial tuberosity and the center of the knee joint. If an extension torque of [`[$t]`] [`Nm`] is produced by the patellar tendon around the knee joint, what is the force, [`F_p`], in the patellar tendon?
 
 [`F_p=`] [_____]{"$fp"} [`N`]  
 
