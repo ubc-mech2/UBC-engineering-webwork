@@ -85,21 +85,22 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-Sam fields a baseball hit to him in the left field. He then throws the ball to third to force out the base runner, Mike. Sam releases the ball [`[$h]`] [`m`] above the ground with a vertical velocity of [`[$vby]`] [`m/s`] and a horizontal velocity of [`[$vbx]`] [`m/s`]. At the instant Sam releases the ball, he is [`[$ds]`] [`m`] from the third baseman, Charlie, and Mike is [`[$dm]`] [`m`] from third base and running at [`[$vm]`] [`m/s`] toward third. Assume that air resistance does not affect the flight of the ball when answering the following questions.
+Playing outfield, Sam catches a baseball hit to him in the left field. In order to try and force out the third base runner Mike, he throws the ball to the third baseman, Charlie. As Sam throws the ball, it leaves his hand [`[$h]`] [`m`] above the ground with vertical and horizontal velocities of [`[$vby]`] [`m/s`] and [`[$vbx]`] [`m/s`] respectively. Charlie is [`[$ds]`] [`m`] away at the moment Sam throws the ball. Mike is [`[$dm]`] [`m`] away from third base, running toward it at  [`[$vm]`] [`m/s`]. Ignore resistance when considering the following questions.
 
-*a)* How high in the air does the ball go?
+*a)* What is the peak height the ball reaches?
 
 [`y_{peak}=`] [_____] [`m`]  
 
-*b)* How much time does it take for the ball to reach the third baseman?
+*b)* How long does it take the for the ball to reach Charlie, the third baseman?
 
 [`t=`] [_____] [`s`]  
 
-*c)* How high is the ball when it reaches the third baseman?
+*c)* How high is the ball when it reaches Charlie?
 
 [`y=`] [_____] [`m`]  
 
-*d)* If Mike maintains a constant velocity of [`[$vm]`] [`m/s`] toward third base, does he reach third base before the ball reaches the third baseman?
+*d)* If Mike continues running at [`[$vm]`] [`m/s`] toward third base, will he get to the base and be safe before the ball reaches Charlie?
+
 
 [@$mcCorrect->menu()@]*
 
