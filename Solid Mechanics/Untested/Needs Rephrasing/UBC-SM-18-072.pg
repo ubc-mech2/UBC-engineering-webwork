@@ -73,7 +73,7 @@ BEGIN_PGML
 
 [@ image("UBC-SM-18-072.png", width=>[$width], height=>[$height]) @]*
 
-A uniform steel pipe is rigidly fixed at both ends. Initially, the pipe is stress-free. An axial force of [`[$load]`] [`lb`] is applied [`x=[$l]`] [`ft`] from one end, as shown in the diagram. What is the reaction force at each end ? For the pipe, [`L = [$lt]`] [`ft`] ,[`D_{inner} = [$di]`][`"`], [`D_{outer} = [$do]`][`"`], [`E = 30 \cdot 10^6`] [`psi`], [`\nu = 0.3`].  
+A uniform pipe [`L = [$lt]`] [`ft`] long is fixed rigidly at both ends and is initially stress-free. The pipe has an inner and outer diameter of [`D_{inner} = [$di]`][`"`], [`D_{outer} = [$do]`][`"`] respectively. As shown in the diagram, an axial force of [`F=[$load]`] [`lb`] is applied [`x=[$l]`] [`ft`] from the right side. What is the reaction force at each end? The pipe is made of steel ([`E = 30 \cdot 10^6`] [`psi`], [`\nu = 0.3`]).  
 _Hint: Choose the information you need_. 
 
 
