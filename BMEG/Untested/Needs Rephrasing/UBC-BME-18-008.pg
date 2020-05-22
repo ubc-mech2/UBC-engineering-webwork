@@ -70,7 +70,7 @@ BEGIN_PGML
 
 [@ image("UBC-BME-18-008.png", width=>[$width], height=>[$height]) @]*
 
-A [`[$m]`] [`kg`] runner is running forward at [`[$v]`] [`m/s`] when his foot strikes the ground. The vertical ground reaction force acting under his foot at this instant is [`R_y = [$ry]`] [`N`]. The friction force acting under his foot is a [`R_x=[$rx]`] [`N`] braking force. These are the only external forces on the runner other than gravity.
+A [`[$m]`] [`kg`] runner is running forward at [`[$v]`] [`m/s`] when his foot strikes the ground. The vertical ground reaction force acting under his foot at this instant is [`R_y = [$ry]`] [`N`]. The friction force acting under his foot is a [`R_x=[$rx]`] [`N`] braking force. These are the only external forces on the runner other than gravity. What is the resulting acceleration of the runner?  
 
 [`a=`] [_____]{"$a"} [`m/s^2`]  
 
