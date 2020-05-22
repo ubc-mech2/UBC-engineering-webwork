@@ -71,10 +71,11 @@ tolerance=>.05);
 
 BEGIN_PGML
 
-A [`[$hp]`] [`kW`] motor running at [`[$rpm]`] [`Hz`] drives a water pump. The shaft is made of steel and has a maximum allowable shear stress [`\tau_{max}=[$tauMax]`] [`MPa`]. For steel, [`G = [$g]`] [`GPa`].
+A [`[$p]`] [`kW`] motor running at [`[$f]`] [`Hz`] is used to drive a water pump. A solid steel ([`G = [$g]`] [`GPa`]) shaft is connecting the motor and pump and has a maximum allowable shear stress [`\tau_{max}=[$tauMax]`] [`MPa`].
 1. What is the minimum required diameter of the shaft? 
-2. If the solid shaft is replaced by a hollow tube whose inner diameter is half its outer diameter. Determine the required outer diameter.
-3. Determine the ratio of the weights of the solid shaft in part 1 and 2.
+2. Imagine the shaft used in part 1 is replaced by a hollow tube with an inner diameter that is half its outer diameter. What is the required outer diameter?
+3. What is the ratio of the weights of the shafts in part 1 and 2?
+
 
 [@ image( "UBC-SM-18-071.png", width=>[$width], height=>[$height]) @]*
 
