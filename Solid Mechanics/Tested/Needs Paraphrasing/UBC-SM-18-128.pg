@@ -10,7 +10,7 @@
 ## Date()
 ## Level()
 ## KEYWORDS('')
-## RESOURCES('UBC-SM-18-087.png')
+## RESOURCES('UBC-SM-18-128.png')
 ## TitleText('TBD')
 ## EditionText('TBD')
 ## AuthorText('TBD')
@@ -22,13 +22,11 @@
 DOCUMENT();
 
 #image scale
-$imgScaleA = .2;
-$imgScaleB = .2;
+$imgScale = .15;
 
 #image aspect ratio
-$widthA = $imgScaleA*808;
-$heightA = $imgScaleA*1251;
-
+$width = $imgScale*1554;
+$height = $imgScale*1445;
 
 loadMacros(   
 	"PGstandard.pl",     # Standard macros for PG language
@@ -37,7 +35,6 @@ loadMacros(
 	"parserPopUp.pl",
 	"parserMultiAnswer.pl",
 	"parserRadioButtons.pl",
-	"niceTables.pl"
 	#"source.pl",        # allows code to be displayed on certain sites.
 	#"PGcourse.pl", 	 # Customization file for the course
    	);
@@ -53,13 +50,27 @@ TEXT(beginproblem());
 Context("Numeric");
 
 #given
-$load = 60;
-$dmid = 20; $amid = 173;
-$dout = 12; $aout = 76.7;
-$inc = 40;
+$q = random(1,4,0.1);
+$I = 210;
+$a = random(4,5,0.1);
+$b = random(1,2,0.1);
+$c1 = 17;
+$c2 = 63;
+$L = $a + $b;
 
 #computation 
+$mb = $q*$b**2 /2;
+$mmaxab = $L**2 * $q *($L - 2*$a)**2/(8*$a**2);
 
+$anew = $L/sqrt(2);
+
+$comp1 = $mmaxab * $c1 / $I;
+$comp2 = $mb * $c2 / $I;
+$ten1 = $mb * $c1 / $I;
+$ten2 = $mmaxab * $c2 / $I;
+
+$sigmat = max($ten1, $ten2)*100;
+$sigmac = max($comp1, $comp2)*100;
 
 #set tolerance
 Context()->flags->set(
@@ -73,42 +84,15 @@ tolerance=>.05);
 
 BEGIN_PGML
 
-[@ image("UBC-SM-18-087.png", width=>[$widthA], height=>[$heightA]) @]*
+[@ image("UBC-SM-18-128.png", width=>[$width], height=>[$height]) @]*
 
-END_PGML
+As shown in the diagram, beam [`ABC`] is supported at points [`A`] and [`B`]. The beam undergoes a load of [`q = [$q]`] [`kN/m`] throughout its length [`[$a+$b]`] [`m`] ([`a=[$a]`] [`m`], [`b = [$b]`] [`m`]). The cross-section of the beam is labeled in the diagram and the beam has a moment of inertia about the neutral axis equal to [`210`] [`cm^4`].
+1. 	What are the the max tensile stress [`\sigma_t`] and max compressive stress [`\sigma_c`].
+2. 	Find required distance of [`a`] that results in the ratio of larger to smaller tensile stress being equal to the ratio of larger to smaller compressive stress for the beam. For part 2 of the problem, assume that the total length [`L = a + b = [$a+$b]`] [`m`] remains constant.
 
-BEGIN_TEXT
-
-$PAR
-\{
-	DataTable(
-		[
-			['$BBOLD Nominal Diameter$EBOLD (\(mm\))','$BBOLD Approximate Weight$EBOLD (\(N/m\))','$BBOLD Effective Area $EBOLD (\(mm^2\)) ','$BBOLD Ultimate Load $EBOLD (\(kN\)) '],
-			['12','6.1','76.9','102'],
-			['20','13.9','173','231'],
-			['25','24.4','304','406'],
-			['32','38.5','481','641'],
-			['38','55.9','697','930'],
-			['44','76.4','948','1260'],
-			['50','99.8','1230','1650'],
-		],
-		center => 0,
-		allcellcss=>'padding-left:10px; padding-right:10px; border: solid thin #CCCCCC;',
-		);
-\}
-$PAR
-
-END_TEXT
-
-BEGIN_PGML
-
-Three steel cables are used to support a load of [`[$load]`] [`kN`]. The center cable has a diameter of [`[$dmid]`] [`mm`] and the outer cables each have a diameter of [`[$dout]`] [`mm`]. The cables are adjusted so that the tension in each cable results in one-third of the load being supported (i.e. [`[$load/3]`] [`kN`]). Later, an increase is added to the load of [`[$inc]`] [`kN`], resulting in a total load of [`[$load+$inc]`] [`kN`].
-1. 	What percent of the total load is carried by the middle cable after the load is increased?
-2. 	What is the stress in the center cable [`\sigma_m`] and in the outer cables [`\sigma_o`]? 
-
-[`%=`] [_____]{"$per"}  
-[`\sigma_m=`] [_____]{"$sigmaM"} [`MPa`]  
-[`\sigma_o=`] [_____]{"$sigmaO"} [`MPa`]  
+[`\sigma_t=`] [_____]{"$sigmat"} [`MPa`]  
+[`\sigma_c=`] [_____]{"$sigmac"} [`MPa`]  
+[`a=`] [_____]{"$anew"} [`m`]  
 
 END_PGML
 
