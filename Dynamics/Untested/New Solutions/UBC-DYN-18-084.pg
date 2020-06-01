@@ -1,0 +1,93 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .4;
+
+#image aspect ratio
+$width = $imgScale*1447;
+$height = $imgScale*772;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$r = 80;
+$b = 60;
+$s = 30;
+$omega = .4;
+$theta = 45;
+$alpha = 45;
+
+#computation 
+$vi = (0.45-(0.15/sqrt(2)))*$omega;
+$vj = -(0.15/sqrt(2))*$omega;
+
+$ai = 2*$omega*((0.15/sqrt(2))*$omega);
+$aj = ((2*$omega*$vi)-((0.15/sqrt(2))*$omega**2)-(0.45-(0.15/sqrt(2)))*$omega**2);
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.015);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+A breathing exercise video graphic shows a small circle moving in a constrained circular path (radius [`[$r]`] [`cm`]) at a constant angular velocity of [`[$omega]`] [`rad/s`] around an expanding and contracting inner circle. The inner circle expands and contracts sinusoidally, from a minimum radius of [`[$s]`] [`cm`] to a maximum radius of [`[$b]`] [`cm`]. The distance from the centre of the inner circle to a point on the edge of the inner circle can be described by the equation [`r = [$b/100-$s/200] - [$s/200] sin \theta`] (in [`m`]), where [`\theta`] is the position of the small circle (zero at x-axis). 
+
+Find the velocity and acceleration of point [`B`] on the edge of the inner circle as viewed by an observer on the small circle at point [`A`] (Fig. (*c*)). [`\theta = [$theta]^{\circ}`], [`\alpha = [$alpha]^{\circ}`].
+
+[@ image("UBC-DYN-18-084.png", width=>[$width], height=>[$height]) @]*
+
+[`(\vec{v_{B_A}})_{x'y'z'}=`] [_____]{"$vi"} [`\hat{i'} +`] [_____]{"$vj"}[``\hat{j'}``] [`m/s`]  
+[`(\vec{a_{B_A}})_{x'y'z'}=`] [_____]{"$ai"} [`\hat{i'} +`] [_____]{"$aj"}[`` \hat{j'}``] [`m/s^2`]  
+
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT()};
