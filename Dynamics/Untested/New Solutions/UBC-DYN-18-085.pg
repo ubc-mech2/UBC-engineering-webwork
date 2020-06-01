@@ -1,0 +1,88 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Vibrations)
+## DBchapter(One DOF vibration: free)
+## DBsection(Undamped)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .4;
+
+#image aspect ratio
+$width = $imgScale*605;
+$height = $imgScale*724;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$r = .1;
+$m = 2;
+$tau = .3;
+
+#computation 
+$iab = (1/2)*$m*$r**2+$m*$r**2;
+$k = ((2*pi)**2*$iab)/($tau**2);
+
+#set tolerance
+Context()->flags->set(tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+A sign frame consisting of a thin ring as shown (radius [`r = [$r]`] [`m`], mass [`m = [$m]`] [`kg`]) is mounted rigidly to a rod, [`AB`], and oscillates around the axis of the rod.
+
+[@ image("UBC-DYN-18-085.png", width=>[$width], height=>[$height]) @]*
+
+*a)* Find the mass moment of inertia of them sign frame about the axis of the rod [`AB`].
+
+[`I_{AB}=`] [_____]{"$iab"} [`kg\cdot m^2`]  
+
+*b)* Find the torsional stiffness, [`k`], of the rod if the period of vibration is [`\tau = [$tau]`] [`s`].
+
+[`k=`] [_____]{"$k"} [`Nm/rad`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT()};
