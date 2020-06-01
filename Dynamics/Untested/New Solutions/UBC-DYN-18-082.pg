@@ -1,0 +1,82 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinematics of rigid bodies)
+## DBsection(Relative motion: acceleration, rotating axes)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .4;
+
+#image aspect ratio
+$width = $imgScale*1256;
+$height = $imgScale*661;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+
+#given
+$R = 4;
+$r = 2;
+$omega = 9;
+
+#computation 
+$alpha = sqrt((363**2)/(2**2)-(11**2)*(3**4));
+
+
+#set tolerance
+Context()->flags->set(tolerance=>.001);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+[@ image("UBC-DYN-18-082.png", width=>[$width], height=>[$height]) @]*
+
+You are designing an emergency brake for an amusement park ride that rotates riders about [`B`] at an angular velocity of [`[$omega]`] [`rad/s`], while also rotating the rider compartment about [`A`]. Due to a mechanism (not shown), the rider completes three rotations about [`B`] for each rotation of the arm about [`A`]. You want to be able to stop the ride quickly, but very high accelerations can cause brain injuries. Find the maximum braking angular acceleration, [`\alpha_A`], that you can apply about [`A`] such that the resultant head acceleration of a rider in the position shown does not exceed [`363`] [`m/s^2`]. Let [`R = [$R]`] [`m`], [`r = [$r]`] [`m`].
+
+[`\alpha_A=`] [_____]{"$alpha"} [`rad/s^2`]  
+
+END_PGML
+
+##############################################################
+
+ENDDOCUMENT()};
