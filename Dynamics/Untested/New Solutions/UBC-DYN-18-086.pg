@@ -1,0 +1,105 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Dynamics)
+## DBchapter(Planar kinetics of rigid bodies)
+## DBsection(Equations of motion)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScale = .4;
+
+#image aspect ratio
+$width = $imgScale*1374;
+$height = $imgScale*737;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+Context()->variables->add(m=>"Real",g=>"Real",L=>"Real");
+#given
+$mcHigher = PopUp(["?","Higher","Lower"], "Higher");
+
+#computation 
+$alpha = Formula("-(3/2)(g/L)");
+$const = Formula("-(3/4)g");
+$rA1 = Formula("1/4*m*g");
+$rA2 = Formula("1/2*m*g");
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+A bar (length [`L`], mass [`m`]) is pinned at [`A`] and suspended horizontally by a cable at [`B`]. The cable breaks - complete the rest of this question for the instant after it breaks.
+
+[@ image("UBC-DYN-18-086.png", width=>[$width], height=>[$height]) @]*
+
+*a)* Find it's angular acceleration
+
+[`\alpha=`] [_____] [`m/s^2`]  
+
+*b)* Write one kinematic constraint.
+
+[_____]  
+
+*c)* Find the reaction force vector at pin [`A`]
+
+[`\vec{R_A}=`] [_____] [`N`]  
+
+
+*d)* Is this reaction force at [`A`] higher or lower than you would expect with the cable intact? What force would you expect with the cable intact?
+
+[@ $mcHigher->menu() @]*  
+[`\overrightarrow{R_{A_{Expected}}}=`] [_____] [`N`]  
+
+END_PGML
+
+ANS($alpha->cmp);
+ANS($const->cmp);
+ANS($rA1->cmp);
+ANS($mcHigher->cmp);
+ANS($rA2->cmp);
+
+##############################################################
+
+ENDDOCUMENT()};
