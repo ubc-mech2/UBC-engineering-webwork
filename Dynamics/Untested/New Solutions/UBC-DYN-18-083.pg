@@ -1,0 +1,112 @@
+##DESCRIPTION
+## 
+##ENDDESCRIPTION
+
+## DBsubject(Statics)
+## DBchapter(Distributed forces: moment of inertia)
+## DBsection(Mass moment of inertia)
+## Date()
+## Author()
+## Level()
+## KEYWORDS('')
+## Institution('University of British Columbia')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+##############################################################
+
+DOCUMENT();
+
+#image scale
+$imgScaleA = .35;
+$imgScaleB = .35;
+
+#image aspect ratio
+$widthA = $imgScaleA*756;
+$heightA = $imgScaleA*868;
+$widthB = $imgScaleB*738;
+$heightB = $imgScaleB*856;
+
+loadMacros(   
+	"PGstandard.pl",     # Standard macros for PG language
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"parserMultiAnswer.pl",
+	"parserRadioButtons.pl",
+	"parserFunction.pl",
+	"PGauxiliaryFunctions.pl",
+	#"source.pl",        # allows code to be displayed on certain sites.
+	#"PGcourse.pl", 	 # Customization file for the course
+   	);
+
+TEXT(beginproblem());
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Numeric");
+Context()->variables->add(p=>"Real");
+#given
+$d = 1.2;
+$w = 3;
+
+$mcOne = PopUp(["?","Cone","Hemisphere"], "Cone");
+$mcTwo = PopUp(["?","Yes","No"], "Yes");
+
+#computation 
+$icone = (1/10)*pi*(($d/2)**5);
+$ihemi = (4/15)*pi*(($d/2)**5);
+$ic = 2*$icone;
+$ih = 2*$ihemi;
+$ans_ic = Formula("$ic*p");
+$ans_ih = Formula("$ih*p");
+
+#set tolerance
+Context()->flags->set(
+tolerance=>.01);
+
+##############################################################
+#
+#  Text 
+#
+#
+
+BEGIN_PGML
+
+You are considering two different novel designs for a set of train wheels rigidly mounted on an axle. One set uses cones as wheels and the other uses hemispheres. All these wheels have a diameter of [`[$d]`] [`m`] and both types have the same width. The overall width of each wheelset is [`[$w]`] [`m`]. The wheel sets are both made of the same material, with constant density [`p`].
+
+[@ image("UBC-DYN-18-083a.png", width=>[$widthA], height=>[$heightA]) @]*
+
+*a)* Find the mass moment of inertia of each wheelset above (two wheels plus axle) about the axis of the axle in terms of [`p`].
+
+[`I_c=`] [_____] [`kg\cdot m^2`]  
+[`I_h=`] [_____] [`kg\cdot m^2`]  
+
+*b)* Which wheelset will take less effort to get rolling?
+
+[@ $mcOne->menu() @]*
+
+[@ image("UBC-DYN-18-083b.png", width=>[$widthB], height=>[$heightB]) @]*
+
+*c)* You realize that train wheels have flanges that lie on the *inside* of each
+rail because that helps prevent tipping/derailment - oops. Will the mass
+moments of inertia change if you reverse the orientation of each wheel?
+
+[@ $mcTwo->menu() @]*
+
+END_PGML
+
+ANS($ans_ic->cmp);
+ANS($ans_ih->cmp);
+ANS($mcOne->cmp);
+ANS($mcTwo->cmp);
+
+##############################################################
+
+ENDDOCUMENT()};
