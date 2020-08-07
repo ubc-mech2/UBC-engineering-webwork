@@ -34,7 +34,7 @@
 ## Date()
 ## Level()
 ## KEYWORDS('')
-## RESOURCES('FourInchPipeCalculateRequiredHeightChange.png')
+## RESOURCES('PersonalWatercraftCalculateIntakeVelocity1.png', 'PersonalWatercraftCalculateIntakeVelocity2.png')
 ## TitleText('TBD')
 ## EditionText('TBD')
 ## AuthorText('TBD')
@@ -66,18 +66,39 @@ TEXT(beginproblem());
 #
 
 #given
-$H = random(2,5,0.4);
+$A1 = random(0.01,0.03,0.005);
+$A2 = random(0.001,0.003,0.0005);
+$th = random(15,35,5);
+$T = random(3000,6500,500);
 
 
 BEGIN_PGML
 
-A perfectly circular hole ([`d=0.2`] [`m`]) appears in a dam [`[$H]`] [`m`] from the free surface. What will the volumetric flow rate of the leak be?
+A personal watercraft, depicted in figure *(a)*, is driven along a lake.
 
-[`\dot{V}=`][____] [`m^3/s`]
+[@ image('PersonalWatercraftCalculateIntakeVelocity1.png', width=>355, height=>194) @]*  
+Figure *(a)*
+
+Figure *(b)* is a diagram of the watercraft's propulsion system. The intake of the system has a cross-sectional area of [`A_{1}= [$A1]`] [`m^{2}`] which is at an angle of [`\theta = [$th]^{\circ}`] from the horizontal. The output nozzle is horizontal and has a cross-sectional area of [`A_{2}= [$A2]`] [`m^{2}`].
+
+[@ image('PersonalWatercraftCalculateIntakeVelocity2.png', width=>793, height=>219) @]*  
+Figure *(b)*
+
+A sensor attached to the impeller shaft indicates that [`[$T] N`] of thrust is produced. Determine the velocity of the water at the the intake, [`V_{1}`].
+
+
+
+Discussion: Providing that the same thrust, [`T`], must be maintained, how does change to the angle [`\theta`] affect the required intake velocity?
+
+What changes could you make to the watercraft's geometry to increase the attainable thrust?
+
+
+
+[`V_{1}=`][____] [`m/s`]
 
 END_PGML
 
-ANS(num_cmp(sqrt(2*9.81*$H)*(0.2)**2*pi/4, reltol => 4, ));
+ANS(num_cmp(sqrt($T/(998*($A1**2/$A2-cos($th*pi/180)*$A1))), reltol => 3, ));
 
 ##############################################################
 
