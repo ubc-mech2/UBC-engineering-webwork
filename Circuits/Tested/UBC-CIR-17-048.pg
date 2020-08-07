@@ -17,21 +17,24 @@
 ## This work was completed on the traditional, ancestral, and unceded
 ## territory of the Musqueam people. 
 ##
-## 221 Prelab 9 RLC
 ##ENDDESCRIPTION
 
-##KEYWORDS('calculated formula', 'RLC', 'critically', 'damped', '221PL9')
-## RESOURCES('UBC-CIR-17-048.png')
-
-## DBsubject('MECH 221')
-## DBchapter('Prelab Quizzes')
-## DBsection('Prelab 9 RLC')
-## Date('7/10/2017')
+## DBsubject(Electric circuits)
+## DBchapter()
+## DBsection()
 ## Institution('University of British Columbia')
-## Question Set 4
-## Problem1
+## Author('UBC MECH2')
+## Date(7/10/2017)
+## Level()
+## KEYWORDS('calculated formula', 'RLC', 'critically', 'damped', '221PL9')
+## RESOURCES('UBC-CIR-17-048.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Beginner
 
-########################################################################
 
 DOCUMENT();
 
@@ -43,6 +46,8 @@ loadMacros(
    #"source.pl",        # allows code to be displayed on certain sites.
    #"PGcourse.pl",      # Customization file for the course
 );
+
+TEXT(beginproblem());
 
 # Show which answers are correct and which ones are incorrect
 $showPartialCorrectAnswers = 1;

@@ -17,20 +17,24 @@
 ## This work was completed on the traditional, ancestral, and unceded
 ## territory of the Musqueam people. 
 ##
-## 221 Problem Set 5
 ##ENDDESCRIPTION
 
-##KEYWORDS('calculated formula', 'network', 'maximum', 'power', 'transfer', '221PS5')
-## RESOURCES('UBC-CIR-17-054.png')
-
-## DBsubject('Electric Circuits')
-## DBchapter('Homework')
-## DBsection('221 Problem Set 5')
-## Date('7/14/2017')
+## DBsubject(Electric circuits)
+## DBchapter()
+## DBsection()
 ## Institution('University of British Columbia')
-## Problem1
+## Author('UBC MECH2')
+## Date(7/14/2017)
+## Level()
+## KEYWORDS('calculated formula', 'network', 'maximum', 'power', 'transfer', '221PS5')
+## RESOURCES('UBC-CIR-17-054.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Beginner
 
-########################################################################
 
 DOCUMENT();     
 
@@ -42,6 +46,8 @@ loadMacros(
    #"source.pl",        # allows code to be displayed on certain sites.
    #"PGcourse.pl",      # Customization file for the course
 );
+
+TEXT(beginproblem());
 
 # Show which answers are correct and which ones are incorrect
 $showPartialCorrectAnswers = 1;

@@ -17,19 +17,24 @@
 ## This work was completed on the traditional, ancestral, and unceded
 ## territory of the Musqueam people. 
 ##
-## 221 Problem Set 6
 ##ENDDESCRIPTION
 
-##KEYWORDS('calculated formula', 'series', 'RLC', 'inductor', '221PS6')
-
-## DBsubject('Electric Circuits')
-## DBchapter('Homework')
-## DBsection('221 Problem Set 6')
-## Date('7/14/2017')
+## DBsubject(Electric circuits)
+## DBchapter()
+## DBsection()
 ## Institution('University of British Columbia')
-## Problem5
+## Author('UBC MECH2')
+## Date(7/14/2017)
+## Level()
+## KEYWORDS('calculated formula', 'series', 'RLC', 'inductor', '221PS6')
+## RESOURCES()
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Beginner
 
-########################################################################
 
 DOCUMENT();     
 
@@ -41,6 +46,8 @@ loadMacros(
    #"source.pl",        # allows code to be displayed on certain sites.
    #"PGcourse.pl",      # Customization file for the course
 );
+
+TEXT(beginproblem());
 
 # Show which answers are correct and which ones are incorrect
 $showPartialCorrectAnswers = 1;

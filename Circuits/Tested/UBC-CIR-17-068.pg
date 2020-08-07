@@ -17,21 +17,24 @@
 ## This work was completed on the traditional, ancestral, and unceded
 ## territory of the Musqueam people. 
 ##
-## 221 Prelab 2 Kirchhoff's Laws
 ##ENDDESCRIPTION
 
-##KEYWORDS('multiple choice', 'circuit', 'voltage', '221PL2')
-## RESOURCES('UBC-CIR-17-068.png')
-
-## DBsubject('MECH 221')
-## DBchapter('Prelab Quizzes')
-## DBsection('Prelab 2 Kirchhoff's Laws')
-## Date('7/5/2017')
+## DBsubject(Electric circuits)
+## DBchapter()
+## DBsection()
 ## Institution('University of British Columbia')
-## Question Set 2
-## Problem1
+## Author('UBC MECH2')
+## Date(7/5/2017)
+## Level()
+## KEYWORDS('multiple choice', 'circuit', 'voltage', '221PL2')
+## RESOURCES('UBC-CIR-17-068.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Beginner
 
-########################################################################
 
 DOCUMENT();      
 
@@ -42,6 +45,8 @@ loadMacros(
   "contextFraction.pl",
   "PGcourse.pl"
 );
+
+TEXT(beginproblem());
 
 #image scale
 $imgScale = .4;

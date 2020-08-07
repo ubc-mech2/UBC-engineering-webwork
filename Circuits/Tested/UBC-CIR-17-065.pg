@@ -17,20 +17,24 @@
 ## This work was completed on the traditional, ancestral, and unceded
 ## territory of the Musqueam people. 
 ##
-##  Electric circuits PS10
 ##ENDDESCRIPTION
 
-
 ## DBsubject(Electric circuits)
+## DBchapter()
+## DBsection()
+## Institution('University of British Columbia')
+## Author('UBC MECH2')
 ## Date(7/13/2017)
-## Institution(University of British Columbia)
+## Level()
 ## KEYWORDS('circuits', '221PS10')
 ## RESOURCES('UBC-CIR-17-065.png')
-## Question Set 10 
-## Problem1
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Beginner
 
-
-########################################################################
 
 DOCUMENT();      
 

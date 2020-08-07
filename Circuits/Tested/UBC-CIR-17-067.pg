@@ -17,21 +17,24 @@
 ## This work was completed on the traditional, ancestral, and unceded
 ## territory of the Musqueam people. 
 ##
-## 221 Prelab 2 Kirchhoff's Laws
 ##ENDDESCRIPTION
 
-##KEYWORDS('calculated formula', 'circuit', 'current', '221PL2')
-## RESOURCES('UBC-CIR-17-067.png')
-
-## DBsubject('MECH 221')
-## DBchapter('Prelab Quizzes')
-## DBsection('Prelab 2 Kirchhoff's Laws')
-## Date('7/5/2017')
+## DBsubject(Electric circuits)
+## DBchapter()
+## DBsection()
 ## Institution('University of British Columbia')
-## Question Set 1
-## Problem2
+## Author('UBC MECH2')
+## Date(7/5/2017)
+## Level()
+## KEYWORDS('calculated formula', 'circuit', 'current', '221PL2')
+## RESOURCES('UBC-CIR-17-067.png')
+## TitleText('TBD')
+## EditionText('TBD')
+## AuthorText('TBD')
+## Section('TBD')
+## Problem('TBD')
+## Beginner
 
-########################################################################
 
 DOCUMENT();     
 
@@ -70,7 +73,7 @@ For the circuit shown, if \(R1\) = \($A\) \(k\Omega\), \(R2\) = \($B\) \(k\Omega
 $PAR
 \{ image( "UBC-CIR-17-067.png", width=>$width, height=>$height) \}
 $PAR
-\(i\) = \{ ans_rule(10) \} \(mA\)
+\(i\) = \{ ans_rule(10) \} \(V\)
  
 END_TEXT
 
