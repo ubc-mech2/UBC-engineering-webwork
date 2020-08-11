@@ -24,10 +24,10 @@
 ## DBsection(None)
 ## Institution('University of British Columbia')
 ## Author('UBC MECH2')
-## Date(7/6/2017)
-## Level()
-## KEYWORDS('multiple choice', 'shaft', 'failure', '221PL6')
-## RESOURCES('UBC-MAT-17-001.png')
+## Date(7/5/2017)
+## Level(1)
+## KEYWORDS('multiple choice', 'engineering', 'stress', '221PL1')
+## RESOURCES()
 ## TitleText('TBD')
 ## EditionText('TBD')
 ## AuthorText('TBD')
@@ -39,38 +39,25 @@
 DOCUMENT();      
 
 loadMacros(
-   "PGstandard.pl",     # Standard macros for PG language
-   "MathObjects.pl",
-   #"source.pl",        # allows code to be displayed on certain sites.
-   #"PGcourse.pl",      # Customization file for the course
-   "parserRadioButtons.pl",
-   "contextFraction.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserRadioButtons.pl",
+  "contextFraction.pl",
+  "PGcourse.pl"
 );
-
-Context("Fraction");
-
-#image scale
-$imgScale = .4;
-
-#image aspect ratio
-$width = $imgScale*960;
-$height = $imgScale*901;
-
+TEXT(beginproblem());
 $mc = RadioButtons( # Set up possible options
 [
-"Brittle fracture", 
-"Ductile fracture", 
-"Fatigue failure", 
-"Yield failure",
-"Ductile-brittle transition failure"
+"\( \sigma = \frac{A_0}{F} \)", 
+"\( \frac{\sigma}{\lambda} = \frac{F}{A_0} \)", 
+"\( \sigma = \frac{F_0}{F_uA} \)", 
+"\( \sigma = \frac{F}{A_0} \)" 
 ]
-,"Fatigue failure", # correct option
+,"\( \sigma = \frac{F}{A_0} \)", # correct option
 labels => "ABC" );
 
-BEGIN_TEXT			
-For the shaft shown in the figure below, what is the best way to characterize the type of failure that the part experienced?
-$PAR
-\{ image( "UBC-MAT-17-001.png", width=>$width, height=>$height) \}
+BEGIN_TEXT
+Which of the following is the formula for engineering stress?
 $PAR
 \{ $mc->buttons() \}
 
