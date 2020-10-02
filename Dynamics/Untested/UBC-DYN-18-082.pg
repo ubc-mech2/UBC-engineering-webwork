@@ -73,6 +73,7 @@ $r = 2;
 $omega = 9;
 
 #computation 
+$alpha = sqrt((363**2)/(2**2)-(11**2)*(3**4));
 
 
 #set tolerance

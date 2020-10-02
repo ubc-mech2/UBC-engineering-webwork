@@ -65,12 +65,16 @@ TEXT(beginproblem());
 #
 
 Context("Numeric");
+Context()->variables->add(m=>"Real",c=>"Real", k=>"Real", r=>"Real", e=>"Real", R=>"Real");
 
 #given
 
 
-#computation 
-
+#computation
+$A = Formula("(R**2+e**2)*m");
+$B = Formula("c*r**2");
+$C = Formula("k*r**2");
+$D = Formula("r");
 
 #set tolerance
 Context()->flags->set(
@@ -90,7 +94,8 @@ A speed control device on a production line has a roller with a spring and a dam
 
 Take the sum of moments about [`O`] to find the differential equation describing the system motion in terms of [`\theta`] and its derivatives, as well as [`m`], [`c`], [`k`], [`r`], [`e`], [`R`] and the forcing function [`F(t)`]
 
->>[``\ddot{\theta}+``][_____]{"$B"}[``\dot{\theta}+``][_____]{"$C"}[``\theta=``][_____]{"$D"}[``F(t)``]<<
+>>[_____]{"$A"}[``\ddot{\theta} +``] [_____]{"$B"} [``\dot{\theta} +``][_____]{"$C"}[``\theta=``][_____]{"$D"}[``F(t)``]<<
+
 
 END_PGML
 

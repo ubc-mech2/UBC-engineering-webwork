@@ -76,11 +76,15 @@ $theta = 45;
 $alpha = 45;
 
 #computation 
+$vi = (0.45-(0.15/sqrt(2)))*$omega;
+$vj = -(0.15/sqrt(2))*$omega;
 
+$ai = 2*$omega*((0.15/sqrt(2))*$omega);
+$aj = ((2*$omega*$vi)-((0.15/sqrt(2))*$omega**2)-(0.45-(0.15/sqrt(2)))*$omega**2);
 
 #set tolerance
 Context()->flags->set(
-tolerance=>.01);
+tolerance=>.015);
 
 ##############################################################
 #
@@ -96,8 +100,9 @@ Find the velocity and acceleration of point [`B`] on the edge of the inner circl
 
 [@ image("UBC-DYN-18-084.png", width=>[$width], height=>[$height]) @]*
 
-[`v_{B_A}=`] [_____]{"$v"} [`m/s`]  
-[`a_{B_A}=`] [_____]{"$a"} [`m/s^2`]  
+[`(\vec{v_{B_A}})_{x'y'z'}=`] [_____]{"$vi"} [`\hat{i'} +`] [_____]{"$vj"}[``\hat{j'}``] [`m/s`]  
+[`(\vec{a_{B_A}})_{x'y'z'}=`] [_____]{"$ai"} [`\hat{i'} +`] [_____]{"$aj"}[`` \hat{j'}``] [`m/s^2`]  
+
 
 END_PGML
 

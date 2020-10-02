@@ -72,13 +72,12 @@ $m = 10;
 $d1 = .15;
 $d2 = .25;
 $d3 = .6;
-
+$g = 9.81;
 #computation 
-
+$a = -$d1/$d2*$g;
 
 #set tolerance
-Context()->flags->set(
-tolerance=>.01);
+Context()->flags->set(tolerance=>.01);
 
 ##############################################################
 #

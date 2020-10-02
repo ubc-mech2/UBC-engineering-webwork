@@ -66,12 +66,15 @@ TEXT(beginproblem());
 #
 
 Context("Numeric");
-
+Context()->variables->add(m=>"Real",g=>"Real",L=>"Real");
 #given
 $mcHigher = PopUp(["?","Higher","Lower"], "Higher");
 
 #computation 
-
+$alpha = Formula("-(3/2)(g/L)");
+$const = Formula("-(3/4)g");
+$rA1 = Formula("1/4*m*g");
+$rA2 = Formula("1/2*m*g");
 
 #set tolerance
 Context()->flags->set(
@@ -85,7 +88,7 @@ tolerance=>.01);
 
 BEGIN_PGML
 
-A bar (length [`L`], mass [`m`]) is pinned at [`A`] and suspended horizontally by a cable at [`B`]. The cable breaks Ã¢ÂÂ complete the rest of this question for the instant after it breaks.
+A bar (length [`L`], mass [`m`]) is pinned at [`A`] and suspended horizontally by a cable at [`B`]. The cable breaks - complete the rest of this question for the instant after it breaks.
 
 [@ image("UBC-DYN-18-086.png", width=>[$width], height=>[$height]) @]*
 

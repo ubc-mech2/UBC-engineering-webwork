@@ -73,11 +73,11 @@ $m = 2;
 $tau = .3;
 
 #computation 
-
+$iab = (1/2)*$m*$r**2+$m*$r**2;
+$k = ((2*pi)**2*$iab)/($tau**2);
 
 #set tolerance
-Context()->flags->set(
-tolerance=>.01);
+Context()->flags->set(tolerance=>.01);
 
 ##############################################################
 #
