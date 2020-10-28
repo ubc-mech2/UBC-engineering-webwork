@@ -55,7 +55,7 @@ $mc = RadioButtons( # Set up possible options
 labels => "ABC" );
 
 BEGIN_TEXT
-A force that varies according to a relation \( F = -t^2/3 \, N\), where \( t \) is the elapsed time in seconds, is applied to a \( 0.32 kg\) mass traveling with a speed of \( 16m/s \). Determine the time required for the mass to come to a complete stop. Assume the force is initially zero.
+A force that varies according to a relation \( F = -t^2/3 \, N\), where \( t \) is the elapsed time in seconds, is applied to a \( 0.32 kg\) mass traveling with a speed of \( 16m/s \). Determine the time required for the mass to come to a complete stop. Assume the force is initially zero and the mass travels in the horizontal plane.
 $PAR
 \{ $mc->buttons() \}
 
