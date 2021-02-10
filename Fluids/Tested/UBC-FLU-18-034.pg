@@ -66,10 +66,10 @@ TEXT(beginproblem());
 #
 
 Context("Numeric");
-Context()->variables->add(h=>"Real");
-Context()->variables->set(h=>{limits=>[1,100]});
-Context()->variables->add(H=>"Real");
-Context()->variables->set(H=>{limits=>[1,100]});
+#Context()->variables->add(h=>"Real");
+Context()->variables->add(h=>["Real",limits=>[1,100]]);
+#Context()->variables->add(H=>"Real");
+Context()->variables->add(H=>["Real",limits=>[1,1000]]);
 Context()->variables->remove("x");
 #given
 
@@ -93,11 +93,9 @@ BEGIN_PGML
 
 [@ image("UBC-FLU-18-034.png", width=>[$width], height=>[$height]) @]*
 
-A container is shown in the diagram.  
-
-1. Using Bernoulli's equation, derive a formula for the distance horizontally the free jet will strike the floor, [`X`], as a function of [`h`] and [`H`]. 
-2. Find the ratio [`\frac{h}{H}`] for which [`X`] will be maximum?
-
+For the container of the figure use Bernoulli's equation to: 
+1. Derive a formula for the distance [`X`] where the free jet leaving horizontally will strike the floor, as a function of [`h`] and [`H`]. 
+2. For what ratio [`\frac{h}{H}`] will [`X`] be maximum? 
 
 [`X=`] [____________________]{"$Ans1"}  
 [`\frac{h}{H}=`] [____]{"$Ans2"}  
