@@ -85,7 +85,6 @@ $vi = $omega0*2*pi/60*$rA/$rB*$rC/$rD*$rRear/100;
 $omegaF = 296*10/36/$rRear*$rB/$rA*$rD/$rC*100;
 $vpi = -1*296*10/36;
 $vpj = $omegaF*$crank/100;
-$vp = ( $vpi**2 + $vpj**2 )**0.5;
 
 #set tolerance
 Context()->flags->set(
@@ -124,7 +123,7 @@ Dimensions:
 
 *c)* What was the velocity of her pedal centre of gravity, [`\vec{v_p}`], (located where the pedal connects to the crankarm) when the crankarm is pointing toward the rear wheel?  
 
-[`\vec{v_p}=`] [_____]{"$vp"} [`m/s`]  
+[`\vec{v_p}=`] [_____]{"$vpi"} [` \boldsymbol{\hat{i}} `] [` + `] [_____]{"$vpj"} [` \boldsymbol{\hat{j}} `] [`m/s`] 
 
 END_PGML
 
