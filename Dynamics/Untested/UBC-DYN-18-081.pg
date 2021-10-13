@@ -76,7 +76,15 @@ $crank = 18.5; #cm
 $omega0 = 50; #rpm
 
 #computation 
-
+$rA = $dA/2;
+$rB = $dB/2;
+$rC = $rA;
+$rD = $rB;
+$rRear = $dRear/2;
+$vi = $omega0*2*pi/60*$rA/$rB*$rC/$rD*$rRear/100;
+$omegaF = 296*10/36/$rRear*$rB/$rA*$rD/$rC*100;
+$vpi = -1*296*10/36;
+$vpj = $omegaF*$crank/100;
 
 #set tolerance
 Context()->flags->set(
@@ -102,7 +110,7 @@ Assume:
 Dimensions:  
 	[`\cdot`] Chainring [`A`] diameter [`=`] Chainring [`C`] diameter [`=`] [`[$dA]`] [`cm`]  
 	[`\cdot`] Cog [`B`] diameter [`=`] Cog [`D`] diameter = [`[$dB]`] [`cm`]  
-	[`\cdot`] Rear wheel diameter [`=`] [`[$rearD]`] [`cm`]  
+	[`\cdot`] Rear wheel diameter [`=`] [`[$dRear]`] [`cm`]  
 	[`\cdot`] Crankarm length (centre of chainring to pedal) [`=`] [`[$crank]`] [`cm`]  
 
 *a)* Assume that Mueller-Korenek could achieve a low cycling cadence of [`50`] [`rpm`] (that is, [`50`] complete revolutions of a pedal in one minute) once the dragster had towed her up to a certain speed.  What was her ground speed when she was able to start pedaling at [`50`] [`rpm`]?  
@@ -115,10 +123,19 @@ Dimensions:
 
 *c)* What was the velocity of her pedal centre of gravity, [`\vec{v_p}`], (located where the pedal connects to the crankarm) when the crankarm is pointing toward the rear wheel?  
 
-[`\vec{v_p}=`] [_____]{"$vp"} [`m/s`]  
+[`\vec{v_p}=`] [_____]{"$vpi"} [` \boldsymbol{\hat{i}} `] [` + `] [_____]{"$vpj"} [` \boldsymbol{\hat{j}} `] [`m/s`] 
 
 END_PGML
 
 ##############################################################
+BEGIN_PGML_SOLUTION
+
+Answers
+
+
+[@ image( "UBC-DYN-18-081.pdf", width=>[0], height=>[0] ) @]*
+
+END_PGML_SOLUTION
+
 
 ENDDOCUMENT()};
