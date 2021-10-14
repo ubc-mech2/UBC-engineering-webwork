@@ -89,7 +89,7 @@ do{
 	$ytot = ($h*.5*$m1 + $ybar*$mp)/$mtot;
 
 	$ipo = $mp*(($l - $xbar)**2 + $ybar**2);
-	$io = 1/3*$m1*$h*$h + $m1*$l*$l + 1/3*$m2*$l*$l + $ipo;
+	$io = 1/12*$m1*$h*$h + $m1*($l*$l + ($h/2)**2) + 1/3*$m2*$l*$l + $ipo;
 
 	$A = sqrt(2*$l/$c*$io*sqrt($k/$io));
 }while($A >= .95*$l);
