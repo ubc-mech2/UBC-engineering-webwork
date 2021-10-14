@@ -44,8 +44,8 @@ DOCUMENT();
 $imgScale = .2;
 
 #image aspect ratio
-$width = $imgScale*2369;
-$height = $imgScale*1391;
+$width = $imgScale*887;
+$height = $imgScale*558;
 
 loadMacros(   
 	"PGstandard.pl",     # Standard macros for PG language
