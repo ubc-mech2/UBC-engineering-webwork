@@ -41,8 +41,8 @@ DOCUMENT();
 $imgScale = .4;
 
 #image aspect ratio
-$width = $imgScale*1444;
-$height = $imgScale*787;
+$width = $imgScale*1682;
+$height = $imgScale*914;
 
 loadMacros(   
 	"PGstandard.pl",     # Standard macros for PG language
@@ -68,7 +68,7 @@ TEXT(beginproblem());
 Context("Numeric");
 
 #given
-$dA = 25; #cm
+$dA = random(20,30,1); #cm
 $dB = 5; #cm
 $dRear = 66; #cm
 $crank = 18.5; #cm
@@ -76,15 +76,20 @@ $crank = 18.5; #cm
 $omega0 = 50; #rpm
 
 #computation 
-$rA = $dA/2;
-$rB = $dB/2;
-$rC = $rA;
-$rD = $rB;
-$rRear = $dRear/2;
-$vi = $omega0*2*pi/60*$rA/$rB*$rC/$rD*$rRear/100;
-$omegaF = 296*10/36/$rRear*$rB/$rA*$rD/$rC*100;
-$vpi = -1*296*10/36;
-$vpj = $omegaF*$crank/100;
+$rA = $dA/200; # m
+$rB = $dB/200; #m
+$rWheel = $dRear/200; #m
+
+$omega0rads = $omega0*2*3.14/60; # rads/sec
+
+$vi = $omega0rads*($rA**2)*$rWheel/($rB**2); # ans (a)
+
+$omegaFrads = (296/3.6)*$rWheel*($rB**2)/($rA**2);
+$omegaF = #omegaFrads *(60/(2*3.14)); #ans (b) in rpm
+
+$v_px = -(296/3.6); #ans c in x dir
+$v_py = $omegaFrads*$crank/100; #ans c in y-dir
+
 
 #set tolerance
 Context()->flags->set(
@@ -117,11 +122,11 @@ Dimensions:
 
 [`\vec{v_i}=`] [_____]{"$vi"} [`m/s`]  
 
-*b)* What was her cadence at her final velocity of [`296`] [`km/hr`]?
+*b)* What was her cadence at her final velocity of [`-296`] [` \boldsymbol{\hat{i}} `] [`km/hr`]?
 
-[`\omega_f=`] [_____]{"$omegaF"} [`rad/s`]  
+[`\omega_f=`] [_____]{"$omegaF"} [`rpm`]  
 
-*c)* What was the velocity of her pedal centre of gravity, [`\vec{v_p}`], (located where the pedal connects to the crankarm) when the crankarm is pointing toward the rear wheel?  
+*c)* What was the velocity of her pedal centre of gravity, [`\vec{v_p}`], (located where the pedal connects to the crankarm) when the crankarm is pointing toward the rear wheel at her final velocity of [`-296`] [` \boldsymbol{\hat{i}} `] [`km/hr`]?  
 
 [`\vec{v_p}=`] [_____]{"$vpi"} [` \boldsymbol{\hat{i}} `] [` + `] [_____]{"$vpj"} [` \boldsymbol{\hat{j}} `] [`m/s`] 
 
