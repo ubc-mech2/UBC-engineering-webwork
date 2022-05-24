@@ -1,6 +1,268 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="245" height="170.5" viewBox="-315 -155.5 245 170.5"><title></title><style type="text/css">
-#g1 circle.pindot {fill: none;stroke: none;pointer-events: fill;}#g1 rect, #g1 circle, #g1 ellipse, #g1 polyline, #g1 line, #g1 polygon, #g1 path {shape-rendering: crispEdges;}path, polyline, polygon {stroke-linejoin:round;}
-path, polyline, polygon, line {stroke-linecap:round;}
-rect, circle, ellipse, polyline, line, polygon, path {shape-rendering:crispEdges;}
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.3.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 653.1 480.5" style="enable-background:new 0 0 653.1 480.5;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#000000;stroke-width:2.8939;stroke-linecap:round;stroke-linejoin:round;}
+	.st1{display:none;}
+	.st2{display:inline;}
+	.st3{font-family:'ArialMT';}
+	.st4{font-size:20.2571px;}
+	.st5{fill:none;}
+	.st6{display:none;enable-background:new    ;}
+	.st7{font-family:'Verdana';}
+	.st8{display:none;fill:none;stroke:#000000;stroke-width:2.8939;}
+	.st9{display:none;fill:none;stroke:#000000;stroke-width:2.8939;stroke-linecap:round;stroke-linejoin:round;}
+	.st10{fill:#0066CC;}
+	.st11{font-size:21.7041px;}
+	.st12{font-family:'Helvetica';}
+	.st13{fill:#FF3366;}
+	.st14{font-family:'Folio-Medium';}
+	.st15{font-size:5.504px;}
 </style>
-<rect x="-315" y="-155.5" width="245" height="170.5" fill="#FFFFFF" stroke="none"/><g id="g1" c_spiceCmd="null" c_para="Prefix Start`1`" importFlag="0" c_portOfADImportHack="" c_transformList="" xmlns="http://www.w3.org/2000/svg"><polyline points="-285 -120 -285 -5" stroke="#000000" id="gge6552" stroke-width="1" c_shapetype="line"  fill="none" stroke-linecap="round" /><g c_origin="-220,-90" c_para="package`AXIAL-0.3`nameAlias`Value(&#x3a9;)`BOM_Manufacturer Part`?`spicePre`R`spiceSymbolName`Res_AXIAL-0.3(1/8W)_US`" c_partid="part_import_gge7393" id="gge7393" c_shapetype="group" c_etype="pinpart" c_rotation="270"><g c_partid="part_annotation" id="gge7395" display="none"><text c_note="note_name" x="-213" y="-77.63" fill="#000000" font-family="Arial" font-size="7pt" font-weight="" font-style="" dominant-baseline="" text-anchor="start"  >1k</text></g><g c_partid="part_annotation" id="gge7397" display="none"><text c_note="note_pre" x="-213" y="-86.85" fill="#000000" font-family="Arial" font-size="7pt" font-weight="" font-style="" dominant-baseline="" text-anchor="start"  >R110</text></g><polyline points="-220 -75 -225 -78" stroke="#000000" id="gge7399" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline points="-215 -83 -225 -88" stroke="#000000" id="gge7400" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline points="-225 -78 -215 -83" stroke="#000000" id="gge7401" stroke-width="1"   fill="none" stroke-linecap="round" /><g c_partid="part_pin" c_etype="pinpart"  c_show="show"  c_elec="0" c_spicepin="2" c_origin="-220,-70" id="gge7402" c_rotation="270"><circle c_pindot="true" class="pindot" cx="-220" cy="-70" r="2" fill="#4F4F4F" stroke="none" /><path d="M -220 -70 v -5" fill="none" stroke="#000000" stroke-width="1"/><text x="-220" y="-79" font-family="Verdana" font-size="7pt" fill="#000000" text-anchor="start" display="none" transform="rotate(270,-220,-79)" >2</text><text x="-224" y="-71" font-family="Verdana" font-size="7pt" fill="#000000" text-anchor="end" display="none" transform="rotate(270,-224,-71)" >2</text><circle cx="-220" cy="-72" r="3" stroke="#000000" fill="none" stroke-width="1" display="none" /><path d="M -217 -75 L -220 -78 L -223 -75" fill="none" stroke="#000000" stroke-width="1"  display="none" /></g><polyline points="-225 -97 -215 -102" stroke="#000000" id="gge7409" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline points="-225 -88 -215 -92" stroke="#000000" id="gge7410" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline points="-215 -92 -225 -97" stroke="#000000" id="gge7411" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline points="-215 -102 -220 -105" stroke="#000000" id="gge7412" stroke-width="1"   fill="none" stroke-linecap="round" /><g c_partid="part_pin" c_etype="pinpart"  c_show="show"  c_elec="0" c_spicepin="1" c_origin="-220,-110" id="gge7413" c_rotation="90"><circle c_pindot="true" class="pindot" cx="-220" cy="-110" r="2" fill="#4F4F4F" stroke="none" /><path d="M -220 -110 v 5" fill="none" stroke="#000000" stroke-width="1"/><text x="-220" y="-101" font-family="Verdana" font-size="7pt" fill="#000000" text-anchor="end" display="none" transform="rotate(270,-220,-101)" >1</text><text x="-224" y="-109" font-family="Verdana" font-size="7pt" fill="#000000" text-anchor="start" display="none" transform="rotate(270,-224,-109)" >1</text><circle cx="-220" cy="-108" r="3" stroke="#000000" fill="none" stroke-width="1" display="none" /><path d="M -223 -105 L -220 -102 L -217 -105" fill="none" stroke="#000000" stroke-width="1"  display="none" /></g></g><g c_origin="-170,-90" c_para="package`AXIAL-0.3`nameAlias`Value(&#x3a9;)`BOM_Manufacturer Part`?`spicePre`R`spiceSymbolName`Res_AXIAL-0.3(1/8W)_US`" c_partid="part_import_gge7421" id="gge7421" c_shapetype="group" c_etype="pinpart" c_rotation="270"><g c_partid="part_annotation" id="gge7423" display="none"><text c_note="note_name" x="-163" y="-77.63" fill="#000000" font-family="Arial" font-size="7pt" font-weight="" font-style="" dominant-baseline="" text-anchor="start"  >1k</text></g><g c_partid="part_annotation" id="gge7425" display="none"><text c_note="note_pre" x="-163" y="-86.85" fill="#000000" font-family="Arial" font-size="7pt" font-weight="" font-style="" dominant-baseline="" text-anchor="start"  >R111</text></g><polyline points="-170 -75 -175 -78" stroke="#000000" id="gge7427" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline points="-165 -83 -175 -88" stroke="#000000" id="gge7428" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline points="-175 -78 -165 -83" stroke="#000000" id="gge7429" stroke-width="1"   fill="none" stroke-linecap="round" /><g c_partid="part_pin" c_etype="pinpart"  c_show="show"  c_elec="0" c_spicepin="2" c_origin="-170,-70" id="gge7430" c_rotation="270"><circle c_pindot="true" class="pindot" cx="-170" cy="-70" r="2" fill="#4F4F4F" stroke="none" /><path d="M -170 -70 v -5" fill="none" stroke="#000000" stroke-width="1"/><text x="-170" y="-79" font-family="Verdana" font-size="7pt" fill="#000000" text-anchor="start" display="none" transform="rotate(270,-170,-79)" >2</text><text x="-174" y="-71" font-family="Verdana" font-size="7pt" fill="#000000" text-anchor="end" display="none" transform="rotate(270,-174,-71)" >2</text><circle cx="-170" cy="-72" r="3" stroke="#000000" fill="none" stroke-width="1" display="none" /><path d="M -167 -75 L -170 -78 L -173 -75" fill="none" stroke="#000000" stroke-width="1"  display="none" /></g><polyline points="-175 -97 -165 -102" stroke="#000000" id="gge7437" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline points="-175 -88 -165 -92" stroke="#000000" id="gge7438" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline points="-165 -92 -175 -97" stroke="#000000" id="gge7439" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline points="-165 -102 -170 -105" stroke="#000000" id="gge7440" stroke-width="1"   fill="none" stroke-linecap="round" /><g c_partid="part_pin" c_etype="pinpart"  c_show="show"  c_elec="0" c_spicepin="1" c_origin="-170,-110" id="gge7441" c_rotation="90"><circle c_pindot="true" class="pindot" cx="-170" cy="-110" r="2" fill="#4F4F4F" stroke="none" /><path d="M -170 -110 v 5" fill="none" stroke="#000000" stroke-width="1"/><text x="-170" y="-101" font-family="Verdana" font-size="7pt" fill="#000000" text-anchor="end" display="none" transform="rotate(270,-170,-101)" >1</text><text x="-174" y="-109" font-family="Verdana" font-size="7pt" fill="#000000" text-anchor="start" display="none" transform="rotate(270,-174,-109)" >1</text><circle cx="-170" cy="-108" r="3" stroke="#000000" fill="none" stroke-width="1" display="none" /><path d="M -173 -105 L -170 -102 L -167 -105" fill="none" stroke="#000000" stroke-width="1"  display="none" /></g></g><g c_origin="-195,-35" c_para="package`AXIAL-0.3`nameAlias`Value(&#x3a9;)`BOM_Manufacturer Part`?`spicePre`R`spiceSymbolName`Res_AXIAL-0.3(1/8W)_US`" c_partid="part_import_gge7449" id="gge7449" c_shapetype="group" c_etype="pinpart" c_rotation="270"><g c_partid="part_annotation" id="gge7451" display="none"><text c_note="note_name" x="-188" y="-22.63" fill="#000000" font-family="Arial" font-size="7pt" font-weight="" font-style="" dominant-baseline="" text-anchor="start"  >1k</text></g><g c_partid="part_annotation" id="gge7453" display="none"><text c_note="note_pre" x="-188" y="-31.85" fill="#000000" font-family="Arial" font-size="7pt" font-weight="" font-style="" dominant-baseline="" text-anchor="start"  >R112</text></g><polyline points="-195 -20 -200 -23" stroke="#000000" id="gge7455" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline points="-190 -28 -200 -33" stroke="#000000" id="gge7456" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline points="-200 -23 -190 -28" stroke="#000000" id="gge7457" stroke-width="1"   fill="none" stroke-linecap="round" /><g c_partid="part_pin" c_etype="pinpart"  c_show="show"  c_elec="0" c_spicepin="2" c_origin="-195,-15" id="gge7458" c_rotation="270"><circle c_pindot="true" class="pindot" cx="-195" cy="-15" r="2" fill="#4F4F4F" stroke="none" /><path d="M -195 -15 v -5" fill="none" stroke="#000000" stroke-width="1"/><text x="-195" y="-24" font-family="Verdana" font-size="7pt" fill="#000000" text-anchor="start" display="none" transform="rotate(270,-195,-24)" >2</text><text x="-199" y="-16" font-family="Verdana" font-size="7pt" fill="#000000" text-anchor="end" display="none" transform="rotate(270,-199,-16)" >2</text><circle cx="-195" cy="-17" r="3" stroke="#000000" fill="none" stroke-width="1" display="none" /><path d="M -192 -20 L -195 -23 L -198 -20" fill="none" stroke="#000000" stroke-width="1"  display="none" /></g><polyline points="-200 -42 -190 -47" stroke="#000000" id="gge7465" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline points="-200 -33 -190 -37" stroke="#000000" id="gge7466" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline points="-190 -37 -200 -42" stroke="#000000" id="gge7467" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline points="-190 -47 -195 -50" stroke="#000000" id="gge7468" stroke-width="1"   fill="none" stroke-linecap="round" /><g c_partid="part_pin" c_etype="pinpart"  c_show="show"  c_elec="0" c_spicepin="1" c_origin="-195,-55" id="gge7469" c_rotation="90"><circle c_pindot="true" class="pindot" cx="-195" cy="-55" r="2" fill="#4F4F4F" stroke="none" /><path d="M -195 -55 v 5" fill="none" stroke="#000000" stroke-width="1"/><text x="-195" y="-46" font-family="Verdana" font-size="7pt" fill="#000000" text-anchor="end" display="none" transform="rotate(270,-195,-46)" >1</text><text x="-199" y="-54" font-family="Verdana" font-size="7pt" fill="#000000" text-anchor="start" display="none" transform="rotate(270,-199,-54)" >1</text><circle cx="-195" cy="-53" r="3" stroke="#000000" fill="none" stroke-width="1" display="none" /><path d="M -198 -50 L -195 -47 L -192 -50" fill="none" stroke="#000000" stroke-width="1"  display="none" /></g></g><g c_origin="-135,-125" c_para="package`RAD-0.1`nameAlias`Value(F)`BOM_Manufacturer Part`?`spicePre`C`spiceSymbolName`Cap_RAD-0.1_US`" c_partid="part_import_gge7477" id="gge7477" c_shapetype="group" c_etype="pinpart" c_rotation="270"><g c_partid="part_annotation" id="gge7479" display="none"><text c_note="note_name" x="-143.22" y="-136" fill="#000000" font-family="Arial" font-size="7pt" font-weight="" font-style="" dominant-baseline="" text-anchor="start"  >1u</text></g><g c_partid="part_annotation" id="gge7481" display="none"><text c_note="note_pre" x="-143.22" y="-145" fill="#000000" font-family="Arial" font-size="7pt" font-weight="" font-style="" dominant-baseline="" text-anchor="start"  >C11</text></g><polyline points="-137 -117 -137 -133" stroke="#000000" id="gge7483" stroke-width="1"   fill="none" stroke-linecap="round" /><g c_partid="part_pin" c_etype="pinpart"  c_show="show"  c_elec="0" c_spicepin="1" c_origin="-155,-125" id="gge7484" c_rotation="180"><circle c_pindot="true" class="pindot" cx="-155" cy="-125" r="2" fill="#4F4F4F" stroke="none" /><path d="M -145 -125 h -10" fill="none" stroke="#000000" stroke-width="1"/><text x="-141" y="-125" font-family="Verdana" font-size="7pt" fill="#000000" text-anchor="start" display="none"  >1</text><text x="-149" y="-129" font-family="Verdana" font-size="7pt" fill="#000000" text-anchor="end" display="none"  >1</text><circle cx="-168" cy="-125" r="3" stroke="#000000" fill="none" stroke-width="1" display="none" /><path d="M -165 -122 L -162 -125 L -165 -128" fill="none" stroke="#000000" stroke-width="1"  display="none" /></g><polyline points="-125 -125 -133 -125" stroke="#000000" id="gge7491" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline points="-133 -133 -133 -117" stroke="#000000" id="gge7492" stroke-width="1"   fill="none" stroke-linecap="round" /><g c_partid="part_pin" c_etype="pinpart"  c_show="show"  c_elec="0" c_spicepin="2" c_origin="-115,-125" id="gge7493" c_rotation="0"><circle c_pindot="true" class="pindot" cx="-115" cy="-125" r="2" fill="#4F4F4F" stroke="none" /><path d="M -125 -125 h 10" fill="none" stroke="#000000" stroke-width="1"/><text x="-129" y="-125" font-family="Verdana" font-size="7pt" fill="#000000" text-anchor="end" display="none"  >2</text><text x="-121" y="-129" font-family="Verdana" font-size="7pt" fill="#000000" text-anchor="start" display="none"  >2</text><circle cx="-102" cy="-125" r="3" stroke="#000000" fill="none" stroke-width="1" display="none" /><path d="M -105 -128 L -108 -125 L -105 -122" fill="none" stroke="#000000" stroke-width="1"  display="none" /></g><polyline points="-137 -125 -145 -125" stroke="#000000" id="gge7500" stroke-width="1"   fill="none" stroke-linecap="round" /></g><g c_origin="-255,-125" c_para="package`AXIAL-0.3`nameAlias`Value(&#x3a9;)`BOM_Manufacturer Part`?`spicePre`R`spiceSymbolName`Res_AXIAL-0.3(1/8W)_US`" c_partid="part_import_gge7502" id="gge7502" c_shapetype="group" c_etype="pinpart" ><g c_partid="part_annotation" id="gge7504" display="none"><text c_note="note_name" x="-265.8125" y="-133" fill="#000000" font-family="Arial" font-size="7pt" font-weight="" font-style="" dominant-baseline="" text-anchor="start"  >1k</text></g><g c_partid="part_annotation" id="gge7506" display="none"><text c_note="note_pre" x="-265.8125" y="-142" fill="#000000" font-family="Arial" font-size="7pt" font-weight="" font-style="" dominant-baseline="" text-anchor="start"  >R113</text></g><polyline points="-240 -125 -243 -120" stroke="#000000" id="gge7508" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline points="-248 -130 -253 -120" stroke="#000000" id="gge7509" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline points="-243 -120 -248 -130" stroke="#000000" id="gge7510" stroke-width="1"   fill="none" stroke-linecap="round" /><g c_partid="part_pin" c_etype="pinpart"  c_show="show"  c_elec="0" c_spicepin="2" c_origin="-235,-125" id="gge7511" c_rotation="0"><circle c_pindot="true" class="pindot" cx="-235" cy="-125" r="2" fill="#4F4F4F" stroke="none" /><path d="M -235 -125 h -5" fill="none" stroke="#000000" stroke-width="1"/><text x="-244" y="-125" font-family="Verdana" font-size="7pt" fill="#000000" text-anchor="end" display="none"  >2</text><text x="-236" y="-129" font-family="Verdana" font-size="7pt" fill="#000000" text-anchor="start" display="none"  >2</text><circle cx="-237" cy="-125" r="3" stroke="#000000" fill="none" stroke-width="1" display="none" /><path d="M -240 -128 L -243 -125 L -240 -122" fill="none" stroke="#000000" stroke-width="1"  display="none" /></g><polyline points="-262 -120 -267 -130" stroke="#000000" id="gge7518" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline points="-253 -120 -257 -130" stroke="#000000" id="gge7519" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline points="-257 -130 -262 -120" stroke="#000000" id="gge7520" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline points="-267 -130 -270 -125" stroke="#000000" id="gge7521" stroke-width="1"   fill="none" stroke-linecap="round" /><g c_partid="part_pin" c_etype="pinpart"  c_show="show"  c_elec="0" c_spicepin="1" c_origin="-275,-125" id="gge7522" c_rotation="180"><circle c_pindot="true" class="pindot" cx="-275" cy="-125" r="2" fill="#4F4F4F" stroke="none" /><path d="M -275 -125 h 5" fill="none" stroke="#000000" stroke-width="1"/><text x="-266" y="-125" font-family="Verdana" font-size="7pt" fill="#000000" text-anchor="start" display="none"  >1</text><text x="-274" y="-129" font-family="Verdana" font-size="7pt" fill="#000000" text-anchor="end" display="none"  >1</text><circle cx="-273" cy="-125" r="3" stroke="#000000" fill="none" stroke-width="1" display="none" /><path d="M -270 -122 L -267 -125 L -270 -128" fill="none" stroke="#000000" stroke-width="1"  display="none" /></g></g><g c_origin="-100,-60" c_para="package`AXIAL-0.4`nameAlias`Value(H)`BOM_Manufacturer Part`?`spicePre`L`spiceSymbolName`Inductor`" c_partid="part_import_gge7530" id="gge7530" c_shapetype="group" c_etype="pinpart" c_rotation="270"><g c_partid="part_annotation" id="gge7532" display="none"><text c_note="note_name" x="-93.67" y="-47.6" fill="#000000" font-family="Arial" font-size="7pt" font-weight="" font-style="" dominant-baseline="" text-anchor="start"  >1m</text></g><g c_partid="part_annotation" id="gge7534" display="none"><text c_note="note_pre" x="-93.67" y="-56.76" fill="#000000" font-family="Arial" font-size="7pt" font-weight="" font-style="" dominant-baseline="" text-anchor="start"  >L10</text></g><g c_partid="part_pin" c_etype="pinpart"  c_show="show"  c_elec="0" c_spicepin="2" c_origin="-100,-40" id="gge7536" c_rotation="270"><circle c_pindot="true" class="pindot" cx="-100" cy="-40" r="2" fill="#4F4F4F" stroke="none" /><path d="M -100 -40 v -3" fill="none" stroke="#000000" stroke-width="1"/><text x="-100" y="-47" font-family="Verdana" font-size="7pt" fill="#000000" text-anchor="start" display="none" transform="rotate(270,-100,-47)" >2</text><text x="-104" y="-39" font-family="Verdana" font-size="7pt" fill="#000000" text-anchor="end" display="none" transform="rotate(270,-104,-39)" >2</text><circle cx="-100" cy="-40" r="3" stroke="#000000" fill="none" stroke-width="1" display="none" /><path d="M -97 -43 L -100 -46 L -103 -43" fill="none" stroke="#000000" stroke-width="1"  display="none" /></g><g c_partid="part_pin" c_etype="pinpart"  c_show="show"  c_elec="0" c_spicepin="1" c_origin="-100,-80" id="gge7543" c_rotation="90"><circle c_pindot="true" class="pindot" cx="-100" cy="-80" r="2" fill="#4F4F4F" stroke="none" /><path d="M -100 -80 v 3" fill="none" stroke="#000000" stroke-width="1"/><text x="-100" y="-73" font-family="Verdana" font-size="7pt" fill="#000000" text-anchor="end" display="none" transform="rotate(270,-100,-73)" >1</text><text x="-104" y="-81" font-family="Verdana" font-size="7pt" fill="#000000" text-anchor="start" display="none" transform="rotate(270,-104,-81)" >1</text><circle cx="-100" cy="-80" r="3" stroke="#000000" fill="none" stroke-width="1" display="none" /><path d="M -103 -77 L -100 -74 L -97 -77" fill="none" stroke="#000000" stroke-width="1"  display="none" /></g><path d="M -99.932 -76.883 A 3.9 4 0 1 1 -99.936 -68.918" id="gge7550"   stroke="#000000" stroke-width="1" c_helper_type="arc1" fill="none" /><path d="M -99.929 -68.4 A 3.9 4 0 1 1 -99.934 -60.435" id="gge7551"   stroke="#000000" stroke-width="1" c_helper_type="arc1" fill="none" /><path d="M -99.929 -59.933 A 3.9 4 0 1 1 -99.934 -51.968" id="gge7552"   stroke="#000000" stroke-width="1" c_helper_type="arc1" fill="none" /><path d="M -99.931 -51.3 A 3.9 4 0 1 1 -99.936 -43.335" id="gge7553"   stroke="#000000" stroke-width="1" c_helper_type="arc1" fill="none" /></g><polyline c_etype="wire" c_shapetype="line" points="-235 -125 -155 -125" stroke="#000000" id="gge7554" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline c_etype="wire" c_shapetype="line" points="-115 -125 -100 -125 -100 -80" stroke="#000000" id="gge7555" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline c_etype="wire" c_shapetype="line" points="-100 -40 -100 0 -195 0 -195 -15" stroke="#000000" id="gge7556" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline c_etype="wire" c_shapetype="line" points="-290 0 -195 0" stroke="#000000" id="gge7557" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline c_etype="wire" c_shapetype="line" points="-275 -125 -290 -125" stroke="#000000" id="gge7560" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline c_etype="wire" c_shapetype="line" points="-220 -110 -220 -125" stroke="#000000" id="gge7561" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline c_etype="wire" c_shapetype="line" points="-170 -110 -170 -125" stroke="#000000" id="gge7563" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline c_etype="wire" c_shapetype="line" points="-195 -55 -195 -60 -170 -60 -170 -70" stroke="#000000" id="gge7566" stroke-width="1"   fill="none" stroke-linecap="round" /><polyline c_etype="wire" c_shapetype="line" points="-220 -70 -220 -60 -195 -60" stroke="#000000" id="gge7576" stroke-width="1"   fill="none" stroke-linecap="round" /><g c_partid="part_annotation" id="gge7579" c_origin="-90,-60" c_shapetype="group" c_etype="pinpart"><text x="-90" y="-60" fill="#0066CC" font-family="Verdana" font-size="7.5pt" font-weight="undefined" font-style="undefined" dominant-baseline="" text-anchor="start" type="comment"  >L</text></g><g c_partid="part_annotation" id="gge7582" c_origin="-190,-30" c_shapetype="group" c_etype="pinpart"><text x="-190" y="-30" fill="#000000" font-family="helvetica" font-size="7.5pt" font-weight="undefined" font-style="undefined" dominant-baseline="" text-anchor="start" type="comment"  >10&#x3a9;</text></g><g c_partid="part_annotation" id="gge7585" c_origin="-165,-85" c_shapetype="group" c_etype="pinpart"><text x="-165" y="-85" fill="#000000" font-family="helvetica" font-size="7.5pt" font-weight="undefined" font-style="undefined" dominant-baseline="" text-anchor="start" type="comment"  >10&#x3a9;</text></g><g c_partid="part_annotation" id="gge7588" c_origin="-215,-85" c_shapetype="group" c_etype="pinpart"><text x="-215" y="-85" fill="#000000" font-family="helvetica" font-size="7.5pt" font-weight="undefined" font-style="undefined" dominant-baseline="" text-anchor="start" type="comment"  >10&#x3a9;</text></g><g c_partid="part_annotation" id="gge7591" c_origin="-265,-135" c_shapetype="group" c_etype="pinpart"><text x="-265" y="-135" fill="#000000" font-family="helvetica" font-size="7.5pt" font-weight="undefined" font-style="undefined" dominant-baseline="" text-anchor="start" type="comment"  >10&#x3a9;</text></g><g c_partid="part_annotation" id="gge7594" c_origin="-140,-135" c_shapetype="group" c_etype="pinpart"><text x="-140" y="-135" fill="#FF3366" font-family="Verdana" font-size="7.5pt" font-weight="undefined" font-style="undefined" dominant-baseline="" text-anchor="start" type="comment"  >C</text></g><g c_partid="part_annotation" id="gge7607" c_origin="-300,-60" c_shapetype="group" c_etype="pinpart"><text x="-300" y="-60" fill="#000000" font-family="Verdana" font-size="7.5pt" font-weight="undefined" font-style="undefined" dominant-baseline="" text-anchor="start" type="comment"  >Z</text></g><g c_partid="part_junction" c_etype="pinpart" c_origin="-220,-125" id="gge7562" c_shapetype="group"><circle c_pindot="true" class="pindot" cx="-220" cy="-125" r="2" fill="#4F4F4F" stroke="none"/><circle cx="-220" cy="-125" r="2.5" fill="#000000" stroke-width="1"/></g><g c_partid="part_junction" c_etype="pinpart" c_origin="-170,-125" id="gge7573" c_shapetype="group"><circle c_pindot="true" class="pindot" cx="-170" cy="-125" r="2" fill="#4F4F4F" stroke="none"/><circle cx="-170" cy="-125" r="2.5" fill="#000000" stroke-width="1"/></g><g c_partid="part_junction" c_etype="pinpart" c_origin="-195,0" id="gge7574" c_shapetype="group"><circle c_pindot="true" class="pindot" cx="-195" cy="0" r="2" fill="#4F4F4F" stroke="none"/><circle cx="-195" cy="0" r="2.5" fill="#000000" stroke-width="1"/></g><g c_partid="part_junction" c_etype="pinpart" c_origin="-195,-60" id="gge7577" c_shapetype="group"><circle c_pindot="true" class="pindot" cx="-195" cy="-60" r="2" fill="#4F4F4F" stroke="none"/><circle cx="-195" cy="-60" r="2.5" fill="#000000" stroke-width="1"/></g><rect id="gge7609" x="-305" y="-145"   width="225" height="150" stroke="#FFFFFF" stroke-width="1" fill="none" c_shapetype="line"  /><g c_partid="part_arrowhead" c_origin="-285,-120" id="gge7596" c_rotation="90" c_shapetype="group" c_etype="pinpart"><path d="M -285 -120 L -289 -118 L -285 -123 L -281 -118 Z " fill="#000000" stroke="none" style="shape-rendering:auto;"/></g><g c_partid="part_arrowhead" c_origin="-285,-5" id="gge7597" c_rotation="270" c_shapetype="group" c_etype="pinpart"><path d="M -285 -5 L -281 -7 L -285 -2 L -289 -7 Z " fill="#000000" stroke="none" style="shape-rendering:auto;"/></g></g></svg>
+<g id="g1">
+	<line id="gge6552" class="st0" x1="63.4" y1="73.1" x2="63.4" y2="405.9"/>
+	<g id="gge7393">
+		<g id="gge7395" class="st1">
+			<text transform="matrix(1 0 0 1 271.738 195.7363)" class="st2 st3 st4">1k</text>
+		</g>
+		<g id="gge7397" class="st1">
+			<text transform="matrix(1 0 0 1 271.738 169.0547)" class="st2 st3 st4">R110</text>
+		</g>
+		<line id="gge7399" class="st0" x1="251.5" y1="203.3" x2="237" y2="194.7"/>
+		<line id="gge7400" class="st0" x1="266" y1="180.2" x2="237" y2="165.7"/>
+		<line id="gge7401" class="st0" x1="237" y1="194.7" x2="266" y2="180.2"/>
+		<g id="gge7402">
+			<circle class="st5" cx="251.5" cy="217.8" r="5.8"/>
+			<path class="st0" d="M251.5,217.8v-14.5"/>
+			<text transform="matrix(-1.836970e-16 -1 1 -1.836970e-16 251.4821 191.7724)" class="st6 st7 st4">2</text>
+			<text transform="matrix(-1.836970e-16 -1 1 -1.836970e-16 239.906 227.8017)" class="st6 st7 st4">2</text>
+			<circle class="st8" cx="251.5" cy="212" r="8.7"/>
+			<path class="st9" d="M260.2,203.3l-8.7-8.7l-8.7,8.7"/>
+		</g>
+		<line id="gge7409" class="st0" x1="237" y1="139.7" x2="266" y2="125.2"/>
+		<line id="gge7410" class="st0" x1="237" y1="165.7" x2="266" y2="154.2"/>
+		<line id="gge7411" class="st0" x1="266" y1="154.2" x2="237" y2="139.7"/>
+		<line id="gge7412" class="st0" x1="266" y1="125.2" x2="251.5" y2="116.5"/>
+		<g id="gge7413">
+			<circle class="st5" cx="251.5" cy="102.1" r="5.8"/>
+			<path class="st0" d="M251.5,102.1v14.5"/>
+			<text transform="matrix(-1.836970e-16 -1 1 -1.836970e-16 251.4821 140.9853)" class="st6 st7 st4">1</text>
+			<text transform="matrix(-1.836970e-16 -1 1 -1.836970e-16 239.906 104.956)" class="st6 st7 st4">1</text>
+			<circle class="st8" cx="251.5" cy="107.8" r="8.7"/>
+			<path class="st9" d="M242.8,116.5l8.7,8.7l8.7-8.7"/>
+		</g>
+	</g>
+	<g id="gge7421">
+		<g id="gge7423" class="st1">
+			<text transform="matrix(1 0 0 1 416.4314 195.7363)" class="st2 st3 st4">1k</text>
+		</g>
+		<g id="gge7425" class="st1">
+			<text transform="matrix(1 0 0 1 416.4314 169.0547)" class="st2 st3 st4">R111</text>
+		</g>
+		<line id="gge7427" class="st0" x1="396.2" y1="203.3" x2="381.7" y2="194.7"/>
+		<line id="gge7428" class="st0" x1="410.6" y1="180.2" x2="381.7" y2="165.7"/>
+		<line id="gge7429" class="st0" x1="381.7" y1="194.7" x2="410.6" y2="180.2"/>
+		<g id="gge7430">
+			<circle class="st5" cx="396.2" cy="217.8" r="5.8"/>
+			<path class="st0" d="M396.2,217.8v-14.5"/>
+			<text transform="matrix(-1.836970e-16 -1 1 -1.836970e-16 396.1755 191.7724)" class="st6 st7 st4">2</text>
+			<text transform="matrix(-1.836970e-16 -1 1 -1.836970e-16 384.6003 227.8017)" class="st6 st7 st4">2</text>
+			<circle class="st8" cx="396.2" cy="212" r="8.7"/>
+			<path class="st9" d="M404.9,203.3l-8.7-8.7l-8.7,8.7"/>
+		</g>
+		<line id="gge7437" class="st0" x1="381.7" y1="139.7" x2="410.6" y2="125.2"/>
+		<line id="gge7438" class="st0" x1="381.7" y1="165.7" x2="410.6" y2="154.2"/>
+		<line id="gge7439" class="st0" x1="410.6" y1="154.2" x2="381.7" y2="139.7"/>
+		<line id="gge7440" class="st0" x1="410.6" y1="125.2" x2="396.2" y2="116.5"/>
+		<g id="gge7441">
+			<circle class="st5" cx="396.2" cy="102.1" r="5.8"/>
+			<path class="st0" d="M396.2,102.1v14.5"/>
+			<text transform="matrix(-1.836970e-16 -1 1 -1.836970e-16 396.1755 140.9853)" class="st6 st7 st4">1</text>
+			<text transform="matrix(-1.836970e-16 -1 1 -1.836970e-16 384.6003 104.956)" class="st6 st7 st4">1</text>
+			<circle class="st8" cx="396.2" cy="107.8" r="8.7"/>
+			<path class="st9" d="M387.5,116.5l8.7,8.7l8.7-8.7"/>
+		</g>
+	</g>
+	<g id="gge7449">
+		<g id="gge7451" class="st1">
+			<text transform="matrix(1 0 0 1 344.0847 354.8994)" class="st2 st3 st4">1k</text>
+		</g>
+		<g id="gge7453" class="st1">
+			<text transform="matrix(1 0 0 1 344.0847 328.2177)" class="st2 st3 st4">R112</text>
+		</g>
+		<line id="gge7455" class="st0" x1="323.8" y1="362.5" x2="309.4" y2="353.8"/>
+		<line id="gge7456" class="st0" x1="338.3" y1="339.4" x2="309.4" y2="324.9"/>
+		<line id="gge7457" class="st0" x1="309.4" y1="353.8" x2="338.3" y2="339.4"/>
+		<g id="gge7458">
+			<circle class="st5" cx="323.8" cy="377" r="5.8"/>
+			<path class="st0" d="M323.8,377v-14.5"/>
+			<text transform="matrix(-1.836970e-16 -1 1 -1.836970e-16 323.8288 350.9345)" class="st6 st7 st4">2</text>
+			<text transform="matrix(-1.836970e-16 -1 1 -1.836970e-16 312.2527 386.9638)" class="st6 st7 st4">2</text>
+			<circle class="st8" cx="323.8" cy="371.2" r="8.7"/>
+			<path class="st9" d="M332.5,362.5l-8.7-8.7l-8.7,8.7"/>
+		</g>
+		<line id="gge7465" class="st0" x1="309.4" y1="298.8" x2="338.3" y2="284.4"/>
+		<line id="gge7466" class="st0" x1="309.4" y1="324.9" x2="338.3" y2="313.3"/>
+		<line id="gge7467" class="st0" x1="338.3" y1="313.3" x2="309.4" y2="298.8"/>
+		<line id="gge7468" class="st0" x1="338.3" y1="284.4" x2="323.8" y2="275.7"/>
+		<g id="gge7469">
+			<circle class="st5" cx="323.8" cy="261.2" r="5.8"/>
+			<path class="st0" d="M323.8,261.2v14.5"/>
+			<text transform="matrix(-1.836970e-16 -1 1 -1.836970e-16 323.8288 300.1494)" class="st6 st7 st4">1</text>
+			<text transform="matrix(-1.836970e-16 -1 1 -1.836970e-16 312.2527 264.1181)" class="st6 st7 st4">1</text>
+			<circle class="st8" cx="323.8" cy="267" r="8.7"/>
+			<path class="st9" d="M315.1,275.7l8.7,8.7l8.7-8.7"/>
+		</g>
+	</g>
+	<g id="gge7477">
+		<g id="gge7479" class="st1">
+			<text transform="matrix(1 0 0 1 473.6726 26.8203)" class="st2 st3 st4">1u</text>
+		</g>
+		<g id="gge7481" class="st1">
+			<text transform="matrix(1 0 0 1 473.6726 0.7754)" class="st2 st3 st4">C11</text>
+		</g>
+		<line id="gge7483" class="st0" x1="491.7" y1="81.8" x2="491.7" y2="35.5"/>
+		<g id="gge7484">
+			<circle class="st5" cx="439.6" cy="58.7" r="5.8"/>
+			<path class="st0" d="M468.5,58.7h-28.9"/>
+			<text transform="matrix(1 0 0 1 480.0974 58.6533)" class="st6 st7 st4">1</text>
+			<text transform="matrix(1 0 0 1 444.0681 47.0771)" class="st6 st7 st4">1</text>
+			<circle class="st8" cx="402" cy="58.7" r="8.7"/>
+			<path class="st9" d="M410.6,67.3l8.7-8.7l-8.7-8.7"/>
+		</g>
+		<line id="gge7491" class="st0" x1="526.4" y1="58.7" x2="503.2" y2="58.7"/>
+		<line id="gge7492" class="st0" x1="503.2" y1="35.5" x2="503.2" y2="81.8"/>
+		<g id="gge7493">
+			<circle class="st5" cx="555.3" cy="58.7" r="5.8"/>
+			<path class="st0" d="M526.4,58.7h28.9"/>
+			<text transform="matrix(1 0 0 1 501.945 58.6533)" class="st6 st7 st4">2</text>
+			<text transform="matrix(1 0 0 1 537.9743 47.0771)" class="st6 st7 st4">2</text>
+			<circle class="st8" cx="593" cy="58.7" r="8.7"/>
+			<path class="st9" d="M584.3,50l-8.7,8.7l8.7,8.7"/>
+		</g>
+		<line id="gge7500" class="st0" x1="491.7" y1="58.7" x2="468.5" y2="58.7"/>
+	</g>
+	<g id="gge7502">
+		<g id="gge7504" class="st1">
+			<text transform="matrix(1 0 0 1 118.905 35.5019)" class="st2 st3 st4">1k</text>
+		</g>
+		<g id="gge7506" class="st1">
+			<text transform="matrix(1 0 0 1 118.905 9.457)" class="st2 st3 st4">R113</text>
+		</g>
+		<line id="gge7508" class="st0" x1="193.6" y1="58.7" x2="184.9" y2="73.1"/>
+		<line id="gge7509" class="st0" x1="170.5" y1="44.2" x2="156" y2="73.1"/>
+		<line id="gge7510" class="st0" x1="184.9" y1="73.1" x2="170.5" y2="44.2"/>
+		<g id="gge7511">
+			<circle class="st5" cx="208.1" cy="58.7" r="5.8"/>
+			<path class="st0" d="M208.1,58.7h-14.5"/>
+			<text transform="matrix(1 0 0 1 169.1491 58.6533)" class="st6 st7 st4">2</text>
+			<text transform="matrix(1 0 0 1 205.1784 47.0771)" class="st6 st7 st4">2</text>
+			<circle class="st8" cx="202.3" cy="58.7" r="8.7"/>
+			<path class="st9" d="M193.6,50l-8.7,8.7l8.7,8.7"/>
+		</g>
+		<line id="gge7518" class="st0" x1="129.9" y1="73.1" x2="115.5" y2="44.2"/>
+		<line id="gge7519" class="st0" x1="156" y1="73.1" x2="144.4" y2="44.2"/>
+		<line id="gge7520" class="st0" x1="144.4" y1="44.2" x2="129.9" y2="73.1"/>
+		<line id="gge7521" class="st0" x1="115.5" y1="44.2" x2="106.8" y2="58.7"/>
+		<g id="gge7522">
+			<circle class="st5" cx="92.3" cy="58.7" r="5.8"/>
+			<path class="st0" d="M92.3,58.7h14.5"/>
+			<text transform="matrix(1 0 0 1 118.362 58.6533)" class="st6 st7 st4">1</text>
+			<text transform="matrix(1 0 0 1 82.3327 47.0771)" class="st6 st7 st4">1</text>
+			<circle class="st8" cx="98.1" cy="58.7" r="8.7"/>
+			<path class="st9" d="M106.8,67.3l8.7-8.7l-8.7-8.7"/>
+		</g>
+	</g>
+	<g id="gge7530">
+		<g id="gge7532" class="st1">
+			<text transform="matrix(1 0 0 1 617.0641 282.6396)" class="st2 st3 st4">1m</text>
+		</g>
+		<g id="gge7534" class="st1">
+			<text transform="matrix(1 0 0 1 617.0641 256.1308)" class="st2 st3 st4">L10</text>
+		</g>
+		<g id="gge7536">
+			<circle class="st5" cx="598.7" cy="304.6" r="5.8"/>
+			<path class="st0" d="M598.7,304.6V296"/>
+			<text transform="matrix(-1.836970e-16 -1 1 -1.836970e-16 598.7468 284.3759)" class="st6 st7 st4">2</text>
+			<text transform="matrix(-1.836970e-16 -1 1 -1.836970e-16 587.1716 320.4052)" class="st6 st7 st4">2</text>
+			<circle class="st8" cx="598.7" cy="304.6" r="8.7"/>
+			<path class="st9" d="M607.4,296l-8.7-8.7l-8.7,8.7"/>
+		</g>
+		<g id="gge7543">
+			<circle class="st5" cx="598.7" cy="188.9" r="5.8"/>
+			<path class="st0" d="M598.7,188.9v8.7"/>
+			<text transform="matrix(-1.836970e-16 -1 1 -1.836970e-16 598.7468 222.0146)" class="st6 st7 st4">1</text>
+			<text transform="matrix(-1.836970e-16 -1 1 -1.836970e-16 587.1716 185.9853)" class="st6 st7 st4">1</text>
+			<circle class="st8" cx="598.7" cy="188.9" r="8.7"/>
+			<path class="st9" d="M590.1,197.6l8.7,8.7l8.7-8.7"/>
+		</g>
+		<path id="gge7550" class="st0" d="M598.9,197.9c6.2-0.6,11.7,4.1,12.3,10.4c0.6,6.4-4,12-10.2,12.6c-0.7,0.1-1.4,0.1-2.1,0"/>
+		<path id="gge7551" class="st0" d="M599,222.4c6.2-0.6,11.7,4.1,12.3,10.5c0.6,6.4-4,12-10.2,12.6c-0.7,0.1-1.4,0.1-2.1,0"/>
+		<path id="gge7552" class="st0" d="M599,246.9c6.2-0.6,11.7,4.1,12.3,10.5c0.6,6.4-4,12-10.2,12.6c-0.7,0.1-1.4,0.1-2.1,0"/>
+		<path id="gge7553" class="st0" d="M598.9,271.9c6.2-0.6,11.7,4.1,12.3,10.5c0.6,6.4-4,12-10.2,12.6c-0.7,0.1-1.4,0.1-2.1,0"/>
+	</g>
+	<line id="gge7554" class="st0" x1="208.1" y1="58.7" x2="439.6" y2="58.7"/>
+	<polyline id="gge7555" class="st0" points="555.3,58.7 598.7,58.7 598.7,188.9 	"/>
+	<polyline id="gge7556" class="st0" points="598.7,304.6 598.7,420.4 323.8,420.4 323.8,377 	"/>
+	<line id="gge7557" class="st0" x1="48.9" y1="420.4" x2="323.8" y2="420.4"/>
+	<line id="gge7560" class="st0" x1="92.3" y1="58.7" x2="48.9" y2="58.7"/>
+	<line id="gge7561" class="st0" x1="251.5" y1="102.1" x2="251.5" y2="58.7"/>
+	<line id="gge7563" class="st0" x1="396.2" y1="102.1" x2="396.2" y2="58.7"/>
+	<polyline id="gge7566" class="st0" points="323.8,261.2 323.8,246.8 396.2,246.8 396.2,217.8 	"/>
+	<polyline id="gge7576" class="st0" points="251.5,217.8 251.5,246.8 323.8,246.8 	"/>
+	<g id="gge7579">
+		<text transform="matrix(1 0 0 1 627.6852 246.7549)" class="st10 st7 st11">L</text>
+	</g>
+	<g id="gge7582">
+		<text transform="matrix(1 0 0 1 338.2966 333.5713)" class="st12 st11">10Ω</text>
+	</g>
+	<g id="gge7585">
+		<text transform="matrix(1 0 0 1 410.6443 174.4082)" class="st12 st11">10Ω</text>
+	</g>
+	<g id="gge7588">
+		<text transform="matrix(1 0 0 1 265.9499 174.4082)" class="st12 st11">10Ω</text>
+	</g>
+	<g id="gge7591">
+		<text transform="matrix(1 0 0 1 121.2566 29.7138)" class="st12 st11">10Ω</text>
+	</g>
+	<g id="gge7594">
+		<text transform="matrix(1 0 0 1 482.9909 29.7138)" class="st13 st7 st11">C</text>
+	</g>
+	<g id="gge7607">
+		<text transform="matrix(1 0 0 1 19.9704 246.7549)" class="st7 st11">Z</text>
+	</g>
+	<g id="gge7562">
+		<circle class="st5" cx="251.5" cy="58.7" r="5.8"/>
+		<circle cx="251.5" cy="58.7" r="7.2"/>
+	</g>
+	<g id="gge7573">
+		<circle class="st5" cx="396.2" cy="58.7" r="5.8"/>
+		<circle cx="396.2" cy="58.7" r="7.2"/>
+	</g>
+	<g id="gge7574">
+		<circle class="st5" cx="323.8" cy="420.4" r="5.8"/>
+		<circle cx="323.8" cy="420.4" r="7.2"/>
+	</g>
+	<g id="gge7577">
+		<circle class="st5" cx="323.8" cy="246.8" r="5.8"/>
+		<circle cx="323.8" cy="246.8" r="7.2"/>
+	</g>
+	<g id="gge7596">
+		<path d="M63.4,73.1l-11.6,5.8l11.6-14.5L75,78.9L63.4,73.1z"/>
+	</g>
+	<g id="gge7597">
+		<path d="M63.4,405.9l11.6-5.8l-11.6,14.5l-11.6-14.5L63.4,405.9z"/>
+	</g>
+</g>
+<g>
+	<g id="ni34a4_1_">
+		
+			<image style="overflow:visible;" width="1200" height="423" id="ni34a4_00000114052095137766275830000010247063283131300264_" xlink:href="9A8E5E63C5D705E0.png"  transform="matrix(3.635557e-02 0 0 3.635557e-02 600.7324 442.6412)">
+		</image>
+	</g>
+	<g>
+		<text transform="matrix(1 0 0 1 600.5401 465.9828)" class="st14 st15">UBC Engineering</text>
+	</g>
+</g>
+</svg>
