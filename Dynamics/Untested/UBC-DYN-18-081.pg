@@ -82,9 +82,9 @@ $rWheel = $dRear/200; #m
 
 $omega0rads = $omega0*2*3.14/60; # rads/sec
 
-$vi = $omega0rads*($rA**2)*$rWheel/($rB**2); # ans (a)
+$vi = $omega0rads*($rA**2)/$rWheel/($rB**2); # ans (a)
 
-$omegaFrads = (296/3.6)*$rWheel*($rB**2)/($rA**2);
+$omegaFrads = ((296/3.6)*$rWheel)*($rB**2)/($rA**2);
 $omegaF = $omegaFrads *(60/(2*3.14)); #ans (b) in rpm
 
 $v_px = -(296/3.6); #ans c in x dir
