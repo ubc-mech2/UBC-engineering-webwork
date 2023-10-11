@@ -92,7 +92,7 @@ BEGIN_PGML
 
 You are designing an emergency brake for an amusement park ride that rotates riders about [`B`] at an angular velocity of [`[$omega]`] [`rad/s`], while also rotating the rider compartment about [`A`]. Due to a mechanism (not shown), the rider completes three rotations about [`B`] for each rotation of the arm about [`A`]. You want to be able to stop the ride quickly, but very high accelerations can cause brain injuries. Find the maximum braking angular acceleration, [`\alpha_A`], that you can apply about [`A`] such that the resultant head acceleration of a rider in the position shown does not exceed [`363`] [`m/s^2`]. Let [`R = [$R]`] [`m`], [`r = [$r]`] [`m`].
 
-[`\alpha_A=`] [_____]{"$alpha"} [`rad/s^2`]  
+[`|\vec{\alpha}_A|=`] [_____]{"$alpha"} [`rad/s^2`]  
 
 END_PGML
 
